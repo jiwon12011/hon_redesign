@@ -250,7 +250,9 @@ a{text-decoration:none;color:inherit}
   min-height:100vh;
   display:flex;flex-direction:column;
   padding-top:92px; /* GNB 높이 */
-  overflow:hidden;
+  overflow:hidden;  /* 좌우 스크롤 방지 — 캐릭터 상하 오버플로우는 clip-path로 처리하지 않아 자연스럽게 보임 */
+  /* 캐릭터가 하단으로 삐져나올 공간 확보 */
+  padding-bottom:0;
 }
 
 /* 배경 레이어 */
@@ -297,6 +299,7 @@ a{text-decoration:none;color:inherit}
   max-width:1400px;width:100%;margin:0 auto;
   padding:60px 80px 120px;
   gap:40px;
+  overflow:visible; /* 캐릭터가 그리드 경계 밖으로 나올 수 있도록 */
 }
 
 /* ── LEFT ── */
@@ -439,9 +442,9 @@ a{text-decoration:none;color:inherit}
 /* ── RIGHT: 캐릭터 + 플로팅 카드 ── */
 .hero-char-col{
   position:relative;
-  display:flex;justify-content:center;align-items:flex-end;
-  height:calc(100vh - 92px - 120px);
-  min-height:480px;
+  overflow:visible;
+  /* 높이 제약 제거 — 캐릭터가 자유롭게 튀어나올 수 있도록 */
+  min-height:560px;
 }
 
 .char-glow-blob{
@@ -452,19 +455,28 @@ a{text-decoration:none;color:inherit}
   50%{transform:translateX(-50%) scale(1.2);opacity:1}
 }
 
+/* 캐릭터를 컬럼 우하단 기준으로 절대 배치 — 화면 밖으로 튀어나오는 효과 */
 .hero-char-wrap{
-  position:relative;z-index:2;
+  position:absolute;
+  bottom:-80px;        /* 섹션 하단 밖으로 삐져나옴 */
+  right:-60px;         /* 우측 그리드 경계 밖으로 삐져나옴 */
+  z-index:6;
   animation:jellyFloat 3.2s cubic-bezier(.36,.07,.19,.97) infinite;
   transform-origin:center bottom;
 }
 .hero-char-sprite{
-  width:380px;height:auto;
+  width:clamp(520px, 46vw, 660px);   /* 화면 절반 이상 */
+  height:auto;
   image-rendering:pixelated;
-  filter:drop-shadow(0 0 16px rgba(200,160,96,.2)) drop-shadow(0 8px 32px rgba(0,0,0,.85));
+  /* 강한 그림자로 배경에서 입체감 확보 */
+  filter:
+    drop-shadow(0 0 40px rgba(200,160,96,.18))
+    drop-shadow(-4px 0 24px rgba(0,0,0,.7))
+    drop-shadow(0 24px 48px rgba(0,0,0,.9));
 }
 @keyframes jellyFloat{
   0%,100%{transform:translateY(0px)}
-  45%    {transform:translateY(-16px)}
+  45%    {transform:translateY(-18px)}
 }
 
 /* 플로팅 카드 */
@@ -739,165 +751,6 @@ a{text-decoration:none;color:inherit}
 }
 .cpanel-cta:hover{background:rgba(0,245,196,.14);box-shadow:0 0 20px rgba(0,245,196,.2)}
 
-/* ══════════════════════════════════════════════
-   WORLD GALLERY
-══════════════════════════════════════════════ */
-.world-section{
-  padding:100px 80px 120px;
-  background:var(--bg);
-  border-top:1px solid rgba(0,245,196,.06);
-}
-.world-inner{max-width:1400px;margin:0 auto}
-
-.world-header{text-align:center;margin-bottom:60px}
-.world-eyebrow{
-  font-family:'Galmuri11',monospace;font-size:.68rem;
-  color:var(--mint);letter-spacing:.5em;text-indent:.5em;
-  margin-bottom:12px;
-}
-.world-title{
-  font-family:'Galmuri11',monospace;font-size:2.4rem;
-  color:var(--text);
-}
-.world-sub{font-size:.9rem;color:var(--text-muted);margin-top:10px;line-height:1.8}
-
-.world-bento{
-  display:grid;
-  grid-template-columns:1.8fr 1fr 1fr;
-  grid-template-rows:260px 260px;
-  gap:12px;
-}
-.wb-card{
-  position:relative;border-radius:6px;overflow:hidden;
-  cursor:pointer;
-}
-.wb-card.wb-large{grid-row:1/3}
-.wb-card img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  filter:brightness(.55) saturate(1.4) hue-rotate(-8deg);
-  transition:transform .6s ease,filter .35s ease;
-}
-.wb-card:hover img{transform:scale(1.06);filter:brightness(.75) saturate(1.8) hue-rotate(-8deg)}
-
-/* 테두리 글로우 on hover */
-.wb-card::before{
-  content:'';position:absolute;inset:0;
-  border-radius:16px;z-index:2;
-  box-shadow:inset 0 0 0 1px transparent;
-  transition:box-shadow .3s ease;
-}
-.wb-card:hover::before{box-shadow:inset 0 0 0 1px rgba(200,160,96,.35)}
-
-.wb-label{
-  position:absolute;bottom:0;left:0;right:0;z-index:1;
-  padding:20px 18px 16px;
-  background:linear-gradient(to top, rgba(9,13,26,.98) 0%, transparent 100%);
-  transform:translateY(6px);
-  transition:transform .3s ease;
-}
-.wb-card:hover .wb-label{transform:translateY(0)}
-.wb-label h4{
-  font-family:'Galmuri11',monospace;font-size:1.05rem;
-  color:var(--text);margin-bottom:3px;
-}
-.wb-label p{font-size:.72rem;color:var(--text-muted)}
-
-/* ══════════════════════════════════════════════
-   이스터에그: 달걀귀신
-══════════════════════════════════════════════ */
-.egg-ghost{
-  position:fixed;bottom:0;left:48px;z-index:9999;
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  transform:translateY(100%);
-  transition:transform .55s cubic-bezier(.34,1.56,.64,1);
-  pointer-events:none;user-select:none;
-}
-.egg-ghost.is-peeking{transform:translateY(55%)}
-.egg-img-wrap{position:relative;width:72px;height:88px}
-.egg-img{width:100%;height:100%;object-fit:contain;image-rendering:pixelated}
-.egg-pixel-art{
-  position:absolute;inset:0;
-  background:#e8f4ff;
-  border-radius:50% 50% 48% 48% / 40% 40% 60% 60%;
-  border:3px solid #b0d4f0;
-  box-shadow:0 0 0 2px #090d1a,0 6px 20px rgba(0,200,255,.3);
-}
-.ep-eye{
-  position:absolute;top:30%;
-  width:10px;height:12px;background:#090d1a;border-radius:2px;
-  box-shadow:inset 2px 2px 0 rgba(255,255,255,.6);
-}
-.ep-eye-l{left:22%}.ep-eye-r{right:22%}
-.egg-ghost.is-peeking .ep-eye{animation:eyeBlink 3s ease-in-out infinite}
-@keyframes eyeBlink{0%,90%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
-.ep-mouth{
-  position:absolute;bottom:28%;left:50%;transform:translateX(-50%);
-  width:18px;height:8px;border:3px solid #090d1a;border-top:none;
-  border-radius:0 0 10px 10px;background:#7de0ff;
-}
-.ep-cheek{position:absolute;top:48%;width:10px;height:6px;background:rgba(255,80,100,.4);border-radius:50%}
-.ep-cheek-l{left:10%}.ep-cheek-r{right:10%}
-.egg-label{font-family:'Galmuri11',monospace;font-size:.65rem;color:var(--text-muted);opacity:0;transition:opacity .3s ease .3s}
-.egg-ghost.is-peeking .egg-label{opacity:1}
-.egg-ghost.is-peeking .egg-img-wrap{animation:eggWiggle .6s ease .2s both}
-@keyframes eggWiggle{
-  0%{transform:rotate(0deg)}20%{transform:rotate(-6deg)}
-  40%{transform:rotate(5deg)}60%{transform:rotate(-4deg)}
-  80%{transform:rotate(3deg)}100%{transform:rotate(0deg)}
-}
-
-/* ══════════════════════════════════════════════
-   ① 전역 도깨비불 파티클 (Will-o'-the-wisp)
-   position:fixed → 스크롤에 무관하게 전체 화면 유지
-══════════════════════════════════════════════ */
-.wisp-field{
-  position:fixed;inset:0;
-  z-index:2;pointer-events:none;overflow:hidden;
-  opacity:.3;
-}
-.wisp{
-  position:absolute;
-  left:var(--wx);top:var(--wy);
-  width:var(--ws,5px);height:var(--ws,5px);
-  border-radius:50%;
-  /* 기본: 민트 초록 */
-  background:radial-gradient(circle,rgba(0,245,196,1) 12%,rgba(0,245,196,.32) 55%,transparent 100%);
-  box-shadow:
-    0 0 calc(var(--ws,5px)*2.6) rgba(0,245,196,.68),
-    0 0 calc(var(--ws,5px)*7)   rgba(0,245,196,.16);
-  opacity:0;
-  animation:wispDrift var(--wd,8s) var(--wdelay,0s) ease-in-out infinite;
-}
-/* 파란 도깨비불 (3n+2) */
-.wisp:nth-child(3n+2){
-  background:radial-gradient(circle,rgba(130,175,255,1) 12%,rgba(85,135,255,.32) 55%,transparent 100%);
-  box-shadow:
-    0 0 calc(var(--ws,5px)*2.6) rgba(110,155,255,.65),
-    0 0 calc(var(--ws,5px)*7)   rgba(85,120,255,.14);
-}
-/* 보라 도깨비불 (5n+4) */
-.wisp:nth-child(5n+4){
-  background:radial-gradient(circle,rgba(205,125,255,1) 12%,rgba(165,85,255,.32) 55%,transparent 100%);
-  box-shadow:
-    0 0 calc(var(--ws,5px)*2.6) rgba(185,95,255,.62),
-    0 0 calc(var(--ws,5px)*7)   rgba(155,70,255,.13);
-}
-
-/* 부유 경로: CSS custom props로 개별 궤적 설정 */
-@keyframes wispDrift{
-  0%  {opacity:0;            transform:translate(0,0)                          scale(.58)}
-  12% {opacity:var(--wo,.4); transform:translate(var(--dx,-10px),-13px)        scale(1)}
-  38% {opacity:var(--wo,.4); transform:translate(var(--dx2,9px),-40px)         scale(1.12)}
-  62% {opacity:calc(var(--wo,.4)*.72);transform:translate(var(--dx3,13px),-65px) scale(.88)}
-  85% {opacity:.06;          transform:translate(var(--dx4,-5px),-90px)        scale(.52)}
-  100%{opacity:0;            transform:translate(var(--dx4,-5px),-112px)        scale(.28)}
-}
-
-/* ══════════════════════════════════════════════
-   ② 캐릭터 섹션 — 낡은 한지 부적 텍스처
-══════════════════════════════════════════════ */
-
-/* 한지 바탕: 사선 섬유 결 + 미세 수평 결 + 세피아 베이스 */
 .class-section{
   position:relative;
   background:
@@ -1528,904 +1381,324 @@ a{text-decoration:none;color:inherit}
   color:rgba(255,255,255,.6);line-height:1.8;
 }
 
+
 /* ══════════════════════════════════════════════
-   COMMUNITY / SNS SECTION
+   YOKAI GALLERY (귀혼의 세계 + 용사들의 기록 통합)
 ══════════════════════════════════════════════ */
-.community-section{
-  padding:100px 80px;
+.gallery-section{
+  padding:100px 80px 120px;
   background:var(--bg);
-  border-top:1px solid rgba(0,245,196,.06);
 }
-.community-inner{max-width:1400px;margin:0 auto}
-
-.community-header{
-  display:flex;align-items:flex-end;justify-content:space-between;
-  margin-bottom:48px;
-  gap:32px;
-}
-.community-eyebrow{
-  font-family:'Galmuri9',monospace;font-size:.68rem;
-  color:var(--mint);letter-spacing:.5em;margin-bottom:12px;
-}
-.community-title{
-  font-family:'Galmuri11',monospace;font-size:2.2rem;
-  color:var(--text);margin-bottom:8px;
-}
-.community-sub{
-  font-family:'Galmuri9',monospace;font-size:.78rem;
-  color:var(--text-muted);
+.gallery-inner{
+  max-width:1400px;
+  margin:0 auto;
 }
 
-/* SNS 버튼들 */
-.community-sns-links{display:flex;gap:8px;flex-shrink:0}
-.sns-btn{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 18px;
-  font-family:'Galmuri9',monospace;font-size:.72rem;
-  color:var(--text-muted);
-  border:1px solid rgba(255,255,255,.1);
-  border-radius:6px;
-  background:rgba(255,255,255,.04);
-  transition:border-color .2s,color .2s,background .2s;
-}
-.sns-btn:hover{
-  color:var(--mint);
-  border-color:rgba(0,245,196,.35);
-  background:rgba(0,245,196,.06);
-}
-.sns-icon{font-size:1rem}
-
-/* 커뮤니티 그리드 - 명시적 배치 */
-.community-grid{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  grid-template-rows:260px 260px 260px;
-  gap:12px;
-}
-/* 1번: 왼쪽 세로 tall (2행) */
-.cc-card:nth-child(1){ grid-column:1; grid-row:1/3 }
-/* 2번: 가로 wide (2열) */
-.cc-card:nth-child(2){ grid-column:2/4; grid-row:1 }
-/* 3번 */
-.cc-card:nth-child(3){ grid-column:2; grid-row:2 }
-/* 4번 */
-.cc-card:nth-child(4){ grid-column:3; grid-row:2 }
-/* 5번: 가로 wide */
-.cc-card:nth-child(5){ grid-column:1/3; grid-row:3 }
-/* 6번 */
-.cc-card:nth-child(6){ grid-column:3; grid-row:3 }
-
-.cc-card{
-  position:relative;
-  overflow:hidden;
-  border-radius:4px;
-  cursor:pointer;
-  background:var(--bg-2);
-}
-.cc-card img{
-  width:100%;height:100%;object-fit:cover;
-  filter:brightness(.55) saturate(1.3);
-  transition:transform .55s ease, filter .35s ease;
-}
-.cc-card:hover img{
-  transform:scale(1.07);
-  filter:brightness(.7) saturate(1.6);
-}
-
-/* 호버 오버레이 */
-.cc-overlay{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;justify-content:space-between;
-  padding:16px;
-  background:linear-gradient(to bottom,rgba(0,0,0,.3) 0%,transparent 40%,transparent 55%,rgba(0,0,0,.75) 100%);
-  opacity:0;transition:opacity .3s ease;
-}
-.cc-card:hover .cc-overlay{opacity:1}
-
-.cc-overlay-top{display:flex;justify-content:flex-start}
-.cc-featured-badge{
-  font-family:'Galmuri11',monospace;font-size:.6rem;
-  padding:4px 10px;letter-spacing:.12em;
-  color:#18100a;background:#c8a060;
-  border-radius:2px;
-}
-
-.cc-overlay-bottom{display:flex;flex-direction:column;gap:6px}
-.cc-user-row{display:flex;align-items:center;gap:8px}
-.cc-avatar{
-  width:26px;height:26px;border-radius:50%;
-  background:rgba(0,245,196,.2);
-  border:1px solid rgba(0,245,196,.4);
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Galmuri11',monospace;font-size:.55rem;color:var(--mint);
-  flex-shrink:0;
-}
-.cc-username{
-  font-family:'Galmuri9',monospace;font-size:.72rem;
-  color:rgba(255,255,255,.85);
-}
-.cc-stats-row{display:flex;gap:12px}
-.cc-stat{
-  font-family:'Galmuri9',monospace;font-size:.65rem;
-  color:rgba(255,255,255,.55);
-}
-
-/* 더보기 버튼 */
-.community-more{
-  display:flex;justify-content:center;
-  margin-top:36px;
-}
-.community-more-btn{
-  font-family:'Galmuri11',monospace;font-size:.82rem;
-  color:var(--mint);letter-spacing:.06em;
-  padding:12px 36px;
-  border:1px solid rgba(200,160,96,.2);
-  border-radius:3px;
-  background:rgba(200,160,96,.04);
-  transition:background .2s,border-color .2s;
-}
-.community-more-btn:hover{
-  background:rgba(200,160,96,.1);
-  border-color:rgba(200,160,96,.35);
-}
-
-/* ══════════════════════════════════════════════
-   수묵화 안개 & 배경 붓글씨 워터마크
-   ─ 각 섹션: 상단(맑음) → 하단(안개) 그라데이션
-   ─ 한자 대형 배경 텍스트 opacity ~5%
-══════════════════════════════════════════════ */
-
-/* ① HERO
-   ::before  → 하단 입체 안개 (particles 위, layout 아래)
-   ::after   → 배경 대형 글자 '鬼' '魂' (hero bg 위, content 아래) */
-.hero::before{
-  content:'';
-  position:absolute;bottom:44px;left:0;right:0;
-  height:45%;
-  background:linear-gradient(to bottom,
-    transparent 0%,
-    rgba(9,13,26,.55) 100%
-  );
-  z-index:4;pointer-events:none;
-}
-.hero::after{
-  content:'鬼\A魂';
-  white-space:pre;
-  position:absolute;
-  right:-3%;bottom:-12%;
-  font-size:50vw;line-height:.78;
-  font-family:'Noto Serif KR','Noto Sans KR',serif;
-  font-weight:900;
-  color:rgba(200,160,96,.038);
-  pointer-events:none;z-index:2;user-select:none;
-  letter-spacing:-.04em;
-}
-
-/* ② 수배 게시판
-   ::before override → 기존 side-shadow + 하단 안개 통합
-   ::after           → '妖' 배경 글자 */
-.counter-section::before{
-  background:
-    linear-gradient(to right, rgba(0,0,0,.38) 0%,transparent 7%),
-    linear-gradient(to left,  rgba(0,0,0,.38) 0%,transparent 7%),
-    /* 하단 안개: 나무 판자 아래로 어둠이 내려앉음 */
-    linear-gradient(to bottom,
-      rgba(0,0,0,.06) 0%,transparent 30%,
-      transparent 55%,rgba(0,0,0,.52) 100%
-    );
-}
-.counter-section::after{
-  content:'妖';
-  position:absolute;
-  right:-4%;bottom:-10%;
-  font-size:58vw;line-height:.82;
-  font-family:'Noto Serif KR','Noto Sans KR',serif;
-  font-weight:900;
-  color:rgba(200,130,50,.048);
-  pointer-events:none;z-index:1;user-select:none;
-  letter-spacing:-.04em;
-}
-
-/* ③ 캐릭터 선택 섹션
-   (::before·::after 모두 사용 중 → background에 안개 직접 추가) */
-.class-section{
-  background:
-    /* 하단 안개 overlay */
-    linear-gradient(to bottom,
-      transparent 45%,rgba(8,3,18,.62) 100%
-    ),
-    repeating-linear-gradient(-47deg,rgba(175,95,18,.038) 0px,rgba(175,95,18,.038) 1px,transparent 1px,transparent 9px),
-    repeating-linear-gradient(0deg,rgba(145,72,12,.018) 0px,rgba(145,72,12,.018) 1px,transparent 1px,transparent 22px),
-    linear-gradient(152deg,#0d0520 0%,#130829 55%,#0b0419 100%);
-}
-
-/* ④ MBTI 섹션
-   ::before → 상하단 안개 (위 자연광 느낌 + 아래 안개)
-   ::after  → '命' 배경 글자 */
-.mbti-section{position:relative}
-.mbti-inner{position:relative;z-index:1}
-.mbti-section::before{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,
-    rgba(40,10,70,.12) 0%,
-    transparent 22%,
-    transparent 52%,
-    rgba(8,3,20,.65) 100%
-  );
-  pointer-events:none;z-index:0;
-}
-.mbti-section::after{
-  content:'命';
-  position:absolute;
-  left:50%;top:50%;
-  transform:translate(-52%,-50%) rotate(-7deg);
-  font-size:65vw;line-height:1;
-  font-family:'Noto Serif KR','Noto Sans KR',serif;
-  font-weight:900;
-  color:rgba(180,140,80,.038);
-  pointer-events:none;z-index:0;user-select:none;
-}
-
-/* ⑤ 귀혼의 세계
-   ::before  이미 존재 (상단 fade mask)
-   ::after → '界' 배경 글자
-   background에도 하단 안개 통합 */
-.world-section{
-  background:
-    linear-gradient(to bottom,
-      var(--bg) 0%,
-      transparent 8%,
-      transparent 62%,
-      rgba(5,9,18,.7) 100%
-    );
-}
-.world-inner{position:relative;z-index:2}
-.world-section::after{
-  content:'界';
-  position:absolute;
-  left:-4%;bottom:-10%;
-  font-size:62vw;line-height:.82;
-  font-family:'Noto Serif KR','Noto Sans KR',serif;
-  font-weight:900;
-  color:rgba(200,160,96,.035);
-  pointer-events:none;z-index:1;user-select:none;
-  letter-spacing:-.04em;
-}
-
-/* ⑥ 커뮤니티 섹션
-   ::before → 상단 진입 + 하단 안개
-   ::after  → '魂' 배경 글자 */
-.community-section{position:relative}
-.community-inner{position:relative;z-index:1}
-.community-section::before{
-  content:'';
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,
-    rgba(5,9,15,.15) 0%,
-    transparent 15%,
-    transparent 55%,
-    rgba(5,9,15,.72) 100%
-  );
-  pointer-events:none;z-index:0;
-}
-.community-section::after{
-  content:'魂';
-  position:absolute;
-  right:-3%;top:50%;
-  transform:translateY(-52%);
-  font-size:60vw;line-height:1;
-  font-family:'Noto Serif KR','Noto Sans KR',serif;
-  font-weight:900;
-  color:rgba(0,245,196,.042);
-  pointer-events:none;z-index:0;user-select:none;
-}
-
-/* ══════════════════════════════════════════════
-   도트 폰트 계층화
-   Galmuri11 → 큰 제목 / 메뉴
-   Galmuri9  → 작은 캡션 / 숫자 보조 레이블
-══════════════════════════════════════════════ */
-
-/* 히어로 스탯 레이블 (최대 레벨, 직업 클래스, 서비스 시작) */
-.hstat-l{
-  font-family:'Galmuri9',monospace;
-  font-size:.64rem;letter-spacing:.1em;
-}
-/* 히어로 스탯 숫자 보조 단위 없이 느낌 강화 */
-.hstat-n{
-  font-family:'Galmuri11',monospace;
-  letter-spacing:-.01em;
-}
-
-/* 캐릭터 섹션 부제 */
-.cts-sub{
-  font-family:'Galmuri9',monospace;
-  font-size:.74rem;letter-spacing:.05em;line-height:2;
-}
-
-/* 플로팅 카드 보조 텍스트 */
-.fcard-sub{
-  font-family:'Galmuri9',monospace;
-  font-size:.66rem;
-}
-.fcard-list li{
-  font-family:'Galmuri9',monospace;
-  font-size:.7rem;
-}
-
-/* 월드 카드 한 줄 설명 */
-.wb-label p{
-  font-family:'Galmuri9',monospace;
-  font-size:.7rem;
-}
-
-/* 스탯 바 수치 */
-.cps-v{
-  font-family:'Galmuri9',monospace;
-  font-size:.68rem;
-}
-
-/* 캐릭터 설명 본문 (읽기 쉽게 Galmuri9 적용, 행간 유지) */
-.cpanel-desc{
-  font-family:'Galmuri9',monospace;
-  font-size:.82rem;letter-spacing:.03em;line-height:2.2;
-}
-
-/* ══════════════════════════════════════════════
-   비정형 UI — 붓터치 & 찢어진 종이 모서리
-══════════════════════════════════════════════ */
-
-/* ── A. 히어로 태그라인: 직선 테두리 → 붓 획 ── */
-.hero-tagline{
-  border-left:none;    /* 기존 직선 제거 */
-  position:relative;
-  padding-left:20px;
-}
-/* 붓으로 쓱 내려그은 불규칙 세로 획 */
-.hero-tagline::before{
-  content:'';
-  position:absolute;
-  left:0;top:4%;bottom:4%;
-  width:5px;
-  background:linear-gradient(
-    180deg,
-    rgba(0,245,196,.4)  0%,
-    #00f5c4              28%,
-    rgba(0,168,255,.85) 55%,
-    #00f5c4              78%,
-    rgba(0,245,196,.45) 100%
-  );
-  /* 붓 획: 시작과 끝이 가늘고 중간이 두꺼우며 살짝 구불구불 */
-  clip-path:polygon(
-    0%   0%,
-    100% 5%,
-    68%  18%,
-    100% 32%,
-    62%  50%,
-    100% 68%,
-    72%  82%,
-    100% 94%,
-    0%   100%
-  );
-  filter:blur(.35px);
-  box-shadow:2px 0 10px rgba(0,245,196,.32);
-}
-
-/* ── B. 플로팅 카드 — 귀 접힌 종이 모서리 (dog-ear) ── */
-
-/* 이슈 카드: 오른쪽 위 모서리 잘림 + 민트 엣지 글로우 */
-.issue-fcard{
-  border-radius:16px 0 16px 16px;
-  clip-path:polygon(
-    0%   0%,
-    calc(100% - 24px) 0%,
-    100% 24px,
-    100% 100%,
-    0%   100%
-  );
-  /* drop-shadow는 clip-path 윤곽선을 따라 그려짐 */
-  filter:drop-shadow(0 4px 18px rgba(0,245,196,.18))
-         drop-shadow(0 0 1px rgba(0,245,196,.22));
-}
-/* 잘린 모서리 대각선 엣지에 얇은 민트 라인 */
-.issue-fcard::after{
-  content:'';
-  position:absolute;top:0;right:0;
-  width:24px;height:24px;
-  /* 대각 아래쪽(visible 영역)에만 색이 들어오도록 */
-  background:linear-gradient(
-    135deg,
-    transparent 50%,
-    rgba(0,245,196,.28) 50%
-  );
-  pointer-events:none;
-}
-
-/* 침공 카드: 왼쪽 위 모서리 잘림 + 붉은 엣지 글로우 */
-.raid-fcard{
-  border-radius:0 16px 16px 16px;
-  clip-path:polygon(
-    20px 0%,
-    100% 0%,
-    100% 100%,
-    0%   100%,
-    0%   20px
-  );
-  filter:drop-shadow(0 4px 18px rgba(255,32,64,.15))
-         drop-shadow(0 0 1px rgba(255,32,64,.2));
-}
-/* 왼쪽 위 대각 엣지 라인 */
-.raid-fcard::after{
-  content:'';
-  position:absolute;top:0;left:0;
-  width:20px;height:20px;
-  background:linear-gradient(
-    315deg,
-    transparent 50%,
-    rgba(255,32,64,.3) 50%
-  );
-  pointer-events:none;
-}
-
-/* ── C. '다운로드' 아웃라인 버튼 → 찢어진 종이 가장자리 ── */
-.btn-hero-outline{
-  border-radius:0;
-  border:none;
-  /* 가장자리가 살짝 뜯긴 느낌의 불규칙 다각형 */
-  clip-path:polygon(
-    1%   9%,
-    4%   0%,
-    96%  2%,
-    100% 8%,
-    98%  91%,
-    95%  100%,
-    3%   97%,
-    0%   91%
-  );
-  /* 원래 border 색상을 box-shadow로 대체 */
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.18),
-    0 0 0 1px rgba(255,255,255,.06);
-  transition:box-shadow .2s, background .2s;
-}
-.btn-hero-outline:hover{
-  background:rgba(0,245,196,.1);
-  box-shadow:
-    inset 0 0 0 1px rgba(0,245,196,.5),
-    0 0 12px rgba(0,245,196,.2);
-}
-
-/* ── D. ONLINE 배지 → 불규칙 도장 모양 ── */
-.eyebrow-badge{
-  border:none;
-  border-radius:0;
-  clip-path:polygon(
-    0%   18%,
-    5%   0%,
-    95%  4%,
-    100% 18%,
-    97%  82%,
-    93%  100%,
-    6%   96%,
-    0%   80%
-  );
-  padding:3px 10px;
-  /* 붉은 잉크 도장처럼: 약한 내부 glow */
-  background:rgba(255,32,64,.1);
-  box-shadow:inset 0 0 6px rgba(255,32,64,.2);
-}
-
-/* ── E. 캐릭터 태그 → 손으로 오려낸 스티커 ── */
-.cpanel-tags span{
-  border-radius:0;
-  clip-path:polygon(
-    0%   15%,
-    5%   0%,
-    95%  3%,
-    100% 16%,
-    97%  84%,
-    93%  100%,
-    6%   97%,
-    0%   83%
-  );
-  padding:5px 12px;
-}
-
-/* ══════════════════════════════════════════════
-   캐릭터 선택 섹션 리디자인
-   ① 어두운 박스 제거  ② 발밑 민트 안개  ③ 배경 직업명 텍스트
-══════════════════════════════════════════════ */
-
-/* ① 발밑 안개 — 호박금 */
-.cpanel-visual::before{
-  content:'';
-  position:absolute;
-  bottom:-10px;
-  right:-42px;
-  width:300px;
-  height:210px;
-  background:radial-gradient(
-    ellipse 70% 50% at 50% 100%,
-    rgba(200,160,96,.20) 0%,
-    rgba(200,160,96,.09) 38%,
-    rgba(200,160,96,.02) 62%,
-    transparent 78%
-  );
-  pointer-events:none;
-  z-index:2;
-}
-
-/* ② 배경 대형 직업명 텍스트 — 캐릭터 뒤에서 살짝 겹치게 */
-.cpanel-kanji{
-  position:absolute;
-  right:-48px;       /* 오른쪽으로 약간 삐져나와 인포 컬럼과 살짝 겹침 */
-  bottom:-24px;
-  font-size:10.5rem; /* 2글자 가로 ~336px — 스프라이트 영역과 겹침 */
-  font-family:'Noto Serif KR','Noto Sans KR',serif;
-  font-weight:900;
-  line-height:.86;
-  letter-spacing:-.06em;
-  color:rgba(200,160,96,.06);
-  pointer-events:none;
-  user-select:none;
-  z-index:2;
-  white-space:nowrap;
-}
-
-/* ③ z-index 정리 — 스프라이트 최상위, 인포 컬럼이 카nji 텍스트보다 위 */
-.cpanel-sprite{
-  z-index:3;
-}
-.cpanel-info{
-  position:relative;
-  z-index:4;         /* 카nji 텍스트가 인포 영역에 살짝 겹쳐도 텍스트/버튼은 가려지지 않음 */
-}
-
-
-/* ══════════════════════════════════════════════════════
-   CHARACTER SECTION TWEAKS
-══════════════════════════════════════════════════════ */
-.ctab{ border-radius:4px }
-.cpanel-illust{
-  filter:brightness(.28) saturate(.85);
-  opacity:.6;
-}
-.cpanel:hover .cpanel-illust{ filter:brightness(.38) saturate(1.05); opacity:.7 }
-
-
-/* ══════════════════════════════════════════════════════
-   귀혼의 세계 — 요괴 도감 스트립 (FULL REDESIGN)
-══════════════════════════════════════════════════════ */
-.world-section{
-  padding:72px 0 72px 80px;
-  background:#09080e;
-  border-top:1px solid rgba(200,160,96,.12);
-  overflow:hidden;
-  position:relative;
-}
-.world-section::before{ display:none }   /* 기존 fade mask 제거 */
-.world-section::after{                   /* 배경 한자 유지, 색만 */
-  color:rgba(200,160,96,.03);
-}
-.world-inner{ max-width:none }
-
-.world-head{
+/* 헤더 */
+.gallery-head{
   display:flex;
   justify-content:space-between;
   align-items:flex-end;
-  max-width:1400px;
-  margin:0 auto 32px;
-  padding-right:80px;
+  margin-bottom:48px;
+  gap:24px;
 }
-.world-head-text{ display:flex;flex-direction:column;gap:6px }
-.world-eyebrow{
-  font-family:'Galmuri11',monospace;font-size:.66rem;
-  color:rgba(200,160,96,.6);letter-spacing:.45em;
+.gallery-eyebrow{
+  font-family:'Galmuri11',monospace;
+  font-size:.72rem;letter-spacing:.3em;
+  color:var(--mint);margin-bottom:10px;
 }
-.world-title{
-  font-family:'Galmuri11',monospace;font-size:2rem;
-  color:#e0d8cc;
+.gallery-title{
+  font-family:'Galmuri11',monospace;
+  font-size:clamp(28px,3.5vw,44px);
+  color:var(--text);
+  line-height:1.1;
 }
-.world-count{
-  font-family:'Galmuri9',monospace;font-size:.7rem;
-  color:rgba(200,160,96,.45);letter-spacing:.08em;
-  padding-bottom:4px;
+.gallery-sub{
+  font-size:.82rem;color:var(--text-muted);
+  margin-top:8px;
 }
-.world-count strong{ color:#c8a060 }
-
-/* 스트립 */
-.world-strip-wrap{
-  overflow-x:auto;overflow-y:hidden;
-  scrollbar-width:none;-ms-overflow-style:none;
-  padding-right:80px;
-  scroll-snap-type:x mandatory;
-  padding-bottom:4px;
-}
-.world-strip-wrap::-webkit-scrollbar{ display:none }
-.world-strip{
-  display:flex;
-  gap:14px;
-  width:max-content;
-}
-
-.ws-card{
-  width:234px;flex-shrink:0;
-  background:rgba(14,12,20,.96);
-  border:1px solid rgba(200,160,96,.1);
-  overflow:hidden;
-  cursor:pointer;
-  scroll-snap-align:start;
-  transition:border-color .3s ease, transform .3s ease;
-}
-.ws-card:hover{
-  border-color:rgba(200,160,96,.32);
-  transform:translateY(-5px);
-}
-
-.ws-img-wrap{
-  width:100%;height:280px;overflow:hidden;
-  position:relative;
-}
-.ws-img-wrap::after{
-  content:'';position:absolute;bottom:0;left:0;right:0;
-  height:56px;
-  background:linear-gradient(to bottom,transparent,rgba(14,12,20,.85));
-  pointer-events:none;
-}
-.ws-img{
-  width:100%;height:100%;object-fit:cover;object-position:center top;
-  display:block;
-  filter:grayscale(.58) sepia(.22) contrast(1.05) brightness(.65);
-  transition:filter .5s ease, transform .55s ease;
-}
-.ws-card:hover .ws-img{
-  filter:grayscale(.1) sepia(.05) contrast(1.1) brightness(.82);
-  transform:scale(1.05);
-}
-
-.ws-body{
-  padding:14px 16px 18px;
-  display:flex;flex-direction:column;gap:8px;
-  border-top:1px solid rgba(200,160,96,.08);
-}
-
-.ws-rank-badge{
-  font-family:'Galmuri9',monospace;font-size:.58rem;
-  padding:2px 8px;letter-spacing:.1em;
-  align-self:flex-start;
-}
-[data-rank="legend"] .ws-rank-badge{
-  background:rgba(210,160,40,.12);color:#d4a843;
-  border:1px solid rgba(210,160,40,.28);
-}
-[data-rank="rare"] .ws-rank-badge{
-  background:rgba(130,80,210,.1);color:#a880dd;
-  border:1px solid rgba(130,80,210,.22);
-}
-[data-rank="common"] .ws-rank-badge{
-  background:rgba(130,130,130,.08);color:#747474;
-  border:1px solid rgba(130,130,130,.18);
-}
-
-.ws-names{
-  display:flex;align-items:baseline;gap:8px;
-}
-.ws-name-ko{
-  font-family:'Galmuri11',monospace;font-size:1.05rem;
-  color:#ddd5c8;line-height:1;
-}
-.ws-name-cn{
-  font-family:'Noto Serif KR',serif;font-size:.7rem;
-  color:rgba(200,160,96,.45);
-}
-.ws-desc{
-  font-size:.67rem;color:rgba(170,162,150,.42);line-height:1.85;
-}
-.ws-zone{
-  font-family:'Galmuri9',monospace;font-size:.6rem;
-  color:rgba(200,160,96,.35);
-  padding-top:6px;
-  border-top:1px solid rgba(200,160,96,.07);
-}
-
-/* 기존 bento CSS 무력화 */
-.world-bento,.wb-card,.wb-label{ all:unset }
-.world-mist{ display:none }
-.world-header{ display:none }
-.world-sub{ display:none }
-
-
-/* ══════════════════════════════════════════════════════
-   용사들의 기록 — 메인 포착 + 피드 레이아웃 (FULL REDESIGN)
-══════════════════════════════════════════════════════ */
-.community-section{
-  padding:72px 80px 96px;
-  background:var(--bg);
-  border-top:1px solid rgba(200,160,96,.1);
-  position:relative;
-}
-.community-section::before,.community-section::after{ display:none }
-.community-inner{ max-width:1400px;margin:0 auto;position:relative;z-index:1 }
-
-.community-header{
-  display:flex;justify-content:space-between;align-items:flex-end;
-  margin-bottom:32px;
-}
-.community-eyebrow{
-  font-family:'Galmuri11',monospace;font-size:.66rem;
-  color:rgba(200,160,96,.6);letter-spacing:.45em;
-  margin-bottom:6px;
-}
-.community-title{
-  font-family:'Galmuri11',monospace;font-size:2rem;
-  color:#e0d8cc;
-}
-.community-sns-links{
-  display:flex;gap:8px;align-items:center;
+.gallery-sub strong{color:var(--mint)}
+.gallery-sns-links{
+  display:flex;gap:10px;flex-shrink:0;
 }
 .sns-btn{
-  font-family:'Galmuri9',monospace;font-size:.68rem;
-  padding:8px 14px;
-  color:rgba(200,170,120,.55);
-  border:1px solid rgba(200,160,96,.14);
-  background:transparent;
-  transition:color .2s,border-color .2s,background .2s;
-  text-decoration:none;
+  font-family:'Galmuri11',monospace;
+  font-size:.72rem;letter-spacing:.06em;
+  color:var(--text-muted);
+  padding:8px 16px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:4px;
+  background:rgba(255,255,255,.03);
+  transition:border-color .2s,color .2s,background .2s;
 }
 .sns-btn:hover{
-  color:#c8a060;
-  border-color:rgba(200,160,96,.32);
-  background:rgba(200,160,96,.05);
+  border-color:rgba(200,160,96,.4);
+  color:var(--mint);
+  background:rgba(200,160,96,.07);
 }
 
-/* 2컬럼 레이아웃 */
-.community-layout{
+/* ── 갤러리 그리드 ── */
+.gallery-grid{
   display:grid;
-  grid-template-columns:1.15fr .85fr;
-  gap:20px;
-  align-items:start;
+  grid-template-columns:repeat(4, 1fr);
+  grid-auto-rows:280px;
+  gap:10px;
 }
 
-/* 왼쪽: 메인 포착 */
-.cl-featured{ position:relative }
-.clf-img-wrap{
+/* 구미호: 2열 × 2행 — 레전드 대형 카드 */
+.gg-item.gg-large{
+  grid-column:span 2;
+  grid-row:span 2;
+}
+/* 외발귀신, 두부중: 2열 × 1행 와이드 */
+.gg-item.gg-wide{
+  grid-column:span 2;
+}
+
+/* 카드 공통 */
+.gg-item{
   position:relative;
-  height:520px;overflow:hidden;
-  background:rgba(12,10,18,.9);
-}
-.clf-img{
-  width:100%;height:100%;object-fit:cover;object-position:center top;
-  display:block;
-  filter:brightness(.62) saturate(1.25) contrast(1.05);
-  transition:filter .5s ease;
-}
-.cl-featured:hover .clf-img{ filter:brightness(.76) saturate(1.4) }
-.clf-info{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:28px 24px;
-  background:linear-gradient(to top,rgba(6,4,12,.97) 0%,rgba(6,4,12,.7) 48%,transparent 100%);
-  display:flex;flex-direction:column;gap:10px;
-}
-.clf-badge{
-  font-family:'Galmuri11',monospace;font-size:.6rem;
-  padding:3px 10px;letter-spacing:.15em;
-  color:#c8a060;
-  background:rgba(200,160,96,.1);
-  border:1px solid rgba(200,160,96,.28);
-  align-self:flex-start;
-}
-.clf-yokai{
-  display:flex;align-items:baseline;gap:10px;
-}
-.clf-yokai-name{
-  font-family:'Galmuri11',monospace;font-size:1.65rem;
-  color:#ede5d5;line-height:1;
-}
-.clf-yokai-cn{
-  font-family:'Noto Serif KR',serif;font-size:.82rem;
-  color:rgba(200,160,96,.5);
-}
-.clf-meta{
-  display:flex;gap:14px;align-items:center;
-}
-.clf-user{
-  font-family:'Galmuri9',monospace;font-size:.7rem;
-  color:rgba(220,210,190,.6);
-}
-.clf-likes,.clf-comments{
-  font-family:'Galmuri9',monospace;font-size:.68rem;
-  color:rgba(200,160,96,.55);
-}
-
-/* 오른쪽: 피드 */
-.cl-feed{
-  display:flex;flex-direction:column;
-  background:rgba(14,12,20,.7);
-  border:1px solid rgba(200,160,96,.1);
-}
-.cl-feed-header{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:12px 18px;
-  border-bottom:1px solid rgba(200,160,96,.1);
-  font-family:'Galmuri11',monospace;font-size:.72rem;
-  color:rgba(200,160,96,.65);
-}
-.cl-feed-count{
-  font-size:.65rem;color:rgba(200,160,96,.38);
-}
-
-.clf-list{ list-style:none }
-.clf-item{
-  display:flex;gap:14px;align-items:flex-start;
-  padding:14px 18px;
-  border-bottom:1px solid rgba(200,160,96,.06);
+  overflow:hidden;
+  border-radius:6px;
   cursor:pointer;
-  transition:background .2s;
+  background:var(--bg-2);
 }
-.clf-item:last-child{ border-bottom:none }
-.clf-item:hover{ background:rgba(200,160,96,.03) }
+.gg-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .5s cubic-bezier(.25,.46,.45,.94),
+             filter .5s;
+  filter:brightness(.8) saturate(.9);
+}
+.gg-item:hover .gg-img{
+  transform:scale(1.07);
+  filter:brightness(.65) saturate(1.1);
+}
 
-.clf-thumb{
-  width:60px;height:60px;
-  object-fit:cover;object-position:center top;
-  flex-shrink:0;
-  filter:grayscale(.45) brightness(.7);
-  transition:filter .3s;
+/* 오버레이 */
+.gg-overlay{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:20px;
+  background:linear-gradient(
+    to top,
+    rgba(9,8,18,.9) 0%,
+    rgba(9,8,18,.4) 50%,
+    transparent 100%
+  );
+  opacity:0;
+  transition:opacity .3s;
 }
-.clf-item:hover .clf-thumb{ filter:grayscale(.1) brightness(.88) }
+.gg-item:hover .gg-overlay{
+  opacity:1;
+}
+/* 대형 카드는 항상 하단 정보 표시 */
+.gg-item.gg-large .gg-overlay{
+  opacity:1;
+}
 
-.clf-item-info{
-  flex:1;display:flex;flex-direction:column;gap:4px;
+/* 랭크 뱃지 */
+.gg-rank-badge{
+  display:inline-block;
+  font-family:'Galmuri11',monospace;
+  font-size:.65rem;letter-spacing:.12em;
+  padding:3px 10px;
+  border-radius:3px;
+  margin-bottom:8px;
+  width:fit-content;
 }
-.clf-item-yokai{
+.gg-rank-badge.legend{
+  background:rgba(200,160,96,.2);
+  border:1px solid rgba(200,160,96,.5);
+  color:#e8c870;
+}
+.gg-rank-badge.rare{
+  background:rgba(120,80,200,.2);
+  border:1px solid rgba(140,100,220,.4);
+  color:#c4a0f0;
+}
+.gg-rank-badge.common{
+  background:rgba(80,160,80,.15);
+  border:1px solid rgba(80,160,80,.35);
+  color:#80c880;
+}
+
+.gg-names{
+  display:flex;align-items:baseline;gap:10px;
+  margin-bottom:6px;
+}
+.gg-name-ko{
+  font-family:'Galmuri11',monospace;
+  font-size:1.15rem;color:var(--text);
+  line-height:1;
+}
+.gg-name-cn{
+  font-family:'Galmuri11',monospace;
+  font-size:.8rem;
+  color:rgba(200,160,96,.6);
+  letter-spacing:.1em;
+}
+.gg-meta{
+  font-size:.72rem;color:var(--text-muted);
+  letter-spacing:.04em;
+}
+
+/* ══════════════════════════════════════════════
+   요괴 상세 모달
+══════════════════════════════════════════════ */
+.yokai-modal{
+  position:fixed;inset:0;
+  z-index:9000;
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity .3s;
+}
+.yokai-modal.is-open{
+  pointer-events:auto;
+  opacity:1;
+}
+
+.ym-backdrop{
+  position:absolute;inset:0;
+  background:rgba(4,3,10,.88);
+  backdrop-filter:blur(8px);
+  cursor:pointer;
+}
+
+.ym-panel{
+  position:relative;z-index:1;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  width:min(960px, 92vw);
+  max-height:90vh;
+  background:var(--bg-2);
+  border:1px solid rgba(200,160,96,.18);
+  border-radius:10px;
+  overflow:hidden;
+  transform:translateY(24px) scale(.97);
+  transition:transform .35s cubic-bezier(.25,.46,.45,.94);
+  box-shadow:0 32px 80px rgba(0,0,0,.7),
+             0 0 0 1px rgba(200,160,96,.08);
+}
+.yokai-modal.is-open .ym-panel{
+  transform:translateY(0) scale(1);
+}
+
+/* 닫기 버튼 */
+.ym-close{
+  position:absolute;top:16px;right:16px;
+  z-index:10;
+  width:36px;height:36px;
+  border-radius:50%;
+  background:rgba(9,8,18,.8);
+  border:1px solid rgba(255,255,255,.1);
+  color:var(--text-muted);
+  font-size:1rem;line-height:1;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s,color .2s;
+}
+.ym-close:hover{
+  background:rgba(200,160,96,.15);
+  border-color:rgba(200,160,96,.4);
+  color:var(--mint);
+}
+
+/* 이미지 */
+.ym-img-wrap{
+  position:relative;
+  overflow:hidden;
+  min-height:480px;
+}
+.ym-img{
+  width:100%;height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+
+/* 정보 패널 */
+.ym-info{
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:48px 40px;
+  gap:20px;
+  overflow-y:auto;
+}
+
+.ym-rank-badge{
+  display:inline-block;
+  font-family:'Galmuri11',monospace;
+  font-size:.7rem;letter-spacing:.15em;
+  padding:4px 14px;border-radius:4px;
+  width:fit-content;
+}
+.ym-rank-badge.legend{
+  background:rgba(200,160,96,.15);
+  border:1px solid rgba(200,160,96,.45);
+  color:#e8c870;
+}
+.ym-rank-badge.rare{
+  background:rgba(120,80,200,.15);
+  border:1px solid rgba(140,100,220,.35);
+  color:#c4a0f0;
+}
+.ym-rank-badge.common{
+  background:rgba(80,160,80,.12);
+  border:1px solid rgba(80,160,80,.3);
+  color:#80c880;
+}
+
+.ym-names{
+  display:flex;flex-direction:column;gap:4px;
+  border-bottom:1px solid rgba(255,255,255,.07);
+  padding-bottom:20px;
+}
+.ym-name-ko{
+  font-family:'Galmuri11',monospace;
+  font-size:clamp(28px,3vw,38px);
+  color:var(--text);line-height:1;
+}
+.ym-name-cn{
+  font-family:'Galmuri11',monospace;
+  font-size:1.1rem;
+  color:rgba(200,160,96,.5);
+  letter-spacing:.15em;
+}
+
+.ym-desc{
+  font-size:.9rem;
+  color:var(--text-muted);
+  line-height:1.9;
+}
+
+.ym-stats{
+  display:flex;flex-direction:column;
+  gap:10px;
+}
+.ym-stat{
+  display:flex;align-items:center;gap:10px;
+  font-size:.8rem;color:var(--text-muted);
+}
+.ym-stat-icon{
+  font-size:.9rem;
+  width:20px;text-align:center;
+}
+
+.ym-hunt-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:4px;
+  padding:12px 24px;
   font-family:'Galmuri11',monospace;font-size:.82rem;
-  color:#d5cdc0;
+  color:#18100a;font-weight:700;letter-spacing:.08em;
+  background:linear-gradient(160deg,#d4a843 0%,#a07428 100%);
+  border-radius:4px;
+  width:fit-content;
+  transition:transform .2s,box-shadow .2s;
 }
-.clf-item-user{
-  font-family:'Galmuri9',monospace;font-size:.67rem;
-  color:rgba(180,170,155,.48);
+.ym-hunt-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 20px rgba(160,120,40,.45);
 }
-.clf-item-meta{
-  display:flex;gap:8px;align-items:center;margin-top:2px;
-}
-.clf-rank{
-  font-family:'Galmuri9',monospace;font-size:.58rem;
-  padding:1px 6px;letter-spacing:.08em;
-}
-.clf-rank.legend{ color:#d4a843;border:1px solid rgba(210,160,40,.25) }
-.clf-rank.rare{ color:#a880dd;border:1px solid rgba(130,80,210,.2) }
-.clf-rank.common{ color:#6e6e6e;border:1px solid rgba(110,110,110,.18) }
-.clf-item-likes{
-  font-family:'Galmuri9',monospace;font-size:.65rem;
-  color:rgba(200,160,96,.42);
-}
-.clf-item-time{
-  font-family:'Galmuri9',monospace;font-size:.62rem;
-  color:rgba(170,160,145,.28);
-  margin-left:auto;
-}
-
-.community-more{
-  display:block;
-  padding:14px 18px;
-  border-top:1px solid rgba(200,160,96,.1);
-}
-.community-more-btn{
-  display:block;
-  font-family:'Galmuri11',monospace;font-size:.75rem;
-  color:rgba(200,160,96,.55);letter-spacing:.06em;
-  text-align:center;
-  border:none;background:none;
-  text-decoration:none;
-  padding:0;
-  transition:color .2s;
-}
-.community-more-btn:hover{ color:#c8a060 }
-
-/* 기존 그리드 관련 CSS 무력화 */
-.community-grid,.cc-card,.cc-overlay,.cc-featured-badge,
-.cc-user-row,.cc-avatar,.cc-username,.cc-stats-row,.cc-stat{ all:unset }
-.community-sub{ display:none }
-.community-header-left{ display:contents }
-

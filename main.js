@@ -103,3 +103,53 @@
     }, 300);
   }
 })();
+
+/**
+ * 요괴 도감 모달
+ */
+(function () {
+  var modal    = document.getElementById('yokaiModal');
+  var backdrop = document.getElementById('ymBackdrop');
+  var closeBtn = document.getElementById('ymClose');
+  if (!modal) return;
+
+  function openModal(item) {
+    document.getElementById('ymImg').src      = item.dataset.img || '';
+    document.getElementById('ymImg').alt      = item.dataset.nameKo || '';
+    document.getElementById('ymNameKo').textContent = item.dataset.nameKo || '';
+    document.getElementById('ymNameCn').textContent = item.dataset.nameCn || '';
+    document.getElementById('ymDesc').textContent   = item.dataset.desc || '';
+    document.getElementById('ymZone').textContent   = item.dataset.zone || '';
+    document.getElementById('ymLikes').textContent  = item.dataset.likes || '';
+    document.getElementById('ymUser').textContent   = item.dataset.user || '';
+
+    var rankLabel = item.dataset.rankLabel || '';
+    var rankClass = item.dataset.rank || 'common';
+    var badge = document.getElementById('ymRankBadge');
+    badge.textContent  = rankLabel;
+    badge.className    = 'ym-rank-badge ' + rankClass;
+
+    modal.classList.add('is-open');
+    modal.removeAttribute('aria-hidden');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.classList.remove('is-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // 갤러리 아이템 클릭
+  document.querySelectorAll('.gg-item').forEach(function (item) {
+    item.addEventListener('click', function () { openModal(item); });
+  });
+
+  // 닫기 버튼 / 배경 클릭 / ESC
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+  });
+})();
