@@ -75,16 +75,6 @@
     <div class="hero-bg-art"></div>
     <div class="hero-noise"></div>
     <div class="hero-vignette"></div>
-    <div class="particle-field">
-      <span class="dot" style="--x:8%;  --y:18%;--s:4px;--d:3.2s"></span>
-      <span class="dot" style="--x:22%;--y:65%;--s:6px;--d:5.0s"></span>
-      <span class="dot" style="--x:38%;--y:42%;--s:3px;--d:4.1s"></span>
-      <span class="dot" style="--x:58%;--y:14%;--s:5px;--d:6.3s"></span>
-      <span class="dot" style="--x:74%;--y:58%;--s:4px;--d:3.7s"></span>
-      <span class="dot" style="--x:88%;--y:32%;--s:7px;--d:5.8s"></span>
-      <span class="dot" style="--x:93%;--y:78%;--s:3px;--d:4.6s"></span>
-      <span class="dot" style="--x:48%;--y:88%;--s:5px;--d:7.0s"></span>
-    </div>
 
     <!-- main 2-col layout -->
     <div class="hero-layout">
@@ -643,164 +633,249 @@
 
   <!-- ══════════ WORLD GALLERY ══════════ -->
   <section class="world-section" id="world">
-    <!-- 동양화 안개 레이어 -->
-    <div class="world-mist" aria-hidden="true">
-      <div class="mist-layer ml-1"></div>
-      <div class="mist-layer ml-2"></div>
-      <div class="mist-layer ml-3"></div>
-    </div>
     <div class="world-inner">
-      <div class="world-header">
-        <p class="world-eyebrow">— WORLD —</p>
-        <h2 class="world-title">귀혼의 세계</h2>
-        <p class="world-sub">요괴와 인간이 공존하는 동양 판타지</p>
-      </div>
+      <header class="world-head">
+        <div class="world-head-text">
+          <p class="world-eyebrow">— WORLD —</p>
+          <h2 class="world-title">귀혼의 세계</h2>
+        </div>
+        <p class="world-count">요괴 수록 <strong>127</strong>종</p>
+      </header>
 
-      <div class="world-bento">
-        <div class="wb-card wb-large">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호">
-          <div class="wb-label">
-            <h4>구미호</h4>
-            <p>전설 속 아홉 꼬리의 여우 요괴</p>
-          </div>
-        </div>
-        <div class="wb-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
-          <div class="wb-label"><h4>혈랑</h4><p>피에 굶주린 늑대</p></div>
-        </div>
-        <div class="wb-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
-          <div class="wb-label"><h4>인공귀신</h4><p>인간이 만든 원혼</p></div>
-        </div>
-        <div class="wb-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
-          <div class="wb-label"><h4>처녀귀신</h4><p>원한을 품은 혼</p></div>
-        </div>
-        <div class="wb-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
-          <div class="wb-label"><h4>어귀</h4><p>강물에 깃든 귀신</p></div>
+      <div class="world-strip-wrap">
+        <div class="world-strip">
+
+          <article class="ws-card" data-rank="legend">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">전설</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">구미호</h3>
+                <span class="ws-name-cn">九尾狐</span>
+              </div>
+              <p class="ws-desc">아홉 꼬리의 여우 요괴.<br>인간으로 둔갑해 기를 빼앗는다.</p>
+              <span class="ws-zone">📍 서역 숲지대</span>
+            </div>
+          </article>
+
+          <article class="ws-card" data-rank="rare">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">희귀</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">혈랑</h3>
+                <span class="ws-name-cn">血狼</span>
+              </div>
+              <p class="ws-desc">피에 굶주린 늑대 요괴.<br>보름달 아래 더욱 흉포해진다.</p>
+              <span class="ws-zone">📍 북쪽 설원</span>
+            </div>
+          </article>
+
+          <article class="ws-card" data-rank="rare">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">희귀</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">처녀귀신</h3>
+                <span class="ws-name-cn">處女鬼</span>
+              </div>
+              <p class="ws-desc">억울하게 죽은 여인의 원혼.<br>밤이 되면 마을로 내려온다.</p>
+              <span class="ws-zone">📍 폐가 일대</span>
+            </div>
+          </article>
+
+          <article class="ws-card" data-rank="rare">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">희귀</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">인공귀신</h3>
+                <span class="ws-name-cn">人工鬼神</span>
+              </div>
+              <p class="ws-desc">방술로 만들어진 인조 귀신.<br>주인의 명령에 따라 움직인다.</p>
+              <span class="ws-zone">📍 음양사 거처</span>
+            </div>
+          </article>
+
+          <article class="ws-card" data-rank="common">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">일반</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">어귀</h3>
+                <span class="ws-name-cn">魚鬼</span>
+              </div>
+              <p class="ws-desc">강물에 깃든 물고기 귀신.<br>뱃사람을 물 속으로 끌어당긴다.</p>
+              <span class="ws-zone">📍 한강 하류</span>
+            </div>
+          </article>
+
+          <article class="ws-card" data-rank="common">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/one_legged_ghost.jpg" alt="외발귀신">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">일반</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">외발귀신</h3>
+                <span class="ws-name-cn">一足鬼</span>
+              </div>
+              <p class="ws-desc">다리 하나로 뛰어다니는 귀신.<br>발소리 없이 접근한다.</p>
+              <span class="ws-zone">📍 산간 마을</span>
+            </div>
+          </article>
+
+          <article class="ws-card" data-rank="common">
+            <div class="ws-img-wrap">
+              <img class="ws-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/tofu_monk.jpg" alt="두부중">
+            </div>
+            <div class="ws-body">
+              <span class="ws-rank-badge">일반</span>
+              <div class="ws-names">
+                <h3 class="ws-name-ko">두부중</h3>
+                <span class="ws-name-cn">豆腐僧</span>
+              </div>
+              <p class="ws-desc">사찰 뒤뜰에 출몰하는 귀신.<br>두부 냄새를 맡으면 약해진다.</p>
+              <span class="ws-zone">📍 폐사찰</span>
+            </div>
+          </article>
+
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══════════ COMMUNITY / SNS ══════════ -->
+  <!-- ══════════ COMMUNITY ══════════ -->
   <section class="community-section" id="community">
     <div class="community-inner">
 
-      <div class="community-header">
-        <div class="community-header-left">
+      <header class="community-header">
+        <div>
           <p class="community-eyebrow">— COMMUNITY —</p>
           <h2 class="community-title">용사들의 기록</h2>
-          <p class="community-sub">귀혼 유저들이 포착한 요괴 스크린샷</p>
         </div>
         <div class="community-sns-links">
-          <a href="#" class="sns-btn" data-platform="instagram">
-            <span class="sns-icon">📸</span><span>Instagram</span>
-          </a>
-          <a href="#" class="sns-btn" data-platform="discord">
-            <span class="sns-icon">💬</span><span>Discord</span>
-          </a>
-          <a href="#" class="sns-btn" data-platform="youtube">
-            <span class="sns-icon">▶</span><span>YouTube</span>
-          </a>
+          <a href="#" class="sns-btn">📸 Instagram</a>
+          <a href="#" class="sns-btn">💬 Discord</a>
+          <a href="#" class="sns-btn">▶ YouTube</a>
         </div>
-      </div>
+      </header>
 
-      <div class="community-grid">
-        <!-- 카드 1: featured 대형 (2행 차지) -->
-        <div class="cc-card cc-featured">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호 포착">
-          <div class="cc-overlay">
-            <div class="cc-overlay-top">
-              <span class="cc-featured-badge">✦ FEATURED</span>
-            </div>
-            <div class="cc-overlay-bottom">
-              <div class="cc-user-row">
-                <span class="cc-avatar">구</span>
-                <span class="cc-username">@구미호사냥꾼</span>
-              </div>
-              <div class="cc-stats-row">
-                <span class="cc-stat">♥ 1,284</span>
-                <span class="cc-stat">💬 48</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 카드 2: 가로 와이드 -->
-        <div class="cc-card cc-wide">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
-          <div class="cc-overlay">
-            <div class="cc-overlay-bottom">
-              <div class="cc-user-row">
-                <span class="cc-avatar">혈</span>
-                <span class="cc-username">@혈랑추적자</span>
-              </div>
-              <div class="cc-stats-row"><span class="cc-stat">♥ 843</span></div>
-            </div>
-          </div>
-        </div>
-        <!-- 카드 3 -->
-        <div class="cc-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
-          <div class="cc-overlay">
-            <div class="cc-overlay-bottom">
-              <div class="cc-user-row">
-                <span class="cc-avatar">원</span>
-                <span class="cc-username">@원한수집가</span>
-              </div>
-              <div class="cc-stats-row"><span class="cc-stat">♥ 632</span></div>
-            </div>
-          </div>
-        </div>
-        <!-- 카드 4 -->
-        <div class="cc-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
-          <div class="cc-overlay">
-            <div class="cc-overlay-bottom">
-              <div class="cc-user-row">
-                <span class="cc-avatar">귀</span>
-                <span class="cc-username">@귀신연구소</span>
-              </div>
-              <div class="cc-stats-row"><span class="cc-stat">♥ 521</span></div>
-            </div>
-          </div>
-        </div>
-        <!-- 카드 5 -->
-        <div class="cc-card cc-wide">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
-          <div class="cc-overlay">
-            <div class="cc-overlay-bottom">
-              <div class="cc-user-row">
-                <span class="cc-avatar">강</span>
-                <span class="cc-username">@강물의악몽</span>
-              </div>
-              <div class="cc-stats-row">
-                <span class="cc-stat">♥ 975</span>
-                <span class="cc-stat">💬 32</span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- 카드 6 -->
-        <div class="cc-card">
-          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="전사">
-          <div class="cc-overlay">
-            <div class="cc-overlay-bottom">
-              <div class="cc-user-row">
-                <span class="cc-avatar">용</span>
-                <span class="cc-username">@용사의하루</span>
-              </div>
-              <div class="cc-stats-row"><span class="cc-stat">♥ 412</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="community-layout">
 
-      <div class="community-more">
-        <a href="#" class="community-more-btn">더 많은 스크린샷 보기 →</a>
-      </div>
+        <!-- 왼쪽: 이번 주 주목 포착 -->
+        <div class="cl-featured">
+          <div class="clf-img-wrap">
+            <img class="clf-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호 포착">
+            <div class="clf-info">
+              <span class="clf-badge">✦ 이번 주 포착</span>
+              <div class="clf-yokai">
+                <h3 class="clf-yokai-name">구미호 조우</h3>
+                <span class="clf-yokai-cn">九尾狐</span>
+              </div>
+              <div class="clf-meta">
+                <span class="clf-user">@구미호사냥꾼</span>
+                <span class="clf-likes">♥ 1,284</span>
+                <span class="clf-comments">💬 48</span>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        <!-- 오른쪽: 최신 포착 기록 피드 -->
+        <div class="cl-feed">
+          <div class="cl-feed-header">
+            <span>최신 포착 기록</span>
+            <span class="cl-feed-count">86건</span>
+          </div>
+          <ul class="clf-list">
+            <li class="clf-item">
+              <img class="clf-thumb" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
+              <div class="clf-item-info">
+                <span class="clf-item-yokai">혈랑 처치</span>
+                <span class="clf-item-user">@혈랑추적자</span>
+                <div class="clf-item-meta">
+                  <span class="clf-rank rare">희귀</span>
+                  <span class="clf-item-likes">♥ 843</span>
+                  <span class="clf-item-time">2시간 전</span>
+                </div>
+              </div>
+            </li>
+            <li class="clf-item">
+              <img class="clf-thumb" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
+              <div class="clf-item-info">
+                <span class="clf-item-yokai">처녀귀신 포착</span>
+                <span class="clf-item-user">@원한수집가</span>
+                <div class="clf-item-meta">
+                  <span class="clf-rank rare">희귀</span>
+                  <span class="clf-item-likes">♥ 632</span>
+                  <span class="clf-item-time">5시간 전</span>
+                </div>
+              </div>
+            </li>
+            <li class="clf-item">
+              <img class="clf-thumb" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
+              <div class="clf-item-info">
+                <span class="clf-item-yokai">인공귀신 격퇴</span>
+                <span class="clf-item-user">@귀신연구소</span>
+                <div class="clf-item-meta">
+                  <span class="clf-rank rare">희귀</span>
+                  <span class="clf-item-likes">♥ 521</span>
+                  <span class="clf-item-time">8시간 전</span>
+                </div>
+              </div>
+            </li>
+            <li class="clf-item">
+              <img class="clf-thumb" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
+              <div class="clf-item-info">
+                <span class="clf-item-yokai">어귀 처치</span>
+                <span class="clf-item-user">@강물의악몽</span>
+                <div class="clf-item-meta">
+                  <span class="clf-rank common">일반</span>
+                  <span class="clf-item-likes">♥ 411</span>
+                  <span class="clf-item-time">어제</span>
+                </div>
+              </div>
+            </li>
+            <li class="clf-item">
+              <img class="clf-thumb" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/one_legged_ghost.jpg" alt="외발귀신">
+              <div class="clf-item-info">
+                <span class="clf-item-yokai">외발귀신 조우</span>
+                <span class="clf-item-user">@산속모험가</span>
+                <div class="clf-item-meta">
+                  <span class="clf-rank common">일반</span>
+                  <span class="clf-item-likes">♥ 289</span>
+                  <span class="clf-item-time">어제</span>
+                </div>
+              </div>
+            </li>
+            <li class="clf-item">
+              <img class="clf-thumb" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/tofu_monk.jpg" alt="두부중">
+              <div class="clf-item-info">
+                <span class="clf-item-yokai">두부중 포착</span>
+                <span class="clf-item-user">@사찰탐험대</span>
+                <div class="clf-item-meta">
+                  <span class="clf-rank common">일반</span>
+                  <span class="clf-item-likes">♥ 177</span>
+                  <span class="clf-item-time">2일 전</span>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <a href="#" class="community-more-btn">더 많은 기록 보기 →</a>
+        </div>
+
+      </div>
     </div>
   </section>
 
