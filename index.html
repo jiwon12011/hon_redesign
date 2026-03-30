@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>귀혼 | Creepy & Cute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ══════════ 전역 도깨비불 파티클 ══════════ -->
+  <div class="wisp-field" aria-hidden="true">
+    <!-- 왼쪽 구역 -->
+    <span class="wisp" style="--wx:3%;  --wy:22%; --ws:4px; --wd:10s; --wdelay:0s;   --wo:.5;  --dx:-8px; --dx2:12px; --dx3:-6px; --dx4:9px"></span>
+    <span class="wisp" style="--wx:7%;  --wy:58%; --ws:5px; --wd:8s;  --wdelay:2.4s; --wo:.42; --dx:13px; --dx2:-9px; --dx3:17px; --dx4:-4px"></span>
+    <span class="wisp" style="--wx:5%;  --wy:83%; --ws:3px; --wd:12s; --wdelay:1.1s; --wo:.36; --dx:-11px;--dx2:7px;  --dx3:-14px;--dx4:5px"></span>
+    <!-- 왼쪽-중간 -->
+    <span class="wisp" style="--wx:18%; --wy:14%; --ws:6px; --wd:9s;  --wdelay:0.6s; --wo:.46; --dx:11px; --dx2:-13px;--dx3:9px;  --dx4:-7px"></span>
+    <span class="wisp" style="--wx:24%; --wy:67%; --ws:4px; --wd:11s; --wdelay:3.3s; --wo:.4;  --dx:-10px;--dx2:15px; --dx3:-12px;--dx4:6px"></span>
+    <span class="wisp" style="--wx:14%; --wy:42%; --ws:5px; --wd:10s; --wdelay:2.0s; --wo:.38; --dx:-7px; --dx2:11px; --dx3:-13px;--dx4:7px"></span>
+    <!-- 중앙 -->
+    <span class="wisp" style="--wx:44%; --wy:28%; --ws:5px; --wd:13s; --wdelay:1.9s; --wo:.36; --dx:12px; --dx2:-7px; --dx3:17px; --dx4:-9px"></span>
+    <span class="wisp" style="--wx:51%; --wy:73%; --ws:3px; --wd:7s;  --wdelay:4.2s; --wo:.5;  --dx:-14px;--dx2:10px; --dx3:-9px; --dx4:13px"></span>
+    <span class="wisp" style="--wx:38%; --wy:48%; --ws:3px; --wd:14s; --wdelay:6.8s; --wo:.35; --dx:10px; --dx2:-15px;--dx3:8px;  --dx4:-12px"></span>
+    <!-- 오른쪽-중간 -->
+    <span class="wisp" style="--wx:64%; --wy:16%; --ws:5px; --wd:10s; --wdelay:0.9s; --wo:.4;  --dx:9px;  --dx2:-17px;--dx3:6px;  --dx4:-13px"></span>
+    <span class="wisp" style="--wx:71%; --wy:52%; --ws:4px; --wd:8s;  --wdelay:2.8s; --wo:.44; --dx:-10px;--dx2:14px; --dx3:-9px; --dx4:7px"></span>
+    <span class="wisp" style="--wx:67%; --wy:80%; --ws:6px; --wd:15s; --wdelay:5.2s; --wo:.32; --dx:15px; --dx2:-8px; --dx3:11px; --dx4:-10px"></span>
+    <!-- 오른쪽 구역 -->
+    <span class="wisp" style="--wx:84%; --wy:23%; --ws:4px; --wd:9s;  --wdelay:1.6s; --wo:.5;  --dx:-13px;--dx2:9px;  --dx3:-17px;--dx4:5px"></span>
+    <span class="wisp" style="--wx:91%; --wy:62%; --ws:5px; --wd:11s; --wdelay:3.9s; --wo:.4;  --dx:10px; --dx2:-12px;--dx3:7px;  --dx4:-8px"></span>
+    <span class="wisp" style="--wx:87%; --wy:87%; --ws:3px; --wd:8s;  --wdelay:0.3s; --wo:.44; --dx:-6px; --dx2:14px; --dx3:-10px;--dx4:11px"></span>
+  </div>
+
+  <!-- ══════════ GNB ══════════ -->
+  <nav class="gnb">
+    <div class="gnb-util">
+      <div class="gnb-util-left">
+        <a href="#" class="util-link">전체게임</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">엠캐쉬 충전</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">M이벤트</a>
+      </div>
+      <div class="gnb-util-right">
+        <button class="btn-talisman">
+          <span class="talisman-inner">로그인</span>
+        </button>
+      </div>
+    </div>
+    <div class="gnb-main">
+      <a href="#" class="logo">
+        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
+      </a>
+      <ul class="gnb-menu">
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>게임소개</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>게임정보</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>귀혼객잔</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>랭킹</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>놀이터</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero">
+    <!-- bg layers -->
+    <div class="hero-bg-art"></div>
+    <div class="hero-noise"></div>
+    <div class="hero-vignette"></div>
+    <div class="particle-field">
+      <span class="dot" style="--x:8%;  --y:18%;--s:4px;--d:3.2s"></span>
+      <span class="dot" style="--x:22%;--y:65%;--s:6px;--d:5.0s"></span>
+      <span class="dot" style="--x:38%;--y:42%;--s:3px;--d:4.1s"></span>
+      <span class="dot" style="--x:58%;--y:14%;--s:5px;--d:6.3s"></span>
+      <span class="dot" style="--x:74%;--y:58%;--s:4px;--d:3.7s"></span>
+      <span class="dot" style="--x:88%;--y:32%;--s:7px;--d:5.8s"></span>
+      <span class="dot" style="--x:93%;--y:78%;--s:3px;--d:4.6s"></span>
+      <span class="dot" style="--x:48%;--y:88%;--s:5px;--d:7.0s"></span>
+    </div>
+
+    <!-- main 2-col layout -->
+    <div class="hero-layout">
+
+      <!-- LEFT: text + CTA -->
+      <div class="hero-text-col">
+        <div class="hero-eyebrow">
+          <span class="eyebrow-line"></span>
+          <span class="eyebrow-text">2D 무협 MMORPG</span>
+          <span class="eyebrow-badge">● ONLINE</span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="ht-main glitch" data-text="귀혼">귀혼</span>
+          <span class="ht-cn">鬼魂</span>
+        </h1>
+
+        <p class="hero-tagline">
+          죽은 자들이 깨어나는 밤,<br>당신의 전설이 시작된다.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn-hero-primary">
+            <span class="bhp-icon">▶</span>
+            <span>게임 시작</span>
+          </button>
+          <button class="btn-hero-outline">다운로드</button>
+          <a href="#" class="btn-hero-text">테스트 서버 →</a>
+        </div>
+
+        <div class="hero-stats-row">
+          <div class="hstat">
+            <span class="hstat-n">Lv.50</span>
+            <span class="hstat-l">최대 레벨</span>
+          </div>
+          <span class="hstat-sep"></span>
+          <div class="hstat">
+            <span class="hstat-n">4</span>
+            <span class="hstat-l">직업 클래스</span>
+          </div>
+          <span class="hstat-sep"></span>
+          <div class="hstat">
+            <span class="hstat-n">2006</span>
+            <span class="hstat-l">서비스 시작</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: character + floating cards -->
+      <div class="hero-char-col">
+        <!-- glow blob behind character -->
+        <div class="char-glow-blob"></div>
+
+        <!-- character sprite -->
+        <div class="hero-char-wrap">
+          <img
+            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/50_warrior_female.png"
+            alt="전사 캐릭터"
+            class="hero-char-sprite"
+          />
+        </div>
+
+        <!-- floating card: 귀혼 ISSUE -->
+        <div class="fcard issue-fcard">
+          <div class="fcard-header">
+            <span class="fcard-dot"></span>
+            <span class="fcard-title-text">귀혼 ISSUE</span>
+          </div>
+          <div class="fcard-thumb-row">
+            <img
+              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg"
+              alt="신규 캐릭터"
+              class="fcard-thumb"
+            />
+            <div class="fcard-thumb-info">
+              <p class="fcard-name">신규 캐릭터 <strong>바서커</strong></p>
+              <p class="fcard-sub">이번 업데이트를 확인하세요!</p>
+            </div>
+          </div>
+          <ul class="fcard-list">
+            <li class="active"><span>1</span>신규 캐릭터 바서커를 확인하세요!</li>
+            <li><span>2</span>귀혼 서버통합</li>
+            <li><span>3</span>왕고라 훈련장 추가!</li>
+          </ul>
+        </div>
+
+        <!-- floating card: 침공 -->
+        <div class="fcard raid-fcard">
+          <div class="fcard-header">
+            <span class="fcard-dot red"></span>
+            <span class="fcard-title-text">⚔ 오늘의 침공</span>
+          </div>
+          <div class="raid-fcard-body">
+            <img
+              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg"
+              alt="침공 보스"
+              class="raid-fcard-img"
+            />
+            <div class="raid-fcard-times">
+              <span class="rft active">13:00</span>
+              <span class="rft-sep">/</span>
+              <span class="rft">20:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- bottom ticker -->
+    <div class="hero-ticker">
+      <span class="ticker-badge">NOTICE</span>
+      <div class="ticker-track">
+        <div class="ticker-items">
+          <span>신규 캐릭터 바서커 출시</span>
+          <span class="tsep">✦</span>
+          <span>3월 25일 행복달력 이벤트 진행 중</span>
+          <span class="tsep">✦</span>
+          <span>귀혼 서버통합 안내</span>
+          <span class="tsep">✦</span>
+          <span>왕고라 훈련장 추가!</span>
+          <span class="tsep">✦</span>
+          <span>엠게임 런처 업데이트</span>
+          <span class="tsep">✦</span>
+          <!-- 루프용 복제 -->
+          <span>신규 캐릭터 바서커 출시</span>
+          <span class="tsep">✦</span>
+          <span>3월 25일 행복달력 이벤트 진행 중</span>
+          <span class="tsep">✦</span>
+          <span>귀혼 서버통합 안내</span>
+          <span class="tsep">✦</span>
+          <span>왕고라 훈련장 추가!</span>
+          <span class="tsep">✦</span>
+          <span>엠게임 런처 업데이트</span>
+          <span class="tsep">✦</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ LIVE COUNTER (수배 게시판) ══════════ -->
+  <section class="counter-section" id="record">
+    <div class="counter-inner">
+
+      <!-- ── 게시판 헤더 바 ── -->
+      <div class="board-header">
+        <div class="bh-left">
+          <span class="counter-live-badge"><span class="live-dot"></span>LIVE</span>
+          <div class="bh-title-group">
+            <p class="bh-eyebrow">귀혼 퇴치 공식 기록소</p>
+            <h2 class="bh-title">수배 요괴 명단</h2>
+          </div>
+        </div>
+        <div class="bh-total">
+          <p class="bht-label">누적 요괴 퇴치</p>
+          <div class="bht-row">
+            <span class="ci-num bht-num" data-target="98342156">0</span>
+            <span class="bht-unit">마리</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 수배지 5장 ── -->
+      <div class="wanted-board">
+
+        <article class="wanted-card" style="--wrot:-1.8deg">
+          <div class="wc-tack"></div>
+          <div class="wc-paper">
+            <header class="wc-paper-hd">수&ensp;배</header>
+            <div class="wc-img-frame">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호" class="wc-img">
+            </div>
+            <div class="wc-body">
+              <p class="wc-rank">전설급 · 여우 계열</p>
+              <h3 class="wc-name">구미호</h3>
+              <div class="wc-rule"></div>
+              <p class="wc-count-lbl">퇴치 수</p>
+              <span class="ci-num wc-count" data-target="23847">0</span>
+            </div>
+            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+          </div>
+        </article>
+
+        <article class="wanted-card" style="--wrot:1.3deg">
+          <div class="wc-tack"></div>
+          <div class="wc-paper">
+            <header class="wc-paper-hd">수&ensp;배</header>
+            <div class="wc-img-frame">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑" class="wc-img">
+            </div>
+            <div class="wc-body">
+              <p class="wc-rank">희귀급 · 수수 계열</p>
+              <h3 class="wc-name">혈&ensp;랑</h3>
+              <div class="wc-rule"></div>
+              <p class="wc-count-lbl">퇴치 수</p>
+              <span class="ci-num wc-count" data-target="41209">0</span>
+            </div>
+            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+          </div>
+        </article>
+
+        <article class="wanted-card" style="--wrot:-0.5deg">
+          <div class="wc-tack wc-tack-alt"></div>
+          <div class="wc-paper">
+            <header class="wc-paper-hd">수&ensp;배</header>
+            <div class="wc-img-frame">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신" class="wc-img">
+            </div>
+            <div class="wc-body">
+              <p class="wc-rank">일반급 · 원혼 계열</p>
+              <h3 class="wc-name">처녀귀신</h3>
+              <div class="wc-rule"></div>
+              <p class="wc-count-lbl">퇴치 수</p>
+              <span class="ci-num wc-count" data-target="87312">0</span>
+            </div>
+            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+          </div>
+        </article>
+
+        <article class="wanted-card" style="--wrot:2.1deg">
+          <div class="wc-tack"></div>
+          <div class="wc-paper">
+            <header class="wc-paper-hd">수&ensp;배</header>
+            <div class="wc-img-frame">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신" class="wc-img">
+            </div>
+            <div class="wc-body">
+              <p class="wc-rank">희귀급 · 인조 계열</p>
+              <h3 class="wc-name">인공귀신</h3>
+              <div class="wc-rule"></div>
+              <p class="wc-count-lbl">퇴치 수</p>
+              <span class="ci-num wc-count" data-target="15428">0</span>
+            </div>
+            <!-- 수배중: 아직 현재 진행 -->
+            <div class="wc-seal wc-seal-wanted">수배<br>중</div>
+          </div>
+        </article>
+
+        <article class="wanted-card" style="--wrot:-1.4deg">
+          <div class="wc-tack wc-tack-alt"></div>
+          <div class="wc-paper">
+            <header class="wc-paper-hd">수&ensp;배</header>
+            <div class="wc-img-frame">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀" class="wc-img">
+            </div>
+            <div class="wc-body">
+              <p class="wc-rank">일반급 · 수중 계열</p>
+              <h3 class="wc-name">어&ensp;&ensp;귀</h3>
+              <div class="wc-rule"></div>
+              <p class="wc-count-lbl">퇴치 수</p>
+              <span class="ci-num wc-count" data-target="62891">0</span>
+            </div>
+            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+          </div>
+        </article>
+
+      </div><!-- /wanted-board -->
+
+      <!-- ── 퇴치 피드 ticker ── -->
+      <div class="kill-feed">
+        <span class="kf-badge">☠ 퇴치 피드</span>
+        <div class="kf-track">
+          <div class="kf-items">
+            <span><em>철혈검객</em>이 <strong>구미호</strong>를 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>월야도사</em>가 <strong>혈랑</strong> 5마리를 연속 처치!</span>
+            <span class="kf-sep">◆</span>
+            <span><em>은빛나비</em>가 <strong>처녀귀신</strong>을 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>도깨비킬러</em>가 <strong>인공귀신</strong>을 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>청룡검사</em>가 <strong>어귀</strong>를 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>철혈검객</em>이 <strong>구미호</strong>를 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>월야도사</em>가 <strong>혈랑</strong> 5마리를 연속 처치!</span>
+            <span class="kf-sep">◆</span>
+            <span><em>은빛나비</em>가 <strong>처녀귀신</strong>을 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>도깨비킬러</em>가 <strong>인공귀신</strong>을 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+            <span><em>청룡검사</em>가 <strong>어귀</strong>를 처치했습니다</span>
+            <span class="kf-sep">◆</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ CHARACTER CLASS ══════════ -->
+  <section class="class-section" id="classes">
+    <div class="class-section-inner">
+
+      <!-- 사이드 탭 -->
+      <div class="class-tabs-col">
+        <div class="class-tabs-header">
+          <p class="cts-eyebrow">CHARACTER</p>
+          <h2 class="cts-title">캐릭터 선택</h2>
+          <p class="cts-sub">당신의 운명을 선택하세요</p>
+        </div>
+
+        <div class="ctab-list">
+          <button class="ctab active" data-target="warrior">
+            <span class="ctab-num">01</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/50_warrior_female.png" class="ctab-sprite" alt="">
+            <div class="ctab-info">
+              <strong>전사</strong>
+              <span>근거리 · 탱커</span>
+            </div>
+            <span class="ctab-arrow">›</span>
+          </button>
+          <button class="ctab" data-target="assassin">
+            <span class="ctab-num">02</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/assassin/50_assassin_female.png" class="ctab-sprite" alt="">
+            <div class="ctab-info">
+              <strong>자객</strong>
+              <span>암살 · 고속</span>
+            </div>
+            <span class="ctab-arrow">›</span>
+          </button>
+          <button class="ctab" data-target="ascetic">
+            <span class="ctab-num">03</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/ascetic/50_ascetic_female.png" class="ctab-sprite" alt="">
+            <div class="ctab-info">
+              <strong>선인</strong>
+              <span>힐러 · 마법</span>
+            </div>
+            <span class="ctab-arrow">›</span>
+          </button>
+          <button class="ctab" data-target="commoner">
+            <span class="ctab-num">04</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/commoner/commoner_female.png" class="ctab-sprite" alt="">
+            <div class="ctab-info">
+              <strong>평민</strong>
+              <span>만능 · 성장형</span>
+            </div>
+            <span class="ctab-arrow">›</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 디스플레이 패널 -->
+      <div class="class-panels-col">
+
+        <div class="cpanel active" id="cp-warrior">
+          <div class="cpanel-visual">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" class="cpanel-illust" alt="">
+            <div class="cpanel-grad"></div>
+            <span class="cpanel-kanji" aria-hidden="true">전사</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/50_warrior_female.png" class="cpanel-sprite" alt="전사">
+          </div>
+          <div class="cpanel-info">
+            <span class="cpanel-num">01</span>
+            <h2 class="cpanel-name">전사</h2>
+            <p class="cpanel-desc">강인한 체력과 압도적인 힘으로<br>전장을 지배하는 근접 전투의 달인</p>
+            <div class="cpanel-stats">
+              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:85%"></div></div><span class="cps-v">85</span></div>
+              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:90%"></div></div><span class="cps-v">90</span></div>
+              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:60%"></div></div><span class="cps-v">60</span></div>
+              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:30%"></div></div><span class="cps-v">30</span></div>
+            </div>
+            <div class="cpanel-tags"><span>근거리</span><span>탱커</span><span>고공격</span></div>
+            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
+          </div>
+        </div>
+
+        <div class="cpanel" id="cp-assassin">
+          <div class="cpanel-visual">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/assassin_female.jpg" class="cpanel-illust" alt="">
+            <div class="cpanel-grad"></div>
+            <span class="cpanel-kanji" aria-hidden="true">자객</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/assassin/50_assassin_female.png" class="cpanel-sprite" alt="자객">
+          </div>
+          <div class="cpanel-info">
+            <span class="cpanel-num">02</span>
+            <h2 class="cpanel-name">자객</h2>
+            <p class="cpanel-desc">그림자처럼 스며드는 암살자,<br>한 번의 기회로 적을 제압한다</p>
+            <div class="cpanel-stats">
+              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:95%"></div></div><span class="cps-v">95</span></div>
+              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:45%"></div></div><span class="cps-v">45</span></div>
+              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:95%"></div></div><span class="cps-v">95</span></div>
+              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:50%"></div></div><span class="cps-v">50</span></div>
+            </div>
+            <div class="cpanel-tags"><span>암살</span><span>고속</span><span>치명타</span></div>
+            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
+          </div>
+        </div>
+
+        <div class="cpanel" id="cp-ascetic">
+          <div class="cpanel-visual">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/ascetic_female.jpg" class="cpanel-illust" alt="">
+            <div class="cpanel-grad"></div>
+            <span class="cpanel-kanji" aria-hidden="true">선인</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/ascetic/50_ascetic_female.png" class="cpanel-sprite" alt="선인">
+          </div>
+          <div class="cpanel-info">
+            <span class="cpanel-num">03</span>
+            <h2 class="cpanel-name">선인</h2>
+            <p class="cpanel-desc">신비로운 도술과 치유의 힘으로<br>동료를 이끄는 지혜의 수호자</p>
+            <div class="cpanel-stats">
+              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:65%"></div></div><span class="cps-v">65</span></div>
+              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:70%"></div></div><span class="cps-v">70</span></div>
+              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:65%"></div></div><span class="cps-v">65</span></div>
+              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:95%"></div></div><span class="cps-v">95</span></div>
+            </div>
+            <div class="cpanel-tags"><span>힐러</span><span>마법</span><span>버프</span></div>
+            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
+          </div>
+        </div>
+
+        <div class="cpanel" id="cp-commoner">
+          <div class="cpanel-visual">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/commoner_female.jpg" class="cpanel-illust" alt="">
+            <div class="cpanel-grad"></div>
+            <span class="cpanel-kanji" aria-hidden="true">평민</span>
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/commoner/commoner_female.png" class="cpanel-sprite" alt="평민">
+          </div>
+          <div class="cpanel-info">
+            <span class="cpanel-num">04</span>
+            <h2 class="cpanel-name">평민</h2>
+            <p class="cpanel-desc">범상치 않은 잠재력의 소유자,<br>어떤 운명도 스스로 개척해나간다</p>
+            <div class="cpanel-stats">
+              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:70%"></div></div><span class="cps-v">70</span></div>
+              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:70%"></div></div><span class="cps-v">70</span></div>
+              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:80%"></div></div><span class="cps-v">80</span></div>
+              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:75%"></div></div><span class="cps-v">75</span></div>
+            </div>
+            <div class="cpanel-tags"><span>만능</span><span>성장형</span><span>유니크</span></div>
+            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ MBTI 직업 추천 ══════════ -->
+  <section class="mbti-section" id="mbti">
+    <div class="mbti-inner">
+
+      <div class="mbti-header">
+        <p class="mbti-eyebrow">PERSONALITY × CLASS</p>
+        <h2 class="mbti-title">나와 닮은 직업 찾기</h2>
+        <p class="mbti-sub">당신의 성격 유형으로 운명의 직업과 천적 요괴를 발견하세요</p>
+      </div>
+
+      <div class="mbti-grid">
+
+        <!-- 전사: E형 분석계 -->
+        <div class="mcard" data-class="warrior">
+          <div class="mcard-front">
+            <div class="mcard-types">
+              <span>ENTJ</span><span>ESTJ</span><span>ENTP</span><span>ESTP</span>
+            </div>
+            <div class="mcard-sprite-wrap">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/50_warrior_female.png" class="mcard-sprite" alt="전사">
+              <div class="mcard-sprite-glow"></div>
+            </div>
+            <div class="mcard-info">
+              <h3 class="mcard-class">전사</h3>
+              <p class="mcard-desc">목표를 향해 돌진하는 천생 리더. 물러서지 않는 강철 의지.</p>
+              <div class="mcard-tags"><span>돌격형</span><span>탱커</span><span>리더십</span></div>
+            </div>
+          </div>
+          <div class="mcard-yokai-reveal">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" class="mcard-yokai-bg" alt="">
+            <div class="mcard-yokai-info">
+              <span class="mcard-yokai-label">천적 요괴</span>
+              <strong class="mcard-yokai-name">혈랑</strong>
+              <p class="mcard-yokai-tip">힘과 힘의 정면 충돌. 당신만이 이길 수 있다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 자객: I형 분석계 -->
+        <div class="mcard" data-class="assassin">
+          <div class="mcard-front">
+            <div class="mcard-types">
+              <span>INTJ</span><span>INTP</span><span>ISTP</span><span>ISTJ</span>
+            </div>
+            <div class="mcard-sprite-wrap">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/assassin/50_assassin_female.png" class="mcard-sprite" alt="자객">
+              <div class="mcard-sprite-glow"></div>
+            </div>
+            <div class="mcard-info">
+              <h3 class="mcard-class">자객</h3>
+              <p class="mcard-desc">냉철하게 분석하고 완벽하게 처리. 한 번의 실수도 없다.</p>
+              <div class="mcard-tags"><span>암살형</span><span>분석가</span><span>독립적</span></div>
+            </div>
+          </div>
+          <div class="mcard-yokai-reveal">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" class="mcard-yokai-bg" alt="">
+            <div class="mcard-yokai-info">
+              <span class="mcard-yokai-label">천적 요괴</span>
+              <strong class="mcard-yokai-name">처녀귀신</strong>
+              <p class="mcard-yokai-tip">감정 없는 논리로 원한을 끊어라.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 선인: 감성형 -->
+        <div class="mcard" data-class="ascetic">
+          <div class="mcard-front">
+            <div class="mcard-types">
+              <span>INFJ</span><span>INFP</span><span>ENFJ</span><span>ENFP</span>
+            </div>
+            <div class="mcard-sprite-wrap">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/ascetic/50_ascetic_female.png" class="mcard-sprite" alt="선인">
+              <div class="mcard-sprite-glow"></div>
+            </div>
+            <div class="mcard-info">
+              <h3 class="mcard-class">선인</h3>
+              <p class="mcard-desc">깊은 공감과 통찰로 팀을 치유. 도술로 세상의 균형을 지킨다.</p>
+              <div class="mcard-tags"><span>치유형</span><span>이상주의</span><span>통찰력</span></div>
+            </div>
+          </div>
+          <div class="mcard-yokai-reveal">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" class="mcard-yokai-bg" alt="">
+            <div class="mcard-yokai-info">
+              <span class="mcard-yokai-label">천적 요괴</span>
+              <strong class="mcard-yokai-name">구미호</strong>
+              <p class="mcard-yokai-tip">유혹에 흔들리지 않을 강인한 정신이 필요하다.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 평민: 현실감각형 -->
+        <div class="mcard" data-class="commoner">
+          <div class="mcard-front">
+            <div class="mcard-types">
+              <span>ISFJ</span><span>ISFP</span><span>ESFJ</span><span>ESFP</span>
+            </div>
+            <div class="mcard-sprite-wrap">
+              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/commoner/commoner_female.png" class="mcard-sprite" alt="평민">
+              <div class="mcard-sprite-glow"></div>
+            </div>
+            <div class="mcard-info">
+              <h3 class="mcard-class">평민</h3>
+              <p class="mcard-desc">어떤 상황도 살아남는 생활력의 달인. 숨겨진 잠재력이 폭발한다.</p>
+              <div class="mcard-tags"><span>만능형</span><span>친화력</span><span>성장형</span></div>
+            </div>
+          </div>
+          <div class="mcard-yokai-reveal">
+            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" class="mcard-yokai-bg" alt="">
+            <div class="mcard-yokai-info">
+              <span class="mcard-yokai-label">천적 요괴</span>
+              <strong class="mcard-yokai-name">어귀</strong>
+              <p class="mcard-yokai-tip">물가의 공포도 당신의 끈기 앞에 무릎을 꿇는다.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ WORLD GALLERY ══════════ -->
+  <section class="world-section" id="world">
+    <!-- 동양화 안개 레이어 -->
+    <div class="world-mist" aria-hidden="true">
+      <div class="mist-layer ml-1"></div>
+      <div class="mist-layer ml-2"></div>
+      <div class="mist-layer ml-3"></div>
+    </div>
+    <div class="world-inner">
+      <div class="world-header">
+        <p class="world-eyebrow">— WORLD —</p>
+        <h2 class="world-title">귀혼의 세계</h2>
+        <p class="world-sub">요괴와 인간이 공존하는 동양 판타지</p>
+      </div>
+
+      <div class="world-bento">
+        <div class="wb-card wb-large">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호">
+          <div class="wb-label">
+            <h4>구미호</h4>
+            <p>전설 속 아홉 꼬리의 여우 요괴</p>
+          </div>
+        </div>
+        <div class="wb-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
+          <div class="wb-label"><h4>혈랑</h4><p>피에 굶주린 늑대</p></div>
+        </div>
+        <div class="wb-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
+          <div class="wb-label"><h4>인공귀신</h4><p>인간이 만든 원혼</p></div>
+        </div>
+        <div class="wb-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
+          <div class="wb-label"><h4>처녀귀신</h4><p>원한을 품은 혼</p></div>
+        </div>
+        <div class="wb-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
+          <div class="wb-label"><h4>어귀</h4><p>강물에 깃든 귀신</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ COMMUNITY / SNS ══════════ -->
+  <section class="community-section" id="community">
+    <div class="community-inner">
+
+      <div class="community-header">
+        <div class="community-header-left">
+          <p class="community-eyebrow">— COMMUNITY —</p>
+          <h2 class="community-title">용사들의 기록</h2>
+          <p class="community-sub">귀혼 유저들이 포착한 요괴 스크린샷</p>
+        </div>
+        <div class="community-sns-links">
+          <a href="#" class="sns-btn" data-platform="instagram">
+            <span class="sns-icon">📸</span><span>Instagram</span>
+          </a>
+          <a href="#" class="sns-btn" data-platform="discord">
+            <span class="sns-icon">💬</span><span>Discord</span>
+          </a>
+          <a href="#" class="sns-btn" data-platform="youtube">
+            <span class="sns-icon">▶</span><span>YouTube</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="community-grid">
+        <!-- 카드 1: featured 대형 (2행 차지) -->
+        <div class="cc-card cc-featured">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호 포착">
+          <div class="cc-overlay">
+            <div class="cc-overlay-top">
+              <span class="cc-featured-badge">✦ FEATURED</span>
+            </div>
+            <div class="cc-overlay-bottom">
+              <div class="cc-user-row">
+                <span class="cc-avatar">구</span>
+                <span class="cc-username">@구미호사냥꾼</span>
+              </div>
+              <div class="cc-stats-row">
+                <span class="cc-stat">♥ 1,284</span>
+                <span class="cc-stat">💬 48</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 카드 2: 가로 와이드 -->
+        <div class="cc-card cc-wide">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
+          <div class="cc-overlay">
+            <div class="cc-overlay-bottom">
+              <div class="cc-user-row">
+                <span class="cc-avatar">혈</span>
+                <span class="cc-username">@혈랑추적자</span>
+              </div>
+              <div class="cc-stats-row"><span class="cc-stat">♥ 843</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 카드 3 -->
+        <div class="cc-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
+          <div class="cc-overlay">
+            <div class="cc-overlay-bottom">
+              <div class="cc-user-row">
+                <span class="cc-avatar">원</span>
+                <span class="cc-username">@원한수집가</span>
+              </div>
+              <div class="cc-stats-row"><span class="cc-stat">♥ 632</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 카드 4 -->
+        <div class="cc-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
+          <div class="cc-overlay">
+            <div class="cc-overlay-bottom">
+              <div class="cc-user-row">
+                <span class="cc-avatar">귀</span>
+                <span class="cc-username">@귀신연구소</span>
+              </div>
+              <div class="cc-stats-row"><span class="cc-stat">♥ 521</span></div>
+            </div>
+          </div>
+        </div>
+        <!-- 카드 5 -->
+        <div class="cc-card cc-wide">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
+          <div class="cc-overlay">
+            <div class="cc-overlay-bottom">
+              <div class="cc-user-row">
+                <span class="cc-avatar">강</span>
+                <span class="cc-username">@강물의악몽</span>
+              </div>
+              <div class="cc-stats-row">
+                <span class="cc-stat">♥ 975</span>
+                <span class="cc-stat">💬 32</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- 카드 6 -->
+        <div class="cc-card">
+          <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="전사">
+          <div class="cc-overlay">
+            <div class="cc-overlay-bottom">
+              <div class="cc-user-row">
+                <span class="cc-avatar">용</span>
+                <span class="cc-username">@용사의하루</span>
+              </div>
+              <div class="cc-stats-row"><span class="cc-stat">♥ 412</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="community-more">
+        <a href="#" class="community-more-btn">더 많은 스크린샷 보기 →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 이스터에그 달걀귀신 ══════════ -->
+  <div class="egg-ghost" id="eggGhost" aria-hidden="true">
+    <div class="egg-img-wrap">
+      <img src="" alt="" class="egg-img" />
+      <div class="egg-pixel-art">
+        <div class="ep-eye ep-eye-l"></div>
+        <div class="ep-eye ep-eye-r"></div>
+        <div class="ep-mouth"></div>
+        <div class="ep-cheek ep-cheek-l"></div>
+        <div class="ep-cheek ep-cheek-r"></div>
+      </div>
+    </div>
+    <p class="egg-label">??</p>
+  </div>
+
+  <script src="easter.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
