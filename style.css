@@ -1702,3 +1702,416 @@ a{text-decoration:none;color:inherit}
   transform:translateY(-2px);
   box-shadow:0 6px 20px rgba(160,120,40,.45);
 }
+
+/* ══════════════════════════════════════════════
+   캐릭터 선택 전면 재설계
+   ① 가로 탭  ② 캐릭터 해방  ③ 동양풍 스탯 카드
+══════════════════════════════════════════════ */
+
+/* ── 레이아웃: 사이드바 → 상단 탭 ── */
+.class-section-inner{
+  display:flex;flex-direction:column;
+  max-width:1400px;margin:0 auto;
+  min-height:unset;
+  grid-template-columns:unset;
+}
+.class-tabs-col{
+  border-right:none;
+  border-bottom:1px solid rgba(162,82,16,.25);
+  padding:50px 80px 0;
+  flex-direction:column;
+  gap:28px;
+}
+.class-tabs-header{ text-align:left }
+.ctab-list{
+  flex-direction:row;
+  justify-content:flex-start;
+  gap:10px;
+}
+
+/* ── 가로 탭 카드 ── */
+.ctab{
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-end;
+  gap:6px;
+  padding:14px 20px 18px;
+  min-width:120px;
+  border-radius:12px 12px 0 0;
+  border:1px solid rgba(162,82,16,.2);
+  border-bottom:none;
+  background:rgba(8,4,18,.5);
+  transition:transform .25s cubic-bezier(.36,.07,.19,.97),
+             background .2s, border-color .2s;
+  overflow:visible; /* 도깨비불이 밖으로 */
+  position:relative;
+}
+.ctab:hover{
+  transform:translateY(-6px) scale(1.06);
+  background:rgba(200,160,96,.1);
+  border-color:rgba(200,160,96,.4);
+}
+.ctab.active{
+  background:rgba(200,160,96,.12);
+  border-color:rgba(200,160,96,.55);
+  transform:translateY(-4px);
+}
+
+/* 도깨비불 — ::before(왼), ::after(오른) */
+.ctab::before,.ctab::after{
+  content:'🔥';
+  position:absolute;
+  top:-6px;
+  font-size:.95rem;
+  opacity:0;
+  pointer-events:none;
+  animation:fireBlink .7s ease-in-out infinite;
+  transition:opacity .2s;
+}
+.ctab::before{ left:4px; animation-delay:0s }
+.ctab::after { right:4px;animation-delay:.35s }
+.ctab:hover::before,.ctab:hover::after,
+.ctab.active::before,.ctab.active::after{ opacity:1 }
+@keyframes fireBlink{
+  0%,100%{transform:scaleY(1)   translateY(0);    opacity:1}
+  50%    {transform:scaleY(.75) translateY(-3px); opacity:.35}
+}
+
+/* active 하단 인디케이터 */
+.ctab.active::before{
+  /* 왼쪽 세로 바 제거 */
+  content:'🔥';
+  position:absolute;top:-6px;left:4px;
+  width:auto;height:auto;background:none;
+  box-shadow:none;border-radius:0;
+}
+
+/* 탭 이미지 크게 */
+.ctab-sprite{
+  width:72px;height:auto;
+  image-rendering:pixelated;
+  filter:drop-shadow(0 0 8px rgba(200,160,96,.3));
+  transition:transform .25s;
+}
+.ctab:hover .ctab-sprite{ transform:translateY(-4px) scale(1.05) }
+.ctab.active .ctab-sprite{ filter:drop-shadow(0 0 14px rgba(200,160,96,.5)) }
+
+/* 탭 텍스트 */
+.ctab-name{
+  display:block;
+  font-family:'Galmuri11',monospace;font-size:.88rem;
+  color:var(--text-muted);
+  transition:color .2s;
+}
+.ctab:hover .ctab-name,.ctab.active .ctab-name{ color:var(--mint) }
+.ctab-sub{
+  font-size:.6rem;color:var(--text-muted);
+  opacity:.7;
+}
+
+/* 구 탭 요소 숨기기 */
+.ctab-num,.ctab-info,.ctab-arrow{ display:none }
+
+/* 탭 위 가로 잉크 선 제거 */
+.ctab::after{
+  content:'🔥';
+  position:absolute;top:-6px;right:4px;
+  height:auto;background:none;
+  left:auto;width:auto;
+}
+
+/* ── 패널 영역 ── */
+.class-panels-col{
+  position:relative;
+  min-height:500px;
+}
+.cpanel{
+  position:absolute;inset:0;
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+}
+.cpanel.active{ position:relative }
+
+/* ② 캐릭터 해방 — 배경 박스 제거 */
+.cpanel-illust{ display:none }
+.cpanel-grad,
+.class-section .cpanel-grad{ display:none }
+
+/* 발밑 민트 안개 */
+.cpanel-visual{
+  overflow:visible;
+  background:none;
+  display:flex;align-items:flex-end;justify-content:center;
+}
+.cpanel-visual::after{
+  content:'';
+  position:absolute;
+  bottom:-10px;
+  left:50%;transform:translateX(-50%);
+  width:340px;height:140px;
+  background:radial-gradient(ellipse 80% 60% at 50% 100%,
+    rgba(200,160,96,.28) 0%,
+    rgba(200,160,96,.10) 45%,
+    transparent 75%);
+  filter:blur(16px);
+  pointer-events:none;
+  z-index:1;
+}
+.cpanel-sprite{
+  position:absolute;
+  bottom:-10px;left:50%;
+  transform:translateX(-50%);
+  width:clamp(200px,20vw,280px);
+  height:auto;
+  image-rendering:pixelated;
+  filter:drop-shadow(0 0 20px rgba(200,160,96,.22))
+         drop-shadow(0 12px 32px rgba(0,0,0,.8));
+  animation:jellyFloat 4s ease-in-out infinite;
+  transform-origin:center bottom;
+  z-index:2;
+}
+
+/* 한자 워터마크 */
+.cpanel-kanji{
+  position:absolute;
+  left:50%;bottom:0;transform:translateX(-50%);
+  font-size:min(18vw,220px);
+  color:rgba(200,160,96,.04);
+  line-height:1;
+  pointer-events:none;z-index:0;
+  user-select:none;font-family:serif;
+}
+
+/* ── 패널 정보 ── */
+.cpanel-info{
+  padding:48px 56px 48px 32px;
+  justify-content:center;
+  gap:16px;
+}
+
+/* ③ 동양풍 스탯 카드 (부적 스타일) */
+.cpanel-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+.cps-row{
+  flex-direction:column;
+  align-items:flex-start;
+  gap:5px;
+  padding:10px 12px 8px;
+  background:rgba(6,3,14,.85);
+  border:1px solid rgba(162,82,16,.38);
+  border-radius:6px;
+  position:relative;
+  overflow:hidden;
+}
+/* 상단 금빛 선 */
+.cps-row::before{
+  content:'';
+  position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,160,96,.55),transparent);
+}
+/* 모서리 장식 (부적 느낌) */
+.cps-row::after{
+  content:'';
+  position:absolute;
+  top:3px;right:3px;
+  width:6px;height:6px;
+  border-top:1px solid rgba(200,160,96,.4);
+  border-right:1px solid rgba(200,160,96,.4);
+}
+.cps-l{
+  font-family:'Galmuri11',monospace;
+  font-size:.58rem;letter-spacing:.14em;
+  color:rgba(200,160,96,.55);
+  width:auto;
+}
+.cps-v{
+  font-family:'Galmuri11',monospace;
+  font-size:1.6rem;line-height:1;
+  color:var(--text);
+  width:auto;text-align:left;
+  flex-shrink:unset;
+}
+.cps-bar{
+  flex:none;
+  width:100%;height:3px;
+  border-radius:2px;
+  background:rgba(255,255,255,.07);
+  overflow:hidden;
+}
+.cps-fill{
+  background:linear-gradient(to right,#c8a060,#c83030);
+}
+/* CTA 버튼 색상 통일 */
+.cpanel-cta{
+  color:var(--mint);
+  border-color:rgba(200,160,96,.3);
+}
+
+/* ══════════════════════════════════════════════
+   HOT 아이템몰 섹션
+══════════════════════════════════════════════ */
+.item-section{
+  padding:80px 80px 100px;
+  background:
+    repeating-linear-gradient(
+      -30deg,
+      rgba(140,70,10,.025) 0px, rgba(140,70,10,.025) 1px,
+      transparent 1px, transparent 12px
+    ),
+    linear-gradient(170deg,#0b0618 0%,#120820 55%,#0a0516 100%);
+  border-top:1px solid rgba(162,82,16,.18);
+  position:relative;
+  overflow:hidden;
+}
+.item-section::after{
+  content:'物';
+  position:absolute;right:-20px;bottom:-40px;
+  font-size:320px;font-family:serif;
+  color:rgba(178,82,18,.04);
+  line-height:1;pointer-events:none;user-select:none;
+}
+.item-inner{ max-width:1400px;margin:0 auto;position:relative;z-index:1 }
+
+.item-head{
+  margin-bottom:40px;
+}
+.item-eyebrow{
+  font-family:'Galmuri11',monospace;
+  font-size:.7rem;letter-spacing:.35em;
+  color:var(--mint);
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:10px;
+}
+.item-eyebrow::before{
+  content:'';display:block;width:28px;height:1px;
+  background:var(--mint);
+  box-shadow:0 0 6px var(--mint);
+}
+.item-title{
+  font-family:'Galmuri11',monospace;
+  font-size:clamp(26px,3vw,38px);
+  color:var(--text);line-height:1.1;
+}
+.item-sub{
+  font-size:.82rem;color:var(--text-muted);margin-top:8px;
+}
+
+/* 레이아웃: 왼쪽 피처드 크게 + 오른쪽 3개 그리드 */
+.item-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+}
+.item-grid-right{
+  display:grid;
+  grid-template-rows:1fr 1fr 1fr;
+  gap:12px;
+}
+
+/* 피처드 아이템 카드 (대형) */
+.item-featured{
+  background:rgba(10,5,20,.9);
+  border:1px solid rgba(162,82,16,.4);
+  border-radius:10px;
+  padding:32px 32px 32px 28px;
+  display:flex;gap:24px;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  transition:border-color .25s,box-shadow .25s;
+  cursor:pointer;
+}
+.item-featured::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,160,96,.06) 0%,transparent 60%);
+  pointer-events:none;
+}
+.item-featured:hover{
+  border-color:rgba(200,160,96,.65);
+  box-shadow:0 0 32px rgba(200,160,96,.12);
+}
+.item-featured-badge{
+  position:absolute;top:16px;right:16px;
+  font-family:'Galmuri11',monospace;font-size:.62rem;
+  letter-spacing:.08em;
+  background:rgba(200,80,20,.85);
+  color:#fff;padding:3px 10px;border-radius:3px;
+}
+.item-featured-img{
+  width:100px;height:100px;
+  object-fit:contain;
+  image-rendering:pixelated;
+  flex-shrink:0;
+  filter:drop-shadow(0 0 12px rgba(200,160,96,.3));
+}
+.item-featured-info{ flex:1 }
+.item-featured-name{
+  font-family:'Galmuri11',monospace;
+  font-size:1.15rem;color:var(--text);
+  margin-bottom:6px;line-height:1.3;
+}
+.item-featured-cat{
+  font-size:.7rem;color:var(--mint);
+  font-family:'Galmuri11',monospace;
+  letter-spacing:.08em;margin-bottom:10px;
+}
+.item-featured-desc{
+  font-size:.82rem;color:var(--text-muted);
+  line-height:1.8;
+}
+
+/* 소형 아이템 카드 */
+.item-card{
+  background:rgba(10,5,20,.85);
+  border:1px solid rgba(162,82,16,.28);
+  border-radius:8px;
+  padding:16px 18px;
+  display:flex;gap:14px;
+  align-items:center;
+  position:relative;
+  transition:border-color .2s,background .2s;
+  cursor:pointer;
+  overflow:hidden;
+}
+.item-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,160,96,.3),transparent);
+}
+.item-card:hover{
+  border-color:rgba(200,160,96,.5);
+  background:rgba(200,160,96,.06);
+}
+.item-card-badge{
+  position:absolute;top:8px;right:10px;
+  font-family:'Galmuri11',monospace;font-size:.55rem;
+  letter-spacing:.06em;
+  background:rgba(200,80,20,.8);
+  color:#fff;padding:2px 7px;border-radius:2px;
+}
+.item-card-img{
+  width:60px;height:60px;
+  object-fit:contain;
+  image-rendering:pixelated;
+  flex-shrink:0;
+  filter:drop-shadow(0 0 8px rgba(200,160,96,.2));
+}
+.item-card-info{ flex:1;min-width:0 }
+.item-card-name{
+  font-family:'Galmuri11',monospace;
+  font-size:.9rem;color:var(--text);
+  display:block;margin-bottom:3px;
+}
+.item-card-cat{
+  font-size:.65rem;color:var(--mint);
+  font-family:'Galmuri11',monospace;
+  letter-spacing:.06em;display:block;margin-bottom:6px;
+}
+.item-card-desc{
+  font-size:.72rem;color:var(--text-muted);
+  line-height:1.7;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
