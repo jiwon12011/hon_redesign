@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>커뮤니티 | 귀혼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sub.css" />
+  <style>
+    /* ── 커뮤니티 페이지 전용 ── */
+    .board-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 32px; gap: 20px;
+    }
+    .board-write-btn {
+      padding: 9px 22px;
+      font-size: .82rem; font-weight: 700;
+      color: #0a0810; letter-spacing: .04em;
+      background: linear-gradient(160deg, #c8a060 0%, #9c7830 100%);
+      border-radius: 2px; border: none; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .board-write-btn:hover { opacity: .88; }
+    .board-search {
+      display: flex; gap: 0;
+    }
+    .board-search input {
+      padding: 9px 16px;
+      font-size: .82rem; font-family: var(--font);
+      background: var(--bg); border: 1px solid rgba(255,255,255,.1);
+      border-right: none; color: var(--text); width: 220px;
+      outline: none; transition: border-color .2s;
+    }
+    .board-search input:focus { border-color: rgba(200,160,96,.4); }
+    .board-search button {
+      padding: 9px 16px; font-size: .8rem;
+      background: rgba(200,160,96,.15); border: 1px solid rgba(200,160,96,.3);
+      color: var(--mint); cursor: pointer; transition: background .2s;
+    }
+    .board-search button:hover { background: rgba(200,160,96,.25); }
+
+    /* 랭킹 상단 배너 */
+    .rank-hero {
+      display: flex; align-items: stretch; gap: 16px;
+      margin-bottom: 40px;
+    }
+    .rank-hero-stat {
+      flex: 1; padding: 28px 24px;
+      border: 1px solid rgba(255,255,255,.07);
+      background: var(--bg-2);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .rhs-label {
+      font-family: 'Galmuri11', monospace;
+      font-size: .6rem; letter-spacing: .2em;
+      color: var(--text-muted);
+    }
+    .rhs-val {
+      font-family: 'Galmuri11', monospace;
+      font-size: 1.6rem; color: var(--mint);
+      line-height: 1;
+    }
+    .rhs-sub { font-size: .72rem; color: var(--text-muted); }
+
+    /* 길드 랭킹 */
+    .guild-rank-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .guild-card {
+      padding: 22px 20px; border: 1px solid rgba(255,255,255,.07);
+      background: var(--bg-2); position: relative;
+      transition: border-color .2s, transform .2s;
+      cursor: pointer;
+    }
+    .guild-card:hover { border-color: rgba(200,160,96,.3); transform: translateY(-2px); }
+    .guild-rank-no {
+      position: absolute; top: 16px; right: 16px;
+      font-family: 'Galmuri11', monospace;
+      font-size: 1.4rem; color: rgba(200,160,96,.2);
+      font-weight: 700; line-height: 1;
+    }
+    .guild-icon {
+      width: 48px; height: 48px; border-radius: 8px;
+      background: linear-gradient(135deg, rgba(200,160,96,.2), rgba(200,160,96,.05));
+      border: 1px solid rgba(200,160,96,.25);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 12px;
+    }
+    .guild-name {
+      font-size: .96rem; font-weight: 700;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .guild-card:hover .guild-name { color: var(--mint); }
+    .guild-members {
+      font-size: .74rem; color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .guild-score-row {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .guild-score {
+      font-family: 'Galmuri11', monospace;
+      font-size: .88rem; color: var(--mint); font-weight: 700;
+    }
+    .guild-server { font-size: .7rem; color: var(--text-muted); }
+
+    /* 놀이터 이벤트 배너 */
+    .play-event-banner {
+      display: flex; align-items: center; gap: 32px;
+      padding: 32px 36px; margin-bottom: 32px;
+      background: linear-gradient(135deg, rgba(200,160,96,.1) 0%, rgba(200,160,96,.03) 100%);
+      border: 1px solid rgba(200,160,96,.25);
+      position: relative; overflow: hidden;
+    }
+    .play-event-banner::before {
+      content: '';
+      position: absolute; top: 0; left: 0; width: 3px; bottom: 0;
+      background: linear-gradient(to bottom, transparent, var(--mint), transparent);
+    }
+    .peb-icon { font-size: 2.4rem; flex-shrink: 0; }
+    .peb-text { flex: 1; }
+    .peb-label {
+      font-family: 'Galmuri11', monospace;
+      font-size: .6rem; letter-spacing: .2em;
+      color: var(--mint); margin-bottom: 6px;
+    }
+    .peb-title {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--text); margin-bottom: 4px;
+    }
+    .peb-desc { font-size: .8rem; color: var(--text-muted); line-height: 1.7; }
+    .peb-btn {
+      padding: 9px 24px; flex-shrink: 0;
+      font-size: .82rem; font-weight: 700;
+      color: var(--mint); border: 1px solid rgba(200,160,96,.45);
+      background: transparent; cursor: pointer;
+      transition: background .2s, border-color .2s;
+    }
+    .peb-btn:hover { background: rgba(200,160,96,.1); border-color: rgba(200,160,96,.7); }
+  </style>
+</head>
+<body class="sub-page">
+
+  <!-- ══════════ GNB ══════════ -->
+  <nav class="gnb">
+    <div class="gnb-util">
+      <div class="gnb-util-left">
+        <a href="index.html" class="util-link">전체게임</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">엠캐쉬 충전</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">M이벤트</a>
+      </div>
+      <div class="gnb-util-right">
+        <button class="btn-talisman"><span class="talisman-inner">로그인</span></button>
+      </div>
+    </div>
+    <div class="gnb-main">
+      <a href="index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
+      </a>
+      <ul class="gnb-menu">
+        <li class="gnb-item"><a href="news.html" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
+        <li class="gnb-item gnb-has-drop">
+          <a href="game.html" class="gnb-link"><span class="fire-spirit"></span>게임 <span class="gnb-arrow">▾</span></a>
+          <ul class="gnb-drop">
+            <li><a href="game.html" class="gnb-drop-link">게임소개</a></li>
+            <li><a href="game.html#info" class="gnb-drop-link">게임정보</a></li>
+          </ul>
+        </li>
+        <li class="gnb-item gnb-has-drop is-active">
+          <a href="community.html" class="gnb-link"><span class="fire-spirit"></span>커뮤니티 <span class="gnb-arrow">▾</span></a>
+          <ul class="gnb-drop">
+            <li><a href="community.html" class="gnb-drop-link active">귀혼객잔</a></li>
+            <li><a href="community.html#ranking" class="gnb-drop-link">랭킹</a></li>
+            <li><a href="community.html#playground" class="gnb-drop-link">놀이터</a></li>
+          </ul>
+        </li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════ 서브 히어로 ══════════ -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg" style="background-image:url('https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg')"></div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-line"></div>
+    <div class="sub-hero-content">
+      <p class="sub-hero-eyebrow">COMMUNITY</p>
+      <h1 class="sub-hero-title">귀혼객잔 · 랭킹 · 놀이터</h1>
+      <p class="sub-hero-breadcrumb">
+        <a href="index.html">홈</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-cur">커뮤니티</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ 서브 네비 ══════════ -->
+  <nav class="sub-nav">
+    <div class="sub-nav-inner">
+      <a href="#tavern"     class="sub-nav-tab active">귀혼객잔</a>
+      <a href="#ranking"    class="sub-nav-tab">랭킹</a>
+      <a href="#guild"      class="sub-nav-tab">길드 랭킹</a>
+      <a href="#playground" class="sub-nav-tab">놀이터</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ 귀혼객잔 ══════════ -->
+  <section id="tavern">
+    <div class="sub-wrap">
+      <div class="board-header">
+        <div>
+          <p class="sub-eyebrow">TAVERN</p>
+          <h2 class="sub-section-title" style="margin-bottom:0">귀혼객잔</h2>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="board-search">
+            <input type="text" placeholder="검색어를 입력하세요">
+            <button>검색</button>
+          </div>
+          <button class="board-write-btn">글쓰기</button>
+        </div>
+      </div>
+
+      <!-- 게시판 카테고리 탭 -->
+      <div class="rank-tabs" style="margin-bottom:28px">
+        <button class="rank-tab active">자유게시판</button>
+        <button class="rank-tab">공략·정보</button>
+        <button class="rank-tab">팁·질문</button>
+        <button class="rank-tab">스크린샷</button>
+        <button class="rank-tab">거래·구인</button>
+      </div>
+
+      <table class="board-table">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>조회</th>
+            <th>추천</th>
+            <th>작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="board-badge notice">공지</span></td>
+            <td class="board-title-cell">귀혼객잔 이용 규칙 안내</td>
+            <td>운영팀</td>
+            <td>28,491</td>
+            <td>—</td>
+            <td>2026.01.01</td>
+          </tr>
+          <tr>
+            <td>1089</td>
+            <td class="board-title-cell">
+              <span class="board-badge hot">HOT</span>
+              태화산 보스 「태극신왕」 공략법 총정리 (영상 포함)
+              <span class="board-badge new">NEW</span>
+            </td>
+            <td>귀혼마스터</td>
+            <td>8,234</td>
+            <td>342</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td>1088</td>
+            <td class="board-title-cell">
+              <span class="board-badge hot">HOT</span>
+              16.8 패치 이후 자객 최강 빌드 공유합니다
+            </td>
+            <td>암흑자객</td>
+            <td>6,782</td>
+            <td>287</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td>1087</td>
+            <td class="board-title-cell">신규 유저인데 직업 추천 부탁드려요</td>
+            <td>초보귀혼</td>
+            <td>1,432</td>
+            <td>23</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td>1086</td>
+            <td class="board-title-cell">길드원 모집 — 「천하제일검」 길드 (랭킹 3위)</td>
+            <td>검신유일</td>
+            <td>934</td>
+            <td>12</td>
+            <td>2026.03.31</td>
+          </tr>
+          <tr>
+            <td>1085</td>
+            <td class="board-title-cell">
+              <span class="board-badge hot">HOT</span>
+              선인 직업 Q&A 모음 — 최신 패치 반영
+            </td>
+            <td>태극선사</td>
+            <td>5,109</td>
+            <td>198</td>
+            <td>2026.03.30</td>
+          </tr>
+          <tr>
+            <td>1084</td>
+            <td class="board-title-cell">태화산 신규 요괴 「산군」 등장 확인</td>
+            <td>도감수집가</td>
+            <td>3,841</td>
+            <td>156</td>
+            <td>2026.03.30</td>
+          </tr>
+          <tr>
+            <td>1083</td>
+            <td class="board-title-cell">소환사의 부엌 이벤트 보상 아이템 목록 정리</td>
+            <td>이벤트헌터</td>
+            <td>2,197</td>
+            <td>89</td>
+            <td>2026.03.31</td>
+          </tr>
+          <tr>
+            <td>1082</td>
+            <td class="board-title-cell">귀혼 6주년 스크린샷 모음 (팬아트 포함)</td>
+            <td>귀혼러버</td>
+            <td>4,562</td>
+            <td>211</td>
+            <td>2026.03.29</td>
+          </tr>
+          <tr>
+            <td>1081</td>
+            <td class="board-title-cell">강화 +15 성공한 후기 (스샷 있음)</td>
+            <td>강화신화</td>
+            <td>3,288</td>
+            <td>167</td>
+            <td>2026.03.28</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="sub-pager">
+        <button class="pg pg-arrow">‹‹</button>
+        <button class="pg pg-arrow">‹</button>
+        <button class="pg active">1</button>
+        <button class="pg">2</button>
+        <button class="pg">3</button>
+        <button class="pg">4</button>
+        <button class="pg">5</button>
+        <button class="pg pg-arrow">›</button>
+        <button class="pg pg-arrow">››</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 랭킹 ══════════ -->
+  <hr class="sub-divider" id="ranking" />
+  <section class="bg-alt">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">RANKING</p>
+        <h2 class="sub-section-title">캐릭터 랭킹</h2>
+        <p class="sub-section-desc">서버 최강의 영웅들을 확인하세요. 매일 자정 갱신됩니다.</p>
+      </div>
+
+      <!-- 랭킹 요약 스탯 -->
+      <div class="rank-hero">
+        <div class="rank-hero-stat">
+          <span class="rhs-label">TOTAL PLAYERS</span>
+          <span class="rhs-val">148,392</span>
+          <span class="rhs-sub">전체 등록 캐릭터</span>
+        </div>
+        <div class="rank-hero-stat">
+          <span class="rhs-label">TOP CLASS</span>
+          <span class="rhs-val" style="color:#ffa848">전사</span>
+          <span class="rhs-sub">최다 상위권 직업</span>
+        </div>
+        <div class="rank-hero-stat">
+          <span class="rhs-label">UPDATED</span>
+          <span class="rhs-val" style="font-size:1.1rem">2026.04.02</span>
+          <span class="rhs-sub">최근 갱신 일시</span>
+        </div>
+        <div class="rank-hero-stat">
+          <span class="rhs-label">TOP SERVER</span>
+          <span class="rhs-val" style="font-size:1.1rem">태화서버</span>
+          <span class="rhs-sub">활성 유저 최다</span>
+        </div>
+      </div>
+
+      <!-- 직업 필터 -->
+      <div class="rank-tabs">
+        <button class="rank-tab active">전체</button>
+        <button class="rank-tab">전사</button>
+        <button class="rank-tab">자객</button>
+        <button class="rank-tab">선인</button>
+        <button class="rank-tab">평민</button>
+      </div>
+
+      <table class="rank-table">
+        <thead>
+          <tr>
+            <th>순위</th>
+            <th>캐릭터</th>
+            <th>직업</th>
+            <th>서버</th>
+            <th>누적 전투력</th>
+            <th>순위 변동</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="top3">
+            <td><span class="rank-num gold">1</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">태극선인</p>
+                  <p class="rank-char-sub">Lv. 50</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 선인">선인</span></td>
+            <td class="rank-server">태화서버</td>
+            <td class="rank-score">9,842,156</td>
+            <td><span class="rank-diff same">—</span></td>
+          </tr>
+          <tr class="top3">
+            <td><span class="rank-num silver">2</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">귀검무사</p>
+                  <p class="rank-char-sub">Lv. 50</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 전사">전사</span></td>
+            <td class="rank-server">귀혼서버</td>
+            <td class="rank-score">9,211,340</td>
+            <td><span class="rank-diff up">▲ 1</span></td>
+          </tr>
+          <tr class="top3">
+            <td><span class="rank-num bronze">3</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">흑룡자객</p>
+                  <p class="rank-char-sub">Lv. 49</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 자객">자객</span></td>
+            <td class="rank-server">설원서버</td>
+            <td class="rank-score">8,663,890</td>
+            <td><span class="rank-diff down">▼ 1</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">4</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">청풍선인</p>
+                  <p class="rank-char-sub">Lv. 48</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 선인">선인</span></td>
+            <td class="rank-server">태화서버</td>
+            <td class="rank-score">7,982,450</td>
+            <td><span class="rank-diff up">▲ 2</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">5</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">혈화무사</p>
+                  <p class="rank-char-sub">Lv. 50</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 전사">전사</span></td>
+            <td class="rank-server">귀혼서버</td>
+            <td class="rank-score">7,541,200</td>
+            <td><span class="rank-diff same">—</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">6</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">천야자객</p>
+                  <p class="rank-char-sub">Lv. 50</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 자객">자객</span></td>
+            <td class="rank-server">태화서버</td>
+            <td class="rank-score">7,128,830</td>
+            <td><span class="rank-diff up">▲ 3</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">7</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">풍운평민</p>
+                  <p class="rank-char-sub">Lv. 47</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 평민">평민</span></td>
+            <td class="rank-server">설원서버</td>
+            <td class="rank-score">6,894,110</td>
+            <td><span class="rank-diff down">▼ 2</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">8</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">백호신검</p>
+                  <p class="rank-char-sub">Lv. 50</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 전사">전사</span></td>
+            <td class="rank-server">귀혼서버</td>
+            <td class="rank-score">6,450,780</td>
+            <td><span class="rank-diff up">▲ 1</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">9</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">도화선녀</p>
+                  <p class="rank-char-sub">Lv. 49</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 선인">선인</span></td>
+            <td class="rank-server">태화서버</td>
+            <td class="rank-score">6,112,340</td>
+            <td><span class="rank-diff same">—</span></td>
+          </tr>
+          <tr>
+            <td><span class="rank-num">10</span></td>
+            <td>
+              <div class="rank-char">
+                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="">
+                <div>
+                  <p class="rank-char-name">암야귀검</p>
+                  <p class="rank-char-sub">Lv. 48</p>
+                </div>
+              </div>
+            </td>
+            <td><span class="rank-class 자객">자객</span></td>
+            <td class="rank-server">귀혼서버</td>
+            <td class="rank-score">5,887,920</td>
+            <td><span class="rank-diff down">▼ 1</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 길드 랭킹 ══════════ -->
+  <hr class="sub-divider" id="guild" />
+  <section>
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">GUILD RANKING</p>
+        <h2 class="sub-section-title">길드 랭킹</h2>
+        <p class="sub-section-desc">최강의 길드를 향한 경쟁. 지금 당신의 길드를 만들어보세요.</p>
+      </div>
+      <div class="guild-rank-grid">
+        <div class="guild-card">
+          <div class="guild-rank-no">01</div>
+          <div class="guild-icon">🐉</div>
+          <p class="guild-name">천하제일검</p>
+          <p class="guild-members">길드원 128 / 130명</p>
+          <div class="guild-score-row">
+            <span class="guild-score">12,841,200</span>
+            <span class="guild-server">태화서버</span>
+          </div>
+        </div>
+        <div class="guild-card">
+          <div class="guild-rank-no">02</div>
+          <div class="guild-icon">🦊</div>
+          <p class="guild-name">구미호단</p>
+          <p class="guild-members">길드원 115 / 130명</p>
+          <div class="guild-score-row">
+            <span class="guild-score">11,234,560</span>
+            <span class="guild-server">귀혼서버</span>
+          </div>
+        </div>
+        <div class="guild-card">
+          <div class="guild-rank-no">03</div>
+          <div class="guild-icon">⚔️</div>
+          <p class="guild-name">혈전의전설</p>
+          <p class="guild-members">길드원 98 / 130명</p>
+          <div class="guild-score-row">
+            <span class="guild-score">10,882,110</span>
+            <span class="guild-server">설원서버</span>
+          </div>
+        </div>
+        <div class="guild-card">
+          <div class="guild-rank-no">04</div>
+          <div class="guild-icon">🌙</div>
+          <p class="guild-name">달빛검사단</p>
+          <p class="guild-members">길드원 87 / 100명</p>
+          <div class="guild-score-row">
+            <span class="guild-score">9,443,780</span>
+            <span class="guild-server">태화서버</span>
+          </div>
+        </div>
+        <div class="guild-card">
+          <div class="guild-rank-no">05</div>
+          <div class="guild-icon">🔥</div>
+          <p class="guild-name">불꽃도깨비</p>
+          <p class="guild-members">길드원 76 / 100명</p>
+          <div class="guild-score-row">
+            <span class="guild-score">8,219,440</span>
+            <span class="guild-server">귀혼서버</span>
+          </div>
+        </div>
+        <div class="guild-card">
+          <div class="guild-rank-no">06</div>
+          <div class="guild-icon">🌸</div>
+          <p class="guild-name">도화선인회</p>
+          <p class="guild-members">길드원 62 / 80명</p>
+          <div class="guild-score-row">
+            <span class="guild-score">7,102,890</span>
+            <span class="guild-server">태화서버</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 놀이터 ══════════ -->
+  <hr class="sub-divider" id="playground" />
+  <section class="bg-alt">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">PLAYGROUND</p>
+        <h2 class="sub-section-title">놀이터</h2>
+        <p class="sub-section-desc">귀혼을 더 다양하게 즐기는 방법을 소개합니다.</p>
+      </div>
+
+      <!-- 이벤트 배너 -->
+      <div class="play-event-banner">
+        <div class="peb-icon">🎯</div>
+        <div class="peb-text">
+          <p class="peb-label">LIVE EVENT</p>
+          <p class="peb-title">안무절 기념 「소환사의 부엌」 — 4월 14일까지</p>
+          <p class="peb-desc">기간 내 미니게임 클리어 시 한정 코스튬 및 특별 칭호를 획득할 수 있습니다.</p>
+        </div>
+        <button class="peb-btn">지금 참여하기</button>
+      </div>
+
+      <div class="play-grid">
+
+        <div class="play-card">
+          <span class="play-card-badge new">NEW</span>
+          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="MBTI 테스트">
+          <div class="play-card-body">
+            <p class="play-tag">MBTI TEST</p>
+            <h3 class="play-title">귀혼 직업 MBTI 테스트</h3>
+            <p class="play-desc">나와 꼭 맞는 귀혼 직업은 무엇일까요? 12문항으로 알아보는 나만의 직업 유형.</p>
+          </div>
+        </div>
+
+        <div class="play-card">
+          <span class="play-card-badge live">LIVE</span>
+          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="이벤트">
+          <div class="play-card-body">
+            <p class="play-tag">EVENT</p>
+            <h3 class="play-title">소환사의 부엌 미니게임</h3>
+            <p class="play-desc">요리 재료를 모아 요괴 퇴치 음식을 만들어보세요. 완성 시 한정 보상 지급!</p>
+          </div>
+        </div>
+
+        <div class="play-card">
+          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="팬아트">
+          <div class="play-card-body">
+            <p class="play-tag">FAN ART</p>
+            <h3 class="play-title">유저 팬아트 갤러리</h3>
+            <p class="play-desc">귀혼 유저들이 직접 제작한 멋진 팬아트 작품들을 감상하고 추천해보세요.</p>
+          </div>
+        </div>
+
+        <div class="play-card">
+          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="귀혼 퀴즈">
+          <div class="play-card-body">
+            <p class="play-tag">QUIZ</p>
+            <h3 class="play-title">귀혼 박사 퀴즈왕</h3>
+            <p class="play-desc">귀혼을 얼마나 알고 있나요? 20문제로 당신의 귀혼 지식을 테스트해보세요.</p>
+          </div>
+        </div>
+
+        <div class="play-card">
+          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="코스프레">
+          <div class="play-card-body">
+            <p class="play-tag">COSPLAY</p>
+            <h3 class="play-title">코스프레 대회 시즌 3</h3>
+            <p class="play-desc">귀혼 캐릭터 코스프레 대회 참가자를 모집합니다. 대상 수상자에게 특별 아이템 증정!</p>
+          </div>
+        </div>
+
+        <div class="play-card">
+          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg" alt="배경화면">
+          <div class="play-card-body">
+            <p class="play-tag">WALLPAPER</p>
+            <h3 class="play-title">HD 배경화면 자료실</h3>
+            <p class="play-desc">귀혼의 아름다운 세계를 배경화면으로. 다양한 해상도의 공식 배경화면을 무료로 다운받으세요.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="sub-footer">
+    <p class="sf-copy">
+      ⓒ 2026 Nexon Korea. 귀혼은 (주)넥슨코리아의 등록상표입니다.<br>
+      본 사이트의 모든 컨텐츠는 무단 사용을 금합니다.
+    </p>
+    <nav class="sf-links">
+      <a href="#" class="sf-link">이용약관</a>
+      <a href="#" class="sf-link">개인정보처리방침</a>
+      <a href="#" class="sf-link">청소년보호정책</a>
+      <a href="#" class="sf-link">고객센터</a>
+    </nav>
+  </footer>
+
+  <script>
+    // 서브 네비 active
+    document.querySelectorAll('.sub-nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.sub-nav-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+    // 랭킹 탭
+    document.querySelectorAll('.rank-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const parent = tab.closest('.rank-tabs');
+        parent.querySelectorAll('.rank-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+    // 게시판 탭
+    document.querySelectorAll('.rank-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const parent = tab.closest('.rank-tabs');
+        parent.querySelectorAll('.rank-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

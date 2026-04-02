@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게임소개 | 귀혼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sub.css" />
+  <style>
+    /* ── 게임소개 페이지 전용 스타일 ── */
+    .intro-hero-text {
+      max-width: 1400px; margin: 0 auto;
+      padding: 80px 80px 60px;
+      text-align: center;
+      position: relative;
+    }
+    .intro-hero-text .big-quote {
+      font-size: clamp(18px, 2.2vw, 26px);
+      color: var(--text); line-height: 2;
+      font-weight: 700; letter-spacing: .02em;
+    }
+    .intro-hero-text .big-quote em {
+      color: var(--mint); font-style: normal;
+    }
+    .intro-hero-text p {
+      font-size: .9rem; color: var(--text-muted);
+      line-height: 2; margin-top: 20px;
+      max-width: 680px; margin-inline: auto;
+    }
+
+    /* 게임 특징 배너 */
+    .info-banner {
+      padding: 60px 80px;
+      background: linear-gradient(135deg, #100820 0%, #0c0618 100%);
+      border-top: 1px solid rgba(200,160,96,.12);
+      border-bottom: 1px solid rgba(200,160,96,.08);
+      position: relative; overflow: hidden;
+    }
+    .info-banner::before {
+      content: '鬼';
+      position: absolute; right: -20px; bottom: -40px;
+      font-size: 320px; font-family: serif;
+      color: rgba(200,160,96,.03); line-height: 1;
+      pointer-events: none; user-select: none;
+    }
+    .info-banner-inner {
+      max-width: 1400px; margin: 0 auto;
+      position: relative; z-index: 1;
+    }
+
+    /* 시스템 정보 탭 */
+    .info-tabs {
+      display: flex; gap: 0; margin-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .info-tab {
+      padding: 13px 26px;
+      font-size: .86rem; font-weight: 600;
+      color: var(--text-muted);
+      border-bottom: 2px solid transparent;
+      cursor: pointer; transition: all .2s;
+    }
+    .info-tab:hover { color: var(--text); border-bottom-color: rgba(200,160,96,.3); }
+    .info-tab.active { color: var(--mint); border-bottom-color: var(--mint); }
+
+    /* 맵 섹션 */
+    .map-section {
+      display: grid; grid-template-columns: 1.3fr 1fr;
+      gap: 48px; align-items: center;
+    }
+    .map-img-wrap { position: relative; overflow: hidden; }
+    .map-img {
+      width: 100%; display: block;
+      filter: brightness(.9) saturate(1.1);
+      transition: transform .6s ease;
+    }
+    .map-img-wrap:hover .map-img { transform: scale(1.02); }
+    .map-img-frame {
+      position: absolute; inset: 8px;
+      border: 1px solid rgba(200,160,96,.2);
+      pointer-events: none;
+    }
+    .map-zone-list { display: flex; flex-direction: column; gap: 12px; }
+    .map-zone {
+      display: flex; align-items: center; gap: 16px;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,.06);
+      background: var(--bg-2);
+      cursor: pointer; transition: all .2s;
+    }
+    .map-zone:hover { border-color: rgba(200,160,96,.3); background: rgba(200,160,96,.05); }
+    .mz-lv {
+      font-family: 'Galmuri11', monospace;
+      font-size: .6rem; color: var(--mint);
+      background: rgba(200,160,96,.1);
+      border: 1px solid rgba(200,160,96,.3);
+      padding: 2px 8px; border-radius: 2px;
+      flex-shrink: 0; white-space: nowrap;
+    }
+    .mz-name { font-size: .9rem; font-weight: 700; color: var(--text); }
+    .mz-desc { font-size: .74rem; color: var(--text-muted); margin-top: 2px; }
+  </style>
+</head>
+<body class="sub-page">
+
+  <!-- ══════════ GNB ══════════ -->
+  <nav class="gnb">
+    <div class="gnb-util">
+      <div class="gnb-util-left">
+        <a href="index.html" class="util-link">전체게임</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">엠캐쉬 충전</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">M이벤트</a>
+      </div>
+      <div class="gnb-util-right">
+        <button class="btn-talisman"><span class="talisman-inner">로그인</span></button>
+      </div>
+    </div>
+    <div class="gnb-main">
+      <a href="index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
+      </a>
+      <ul class="gnb-menu">
+        <li class="gnb-item"><a href="news.html" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
+        <li class="gnb-item gnb-has-drop is-active">
+          <a href="game.html" class="gnb-link"><span class="fire-spirit"></span>게임 <span class="gnb-arrow">▾</span></a>
+          <ul class="gnb-drop">
+            <li><a href="game.html" class="gnb-drop-link active">게임소개</a></li>
+            <li><a href="game.html#info" class="gnb-drop-link">게임정보</a></li>
+          </ul>
+        </li>
+        <li class="gnb-item gnb-has-drop">
+          <a href="community.html" class="gnb-link"><span class="fire-spirit"></span>커뮤니티 <span class="gnb-arrow">▾</span></a>
+          <ul class="gnb-drop">
+            <li><a href="community.html" class="gnb-drop-link">귀혼객잔</a></li>
+            <li><a href="community.html#ranking" class="gnb-drop-link">랭킹</a></li>
+            <li><a href="community.html#playground" class="gnb-drop-link">놀이터</a></li>
+          </ul>
+        </li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════ 서브 히어로 ══════════ -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg" style="background-image:url('https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg')"></div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-line"></div>
+    <div class="sub-hero-content">
+      <p class="sub-hero-eyebrow">GAME GUIDE</p>
+      <h1 class="sub-hero-title">게임소개 · 게임정보</h1>
+      <p class="sub-hero-breadcrumb">
+        <a href="index.html">홈</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-cur">게임소개</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ 서브 네비 ══════════ -->
+  <nav class="sub-nav">
+    <div class="sub-nav-inner">
+      <a href="#intro"   class="sub-nav-tab active">게임소개</a>
+      <a href="#classes" class="sub-nav-tab">직업 소개</a>
+      <a href="#story"   class="sub-nav-tab">세계관·스토리</a>
+      <a href="#info"    class="sub-nav-tab">게임정보</a>
+      <a href="#map"     class="sub-nav-tab">사냥터 안내</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ 게임소개 ══════════ -->
+  <section id="intro">
+    <div class="intro-hero-text">
+      <p class="big-quote">
+        죽은 자들이 깨어나는 밤,<br>
+        <em>당신의 전설</em>이 시작된다.
+      </p>
+      <p>
+        귀혼은 동양 신화와 요괴 전설을 배경으로 한 2D 무협 MMORPG입니다.
+        전사, 자객, 선인, 평민의 4가지 직업을 선택해 요괴가 들끓는 세계에서
+        자신만의 영웅 서사를 써 내려가세요.
+      </p>
+    </div>
+  </section>
+
+  <hr class="sub-divider" />
+
+  <!-- ══════════ 직업 소개 ══════════ -->
+  <section id="classes" class="bg-alt">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">CLASSES</p>
+        <h2 class="sub-section-title">직업 소개</h2>
+        <p class="sub-section-desc">총 4가지 직업 중 당신에게 맞는 플레이스타일을 선택하세요.</p>
+      </div>
+      <div class="job-grid">
+
+        <!-- 전사 -->
+        <div class="job-card">
+          <img class="job-card-img"
+            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="전사">
+          <div class="job-card-body">
+            <p class="job-card-tag">WARRIOR</p>
+            <h3 class="job-card-name">전사</h3>
+            <p class="job-card-role">근거리 딜러 · 탱커</p>
+            <p class="job-card-desc">강인한 체력과 압도적인 근접 전투력을 겸비한 직업. 전장의 최전선에서 아군을 이끄는 결전의 무사.</p>
+            <p class="job-card-footer">자세히 보기 →</p>
+          </div>
+        </div>
+
+        <!-- 자객 -->
+        <div class="job-card">
+          <img class="job-card-img"
+            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="자객">
+          <div class="job-card-body">
+            <p class="job-card-tag">ASSASSIN</p>
+            <h3 class="job-card-name">자객</h3>
+            <p class="job-card-role">고속 딜러 · 암습</p>
+            <p class="job-card-desc">그림자처럼 움직이는 암살자. 빛보다 빠른 이동 속도와 치명적인 단검 연계로 순식간에 적을 제압한다.</p>
+            <p class="job-card-footer">자세히 보기 →</p>
+          </div>
+        </div>
+
+        <!-- 선인 -->
+        <div class="job-card">
+          <img class="job-card-img"
+            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="선인">
+          <div class="job-card-body">
+            <p class="job-card-tag">ASCETIC</p>
+            <h3 class="job-card-name">선인</h3>
+            <p class="job-card-role">원거리 딜러 · 서포터</p>
+            <p class="job-card-desc">도교의 비술을 익힌 선계의 수행자. 강력한 주술로 적을 제압하고, 아군의 기운을 회복시키는 버팀목.</p>
+            <p class="job-card-footer">자세히 보기 →</p>
+          </div>
+        </div>
+
+        <!-- 평민 -->
+        <div class="job-card">
+          <img class="job-card-img"
+            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="평민">
+          <div class="job-card-body">
+            <p class="job-card-tag">COMMONER</p>
+            <h3 class="job-card-name">평민</h3>
+            <p class="job-card-role">만능형 · 생활계</p>
+            <p class="job-card-desc">요리, 제조, 채집 등 생활 콘텐츠에 특화된 직업. 독특한 개인기와 함정 전술로 누구도 예상 못 한 전투를 펼친다.</p>
+            <p class="job-card-footer">자세히 보기 →</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 세계관·스토리 ══════════ -->
+  <hr class="sub-divider" id="story" />
+  <section>
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">WORLDVIEW · STORY</p>
+        <h2 class="sub-section-title">세계관 · 스토리</h2>
+      </div>
+    </div>
+    <div class="story-wrap">
+
+      <div class="story-block">
+        <div class="story-img-wrap">
+          <img class="story-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg" alt="귀혼의 세계">
+          <div class="story-img-frame"></div>
+        </div>
+        <div class="story-text">
+          <p class="sub-eyebrow">PROLOGUE</p>
+          <h3 class="story-quote">
+            인간계와 요계의 경계가<br>무너지기 시작했다
+          </h3>
+          <p class="story-body">
+            태고의 봉인이 깨진 날, 저세상의 문이 열렸다. 수백 년간 봉인되어 있던 요괴들이 인간 세계로 쏟아지며 세상은 혼돈에 빠졌다.
+            도사, 협객, 술사, 그리고 이름 없는 평민들까지 — 살아남기 위해 저마다 칼을 들었다.
+            이것은 그들의 이야기다.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-block rev">
+        <div class="story-img-wrap">
+          <img class="story-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호">
+          <div class="story-img-frame"></div>
+        </div>
+        <div class="story-text">
+          <p class="sub-eyebrow">ANTAGONIST</p>
+          <h3 class="story-quote">
+            천년을 살아온 요괴들,<br>그 정점에 서다
+          </h3>
+          <p class="story-body">
+            요계의 정점에 군림하는 구미호는 수백 년의 원한을 품고 돌아왔다. 그녀의 손에는 봉인을 파괴한 역술서가 들려 있었고,
+            그 뒤로는 혈랑, 처녀귀신, 인공귀신이 줄지어 따랐다. 이들을 막을 수 있는 건 오직 각성한 영웅뿐.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-block">
+        <div class="story-img-wrap">
+          <img class="story-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="영웅">
+          <div class="story-img-frame"></div>
+        </div>
+        <div class="story-text">
+          <p class="sub-eyebrow">YOUR LEGEND</p>
+          <h3 class="story-quote">
+            지금 이 순간,<br>역사는 당신이 쓴다
+          </h3>
+          <p class="story-body">
+            당신이 선택한 직업과 걸어온 길이 곧 귀혼의 역사가 된다. 요괴를 토벌하고 길드를 이끌며, 때로는 혼자,
+            때로는 동료들과 함께 이 세계를 구해내라. 전설은 이미 시작됐다.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════ 게임정보 ══════════ -->
+  <hr class="sub-divider" id="info" />
+  <section class="info-banner">
+    <div class="info-banner-inner">
+      <div class="sub-section-head" style="margin-bottom:32px">
+        <p class="sub-eyebrow">GAME FEATURES</p>
+        <h2 class="sub-section-title">게임정보</h2>
+        <p class="sub-section-desc">귀혼만의 독특한 콘텐츠와 시스템을 만나보세요.</p>
+      </div>
+
+      <div class="info-tabs">
+        <button class="info-tab active">게임 특징</button>
+        <button class="info-tab">사냥·전투</button>
+        <button class="info-tab">길드 시스템</button>
+        <button class="info-tab">아이템·강화</button>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feat-card">
+          <div class="feat-icon">⚔️</div>
+          <h3 class="feat-title">실시간 2D 액션 전투</h3>
+          <p class="feat-desc">
+            클래식한 2D 횡스크롤 전투에 현대적인 콤보 시스템을 더했습니다.
+            직업별 고유 스킬 트리로 나만의 빌드를 완성하세요.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">👥</div>
+          <h3 class="feat-title">길드전 · 파티 사냥</h3>
+          <p class="feat-desc">
+            최대 30인이 참여하는 대규모 길드전과 5인 파티 던전.
+            전략적인 팀 플레이로 강력한 요괴 보스를 공략하세요.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🗺️</div>
+          <h3 class="feat-title">광활한 세계 탐험</h3>
+          <p class="feat-desc">
+            태화산, 서역 숲지대, 북쪽 설원 등 다양한 지역을 누비며
+            숨겨진 퀘스트와 요괴를 발견하세요.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🔮</div>
+          <h3 class="feat-title">요괴도감 수집</h3>
+          <p class="feat-desc">
+            127종 이상의 요괴를 토벌하고 도감을 채워나가세요.
+            전설 등급의 요괴는 특수 보상과 칭호를 제공합니다.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">🍳</div>
+          <h3 class="feat-title">생활 콘텐츠</h3>
+          <p class="feat-desc">
+            요리, 제조, 낚시, 채집 등 전투 외 다양한 생활 콘텐츠.
+            평민 직업은 생활 스킬에 강력한 보너스를 받습니다.
+          </p>
+        </div>
+        <div class="feat-card">
+          <div class="feat-icon">✨</div>
+          <h3 class="feat-title">코스튬 · 아바타</h3>
+          <p class="feat-desc">
+            수백 종의 코스튬과 아바타로 나만의 개성을 표현하세요.
+            한정 이벤트 코스튬은 기간 내에만 획득 가능합니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 사냥터 안내 ══════════ -->
+  <section id="map">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">HUNTING GROUNDS</p>
+        <h2 class="sub-section-title">사냥터 안내</h2>
+        <p class="sub-section-desc">레벨에 맞는 최적의 사냥터를 찾아보세요.</p>
+      </div>
+      <div class="map-section">
+        <div class="map-img-wrap">
+          <img class="map-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg" alt="귀혼 세계 지도">
+          <div class="map-img-frame"></div>
+        </div>
+        <div class="map-zone-list">
+          <div class="map-zone">
+            <span class="mz-lv">Lv. 1–10</span>
+            <div>
+              <p class="mz-name">초보자 마을 인근</p>
+              <p class="mz-desc">기초 요괴 서식지. 신규 유저 전용 사냥터.</p>
+            </div>
+          </div>
+          <div class="map-zone">
+            <span class="mz-lv">Lv. 11–25</span>
+            <div>
+              <p class="mz-name">서역 숲지대</p>
+              <p class="mz-desc">구미호가 출몰하는 울창한 숲. 은신 스킬 활용 권장.</p>
+            </div>
+          </div>
+          <div class="map-zone">
+            <span class="mz-lv">Lv. 26–35</span>
+            <div>
+              <p class="mz-name">한강 하류</p>
+              <p class="mz-desc">어귀와 수중 요괴가 서식. 수전 장비 필수.</p>
+            </div>
+          </div>
+          <div class="map-zone">
+            <span class="mz-lv">Lv. 36–42</span>
+            <div>
+              <p class="mz-name">북쪽 설원</p>
+              <p class="mz-desc">혈랑 무리의 영역. 빙결 저항 장비 추천.</p>
+            </div>
+          </div>
+          <div class="map-zone">
+            <span class="mz-lv">Lv. 43–50</span>
+            <div>
+              <p class="mz-name">태화산 ✦ NEW</p>
+              <p class="mz-desc">16.8 신규 지역. 최상위 요괴와 전설 아이템 획득 가능.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="sub-footer">
+    <p class="sf-copy">
+      ⓒ 2026 Nexon Korea. 귀혼은 (주)넥슨코리아의 등록상표입니다.<br>
+      본 사이트의 모든 컨텐츠는 무단 사용을 금합니다.
+    </p>
+    <nav class="sf-links">
+      <a href="#" class="sf-link">이용약관</a>
+      <a href="#" class="sf-link">개인정보처리방침</a>
+      <a href="#" class="sf-link">청소년보호정책</a>
+      <a href="#" class="sf-link">고객센터</a>
+    </nav>
+  </footer>
+
+  <script>
+    // 서브 네비 active 동기화
+    document.querySelectorAll('.sub-nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.sub-nav-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+    // 게임정보 탭
+    document.querySelectorAll('.info-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.info-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>

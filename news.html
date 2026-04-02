@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>게임소식 | 귀혼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="sub.css" />
+</head>
+<body class="sub-page">
+
+  <!-- ══════════ GNB ══════════ -->
+  <nav class="gnb">
+    <div class="gnb-util">
+      <div class="gnb-util-left">
+        <a href="index.html" class="util-link">전체게임</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">엠캐쉬 충전</a>
+        <span class="util-sep">|</span>
+        <a href="#" class="util-link">M이벤트</a>
+      </div>
+      <div class="gnb-util-right">
+        <button class="btn-talisman"><span class="talisman-inner">로그인</span></button>
+      </div>
+    </div>
+    <div class="gnb-main">
+      <a href="index.html" class="logo">
+        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
+      </a>
+      <ul class="gnb-menu">
+        <li class="gnb-item is-active"><a href="news.html" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
+        <li class="gnb-item gnb-has-drop">
+          <a href="game.html" class="gnb-link"><span class="fire-spirit"></span>게임 <span class="gnb-arrow">▾</span></a>
+          <ul class="gnb-drop">
+            <li><a href="game.html" class="gnb-drop-link">게임소개</a></li>
+            <li><a href="game.html#info" class="gnb-drop-link">게임정보</a></li>
+          </ul>
+        </li>
+        <li class="gnb-item gnb-has-drop">
+          <a href="community.html" class="gnb-link"><span class="fire-spirit"></span>커뮤니티 <span class="gnb-arrow">▾</span></a>
+          <ul class="gnb-drop">
+            <li><a href="community.html" class="gnb-drop-link">귀혼객잔</a></li>
+            <li><a href="community.html#ranking" class="gnb-drop-link">랭킹</a></li>
+            <li><a href="community.html#playground" class="gnb-drop-link">놀이터</a></li>
+          </ul>
+        </li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
+        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ══════════ 서브 히어로 ══════════ -->
+  <section class="sub-hero">
+    <div class="sub-hero-bg" style="background-image:url('https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg')"></div>
+    <div class="sub-hero-overlay"></div>
+    <div class="sub-hero-line"></div>
+    <div class="sub-hero-content">
+      <p class="sub-hero-eyebrow">GAME NEWS</p>
+      <h1 class="sub-hero-title">게임소식</h1>
+      <p class="sub-hero-breadcrumb">
+        <a href="index.html">홈</a>
+        <span class="bc-sep">›</span>
+        <span class="bc-cur">게임소식</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════ 서브 네비 ══════════ -->
+  <nav class="sub-nav">
+    <div class="sub-nav-inner">
+      <a href="#notice"  class="sub-nav-tab active">공지사항</a>
+      <a href="#patch"   class="sub-nav-tab">패치노트</a>
+      <a href="#event"   class="sub-nav-tab">이벤트</a>
+      <a href="#update"  class="sub-nav-tab">업데이트</a>
+    </div>
+  </nav>
+
+  <!-- ══════════ 피처드 뉴스 ══════════ -->
+  <section id="notice">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">FEATURED</p>
+        <h2 class="sub-section-title">주목할 만한 소식</h2>
+      </div>
+
+      <!-- 필터 탭 -->
+      <div class="news-filter">
+        <button class="nf-tab active">전체</button>
+        <button class="nf-tab">공지사항</button>
+        <button class="nf-tab">패치노트</button>
+        <button class="nf-tab">이벤트</button>
+        <button class="nf-tab">업데이트</button>
+      </div>
+
+      <!-- 피처드 3-컬럼 -->
+      <div class="news-featured">
+
+        <!-- 메인 피처드 -->
+        <article class="nfc nfc-main">
+          <img class="nfc-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="태화산 신규 지역">
+          <div class="nfc-body">
+            <span class="nfc-cat">업데이트</span>
+            <span class="nfc-date">2026. 4. 1</span>
+            <h3 class="nfc-title">태화산 신규 지역 오픈 — 전략적 팀 전투 16.8 대규모 패치</h3>
+            <p class="nfc-desc">새로운 사냥터 '태화산'과 함께 대규모 밸런스 조정, 신규 아이템, 길드전 개편이 한꺼번에 업데이트됩니다.</p>
+          </div>
+        </article>
+
+        <!-- 서브 피처드 1 -->
+        <article class="nfc">
+          <img class="nfc-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="개발자 노트">
+          <div class="nfc-body">
+            <span class="nfc-cat">개발 노트</span>
+            <span class="nfc-date">2026. 4. 1</span>
+            <h3 class="nfc-title">26.8 프로젝트: 여·지·휘 시스템 전면 개편 예고</h3>
+            <p class="nfc-desc">귀혼 개발팀이 직접 전하는 다음 시즌 방향성과 신규 콘텐츠 로드맵을 확인해보세요.</p>
+          </div>
+        </article>
+
+        <!-- 서브 피처드 2 -->
+        <article class="nfc">
+          <img class="nfc-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="소환사의 부엌 이벤트">
+          <div class="nfc-body">
+            <span class="nfc-cat purple">이벤트</span>
+            <span class="nfc-date">2026. 3. 31</span>
+            <h3 class="nfc-title">안무절 기념 「소환사의 부엌」 한정 이벤트 오픈</h3>
+            <p class="nfc-desc">기간 내 접속하여 특별 한정 코스튬과 풍성한 보상을 받아가세요. 4월 14일까지.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── 뉴스 목록 테이블 ── -->
+      <table class="news-table">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>분류</th>
+            <th>제목</th>
+            <th>작성자</th>
+            <th>날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 공지">공지</span></td>
+            <td class="nt-title">태화산 신규 지역 오픈 및 16.8 업데이트 안내<span class="nt-badge-new">NEW</span></td>
+            <td>운영팀</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 공지">공지</span></td>
+            <td class="nt-title">4월 정기점검 일정 및 보상 안내</td>
+            <td>운영팀</td>
+            <td>2026.03.30</td>
+          </tr>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">안무절 기념 「소환사의 부엌」 이벤트 안내<span class="nt-badge-new">NEW</span></td>
+            <td>이벤트팀</td>
+            <td>2026.03.31</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1024</td>
+            <td><span class="nt-cat 패치">패치</span></td>
+            <td class="nt-title">전략적 팀 전투 16.8 밸런스 패치 노트<span class="nt-badge-hot">HOT</span></td>
+            <td>개발팀</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1023</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">26.8 프로젝트 — 개발자 노트 공개</td>
+            <td>개발팀</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1022</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">봄맞이 요괴 대토벌 이벤트 (3/20 ~ 4/3)</td>
+            <td>이벤트팀</td>
+            <td>2026.03.20</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1021</td>
+            <td><span class="nt-cat 패치">패치</span></td>
+            <td class="nt-title">16.7 긴급 패치 — 자객 스킬 오류 수정</td>
+            <td>개발팀</td>
+            <td>2026.03.15</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1020</td>
+            <td><span class="nt-cat 공지">공지</span></td>
+            <td class="nt-title">개인정보처리방침 개정 안내 (2026년 4월)</td>
+            <td>운영팀</td>
+            <td>2026.03.10</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1019</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">신규 유저 특별 스타터 패키지 지급 이벤트</td>
+            <td>이벤트팀</td>
+            <td>2026.03.08</td>
+          </tr>
+          <tr>
+            <td class="nt-num">1018</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">길드전 시스템 전면 개편 — 상세 내용 공개</td>
+            <td>개발팀</td>
+            <td>2026.03.01</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- 페이지네이션 -->
+      <div class="sub-pager">
+        <button class="pg pg-arrow">‹‹</button>
+        <button class="pg pg-arrow">‹</button>
+        <button class="pg active">1</button>
+        <button class="pg">2</button>
+        <button class="pg">3</button>
+        <button class="pg">4</button>
+        <button class="pg">5</button>
+        <button class="pg pg-arrow">›</button>
+        <button class="pg pg-arrow">››</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ 패치노트 ══════════ -->
+  <hr class="sub-divider" id="patch" />
+  <section class="bg-alt">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">PATCH NOTES</p>
+        <h2 class="sub-section-title">패치노트</h2>
+        <p class="sub-section-desc">최신 패치 내용을 확인하고 변경된 게임 환경에 적응하세요.</p>
+      </div>
+      <table class="news-table">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>분류</th>
+            <th>제목</th>
+            <th>버전</th>
+            <th>날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nt-num">18</td>
+            <td><span class="nt-cat 패치">패치</span></td>
+            <td class="nt-title">16.8 밸런스 패치 — 전사·선인 스킬 조정<span class="nt-badge-new">NEW</span></td>
+            <td>v16.8</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">17</td>
+            <td><span class="nt-cat 패치">패치</span></td>
+            <td class="nt-title">16.7 긴급 패치 — 자객 쌍수 오류 수정</td>
+            <td>v16.7</td>
+            <td>2026.03.15</td>
+          </tr>
+          <tr>
+            <td class="nt-num">16</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">16.6 대규모 업데이트 — 귀혼객잔 시스템 추가</td>
+            <td>v16.6</td>
+            <td>2026.03.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">15</td>
+            <td><span class="nt-cat 패치">패치</span></td>
+            <td class="nt-title">16.5 밸런스 패치 — 평민 직업 상향</td>
+            <td>v16.5</td>
+            <td>2026.02.15</td>
+          </tr>
+          <tr>
+            <td class="nt-num">14</td>
+            <td><span class="nt-cat 패치">패치</span></td>
+            <td class="nt-title">16.4 패치 — 구미호 보스 드롭률 조정</td>
+            <td>v16.4</td>
+            <td>2026.02.01</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ 이벤트 ══════════ -->
+  <hr class="sub-divider" id="event" />
+  <section>
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">EVENTS</p>
+        <h2 class="sub-section-title">진행 중인 이벤트</h2>
+        <p class="sub-section-desc">지금 바로 참여하고 특별한 보상을 획득하세요.</p>
+      </div>
+      <table class="news-table">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>분류</th>
+            <th>제목</th>
+            <th>기간</th>
+            <th>날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">안무절 기념 「소환사의 부엌」 한정 이벤트<span class="nt-badge-new">NEW</span></td>
+            <td>~ 4.14</td>
+            <td>2026.03.31</td>
+          </tr>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">봄맞이 요괴 대토벌 이벤트<span class="nt-badge-hot">HOT</span></td>
+            <td>~ 4.03</td>
+            <td>2026.03.20</td>
+          </tr>
+          <tr>
+            <td class="nt-num">42</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">신규 유저 귀혼 스타터 패키지 지급</td>
+            <td>상시</td>
+            <td>2026.03.08</td>
+          </tr>
+          <tr>
+            <td class="nt-num">41</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">길드 창설 기념 — 선착순 길드 혜택 지급</td>
+            <td>종료</td>
+            <td>2026.02.28</td>
+          </tr>
+          <tr>
+            <td class="nt-num">40</td>
+            <td><span class="nt-cat 이벤트">이벤트</span></td>
+            <td class="nt-title">설날 특집 「귀혼의 세배」 이벤트</td>
+            <td>종료</td>
+            <td>2026.01.28</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer class="sub-footer">
+    <p class="sf-copy">
+      ⓒ 2026 Nexon Korea. 귀혼은 (주)넥슨코리아의 등록상표입니다.<br>
+      본 사이트의 모든 컨텐츠는 무단 사용을 금합니다.
+    </p>
+    <nav class="sf-links">
+      <a href="#" class="sf-link">이용약관</a>
+      <a href="#" class="sf-link">개인정보처리방침</a>
+      <a href="#" class="sf-link">청소년보호정책</a>
+      <a href="#" class="sf-link">고객센터</a>
+    </nav>
+  </footer>
+
+  <script>
+    // 필터 탭 토글
+    document.querySelectorAll('.nf-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.nf-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+    // 서브 네비 active
+    document.querySelectorAll('.sub-nav-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.sub-nav-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
