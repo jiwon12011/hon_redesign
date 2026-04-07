@@ -218,6 +218,7 @@ a{text-decoration:none;color:inherit}
   padding-left:26px;
 }
 .gnb-drop-link.active{color:var(--mint)}
+.gnb-login{margin-left:auto;flex-shrink:0}
 
 /* ══════════════════════════════
    도깨비불 (CSS 전용 flame)
@@ -2167,82 +2168,3 @@ a{text-decoration:none;color:inherit}
   -webkit-box-orient:vertical;overflow:hidden;
 }
 
-/* ══════════════════════════════════════════════
-   이스터에그 — 달걀귀신
-══════════════════════════════════════════════ */
-.egg-ghost{
-  position:fixed;
-  bottom:0;left:32px;
-  z-index:9999;
-  width:72px;
-  transform:translateY(100%);
-  transition:transform .55s cubic-bezier(.34,1.56,.64,1);
-  pointer-events:none;
-  user-select:none;
-}
-.egg-ghost.is-peeking{
-  transform:translateY(0);
-}
-
-/* 달걀 본체 */
-.egg-img-wrap{
-  position:relative;
-  width:72px;height:86px;
-  background:radial-gradient(ellipse 80% 90% at 50% 55%,#f5f0e8 0%,#e8dfc8 60%,#c8b890 100%);
-  border-radius:50% 50% 48% 48% / 42% 42% 58% 58%;
-  box-shadow:
-    0 4px 16px rgba(0,0,0,.5),
-    inset 0 -6px 12px rgba(120,90,40,.2),
-    inset 0 4px 8px rgba(255,255,240,.5);
-  overflow:hidden;
-}
-
-/* 픽셀 얼굴 */
-.egg-pixel-art{
-  position:absolute;
-  inset:0;
-  display:flex;align-items:center;justify-content:center;
-}
-
-/* 눈 */
-.ep-eye{
-  position:absolute;
-  top:30px;
-  width:8px;height:8px;
-  background:#2a1a10;
-  border-radius:50%;
-  box-shadow:0 2px 0 rgba(255,255,255,.4);
-}
-.ep-eye-l{left:18px}
-.ep-eye-r{right:18px}
-
-/* 입 */
-.ep-mouth{
-  position:absolute;
-  bottom:22px;left:50%;
-  transform:translateX(-50%);
-  width:16px;height:7px;
-  border:2px solid #2a1a10;
-  border-top:none;
-  border-radius:0 0 8px 8px;
-}
-
-/* 볼 */
-.ep-cheek{
-  position:absolute;
-  bottom:26px;
-  width:10px;height:5px;
-  background:rgba(220,100,80,.35);
-  border-radius:50%;
-}
-.ep-cheek-l{left:10px}
-.ep-cheek-r{right:10px}
-
-/* 이름표 */
-.egg-label{
-  text-align:center;
-  font-family:'Galmuri11',monospace;
-  font-size:.6rem;letter-spacing:.1em;
-  color:rgba(200,160,96,.6);
-  margin-top:4px;
-}
