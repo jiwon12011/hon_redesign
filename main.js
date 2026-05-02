@@ -11,17 +11,23 @@ const jobs = {
     character: "images/redesign_img/character-assassin-purple.png",
     stats: [94, 42, 55, 96]
   },
-  ascetic: {
-    title: "선인",
-    tagline: "도술과 지혜로 전장의 흐름을 바꾸는 원거리 전투 전문가",
-    character: "images/redesign_img/character-fighter-axe.png",
-    stats: [72, 58, 70, 82]
+  archer: {
+    title: "사수",
+    tagline: "활과 원거리 공격으로 전장을 넓게 장악하는 정밀 사격 전문가",
+    character: "images/redesign_img/character-ranger-bow.png",
+    stats: [78, 52, 58, 88]
   },
-  healer: {
-    title: "힐러",
-    tagline: "회복과 보호의 힘으로 파티의 생존을 책임지는 지원가",
+  fighter: {
+    title: "역도",
+    tagline: "묵직한 무기와 강한 힘으로 적진을 흔드는 파괴형 근접 전투가",
+    character: "images/redesign_img/character-fighter-axe.png",
+    stats: [92, 78, 82, 38]
+  },
+  daoist: {
+    title: "도사",
+    tagline: "도술과 부적의 힘으로 전투 흐름을 바꾸는 영력 전문가",
     character: "images/redesign_img/character-ascetic-white.png",
-    stats: [48, 64, 88, 74]
+    stats: [64, 62, 76, 70]
   }
 };
 
