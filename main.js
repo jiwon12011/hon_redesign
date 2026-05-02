@@ -3,39 +3,112 @@ const jobs = {
     title: "전사",
     tagline: "강력한 힘과 체력으로 전장을 지배하는 근접 전투의 달인",
     character: "images/redesign_img/character-warrior-sword.png",
+    background: "images/redesign_img/class-warrior-bg.png",
     stats: [85, 90, 60, 30]
   },
   assassin: {
     title: "자객",
     tagline: "빠른 움직임과 치명적인 일격으로 적의 빈틈을 파고드는 암살자",
     character: "images/redesign_img/character-assassin-purple.png",
+    background: "images/redesign_img/class-assassin-bg.png",
     stats: [94, 42, 55, 96]
   },
   archer: {
     title: "사수",
     tagline: "활과 원거리 공격으로 전장을 넓게 장악하는 정밀 사격 전문가",
     character: "images/redesign_img/character-ranger-bow.png",
+    background: "images/redesign_img/class-ranger-bg.png",
     stats: [78, 52, 58, 88]
   },
   fighter: {
     title: "역도",
     tagline: "묵직한 무기와 강한 힘으로 적진을 흔드는 파괴형 근접 전투가",
     character: "images/redesign_img/character-fighter-axe.png",
+    background: "images/redesign_img/class-fighter-bg.png",
     stats: [92, 78, 82, 38]
   },
   daoist: {
     title: "도사",
     tagline: "도술과 부적의 힘으로 전투 흐름을 바꾸는 영력 전문가",
     character: "images/redesign_img/character-ascetic-white.png",
+    background: "images/redesign_img/class-ascetic-bg.png",
     stats: [64, 62, 76, 70]
   }
 };
 
+const yokai = {
+  nineTail: {
+    name: "구미호",
+    rarity: "COMMON",
+    rarityClass: "rarity-common-tag",
+    score: "12,360 혼",
+    desc: "오래된 산길에 나타나는 여우 요괴. 환영을 만들고 빠른 몸놀림으로 모험가의 빈틈을 노립니다.",
+    info: "환술과 꼬리 공격을 섞어 전투 흐름을 흔드는 기민한 요괴입니다.",
+    region: "청음 숲길 · 달빛 고개",
+    reward: "여우 혼석, 낡은 부적, 금전",
+    difficulty: 42,
+    difficultyText: "2 / 5"
+  },
+  fireWolf: {
+    name: "화염 멧돼지",
+    rarity: "RARE",
+    rarityClass: "rarity-rare-tag",
+    score: "21,365 혼",
+    desc: "불씨를 두른 돌진형 요괴. 짧은 예고 뒤 빠르게 들이받아 전열을 무너뜨립니다.",
+    info: "화상 장판과 돌진을 반복하므로 옆으로 피한 뒤 공격 타이밍을 잡는 것이 좋습니다.",
+    region: "붉은 숲 외곽 · 재의 언덕",
+    reward: "화염 가죽, 붉은 송곳니, 금전",
+    difficulty: 58,
+    difficultyText: "3 / 5"
+  },
+  maidenGhost: {
+    name: "처녀귀신",
+    rarity: "EPIC",
+    rarityClass: "rarity-epic-tag",
+    score: "45,262 혼",
+    desc: "차가운 기운을 품은 원혼. 먼 거리에서 영력을 날리고 이동을 둔화시킵니다.",
+    info: "빙결과 침묵 계열 공격이 강해 회피기와 해제 아이템을 준비하면 안정적입니다.",
+    region: "버려진 사당 · 안개 묘지",
+    reward: "한기 어린 혼, 비단 조각, 봉인석",
+    difficulty: 76,
+    difficultyText: "4 / 5"
+  },
+  clawFiend: {
+    name: "만조각신",
+    rarity: "EPIC",
+    rarityClass: "rarity-epic-tag",
+    score: "7,998 혼",
+    desc: "날카로운 손톱으로 가까운 적을 찢는 기괴한 요괴. 체력은 낮지만 공격 속도가 빠릅니다.",
+    info: "짧은 연속 공격 후 틈이 생기며, 방어보다 거리 조절이 더 중요합니다.",
+    region: "폐가 골목 · 그림자 장터",
+    reward: "날카로운 발톱, 검은 천, 금전",
+    difficulty: 64,
+    difficultyText: "3 / 5"
+  },
+  fishGhost: {
+    name: "독도 설귀",
+    rarity: "LEGENDARY",
+    rarityClass: "rarity-legendary-tag",
+    score: "32,609 혼",
+    desc: "거친 물살을 타고 나타나는 희귀 요괴. 물기둥과 꼬리 휩쓸기로 넓은 범위를 장악합니다.",
+    info: "광역 공격 범위가 넓어 이동 경로를 먼저 확보하고 짧게 치고 빠지는 전투가 유리합니다.",
+    region: "동해 절벽 · 파도 동굴",
+    reward: "설귀 비늘, 푸른 혼석, 희귀 강화재",
+    difficulty: 88,
+    difficultyText: "5 / 5"
+  }
+};
+
 const statLabels = ["공격력", "방어력", "체력", "민첩성"];
+const jobOrder = Object.keys(jobs);
 const title = document.getElementById("class-title");
 const tagline = document.querySelector(".class-tagline");
 const statList = document.querySelector(".stat-list");
-const classPreview = document.querySelector(".class-preview-img");
+const characterSection = document.querySelector(".character-section");
+const characterWrap = document.querySelector(".character-wrap");
+const classDetail = document.querySelector(".class-detail");
+const jobCards = [...document.querySelectorAll(".job-card")];
+let currentJobIndex = 0;
 
 function renderStats(stats) {
   statList.innerHTML = stats.map((value, index) => `
@@ -47,21 +120,108 @@ function renderStats(stats) {
   `).join("");
 }
 
-document.querySelectorAll(".job-card").forEach((card) => {
+function runClassMotion(direction) {
+  characterWrap.classList.remove("slide-next", "slide-prev");
+  classDetail.classList.remove("is-swapping");
+  characterSection.classList.remove("is-sliding");
+
+  window.requestAnimationFrame(() => {
+    characterWrap.classList.add(direction === "prev" ? "slide-prev" : "slide-next");
+    classDetail.classList.add("is-swapping");
+    characterSection.classList.add("is-sliding");
+  });
+}
+
+function selectJob(jobKey, direction = "next") {
+  const nextIndex = jobOrder.indexOf(jobKey);
+  const job = jobs[jobKey];
+  if (!job || nextIndex < 0) return;
+
+  currentJobIndex = nextIndex;
+
+  jobCards.forEach((item) => {
+    const selected = item.dataset.job === jobKey;
+    item.classList.toggle("character-selected", selected);
+    item.setAttribute("aria-selected", selected ? "true" : "false");
+  });
+
+  title.textContent = job.title;
+  tagline.textContent = job.tagline;
+  characterSection.style.setProperty("--class-bg", `url("${job.background}")`);
+  renderStats(job.stats);
+  runClassMotion(direction);
+}
+
+jobCards.forEach((card, index) => {
   card.addEventListener("click", () => {
-    const job = jobs[card.dataset.job];
-    if (!job) return;
-
-    document.querySelectorAll(".job-card").forEach((item) => {
-      item.classList.remove("character-selected");
-      item.setAttribute("aria-selected", "false");
-    });
-
-    card.classList.add("character-selected");
-    card.setAttribute("aria-selected", "true");
-    title.textContent = job.title;
-    tagline.textContent = job.tagline;
-    classPreview.src = job.character;
-    renderStats(job.stats);
+    const direction = index < currentJobIndex ? "prev" : "next";
+    selectJob(card.dataset.job, direction);
   });
 });
+
+document.querySelector(".class-nav-prev").addEventListener("click", () => {
+  const nextIndex = (currentJobIndex - 1 + jobOrder.length) % jobOrder.length;
+  selectJob(jobOrder[nextIndex], "prev");
+});
+
+document.querySelector(".class-nav-next").addEventListener("click", () => {
+  const nextIndex = (currentJobIndex + 1) % jobOrder.length;
+  selectJob(jobOrder[nextIndex], "next");
+});
+
+const bestiarySection = document.querySelector(".bestiary-strip");
+const yokaiCards = [...document.querySelectorAll(".yokai-card")];
+const detailClose = document.querySelector(".detail-close");
+const detailRarity = document.querySelector(".detail-rarity");
+const detailScore = document.querySelector(".detail-score");
+const detailName = document.querySelector(".detail-name");
+const detailDesc = document.querySelector(".detail-desc");
+const detailInfo = document.querySelector(".detail-info");
+const detailRegion = document.querySelector(".detail-region");
+const detailReward = document.querySelector(".detail-reward");
+const detailMeter = document.querySelector(".difficulty-meter i");
+const detailDifficulty = document.querySelector(".detail-difficulty strong");
+
+function openYokaiDetail(yokaiKey) {
+  const data = yokai[yokaiKey];
+  if (!data) return;
+
+  bestiarySection.classList.add("is-expanded");
+  detailRarity.className = `rarity detail-rarity ${data.rarityClass}`;
+  detailRarity.textContent = data.rarity;
+  detailScore.textContent = data.score;
+  detailName.textContent = data.name;
+  detailDesc.textContent = data.desc;
+  detailInfo.textContent = data.info;
+  detailRegion.textContent = data.region;
+  detailReward.textContent = data.reward;
+  detailMeter.style.width = `${data.difficulty}%`;
+  detailDifficulty.textContent = data.difficultyText;
+
+  yokaiCards.forEach((card) => {
+    const selected = card.dataset.yokai === yokaiKey;
+    card.classList.toggle("yokai-selected", selected);
+    card.setAttribute("aria-expanded", selected ? "true" : "false");
+  });
+}
+
+function closeYokaiDetail() {
+  bestiarySection.classList.remove("is-expanded");
+  yokaiCards.forEach((card) => {
+    card.classList.remove("yokai-selected");
+    card.setAttribute("aria-expanded", "false");
+  });
+}
+
+yokaiCards.forEach((card) => {
+  card.addEventListener("click", () => {
+    if (card.classList.contains("yokai-selected")) {
+      closeYokaiDetail();
+      return;
+    }
+
+    openYokaiDetail(card.dataset.yokai);
+  });
+});
+
+detailClose.addEventListener("click", closeYokaiDetail);

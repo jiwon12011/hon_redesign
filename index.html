@@ -72,44 +72,72 @@
             <h2 id="bestiary-title">요괴 도감</h2>
             <p>수집한 요괴 <strong>126 / 356</strong></p>
           </div>
-          <button class="button-paper">도감 전체 보기 &gt;</button>
         </div>
-        <div class="slider-row">
-          <button class="arrow-btn" aria-label="이전 요괴">‹</button>
-          <div class="bestiary-grid">
-            <article class="yokai-card rarity-common">
+        <div class="bestiary-stage">
+          <div class="bestiary-grid" aria-label="요괴 선택">
+            <button class="yokai-card rarity-common" type="button" data-yokai="nineTail" aria-expanded="false" aria-controls="yokai-detail">
               <span class="rarity">COMMON</span>
-              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-nine-tail.png" alt="구미호" /></div>
+              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-nine-tail-card.png" alt="구미호" /></div>
               <div class="card-row"><strong>구미호</strong><span>12,360</span></div>
-            </article>
-            <article class="yokai-card rarity-rare">
+            </button>
+            <button class="yokai-card rarity-rare" type="button" data-yokai="fireWolf" aria-expanded="false" aria-controls="yokai-detail">
               <span class="rarity">RARE</span>
               <div class="yokai-art-frame"><img src="images/redesign_img/yokai-fire-wolf.png" alt="화염 멧돼지" /></div>
               <div class="card-row"><strong>화염 멧돼지</strong><span>21,365</span></div>
-            </article>
-            <article class="yokai-card rarity-epic">
+            </button>
+            <button class="yokai-card rarity-epic" type="button" data-yokai="maidenGhost" aria-expanded="false" aria-controls="yokai-detail">
               <span class="rarity">EPIC</span>
               <div class="yokai-art-frame"><img src="images/redesign_img/yokai-maiden-ghost.png" alt="처녀귀신" /></div>
               <div class="card-row"><strong>처녀귀신</strong><span>45,262</span></div>
-            </article>
-            <article class="yokai-card rarity-epic">
+            </button>
+            <button class="yokai-card rarity-epic" type="button" data-yokai="clawFiend" aria-expanded="false" aria-controls="yokai-detail">
               <span class="rarity">EPIC</span>
               <div class="yokai-art-frame"><img src="images/redesign_img/yokai-claw-fiend.png" alt="만조각신" /></div>
               <div class="card-row"><strong>만조각신</strong><span>7,998</span></div>
-            </article>
-            <article class="yokai-card rarity-legendary">
+            </button>
+            <button class="yokai-card rarity-legendary" type="button" data-yokai="fishGhost" aria-expanded="false" aria-controls="yokai-detail">
               <span class="rarity">LEGENDARY</span>
               <div class="yokai-art-frame"><img src="images/redesign_img/yokai-fish-ghost.png" alt="독도 설귀" /></div>
               <div class="card-row"><strong>독도 설귀</strong><span>32,609</span></div>
-            </article>
+            </button>
           </div>
-          <button class="arrow-btn" aria-label="다음 요괴">›</button>
+          <aside class="yokai-detail-panel" id="yokai-detail" aria-live="polite">
+            <button class="detail-close" type="button" aria-label="요괴 목록 보기">×</button>
+            <div class="detail-kicker">
+              <span class="rarity detail-rarity">COMMON</span>
+              <span class="detail-score">12,360 혼</span>
+            </div>
+            <h3 class="detail-name">구미호</h3>
+            <p class="detail-desc">오래된 산길에 나타나는 여우 요괴. 환영을 만들고 빠른 몸놀림으로 모험가의 빈틈을 노립니다.</p>
+            <dl class="yokai-info-grid">
+              <div>
+                <dt>요괴 정보</dt>
+                <dd class="detail-info">환술과 꼬리 공격을 섞어 전투 흐름을 흔드는 기민한 요괴입니다.</dd>
+              </div>
+              <div>
+                <dt>출몰 지역</dt>
+                <dd class="detail-region">청음 숲길 · 달빛 고개</dd>
+              </div>
+              <div>
+                <dt>처치 보상</dt>
+                <dd class="detail-reward">여우 혼석, 낡은 부적, 금전</dd>
+              </div>
+              <div>
+                <dt>요괴 난이도</dt>
+                <dd class="detail-difficulty">
+                  <span class="difficulty-meter"><i style="width: 42%"></i></span>
+                  <strong>2 / 5</strong>
+                </dd>
+              </div>
+            </dl>
+          </aside>
         </div>
       </div>
     </section>
 
     <section class="character-section" id="guide" aria-labelledby="class-title">
       <div class="content-wrap character-wrap">
+        <button class="class-nav class-nav-prev" type="button" aria-label="이전 직업">‹</button>
         <div class="character-picker">
           <p class="eyebrow">CHARACTER SELECT</p>
           <h2>캐릭터 선택</h2>
@@ -143,7 +171,6 @@
           </div>
         </div>
         <article class="class-detail">
-          <img class="class-preview-img" src="images/redesign_img/character-warrior-sword.png" alt="" />
           <div>
             <p class="eyebrow">SELECTED CLASS</p>
             <h2 id="class-title">전사</h2>
@@ -157,6 +184,7 @@
           </div>
           <button class="button-primary">캐릭터 생성</button>
         </article>
+        <button class="class-nav class-nav-next" type="button" aria-label="다음 직업">›</button>
       </div>
     </section>
 
@@ -173,8 +201,19 @@
           </ul>
           <button class="button-primary button-large">테스트 시작하기</button>
         </div>
-        <figure class="recommend-art">
-          <img src="images/redesign_img/personality-test-party.png" alt="직업 테스트 캐릭터 모음" />
+        <figure class="recommend-art" aria-label="직업 테스트 캐릭터 모음">
+          <div class="recommend-stage">
+            <span class="speech-bubble bubble-speed">빠른 기습</span>
+            <span class="speech-bubble bubble-force">정면 돌파</span>
+            <span class="speech-bubble bubble-support">부적 지원</span>
+            <span class="speech-bubble bubble-safe">안전 회복</span>
+            <span class="magic-core">?</span>
+            <img class="test-character test-assassin" src="images/redesign_img/character-assassin-purple.png" alt="자객" />
+            <img class="test-character test-archer" src="images/redesign_img/character-ranger-bow.png" alt="사수" />
+            <img class="test-character test-warrior" src="images/redesign_img/character-warrior-sword.png" alt="전사" />
+            <img class="test-character test-fighter" src="images/redesign_img/character-fighter-axe.png" alt="역도" />
+            <img class="test-character test-daoist" src="images/redesign_img/character-ascetic-white.png" alt="도사" />
+          </div>
         </figure>
       </div>
     </section>
