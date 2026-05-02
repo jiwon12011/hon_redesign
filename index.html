@@ -3,831 +3,242 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>귀혼 | Creepy & Cute</title>
+  <title>귀혼 | 빛이 있는 어둠의 모험</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- ══════════ 전역 도깨비불 파티클 ══════════ -->
-  <div class="wisp-field" aria-hidden="true">
-    <!-- 왼쪽 구역 -->
-    <span class="wisp" style="--wx:3%;  --wy:22%; --ws:4px; --wd:10s; --wdelay:0s;   --wo:.5;  --dx:-8px; --dx2:12px; --dx3:-6px; --dx4:9px"></span>
-    <span class="wisp" style="--wx:7%;  --wy:58%; --ws:5px; --wd:8s;  --wdelay:2.4s; --wo:.42; --dx:13px; --dx2:-9px; --dx3:17px; --dx4:-4px"></span>
-    <span class="wisp" style="--wx:5%;  --wy:83%; --ws:3px; --wd:12s; --wdelay:1.1s; --wo:.36; --dx:-11px;--dx2:7px;  --dx3:-14px;--dx4:5px"></span>
-    <!-- 왼쪽-중간 -->
-    <span class="wisp" style="--wx:18%; --wy:14%; --ws:6px; --wd:9s;  --wdelay:0.6s; --wo:.46; --dx:11px; --dx2:-13px;--dx3:9px;  --dx4:-7px"></span>
-    <span class="wisp" style="--wx:24%; --wy:67%; --ws:4px; --wd:11s; --wdelay:3.3s; --wo:.4;  --dx:-10px;--dx2:15px; --dx3:-12px;--dx4:6px"></span>
-    <span class="wisp" style="--wx:14%; --wy:42%; --ws:5px; --wd:10s; --wdelay:2.0s; --wo:.38; --dx:-7px; --dx2:11px; --dx3:-13px;--dx4:7px"></span>
-    <!-- 중앙 -->
-    <span class="wisp" style="--wx:44%; --wy:28%; --ws:5px; --wd:13s; --wdelay:1.9s; --wo:.36; --dx:12px; --dx2:-7px; --dx3:17px; --dx4:-9px"></span>
-    <span class="wisp" style="--wx:51%; --wy:73%; --ws:3px; --wd:7s;  --wdelay:4.2s; --wo:.5;  --dx:-14px;--dx2:10px; --dx3:-9px; --dx4:13px"></span>
-    <span class="wisp" style="--wx:38%; --wy:48%; --ws:3px; --wd:14s; --wdelay:6.8s; --wo:.35; --dx:10px; --dx2:-15px;--dx3:8px;  --dx4:-12px"></span>
-    <!-- 오른쪽-중간 -->
-    <span class="wisp" style="--wx:64%; --wy:16%; --ws:5px; --wd:10s; --wdelay:0.9s; --wo:.4;  --dx:9px;  --dx2:-17px;--dx3:6px;  --dx4:-13px"></span>
-    <span class="wisp" style="--wx:71%; --wy:52%; --ws:4px; --wd:8s;  --wdelay:2.8s; --wo:.44; --dx:-10px;--dx2:14px; --dx3:-9px; --dx4:7px"></span>
-    <span class="wisp" style="--wx:67%; --wy:80%; --ws:6px; --wd:15s; --wdelay:5.2s; --wo:.32; --dx:15px; --dx2:-8px; --dx3:11px; --dx4:-10px"></span>
-    <!-- 오른쪽 구역 -->
-    <span class="wisp" style="--wx:84%; --wy:23%; --ws:4px; --wd:9s;  --wdelay:1.6s; --wo:.5;  --dx:-13px;--dx2:9px;  --dx3:-17px;--dx4:5px"></span>
-    <span class="wisp" style="--wx:91%; --wy:62%; --ws:5px; --wd:11s; --wdelay:3.9s; --wo:.4;  --dx:10px; --dx2:-12px;--dx3:7px;  --dx4:-8px"></span>
-    <span class="wisp" style="--wx:87%; --wy:87%; --ws:3px; --wd:8s;  --wdelay:0.3s; --wo:.44; --dx:-6px; --dx2:14px; --dx3:-10px;--dx4:11px"></span>
-  </div>
-
-  <!-- ══════════ GNB ══════════ -->
-  <nav class="gnb">
-    <div class="gnb-util">
-      <div class="gnb-util-left">
-        <a href="#" class="util-link">전체게임</a>
-        <span class="util-sep">|</span>
-        <a href="#" class="util-link">엠캐쉬 충전</a>
-        <span class="util-sep">|</span>
-        <a href="#" class="util-link">M이벤트</a>
-      </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="귀혼 홈">
+      <img src="images/redesign_img/guihon-logo.png" alt="귀혼" />
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="game.html">게임소개</a>
+      <a href="#guide">가이드</a>
+      <a href="community.html">커뮤니티</a>
+      <a href="#archive">자료실</a>
+      <a href="news.html">고객센터</a>
+    </nav>
+    <div class="header-actions">
+      <button class="button-secondary">로그인</button>
+      <button class="button-primary">회원가입</button>
     </div>
-    <div class="gnb-main">
-      <a href="#" class="logo">
-        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
-      </a>
-      <ul class="gnb-menu">
-        <li class="gnb-item"><a href="news.html" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
-        <li class="gnb-item gnb-has-drop">
-          <a href="game.html" class="gnb-link"><span class="fire-spirit"></span>게임 <span class="gnb-arrow">▾</span></a>
-          <ul class="gnb-drop">
-            <li><a href="game.html" class="gnb-drop-link">게임소개</a></li>
-            <li><a href="game.html#info" class="gnb-drop-link">게임정보</a></li>
-          </ul>
-        </li>
-        <li class="gnb-item gnb-has-drop">
-          <a href="community.html" class="gnb-link"><span class="fire-spirit"></span>커뮤니티 <span class="gnb-arrow">▾</span></a>
-          <ul class="gnb-drop">
-            <li><a href="community.html" class="gnb-drop-link">귀혼객잔</a></li>
-            <li><a href="community.html#ranking" class="gnb-drop-link">랭킹</a></li>
-            <li><a href="community.html#playground" class="gnb-drop-link">놀이터</a></li>
-          </ul>
-        </li>
-        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
-        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
-      </ul>
-      <button class="btn-talisman gnb-login">
-        <span class="talisman-inner">로그인</span>
-      </button>
-    </div>
-  </nav>
+  </header>
 
-  <!-- ══════════ HERO ══════════ -->
-  <section class="hero">
-    <!-- bg layers -->
-    <div class="hero-bg-art"></div>
-    <div class="hero-noise"></div>
-    <div class="hero-vignette"></div>
-
-    <!-- main 2-col layout -->
-    <div class="hero-layout">
-
-      <!-- LEFT: text + CTA -->
-      <div class="hero-text-col">
-        <div class="hero-eyebrow">
-          <span class="eyebrow-line"></span>
-          <span class="eyebrow-text">2D 무협 MMORPG</span>
-          <span class="eyebrow-badge">● ONLINE</span>
-        </div>
-
-        <h1 class="hero-title">
-          <span class="ht-main glitch" data-text="귀혼">귀혼</span>
-          <span class="ht-cn">鬼魂</span>
-        </h1>
-
-        <p class="hero-tagline">
-          죽은 자들이 깨어나는 밤,<br>당신의 전설이 시작된다.
-        </p>
-
-        <div class="hero-actions">
-          <button class="btn-hero-primary">
-            <span class="bhp-icon">▶</span>
-            <span>게임 시작</span>
-          </button>
-          <button class="btn-hero-outline">다운로드</button>
-          <a href="#" class="btn-hero-text">테스트 서버 →</a>
-        </div>
-
-        <div class="hero-stats-row">
-          <div class="hstat">
-            <span class="hstat-n">Lv.50</span>
-            <span class="hstat-l">최대 레벨</span>
-          </div>
-          <span class="hstat-sep"></span>
-          <div class="hstat">
-            <span class="hstat-n">4</span>
-            <span class="hstat-l">직업 클래스</span>
-          </div>
-          <span class="hstat-sep"></span>
-          <div class="hstat">
-            <span class="hstat-n">2006</span>
-            <span class="hstat-l">서비스 시작</span>
+  <main>
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow">요괴를 수집하고 혼을 깨우는 모험</p>
+          <h1 id="hero-title">귀혼</h1>
+          <p class="hero-desc">더 강한 영혼이 되기 위한 여정, 지금 귀혼의 세계로 들어오세요.</p>
+          <div class="hero-buttons">
+            <button class="button-primary button-large">게임 시작</button>
+            <button class="button-secondary button-large">게임 다운로드</button>
           </div>
         </div>
-      </div>
-
-      <!-- RIGHT: character + floating cards -->
-      <div class="hero-char-col">
-        <!-- glow blob behind character -->
-        <div class="char-glow-blob"></div>
-
-        <!-- character sprite -->
-        <div class="hero-char-wrap">
-          <img
-            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/20_warrior_female_no_bg_cnbsului.png"
-            alt="전사 캐릭터"
-            class="hero-char-sprite"
-          />
-        </div>
-
-        <!-- floating card: 귀혼 ISSUE -->
-        <div class="fcard issue-fcard">
-          <div class="fcard-header">
-            <span class="fcard-dot"></span>
-            <span class="fcard-title-text">귀혼 ISSUE</span>
-          </div>
-          <div class="fcard-thumb-row">
-            <img
-              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg"
-              alt="신규 캐릭터"
-              class="fcard-thumb"
-            />
-            <div class="fcard-thumb-info">
-              <p class="fcard-name">신규 캐릭터 <strong>바서커</strong></p>
-              <p class="fcard-sub">이번 업데이트를 확인하세요!</p>
+        <aside class="hero-status" aria-label="서비스 정보">
+          <article class="status-card">
+            <div class="status-head">
+              <h2>공지사항</h2>
+              <button aria-label="공지사항 더보기">+</button>
             </div>
-          </div>
-          <ul class="fcard-list">
-            <li class="active"><span>1</span>신규 캐릭터 바서커를 확인하세요!</li>
-            <li><span>2</span>귀혼 서버통합</li>
-            <li><span>3</span>왕고라 훈련장 추가!</li>
-          </ul>
-        </div>
-
-        <!-- floating card: 침공 -->
-        <div class="fcard raid-fcard">
-          <div class="fcard-header">
-            <span class="fcard-dot red"></span>
-            <span class="fcard-title-text">⚔ 오늘의 침공</span>
-          </div>
-          <div class="raid-fcard-body">
-            <img
-              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg"
-              alt="침공 보스"
-              class="raid-fcard-img"
-            />
-            <div class="raid-fcard-times">
-              <span class="rft active">13:00</span>
-              <span class="rft-sep">/</span>
-              <span class="rft">20:00</span>
+            <ul>
+              <li><span>02.01</span> 정기 점검 안내</li>
+              <li><span>01.28</span> 설날 이벤트 안내</li>
+              <li><span>01.20</span> 업데이트 안내</li>
+            </ul>
+          </article>
+          <article class="status-card">
+            <div class="server-state">
+              <span class="live-dot"></span>
+              <strong>전체 서버 정상 운영 중</strong>
             </div>
-          </div>
-        </div>
+            <button class="button-secondary">자세히 보기</button>
+          </article>
+        </aside>
       </div>
-    </div>
+    </section>
 
-    <!-- bottom ticker -->
-    <div class="hero-ticker">
-      <span class="ticker-badge">NOTICE</span>
-      <div class="ticker-track">
-        <div class="ticker-items">
-          <span>신규 캐릭터 바서커 출시</span>
-          <span class="tsep">✦</span>
-          <span>3월 25일 행복달력 이벤트 진행 중</span>
-          <span class="tsep">✦</span>
-          <span>귀혼 서버통합 안내</span>
-          <span class="tsep">✦</span>
-          <span>왕고라 훈련장 추가!</span>
-          <span class="tsep">✦</span>
-          <span>엠게임 런처 업데이트</span>
-          <span class="tsep">✦</span>
-          <!-- 루프용 복제 -->
-          <span>신규 캐릭터 바서커 출시</span>
-          <span class="tsep">✦</span>
-          <span>3월 25일 행복달력 이벤트 진행 중</span>
-          <span class="tsep">✦</span>
-          <span>귀혼 서버통합 안내</span>
-          <span class="tsep">✦</span>
-          <span>왕고라 훈련장 추가!</span>
-          <span class="tsep">✦</span>
-          <span>엠게임 런처 업데이트</span>
-          <span class="tsep">✦</span>
+    <section class="section bestiary-section" id="archive" aria-labelledby="bestiary-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">COLLECTION</p>
+          <h2 id="bestiary-title">요괴 도감</h2>
         </div>
+        <button class="button-secondary">도감 전체 보기</button>
       </div>
-    </div>
-  </section>
-
-  <!-- ══════════ LIVE COUNTER (수배 게시판) ══════════ -->
-  <section class="counter-section" id="record">
-    <div class="counter-inner">
-
-      <!-- ── 게시판 헤더 바 ── -->
-      <div class="board-header">
-        <div class="bh-left">
-          <span class="counter-live-badge"><span class="live-dot"></span>LIVE</span>
-          <div class="bh-title-group">
-            <p class="bh-eyebrow">귀혼 퇴치 공식 기록소</p>
-            <h2 class="bh-title">수배 요괴 명단</h2>
+      <div class="bestiary-grid">
+        <article class="yokai-card rarity-common">
+          <span class="rarity">COMMON</span>
+          <div class="yokai-art-frame">
+            <img src="images/redesign_img/yokai-nine-tail.png" alt="구미호" />
           </div>
-        </div>
-        <div class="bh-total">
-          <p class="bht-label">누적 요괴 퇴치</p>
-          <div class="bht-row">
-            <span class="ci-num bht-num" data-target="98342156">0</span>
-            <span class="bht-unit">마리</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── 수배지 5장 ── -->
-      <div class="wanted-board">
-
-        <article class="wanted-card" style="--wrot:-1.8deg">
-          <div class="wc-tack"></div>
-          <div class="wc-paper">
-            <header class="wc-paper-hd">수&ensp;배</header>
-            <div class="wc-img-frame">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호" class="wc-img">
-            </div>
-            <div class="wc-body">
-              <p class="wc-rank">전설급 · 여우 계열</p>
-              <h3 class="wc-name">구미호</h3>
-              <div class="wc-rule"></div>
-              <p class="wc-count-lbl">퇴치 수</p>
-              <span class="ci-num wc-count" data-target="23847">0</span>
-            </div>
-            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+          <div class="card-row">
+            <strong>구미호</strong>
+            <span>12,360</span>
           </div>
         </article>
-
-        <article class="wanted-card" style="--wrot:1.3deg">
-          <div class="wc-tack"></div>
-          <div class="wc-paper">
-            <header class="wc-paper-hd">수&ensp;배</header>
-            <div class="wc-img-frame">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑" class="wc-img">
-            </div>
-            <div class="wc-body">
-              <p class="wc-rank">희귀급 · 수수 계열</p>
-              <h3 class="wc-name">혈&ensp;랑</h3>
-              <div class="wc-rule"></div>
-              <p class="wc-count-lbl">퇴치 수</p>
-              <span class="ci-num wc-count" data-target="41209">0</span>
-            </div>
-            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+        <article class="yokai-card rarity-rare">
+          <span class="rarity">RARE</span>
+          <div class="yokai-art-frame">
+            <img src="images/redesign_img/yokai-fire-wolf.png" alt="화염 멧돼지" />
+          </div>
+          <div class="card-row">
+            <strong>화염 멧돼지</strong>
+            <span>21,365</span>
           </div>
         </article>
-
-        <article class="wanted-card" style="--wrot:-0.5deg">
-          <div class="wc-tack wc-tack-alt"></div>
-          <div class="wc-paper">
-            <header class="wc-paper-hd">수&ensp;배</header>
-            <div class="wc-img-frame">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신" class="wc-img">
-            </div>
-            <div class="wc-body">
-              <p class="wc-rank">일반급 · 원혼 계열</p>
-              <h3 class="wc-name">처녀귀신</h3>
-              <div class="wc-rule"></div>
-              <p class="wc-count-lbl">퇴치 수</p>
-              <span class="ci-num wc-count" data-target="87312">0</span>
-            </div>
-            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+        <article class="yokai-card rarity-epic">
+          <span class="rarity">EPIC</span>
+          <div class="yokai-art-frame">
+            <img src="images/redesign_img/yokai-maiden-ghost.png" alt="처녀귀신" />
+          </div>
+          <div class="card-row">
+            <strong>처녀귀신</strong>
+            <span>45,262</span>
           </div>
         </article>
-
-        <article class="wanted-card" style="--wrot:2.1deg">
-          <div class="wc-tack"></div>
-          <div class="wc-paper">
-            <header class="wc-paper-hd">수&ensp;배</header>
-            <div class="wc-img-frame">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신" class="wc-img">
-            </div>
-            <div class="wc-body">
-              <p class="wc-rank">희귀급 · 인조 계열</p>
-              <h3 class="wc-name">인공귀신</h3>
-              <div class="wc-rule"></div>
-              <p class="wc-count-lbl">퇴치 수</p>
-              <span class="ci-num wc-count" data-target="15428">0</span>
-            </div>
-            <!-- 수배중: 아직 현재 진행 -->
-            <div class="wc-seal wc-seal-wanted">수배<br>중</div>
+        <article class="yokai-card rarity-epic">
+          <span class="rarity">EPIC</span>
+          <div class="yokai-art-frame">
+            <img src="images/redesign_img/yokai-claw-fiend.png" alt="원조각신" />
+          </div>
+          <div class="card-row">
+            <strong>원조각신</strong>
+            <span>7,998</span>
           </div>
         </article>
-
-        <article class="wanted-card" style="--wrot:-1.4deg">
-          <div class="wc-tack wc-tack-alt"></div>
-          <div class="wc-paper">
-            <header class="wc-paper-hd">수&ensp;배</header>
-            <div class="wc-img-frame">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀" class="wc-img">
-            </div>
-            <div class="wc-body">
-              <p class="wc-rank">일반급 · 수중 계열</p>
-              <h3 class="wc-name">어&ensp;&ensp;귀</h3>
-              <div class="wc-rule"></div>
-              <p class="wc-count-lbl">퇴치 수</p>
-              <span class="ci-num wc-count" data-target="62891">0</span>
-            </div>
-            <div class="wc-seal wc-seal-done">처<br>치<br>됨</div>
+        <article class="yokai-card rarity-legendary">
+          <span class="rarity">LEGENDARY</span>
+          <div class="yokai-art-frame">
+            <img src="images/redesign_img/yokai-fish-ghost.png" alt="독도 해귀" />
+          </div>
+          <div class="card-row">
+            <strong>독도 해귀</strong>
+            <span>32,609</span>
           </div>
         </article>
+      </div>
+    </section>
 
-      </div><!-- /wanted-board -->
+    <section class="section class-section" id="guide" aria-labelledby="class-title">
+      <div class="class-panel">
+        <div class="class-info">
+          <p class="eyebrow">CHARACTER SELECT</p>
+          <h2 id="class-title">전사</h2>
+          <p class="class-tagline">강인한 체력과 근접 공격으로 전장을 돌파하는 전사</p>
+          <dl class="class-meta">
+            <div><dt>전투 타입</dt><dd>근거리 · 강인 체력</dd></div>
+            <div><dt>사용 무기</dt><dd>두손검 · 전용 무기</dd></div>
+          </dl>
+          <button class="button-primary button-large">직업 플레이 영상</button>
+          <div class="character-tabs" role="tablist" aria-label="직업 선택">
+            <button class="job-tab character-selected" data-job="warrior" role="tab" aria-selected="true">
+              <img src="images/redesign_img/character-warrior-sword.png" alt="" />
+              <span>전사</span>
+            </button>
+            <button class="job-tab" data-job="assassin" role="tab" aria-selected="false">
+              <img src="images/redesign_img/character-assassin-purple.png" alt="" />
+              <span>자객</span>
+            </button>
+            <button class="job-tab" data-job="ascetic" role="tab" aria-selected="false">
+              <img src="images/redesign_img/character-ascetic-white.png" alt="" />
+              <span>선인</span>
+            </button>
+            <button class="job-tab" data-job="ranger" role="tab" aria-selected="false">
+              <img src="images/redesign_img/character-ranger-bow.png" alt="" />
+              <span>힐러</span>
+            </button>
+          </div>
+        </div>
+        <div class="class-visual" aria-live="polite">
+          <img class="class-bg-img" src="images/redesign_img/class-warrior-bg.png" alt="" />
+          <img class="class-main-img" src="images/redesign_img/character-warrior-sword.png" alt="전사 캐릭터" />
+        </div>
+      </div>
+    </section>
 
-      <!-- ── 퇴치 피드 ticker ── -->
-      <div class="kill-feed">
-        <span class="kf-badge">☠ 퇴치 피드</span>
-        <div class="kf-track">
-          <div class="kf-items">
-            <span><em>철혈검객</em>이 <strong>구미호</strong>를 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>월야도사</em>가 <strong>혈랑</strong> 5마리를 연속 처치!</span>
-            <span class="kf-sep">◆</span>
-            <span><em>은빛나비</em>가 <strong>처녀귀신</strong>을 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>도깨비킬러</em>가 <strong>인공귀신</strong>을 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>청룡검사</em>가 <strong>어귀</strong>를 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>철혈검객</em>이 <strong>구미호</strong>를 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>월야도사</em>가 <strong>혈랑</strong> 5마리를 연속 처치!</span>
-            <span class="kf-sep">◆</span>
-            <span><em>은빛나비</em>가 <strong>처녀귀신</strong>을 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>도깨비킬러</em>가 <strong>인공귀신</strong>을 처치했습니다</span>
-            <span class="kf-sep">◆</span>
-            <span><em>청룡검사</em>가 <strong>어귀</strong>를 처치했습니다</span>
-            <span class="kf-sep">◆</span>
+    <section class="section test-section" aria-labelledby="test-title">
+      <div class="test-copy">
+        <p class="eyebrow">PERSONALITY TEST</p>
+        <h2 id="test-title">나와 닮은 직업 찾기</h2>
+        <p>간단한 질문으로 성향을 분석해 가장 잘 맞는 직업을 추천해 드려요.</p>
+        <ul class="test-benefits">
+          <li>간단한 질문으로 성향 분석</li>
+          <li>4가지 직업 맞춤 추천</li>
+          <li>나에게 맞는 플레이 스타일 확인</li>
+        </ul>
+      </div>
+      <div class="test-game">
+        <div class="test-party" aria-hidden="true">
+          <img src="images/redesign_img/character-warrior-sword.png" alt="" />
+          <img src="images/redesign_img/character-assassin-purple.png" alt="" />
+          <div class="question-orb">?</div>
+          <img src="images/redesign_img/character-ascetic-white.png" alt="" />
+          <img src="images/redesign_img/character-ranger-bow.png" alt="" />
+        </div>
+        <div class="quiz" id="jobQuiz">
+          <p class="quiz-step">질문 1 / 3</p>
+          <h3>전투가 시작되면 가장 먼저 무엇을 하나요?</h3>
+          <div class="quiz-options">
+            <button data-score="warrior">앞에서 길을 연다</button>
+            <button data-score="assassin">빈틈을 기다린다</button>
+            <button data-score="ascetic">흐름을 읽고 지원한다</button>
+            <button data-score="ranger">거리를 두고 팀을 살핀다</button>
           </div>
         </div>
       </div>
+    </section>
 
-    </div>
-  </section>
-
-  <!-- ══════════ CHARACTER CLASS ══════════ -->
-  <section class="class-section" id="classes">
-    <div class="class-section-inner">
-
-      <!-- 사이드 탭 -->
-      <div class="class-tabs-col">
-        <div class="class-tabs-header">
-          <p class="cts-eyebrow">CHARACTER</p>
-          <h2 class="cts-title">캐릭터 선택</h2>
-          <p class="cts-sub">당신의 운명을 선택하세요</p>
+    <section class="section item-section" aria-labelledby="item-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">HOT ITEM</p>
+          <h2 id="item-title">전장을 밝히는 장비</h2>
         </div>
-
-        <div class="ctab-list">
-          <button class="ctab active" data-target="warrior">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/20_warrior_female_no_bg_cnbsului.png" class="ctab-sprite" alt="">
-            <strong class="ctab-name">전사</strong>
-            <span class="ctab-sub">근거리 · 탱커</span>
-          </button>
-          <button class="ctab" data-target="assassin">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/assassin/50_assassin_female_no_bg_l0v2ga26.png" class="ctab-sprite" alt="">
-            <strong class="ctab-name">자객</strong>
-            <span class="ctab-sub">암살 · 고속</span>
-          </button>
-          <button class="ctab" data-target="ascetic">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/ascetic/50_ascetic_female_no_bg_5m1e4adp.png" class="ctab-sprite" alt="">
-            <strong class="ctab-name">선인</strong>
-            <span class="ctab-sub">힐러 · 마법</span>
-          </button>
-          <button class="ctab" data-target="commoner">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/Taihua_Laojun/taihua_laojun_female_no_bg_04kfavyv.png" class="ctab-sprite" alt="">
-            <strong class="ctab-name">평민</strong>
-            <span class="ctab-sub">만능 · 성장형</span>
-          </button>
-        </div>
+        <button class="button-secondary">전체 아이템 보기</button>
       </div>
-
-      <!-- 디스플레이 패널 -->
-      <div class="class-panels-col">
-
-        <div class="cpanel active" id="cp-warrior">
-          <div class="cpanel-visual">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" class="cpanel-illust" alt="">
-            <div class="cpanel-grad"></div>
-            <span class="cpanel-kanji" aria-hidden="true">전사</span>
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/20_warrior_female_no_bg_cnbsului.png" class="cpanel-sprite" alt="전사">
-          </div>
-          <div class="cpanel-info">
-            <span class="cpanel-num">01</span>
-            <h2 class="cpanel-name">전사</h2>
-            <p class="cpanel-desc">강인한 체력과 압도적인 힘으로<br>전장을 지배하는 근접 전투의 달인</p>
-            <div class="cpanel-stats">
-              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:85%"></div></div><span class="cps-v">85</span></div>
-              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:90%"></div></div><span class="cps-v">90</span></div>
-              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:60%"></div></div><span class="cps-v">60</span></div>
-              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:30%"></div></div><span class="cps-v">30</span></div>
-            </div>
-            <div class="cpanel-tags"><span>근거리</span><span>탱커</span><span>고공격</span></div>
-            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
-          </div>
-        </div>
-
-        <div class="cpanel" id="cp-assassin">
-          <div class="cpanel-visual">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/assassin_female.jpg" class="cpanel-illust" alt="">
-            <div class="cpanel-grad"></div>
-            <span class="cpanel-kanji" aria-hidden="true">자객</span>
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/assassin/50_assassin_female_no_bg_l0v2ga26.png" class="cpanel-sprite" alt="자객">
-          </div>
-          <div class="cpanel-info">
-            <span class="cpanel-num">02</span>
-            <h2 class="cpanel-name">자객</h2>
-            <p class="cpanel-desc">그림자처럼 스며드는 암살자,<br>한 번의 기회로 적을 제압한다</p>
-            <div class="cpanel-stats">
-              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:95%"></div></div><span class="cps-v">95</span></div>
-              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:45%"></div></div><span class="cps-v">45</span></div>
-              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:95%"></div></div><span class="cps-v">95</span></div>
-              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:50%"></div></div><span class="cps-v">50</span></div>
-            </div>
-            <div class="cpanel-tags"><span>암살</span><span>고속</span><span>치명타</span></div>
-            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
-          </div>
-        </div>
-
-        <div class="cpanel" id="cp-ascetic">
-          <div class="cpanel-visual">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/ascetic_female.jpg" class="cpanel-illust" alt="">
-            <div class="cpanel-grad"></div>
-            <span class="cpanel-kanji" aria-hidden="true">선인</span>
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/ascetic/50_ascetic_female_no_bg_5m1e4adp.png" class="cpanel-sprite" alt="선인">
-          </div>
-          <div class="cpanel-info">
-            <span class="cpanel-num">03</span>
-            <h2 class="cpanel-name">선인</h2>
-            <p class="cpanel-desc">신비로운 도술과 치유의 힘으로<br>동료를 이끄는 지혜의 수호자</p>
-            <div class="cpanel-stats">
-              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:65%"></div></div><span class="cps-v">65</span></div>
-              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:70%"></div></div><span class="cps-v">70</span></div>
-              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:65%"></div></div><span class="cps-v">65</span></div>
-              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:95%"></div></div><span class="cps-v">95</span></div>
-            </div>
-            <div class="cpanel-tags"><span>힐러</span><span>마법</span><span>버프</span></div>
-            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
-          </div>
-        </div>
-
-        <div class="cpanel" id="cp-commoner">
-          <div class="cpanel-visual">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/commoner_female.jpg" class="cpanel-illust" alt="">
-            <div class="cpanel-grad"></div>
-            <span class="cpanel-kanji" aria-hidden="true">평민</span>
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/Taihua_Laojun/taihua_laojun_female_no_bg_04kfavyv.png" class="cpanel-sprite" alt="평민">
-          </div>
-          <div class="cpanel-info">
-            <span class="cpanel-num">04</span>
-            <h2 class="cpanel-name">평민</h2>
-            <p class="cpanel-desc">범상치 않은 잠재력의 소유자,<br>어떤 운명도 스스로 개척해나간다</p>
-            <div class="cpanel-stats">
-              <div class="cps-row"><span class="cps-l">공격력</span><div class="cps-bar"><div class="cps-fill" style="--w:70%"></div></div><span class="cps-v">70</span></div>
-              <div class="cps-row"><span class="cps-l">방어력</span><div class="cps-bar"><div class="cps-fill" style="--w:70%"></div></div><span class="cps-v">70</span></div>
-              <div class="cps-row"><span class="cps-l">이동속도</span><div class="cps-bar"><div class="cps-fill" style="--w:80%"></div></div><span class="cps-v">80</span></div>
-              <div class="cps-row"><span class="cps-l">마법력</span><div class="cps-bar"><div class="cps-fill" style="--w:75%"></div></div><span class="cps-v">75</span></div>
-            </div>
-            <div class="cpanel-tags"><span>만능</span><span>성장형</span><span>유니크</span></div>
-            <button class="cpanel-cta">캐릭터 자세히 보기 →</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ MBTI 직업 추천 ══════════ -->
-  <section class="mbti-section" id="mbti">
-    <div class="mbti-inner">
-
-      <div class="mbti-header">
-        <p class="mbti-eyebrow">PERSONALITY × CLASS</p>
-        <h2 class="mbti-title">나와 닮은 직업 찾기</h2>
-        <p class="mbti-sub">당신의 성격 유형으로 운명의 직업과 천적 요괴를 발견하세요</p>
-      </div>
-
-      <div class="mbti-grid">
-
-        <!-- 전사: E형 분석계 -->
-        <div class="mcard" data-class="warrior">
-          <div class="mcard-front">
-            <div class="mcard-types">
-              <span>ENTJ</span><span>ESTJ</span><span>ENTP</span><span>ESTP</span>
-            </div>
-            <div class="mcard-sprite-wrap">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/warrior/20_warrior_female_no_bg_cnbsului.png" class="mcard-sprite" alt="전사">
-              <div class="mcard-sprite-glow"></div>
-            </div>
-            <div class="mcard-info">
-              <h3 class="mcard-class">전사</h3>
-              <p class="mcard-desc">목표를 향해 돌진하는 천생 리더. 물러서지 않는 강철 의지.</p>
-              <div class="mcard-tags"><span>돌격형</span><span>탱커</span><span>리더십</span></div>
-            </div>
-          </div>
-          <div class="mcard-yokai-reveal">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" class="mcard-yokai-bg" alt="">
-            <div class="mcard-yokai-info">
-              <span class="mcard-yokai-label">천적 요괴</span>
-              <strong class="mcard-yokai-name">혈랑</strong>
-              <p class="mcard-yokai-tip">힘과 힘의 정면 충돌. 당신만이 이길 수 있다.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 자객: I형 분석계 -->
-        <div class="mcard" data-class="assassin">
-          <div class="mcard-front">
-            <div class="mcard-types">
-              <span>INTJ</span><span>INTP</span><span>ISTP</span><span>ISTJ</span>
-            </div>
-            <div class="mcard-sprite-wrap">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/assassin/50_assassin_female_no_bg_l0v2ga26.png" class="mcard-sprite" alt="자객">
-              <div class="mcard-sprite-glow"></div>
-            </div>
-            <div class="mcard-info">
-              <h3 class="mcard-class">자객</h3>
-              <p class="mcard-desc">냉철하게 분석하고 완벽하게 처리. 한 번의 실수도 없다.</p>
-              <div class="mcard-tags"><span>암살형</span><span>분석가</span><span>독립적</span></div>
-            </div>
-          </div>
-          <div class="mcard-yokai-reveal">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" class="mcard-yokai-bg" alt="">
-            <div class="mcard-yokai-info">
-              <span class="mcard-yokai-label">천적 요괴</span>
-              <strong class="mcard-yokai-name">처녀귀신</strong>
-              <p class="mcard-yokai-tip">감정 없는 논리로 원한을 끊어라.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 선인: 감성형 -->
-        <div class="mcard" data-class="ascetic">
-          <div class="mcard-front">
-            <div class="mcard-types">
-              <span>INFJ</span><span>INFP</span><span>ENFJ</span><span>ENFP</span>
-            </div>
-            <div class="mcard-sprite-wrap">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/ascetic/50_ascetic_female_no_bg_5m1e4adp.png" class="mcard-sprite" alt="선인">
-              <div class="mcard-sprite-glow"></div>
-            </div>
-            <div class="mcard-info">
-              <h3 class="mcard-class">선인</h3>
-              <p class="mcard-desc">깊은 공감과 통찰로 팀을 치유. 도술로 세상의 균형을 지킨다.</p>
-              <div class="mcard-tags"><span>치유형</span><span>이상주의</span><span>통찰력</span></div>
-            </div>
-          </div>
-          <div class="mcard-yokai-reveal">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" class="mcard-yokai-bg" alt="">
-            <div class="mcard-yokai-info">
-              <span class="mcard-yokai-label">천적 요괴</span>
-              <strong class="mcard-yokai-name">구미호</strong>
-              <p class="mcard-yokai-tip">유혹에 흔들리지 않을 강인한 정신이 필요하다.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- 평민: 현실감각형 -->
-        <div class="mcard" data-class="commoner">
-          <div class="mcard-front">
-            <div class="mcard-types">
-              <span>ISFJ</span><span>ISFP</span><span>ESFJ</span><span>ESFP</span>
-            </div>
-            <div class="mcard-sprite-wrap">
-              <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/char/Taihua_Laojun/taihua_laojun_female_no_bg_04kfavyv.png" class="mcard-sprite" alt="평민">
-              <div class="mcard-sprite-glow"></div>
-            </div>
-            <div class="mcard-info">
-              <h3 class="mcard-class">평민</h3>
-              <p class="mcard-desc">어떤 상황도 살아남는 생활력의 달인. 숨겨진 잠재력이 폭발한다.</p>
-              <div class="mcard-tags"><span>만능형</span><span>친화력</span><span>성장형</span></div>
-            </div>
-          </div>
-          <div class="mcard-yokai-reveal">
-            <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" class="mcard-yokai-bg" alt="">
-            <div class="mcard-yokai-info">
-              <span class="mcard-yokai-label">천적 요괴</span>
-              <strong class="mcard-yokai-name">어귀</strong>
-              <p class="mcard-yokai-tip">물가의 공포도 당신의 끈기 앞에 무릎을 꿇는다.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ HOT 아이템몰 ══════════ -->
-  <section class="item-section" id="items">
-    <div class="item-inner">
-
-      <header class="item-head">
-        <p class="item-eyebrow">아 이 템 몰</p>
-        <h2 class="item-title">HOT 아이템</h2>
-        <p class="item-sub">이달의 인기 아이템을 만나보세요</p>
-      </header>
-
       <div class="item-grid">
-
-        <!-- 피처드: 대형 아이템 -->
-        <div class="item-featured">
-          <span class="item-featured-badge">이달의 신규</span>
-          <img class="item-featured-img"
-            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/item/items/weapons/warrior/sword/80_blue_vat_sword.jpg"
-            alt="청호신검">
-          <div class="item-featured-info">
-            <p class="item-featured-cat">품목 : 무기 · 검</p>
-            <h3 class="item-featured-name">청호신검(靑壺神劍) — 강력 추천</h3>
-            <p class="item-featured-desc">천상의 기운을 담은 전설의 검. 장착 시 공격력과 치명타율이 대폭 상승하며 특수 스킬 발동 확률이 증가합니다.</p>
+        <article class="item-card rarity-legendary">
+          <span class="rarity">LEGENDARY</span>
+          <img src="images/item/items/weapons/warrior/sword/80_blue_vat_sword.jpg" alt="청룡의 창" />
+          <div>
+            <h3>청룡의 창</h3>
+            <p>검기를 실어 전방의 적을 관통합니다.</p>
           </div>
-        </div>
-
-        <!-- 오른쪽: 소형 3개 -->
-        <div class="item-grid-right">
-
-          <div class="item-card">
-            <img class="item-card-img"
-              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/item/items/enhancement_items/sealed_items/grade03_sealed_orb.jpg"
-              alt="봉인된 구슬">
-            <div class="item-card-info">
-              <span class="item-card-name">연력의명수(鍊力明珠)</span>
-              <span class="item-card-cat">품목 : 강화</span>
-              <p class="item-card-desc">지니고 있으면 연력효과 버프 적용. 강력한 버프를 얻을 수 있습니다.</p>
-            </div>
+          <button class="button-secondary">자세히 보기</button>
+        </article>
+        <article class="item-card rarity-epic">
+          <span class="rarity">EPIC</span>
+          <img src="images/item/items/enhancement_items/sealed_items/grade03_sealed_orb.jpg" alt="강화의 돌" />
+          <div>
+            <h3>강화의 돌</h3>
+            <p>장비의 잠재력을 끌어올리는 신비한 돌.</p>
           </div>
-
-          <div class="item-card">
-            <span class="item-card-badge">GM추천</span>
-            <img class="item-card-img"
-              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/item/items/enhancement_items/sealed_items/grade05_sealed_treasure.jpg"
-              alt="봉인된 보물">
-            <div class="item-card-info">
-              <span class="item-card-name">강호의 증표(江湖證標)</span>
-              <span class="item-card-cat">품목 : 특수</span>
-              <p class="item-card-desc">강호를 호령한 증거. 착용 시 모든 스탯 +5% 상승.</p>
-            </div>
+          <button class="button-secondary">자세히 보기</button>
+        </article>
+        <article class="item-card rarity-rare">
+          <span class="rarity">RARE</span>
+          <img src="images/item/items/accessories/necklaces/demon_spirit_necklace.jpg" alt="봉혼의 목걸이" />
+          <div>
+            <h3>봉혼의 목걸이</h3>
+            <p>체력 회복과 방어 능력을 보조합니다.</p>
           </div>
-
-          <div class="item-card">
-            <img class="item-card-img"
-              src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/item/items/accessories/necklaces/demon_spirit_necklace.jpg"
-              alt="귀신 목걸이">
-            <div class="item-card-info">
-              <span class="item-card-name">죽림의 부적(竹林符籍)</span>
-              <span class="item-card-cat">품목 : 장신구</span>
-              <p class="item-card-desc">죽림 고수의 기운이 담긴 부적.</p>
-            </div>
-          </div>
-
-        </div>
+          <button class="button-secondary">자세히 보기</button>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ══════════ YOKAI GALLERY ══════════ -->
-  <section class="gallery-section" id="gallery">
-    <div class="gallery-inner">
-      <header class="gallery-head">
-        <div class="gallery-head-text">
-          <p class="gallery-eyebrow">— 귀혼의 세계 &amp; 용사들의 기록 —</p>
-          <h2 class="gallery-title">요괴 도감</h2>
-          <p class="gallery-sub">수록 <strong>127</strong>종 · 사진을 클릭하면 상세 정보를 확인하세요</p>
-        </div>
-        <div class="gallery-sns-links">
-          <a href="#" class="sns-btn">📸 Instagram</a>
-          <a href="#" class="sns-btn">💬 Discord</a>
-          <a href="#" class="sns-btn">▶ YouTube</a>
-        </div>
-      </header>
-
-      <div class="gallery-grid">
-
-        <div class="gg-item gg-large" data-rank="legend"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg"
-          data-name-ko="구미호" data-name-cn="九尾狐" data-rank-label="전설"
-          data-desc="아홉 꼬리의 여우 요괴. 수백 년을 살며 인간으로 둔갑해 기를 빼앗는다. 그 아름다움에 홀리면 정신을 잃는다."
-          data-zone="서역 숲지대" data-likes="1,284" data-user="@구미호사냥꾼" data-comments="48">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge legend">전설</span>
-            <div class="gg-names"><span class="gg-name-ko">구미호</span><span class="gg-name-cn">九尾狐</span></div>
-            <div class="gg-meta">♥ 1,284 &nbsp;·&nbsp; 📍 서역 숲지대</div>
-          </div>
-        </div>
-
-        <div class="gg-item" data-rank="rare"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg"
-          data-name-ko="혈랑" data-name-cn="血狼" data-rank-label="희귀"
-          data-desc="피에 굶주린 늑대 요괴. 보름달 아래 더욱 흉포해지며, 피 냄새를 수 리 밖에서도 맡는다."
-          data-zone="북쪽 설원" data-likes="843" data-user="@혈랑추적자" data-comments="31">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="혈랑">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge rare">희귀</span>
-            <div class="gg-names"><span class="gg-name-ko">혈랑</span><span class="gg-name-cn">血狼</span></div>
-            <div class="gg-meta">♥ 843 &nbsp;·&nbsp; 📍 북쪽 설원</div>
-          </div>
-        </div>
-
-        <div class="gg-item" data-rank="rare"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg"
-          data-name-ko="처녀귀신" data-name-cn="處女鬼" data-rank-label="희귀"
-          data-desc="억울하게 죽은 여인의 원혼. 밤이 되면 마을로 내려와 산 자를 저주한다."
-          data-zone="폐가 일대" data-likes="632" data-user="@원한수집가" data-comments="22">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="처녀귀신">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge rare">희귀</span>
-            <div class="gg-names"><span class="gg-name-ko">처녀귀신</span><span class="gg-name-cn">處女鬼</span></div>
-            <div class="gg-meta">♥ 632 &nbsp;·&nbsp; 📍 폐가 일대</div>
-          </div>
-        </div>
-
-        <div class="gg-item" data-rank="rare"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg"
-          data-name-ko="인공귀신" data-name-cn="人工鬼神" data-rank-label="희귀"
-          data-desc="방술로 만들어진 인조 귀신. 주인의 명령에 따라 움직이며 의지가 없다."
-          data-zone="음양사 거처" data-likes="521" data-user="@귀신연구소" data-comments="19">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/artificial_ghost.jpg" alt="인공귀신">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge rare">희귀</span>
-            <div class="gg-names"><span class="gg-name-ko">인공귀신</span><span class="gg-name-cn">人工鬼神</span></div>
-            <div class="gg-meta">♥ 521 &nbsp;·&nbsp; 📍 음양사 거처</div>
-          </div>
-        </div>
-
-        <div class="gg-item" data-rank="common"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg"
-          data-name-ko="어귀" data-name-cn="魚鬼" data-rank-label="일반"
-          data-desc="강물에 깃든 물고기 귀신. 뱃사람을 물 속으로 끌어당겨 익사시킨다."
-          data-zone="한강 하류" data-likes="411" data-user="@강물의악몽" data-comments="14">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/fish_ghost.jpg" alt="어귀">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge common">일반</span>
-            <div class="gg-names"><span class="gg-name-ko">어귀</span><span class="gg-name-cn">魚鬼</span></div>
-            <div class="gg-meta">♥ 411 &nbsp;·&nbsp; 📍 한강 하류</div>
-          </div>
-        </div>
-
-        <div class="gg-item gg-wide" data-rank="common"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/one_legged_ghost.jpg"
-          data-name-ko="외발귀신" data-name-cn="一足鬼" data-rank-label="일반"
-          data-desc="다리 하나로 뛰어다니는 귀신. 발소리 없이 접근하여 뒤통수를 내리친다."
-          data-zone="산간 마을" data-likes="289" data-user="@산속모험가" data-comments="11">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/one_legged_ghost.jpg" alt="외발귀신">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge common">일반</span>
-            <div class="gg-names"><span class="gg-name-ko">외발귀신</span><span class="gg-name-cn">一足鬼</span></div>
-            <div class="gg-meta">♥ 289 &nbsp;·&nbsp; 📍 산간 마을</div>
-          </div>
-        </div>
-
-        <div class="gg-item gg-wide" data-rank="common"
-          data-img="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/tofu_monk.jpg"
-          data-name-ko="두부중" data-name-cn="豆腐僧" data-rank-label="일반"
-          data-desc="사찰 뒤뜰에 출몰하는 중 모습의 귀신. 두부 냄새를 맡으면 약해진다는 전설이 있다."
-          data-zone="폐사찰" data-likes="177" data-user="@사찰탐험대" data-comments="7">
-          <img class="gg-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/tofu_monk.jpg" alt="두부중">
-          <div class="gg-overlay">
-            <span class="gg-rank-badge common">일반</span>
-            <div class="gg-names"><span class="gg-name-ko">두부중</span><span class="gg-name-cn">豆腐僧</span></div>
-            <div class="gg-meta">♥ 177 &nbsp;·&nbsp; 📍 폐사찰</div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ══════════ 요괴 상세 모달 ══════════ -->
-  <div class="yokai-modal" id="yokaiModal" aria-hidden="true">
-    <div class="ym-backdrop" id="ymBackdrop"></div>
-    <div class="ym-panel" role="dialog" aria-modal="true">
-      <button class="ym-close" id="ymClose" aria-label="닫기">✕</button>
-      <div class="ym-img-wrap">
-        <img class="ym-img" id="ymImg" src="" alt="">
-      </div>
-      <div class="ym-info">
-        <span class="ym-rank-badge" id="ymRankBadge"></span>
-        <div class="ym-names">
-          <h2 class="ym-name-ko" id="ymNameKo"></h2>
-          <span class="ym-name-cn" id="ymNameCn"></span>
-        </div>
-        <p class="ym-desc" id="ymDesc"></p>
-        <div class="ym-stats">
-          <span class="ym-stat"><span class="ym-stat-icon">📍</span><span id="ymZone"></span></span>
-          <span class="ym-stat"><span class="ym-stat-icon">♥</span><span id="ymLikes"></span></span>
-          <span class="ym-stat"><span class="ym-stat-icon">👤</span><span id="ymUser"></span></span>
-        </div>
-        <a href="#" class="ym-hunt-btn">⚔ 토벌 정보 보기</a>
-      </div>
-    </div>
-  </div>
-
+  <footer class="site-footer">
+    <img src="images/redesign_img/guihon-logo.png" alt="귀혼" />
+    <span>© 2026 GuiHon. All Rights Reserved.</span>
+    <a href="#top">TOP</a>
+  </footer>
 
   <script src="main.js"></script>
 </body>

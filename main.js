@@ -1,155 +1,165 @@
-/**
- * ① 실시간 요괴 퇴치 카운터 애니메이션
- *    IntersectionObserver로 뷰포트 진입 시 숫자 카운트업
- */
-(function () {
-  var nums = document.querySelectorAll('.ci-num[data-target]');
-  if (!nums.length) return;
-
-  function easeOutExpo(t) {
-    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+const jobs = {
+  warrior: {
+    name: "전사",
+    tagline: "강인한 체력과 근접 공격으로 전장을 돌파하는 전사",
+    type: "근거리 · 강인 체력",
+    weapon: "두손검 · 전용 무기",
+    bg: "images/redesign_img/class-warrior-bg.png",
+    character: "images/redesign_img/character-warrior-sword.png",
+    result: "당신은 앞에서 길을 열고 팀을 지키는 전사형 플레이어입니다."
+  },
+  assassin: {
+    name: "자객",
+    tagline: "빠른 움직임과 치명적인 한 방으로 빈틈을 찌르는 자객",
+    type: "암살 · 고속 기동",
+    weapon: "단검 · 암기",
+    bg: "images/redesign_img/class-assassin-bg.png",
+    character: "images/redesign_img/character-assassin-purple.png",
+    result: "당신은 기회를 기다렸다가 완벽하게 마무리하는 자객형 플레이어입니다."
+  },
+  ascetic: {
+    name: "선인",
+    tagline: "도술과 지혜로 전장의 흐름을 바꾸는 신비로운 선인",
+    type: "도술 · 지원",
+    weapon: "부채 · 지팡이",
+    bg: "images/redesign_img/class-ascetic-bg.png",
+    character: "images/redesign_img/character-ascetic-white.png",
+    result: "당신은 상황을 읽고 동료를 이끄는 선인형 플레이어입니다."
+  },
+  ranger: {
+    name: "힐러",
+    tagline: "멀리서 전장을 살피며 팀의 생존을 책임지는 지원형 캐릭터",
+    type: "원거리 · 회복 지원",
+    weapon: "활 · 부적",
+    bg: "images/redesign_img/class-ranger-bg.png",
+    character: "images/redesign_img/character-ranger-bow.png",
+    result: "당신은 안정적으로 팀을 살리고 승리를 설계하는 힐러형 플레이어입니다."
   }
+};
 
-  function animateCount(el) {
-    var target  = parseInt(el.dataset.target, 10);
-    var duration = target > 1000000 ? 2800 : target > 1000 ? 2200 : 1600;
-    var start   = performance.now();
-
-    function tick(now) {
-      var elapsed  = now - start;
-      var progress = Math.min(elapsed / duration, 1);
-      var eased    = easeOutExpo(progress);
-      var current  = Math.round(eased * target);
-
-      // 큰 숫자는 콤마 포맷
-      el.textContent = current.toLocaleString('ko-KR');
-
-      if (progress < 1) {
-        requestAnimationFrame(tick);
-      } else {
-        el.textContent = target.toLocaleString('ko-KR');
-      }
-    }
-    requestAnimationFrame(tick);
+const questions = [
+  {
+    step: "질문 1 / 3",
+    title: "전투가 시작되면 가장 먼저 무엇을 하나요?",
+    options: [
+      ["warrior", "앞에서 길을 연다"],
+      ["assassin", "빈틈을 기다린다"],
+      ["ascetic", "흐름을 읽고 지원한다"],
+      ["ranger", "거리를 두고 팀을 살핀다"]
+    ]
+  },
+  {
+    step: "질문 2 / 3",
+    title: "파티에서 가장 자신 있는 역할은?",
+    options: [
+      ["warrior", "맞아도 버티는 선봉"],
+      ["assassin", "빠르게 끝내는 결정타"],
+      ["ascetic", "위기를 뒤집는 도술"],
+      ["ranger", "아군을 살리는 운영"]
+    ]
+  },
+  {
+    step: "질문 3 / 3",
+    title: "보상을 고른다면 어떤 쪽이 끌리나요?",
+    options: [
+      ["warrior", "강력한 무기"],
+      ["assassin", "속도 증가 장비"],
+      ["ascetic", "신비한 주문서"],
+      ["ranger", "회복과 보호 부적"]
+    ]
   }
+];
 
-  // 뷰포트 진입 시 1회 실행
-  if ('IntersectionObserver' in window) {
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
+const classTitle = document.querySelector(".class-info h2");
+const classTagline = document.querySelector(".class-tagline");
+const classMetaValues = document.querySelectorAll(".class-meta dd");
+const classBg = document.querySelector(".class-bg-img");
+const classMain = document.querySelector(".class-main-img");
 
-    nums.forEach(function (el) { observer.observe(el); });
-  } else {
-    // 폴백: 즉시 실행
-    nums.forEach(function (el) { animateCount(el); });
-  }
-})();
+document.querySelectorAll(".job-tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const job = jobs[tab.dataset.job];
+    if (!job) return;
 
-/**
- * 캐릭터 클래스 탭 전환
- */
-(function () {
-  const tabs   = document.querySelectorAll('.ctab');
-  const panels = document.querySelectorAll('.cpanel');
-
-  if (!tabs.length) return;
-
-  tabs.forEach(function (tab) {
-    tab.addEventListener('click', function () {
-      const target = tab.dataset.target;
-
-      // 탭 active 전환
-      tabs.forEach(function (t) { t.classList.remove('active'); });
-      tab.classList.add('active');
-
-      // 패널 전환 (stat-bar 재애니메이션을 위해 fill width 리셋)
-      panels.forEach(function (p) {
-        p.classList.remove('active');
-        // stat bar 리셋
-        p.querySelectorAll('.cps-fill').forEach(function (fill) {
-          fill.style.width = '0';
-        });
-      });
-
-      const active = document.getElementById('cp-' + target);
-      if (!active) return;
-
-      active.classList.add('active');
-
-      // 리플로우 후 width 복원 → CSS transition 실행
-      requestAnimationFrame(function () {
-        requestAnimationFrame(function () {
-          active.querySelectorAll('.cps-fill').forEach(function (fill) {
-            fill.style.width = fill.style.getPropertyValue('--w') || getComputedStyle(fill).getPropertyValue('--w');
-          });
-        });
-      });
+    document.querySelectorAll(".job-tab").forEach((item) => {
+      item.classList.remove("character-selected");
+      item.setAttribute("aria-selected", "false");
     });
-  });
 
-  // 초기 active 패널 stat bar 애니메이션 실행
-  const firstPanel = document.querySelector('.cpanel.active');
-  if (firstPanel) {
-    setTimeout(function () {
-      firstPanel.querySelectorAll('.cps-fill').forEach(function (fill) {
-        fill.style.width = fill.style.getPropertyValue('--w') || getComputedStyle(fill).getPropertyValue('--w');
+    tab.classList.add("character-selected");
+    tab.setAttribute("aria-selected", "true");
+    classTitle.textContent = job.name;
+    classTagline.textContent = job.tagline;
+    classMetaValues[0].textContent = job.type;
+    classMetaValues[1].textContent = job.weapon;
+    classBg.src = job.bg;
+    classMain.src = job.character;
+    classMain.alt = `${job.name} 캐릭터`;
+  });
+});
+
+const quiz = document.getElementById("jobQuiz");
+let currentQuestion = 0;
+const score = {
+  warrior: 0,
+  assassin: 0,
+  ascetic: 0,
+  ranger: 0
+};
+
+function renderQuestion() {
+  const question = questions[currentQuestion];
+  quiz.innerHTML = `
+    <p class="quiz-step">${question.step}</p>
+    <h3>${question.title}</h3>
+    <div class="quiz-options">
+      ${question.options.map(([job, label]) => `<button data-score="${job}">${label}</button>`).join("")}
+    </div>
+  `;
+}
+
+function renderResult() {
+  const winner = Object.keys(score).sort((a, b) => score[b] - score[a])[0];
+  const job = jobs[winner];
+  quiz.innerHTML = `
+    <div class="result-card">
+      <img src="${job.character}" alt="${job.name} 캐릭터" />
+      <div>
+        <p class="quiz-step">RESULT</p>
+        <h3>당신은 ${job.name}형 플레이어</h3>
+        <p>${job.result}</p>
+        <button class="button-primary" data-restart>다시 테스트하기</button>
+      </div>
+    </div>
+  `;
+}
+
+if (quiz) {
+  renderQuestion();
+
+  quiz.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+
+    if (button.dataset.restart !== undefined) {
+      currentQuestion = 0;
+      Object.keys(score).forEach((key) => {
+        score[key] = 0;
       });
-    }, 300);
-  }
-})();
+      renderQuestion();
+      return;
+    }
 
-/**
- * 요괴 도감 모달
- */
-(function () {
-  var modal    = document.getElementById('yokaiModal');
-  var backdrop = document.getElementById('ymBackdrop');
-  var closeBtn = document.getElementById('ymClose');
-  if (!modal) return;
+    const target = button.dataset.score;
+    if (!target) return;
 
-  function openModal(item) {
-    document.getElementById('ymImg').src      = item.dataset.img || '';
-    document.getElementById('ymImg').alt      = item.dataset.nameKo || '';
-    document.getElementById('ymNameKo').textContent = item.dataset.nameKo || '';
-    document.getElementById('ymNameCn').textContent = item.dataset.nameCn || '';
-    document.getElementById('ymDesc').textContent   = item.dataset.desc || '';
-    document.getElementById('ymZone').textContent   = item.dataset.zone || '';
-    document.getElementById('ymLikes').textContent  = item.dataset.likes || '';
-    document.getElementById('ymUser').textContent   = item.dataset.user || '';
+    score[target] += 1;
+    currentQuestion += 1;
 
-    var rankLabel = item.dataset.rankLabel || '';
-    var rankClass = item.dataset.rank || 'common';
-    var badge = document.getElementById('ymRankBadge');
-    badge.textContent  = rankLabel;
-    badge.className    = 'ym-rank-badge ' + rankClass;
-
-    modal.classList.add('is-open');
-    modal.removeAttribute('aria-hidden');
-    document.body.style.overflow = 'hidden';
-    closeBtn.focus();
-  }
-
-  function closeModal() {
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  // 갤러리 아이템 클릭
-  document.querySelectorAll('.gg-item').forEach(function (item) {
-    item.addEventListener('click', function () { openModal(item); });
+    if (currentQuestion >= questions.length) {
+      renderResult();
+    } else {
+      renderQuestion();
+    }
   });
-
-  // 닫기 버튼 / 배경 클릭 / ESC
-  closeBtn.addEventListener('click', closeModal);
-  backdrop.addEventListener('click', closeModal);
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
-  });
-})();
+}
