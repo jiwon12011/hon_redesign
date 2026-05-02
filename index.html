@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>귀혼 | 빛이 있는 어둠의 모험</title>
+  <title>귀혼 | 요괴를 수집하고 혼을 깨우는 모험</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+<body id="top">
   <header class="site-header">
     <a class="brand" href="index.html" aria-label="귀혼 홈">
-      <img src="images/redesign_img/guihon-logo.png" alt="귀혼" />
+      <img src="images/redesign_img/guihon-logo-clean.png" alt="귀혼" />
     </a>
     <nav class="main-nav" aria-label="주요 메뉴">
       <a href="game.html">게임소개</a>
@@ -22,222 +22,269 @@
       <a href="news.html">고객센터</a>
     </nav>
     <div class="header-actions">
-      <button class="button-secondary">로그인</button>
-      <button class="button-primary">회원가입</button>
+      <button class="button-secondary button-small">로그인</button>
+      <button class="button-primary button-small">회원가입</button>
     </div>
   </header>
 
   <main>
     <section class="hero-section" aria-labelledby="hero-title">
-      <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow">요괴를 수집하고 혼을 깨우는 모험</p>
-          <h1 id="hero-title">귀혼</h1>
-          <p class="hero-desc">더 강한 영혼이 되기 위한 여정, 지금 귀혼의 세계로 들어오세요.</p>
+          <p class="hero-eyebrow">요괴를 수집하고 · 혼을 깨우는 모험</p>
+          <div class="hero-title-wrap">
+            <h1 id="hero-title">귀혼</h1>
+            <span class="hero-seal">歸魂</span>
+          </div>
+          <p class="hero-desc">더 강한 영혼이 되기 위한 여정,<br>지금 귀혼의 세계로 들어오세요!</p>
           <div class="hero-buttons">
             <button class="button-primary button-large">게임 시작</button>
-            <button class="button-secondary button-large">게임 다운로드</button>
+            <button class="button-secondary button-large">회원가입</button>
           </div>
+          <a class="download-link" href="#items">게임 다운로드 &gt;</a>
         </div>
+
         <aside class="hero-status" aria-label="서비스 정보">
-          <article class="status-card">
-            <div class="status-head">
+          <article class="notice-card">
+            <div class="panel-head">
               <h2>공지사항</h2>
               <button aria-label="공지사항 더보기">+</button>
             </div>
             <ul>
-              <li><span>02.01</span> 정기 점검 안내</li>
-              <li><span>01.28</span> 설날 이벤트 안내</li>
-              <li><span>01.20</span> 업데이트 안내</li>
+              <li><span>02.01</span>정기 점검 안내 (02/01)</li>
+              <li><span>01.28</span>설날 이벤트 안내</li>
+              <li><span>01.20</span>업데이트 안내</li>
+              <li><span>01.15</span>GM 이벤트 당첨자 발표</li>
             </ul>
           </article>
-          <article class="status-card">
-            <div class="server-state">
-              <span class="live-dot"></span>
-              <strong>전체 서버 정상 운영 중</strong>
-            </div>
+          <article class="server-card">
+            <h2>서버 상태</h2>
+            <p><span class="live-dot"></span>전체 서버 정상 운영 중</p>
             <button class="button-secondary">자세히 보기</button>
           </article>
         </aside>
       </div>
     </section>
 
-    <section class="section bestiary-section" id="archive" aria-labelledby="bestiary-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">COLLECTION</p>
-          <h2 id="bestiary-title">요괴 도감</h2>
+    <section class="bestiary-strip" id="archive" aria-labelledby="bestiary-title">
+      <div class="content-wrap">
+        <div class="section-head compact-head">
+          <div class="heading-row">
+            <h2 id="bestiary-title">요괴 도감</h2>
+            <p>수집한 요괴 <strong>126 / 356</strong></p>
+          </div>
+          <button class="button-paper">도감 전체 보기 &gt;</button>
         </div>
-        <button class="button-secondary">도감 전체 보기</button>
-      </div>
-      <div class="bestiary-grid">
-        <article class="yokai-card rarity-common">
-          <span class="rarity">COMMON</span>
-          <div class="yokai-art-frame">
-            <img src="images/redesign_img/yokai-nine-tail.png" alt="구미호" />
+        <div class="slider-row">
+          <button class="arrow-btn" aria-label="이전 요괴">‹</button>
+          <div class="bestiary-grid">
+            <article class="yokai-card rarity-common">
+              <span class="rarity">COMMON</span>
+              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-nine-tail.png" alt="구미호" /></div>
+              <div class="card-row"><strong>구미호</strong><span>12,360</span></div>
+            </article>
+            <article class="yokai-card rarity-rare">
+              <span class="rarity">RARE</span>
+              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-fire-wolf.png" alt="화염 멧돼지" /></div>
+              <div class="card-row"><strong>화염 멧돼지</strong><span>21,365</span></div>
+            </article>
+            <article class="yokai-card rarity-epic">
+              <span class="rarity">EPIC</span>
+              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-maiden-ghost.png" alt="처녀귀신" /></div>
+              <div class="card-row"><strong>처녀귀신</strong><span>45,262</span></div>
+            </article>
+            <article class="yokai-card rarity-epic">
+              <span class="rarity">EPIC</span>
+              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-claw-fiend.png" alt="만조각신" /></div>
+              <div class="card-row"><strong>만조각신</strong><span>7,998</span></div>
+            </article>
+            <article class="yokai-card rarity-legendary">
+              <span class="rarity">LEGENDARY</span>
+              <div class="yokai-art-frame"><img src="images/redesign_img/yokai-fish-ghost.png" alt="독도 설귀" /></div>
+              <div class="card-row"><strong>독도 설귀</strong><span>32,609</span></div>
+            </article>
           </div>
-          <div class="card-row">
-            <strong>구미호</strong>
-            <span>12,360</span>
-          </div>
-        </article>
-        <article class="yokai-card rarity-rare">
-          <span class="rarity">RARE</span>
-          <div class="yokai-art-frame">
-            <img src="images/redesign_img/yokai-fire-wolf.png" alt="화염 멧돼지" />
-          </div>
-          <div class="card-row">
-            <strong>화염 멧돼지</strong>
-            <span>21,365</span>
-          </div>
-        </article>
-        <article class="yokai-card rarity-epic">
-          <span class="rarity">EPIC</span>
-          <div class="yokai-art-frame">
-            <img src="images/redesign_img/yokai-maiden-ghost.png" alt="처녀귀신" />
-          </div>
-          <div class="card-row">
-            <strong>처녀귀신</strong>
-            <span>45,262</span>
-          </div>
-        </article>
-        <article class="yokai-card rarity-epic">
-          <span class="rarity">EPIC</span>
-          <div class="yokai-art-frame">
-            <img src="images/redesign_img/yokai-claw-fiend.png" alt="원조각신" />
-          </div>
-          <div class="card-row">
-            <strong>원조각신</strong>
-            <span>7,998</span>
-          </div>
-        </article>
-        <article class="yokai-card rarity-legendary">
-          <span class="rarity">LEGENDARY</span>
-          <div class="yokai-art-frame">
-            <img src="images/redesign_img/yokai-fish-ghost.png" alt="독도 해귀" />
-          </div>
-          <div class="card-row">
-            <strong>독도 해귀</strong>
-            <span>32,609</span>
-          </div>
-        </article>
+          <button class="arrow-btn" aria-label="다음 요괴">›</button>
+        </div>
       </div>
     </section>
 
-    <section class="section class-section" id="guide" aria-labelledby="class-title">
-      <div class="class-panel">
-        <div class="class-info">
+    <section class="character-section" id="guide" aria-labelledby="class-title">
+      <div class="content-wrap character-wrap">
+        <div class="character-picker">
           <p class="eyebrow">CHARACTER SELECT</p>
-          <h2 id="class-title">전사</h2>
-          <p class="class-tagline">강인한 체력과 근접 공격으로 전장을 돌파하는 전사</p>
-          <dl class="class-meta">
-            <div><dt>전투 타입</dt><dd>근거리 · 강인 체력</dd></div>
-            <div><dt>사용 무기</dt><dd>두손검 · 전용 무기</dd></div>
-          </dl>
-          <button class="button-primary button-large">직업 플레이 영상</button>
-          <div class="character-tabs" role="tablist" aria-label="직업 선택">
-            <button class="job-tab character-selected" data-job="warrior" role="tab" aria-selected="true">
-              <img src="images/redesign_img/character-warrior-sword.png" alt="" />
-              <span>전사</span>
+          <h2>캐릭터 선택</h2>
+          <p>당신의 운명을 선택하세요</p>
+          <div class="job-card-grid" role="tablist" aria-label="직업 선택">
+            <button class="job-card character-selected" data-job="warrior" role="tab" aria-selected="true">
+              <span class="job-thumb"><img src="images/redesign_img/character-warrior-sword.png" alt="" /></span>
+              <strong>전사</strong>
+              <small>근거리 · 강한 체력</small>
             </button>
-            <button class="job-tab" data-job="assassin" role="tab" aria-selected="false">
-              <img src="images/redesign_img/character-assassin-purple.png" alt="" />
-              <span>자객</span>
+            <button class="job-card" data-job="assassin" role="tab" aria-selected="false">
+              <span class="job-thumb"><img src="images/redesign_img/character-assassin-purple.png" alt="" /></span>
+              <strong>자객</strong>
+              <small>근거리 · 빠른 공격</small>
             </button>
-            <button class="job-tab" data-job="ascetic" role="tab" aria-selected="false">
-              <img src="images/redesign_img/character-ascetic-white.png" alt="" />
-              <span>선인</span>
+            <button class="job-card" data-job="ascetic" role="tab" aria-selected="false">
+              <span class="job-thumb"><img src="images/redesign_img/character-fighter-axe.png" alt="" /></span>
+              <strong>선인</strong>
+              <small>원거리 · 도술 공격</small>
             </button>
-            <button class="job-tab" data-job="ranger" role="tab" aria-selected="false">
-              <img src="images/redesign_img/character-ranger-bow.png" alt="" />
-              <span>힐러</span>
+            <button class="job-card" data-job="healer" role="tab" aria-selected="false">
+              <span class="job-thumb"><img src="images/redesign_img/character-ascetic-white.png" alt="" /></span>
+              <strong>힐러</strong>
+              <small>지원 · 회복</small>
             </button>
           </div>
         </div>
-        <div class="class-visual" aria-live="polite">
-          <img class="class-bg-img" src="images/redesign_img/class-warrior-bg.png" alt="" />
-          <img class="class-main-img" src="images/redesign_img/character-warrior-sword.png" alt="전사 캐릭터" />
+        <article class="class-detail">
+          <div>
+            <p class="eyebrow">SELECTED CLASS</p>
+            <h2 id="class-title">전사</h2>
+            <p class="class-tagline">강력한 힘과 체력으로 전장을 지배하는 근접 전투의 달인</p>
+          </div>
+          <div class="stat-list">
+            <div class="stat-row"><span>공격력</span><div><i style="width:85%"></i></div><strong>85</strong></div>
+            <div class="stat-row"><span>방어력</span><div><i style="width:90%"></i></div><strong>90</strong></div>
+            <div class="stat-row"><span>체력</span><div><i style="width:60%"></i></div><strong>60</strong></div>
+            <div class="stat-row"><span>민첩성</span><div><i style="width:30%"></i></div><strong>30</strong></div>
+          </div>
+          <button class="button-primary">캐릭터 생성</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="recommend-section" aria-labelledby="recommend-title">
+      <div class="content-wrap">
+        <header class="center-head">
+          <p class="eyebrow">PERSONALITY × CLASS</p>
+          <h2 id="recommend-title">나와 닮은 직업 찾기</h2>
+          <p>당신의 성향을 분석해 어울리는 직업을 추천해 드려요!</p>
+        </header>
+        <div class="recommend-grid">
+          <article class="recommend-card warrior-card">
+            <img src="images/redesign_img/character-warrior-sword.png" alt="전사" />
+            <div>
+              <h3>전사</h3>
+              <p>책임감이 강하고 목표 지향적인 당신! 든든한 리더십의 소유자</p>
+              <div class="tag-row"><span>리더십</span><span>체력</span><span>도전</span></div>
+              <button class="button-paper">추천도 보기 &gt;</button>
+            </div>
+          </article>
+          <article class="recommend-card assassin-card">
+            <img src="images/redesign_img/character-assassin-purple.png" alt="자객" />
+            <div>
+              <h3>자객</h3>
+              <p>빠른 판단력과 담대한 순간 판단을 즐기는 스타일</p>
+              <div class="tag-row"><span>민첩함</span><span>판단력</span><span>화려함</span></div>
+              <button class="button-paper">추천도 보기 &gt;</button>
+            </div>
+          </article>
+          <article class="recommend-card ascetic-card">
+            <img src="images/redesign_img/character-fighter-axe.png" alt="선인" />
+            <div>
+              <h3>선인</h3>
+              <p>지식과 지혜를 추구하며 차분히 상황을 분석하는 당신</p>
+              <div class="tag-row"><span>지혜</span><span>분석</span><span>신중함</span></div>
+              <button class="button-paper">추천도 보기 &gt;</button>
+            </div>
+          </article>
+          <article class="recommend-card healer-card">
+            <img src="images/redesign_img/character-ascetic-white.png" alt="힐러" />
+            <div>
+              <h3>힐러</h3>
+              <p>따뜻한 마음으로 주변을 돕고 치유하는 당신!</p>
+              <div class="tag-row"><span>공감</span><span>회복</span><span>헌신</span></div>
+              <button class="button-paper">추천도 보기 &gt;</button>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="section test-section" aria-labelledby="test-title">
-      <div class="test-copy">
-        <p class="eyebrow">PERSONALITY TEST</p>
-        <h2 id="test-title">나와 닮은 직업 찾기</h2>
-        <p>간단한 질문으로 성향을 분석해 가장 잘 맞는 직업을 추천해 드려요.</p>
-        <ul class="test-benefits">
-          <li>간단한 질문으로 성향 분석</li>
-          <li>4가지 직업 맞춤 추천</li>
-          <li>나에게 맞는 플레이 스타일 확인</li>
-        </ul>
-      </div>
-      <div class="test-game">
-        <div class="test-party" aria-hidden="true">
-          <img src="images/redesign_img/character-warrior-sword.png" alt="" />
-          <img src="images/redesign_img/character-assassin-purple.png" alt="" />
-          <div class="question-orb">?</div>
-          <img src="images/redesign_img/character-ascetic-white.png" alt="" />
-          <img src="images/redesign_img/character-ranger-bow.png" alt="" />
+    <section class="hot-section" id="items" aria-labelledby="item-title">
+      <div class="content-wrap">
+        <div class="section-head">
+          <div>
+            <h2 id="item-title">HOT 아이템</h2>
+            <p>지금 가장 인기 있는 아이템을 만나보세요!</p>
+          </div>
         </div>
-        <div class="quiz" id="jobQuiz">
-          <p class="quiz-step">질문 1 / 3</p>
-          <h3>전투가 시작되면 가장 먼저 무엇을 하나요?</h3>
-          <div class="quiz-options">
-            <button data-score="warrior">앞에서 길을 연다</button>
-            <button data-score="assassin">빈틈을 기다린다</button>
-            <button data-score="ascetic">흐름을 읽고 지원한다</button>
-            <button data-score="ranger">거리를 두고 팀을 살핀다</button>
+        <div class="hot-grid">
+          <article class="featured-item rarity-legendary">
+            <div class="item-art"><img src="images/item/items/weapons/warrior/sword/80_blue_vat_sword.jpg" alt="청룡의 창" /></div>
+            <div>
+              <span class="rarity">추천</span>
+              <h3>청룡의 창 (전설)</h3>
+              <p>청룡의 힘이 깃든 전설의 창. 강력한 기운이 적을 압도한다.</p>
+              <button class="button-secondary">자세히 보기 &gt;</button>
+            </div>
+          </article>
+          <div class="hot-list">
+            <article class="hot-row">
+              <img src="images/item/items/consumables/great_elixir.jpg" alt="안정화의 수정석" />
+              <div><h3>안정화의 수정석(귀속)</h3><p>사용 시 30분간 모든 능력치 +10 증가</p></div>
+              <button class="button-secondary">자세히 보기 &gt;</button>
+            </article>
+            <article class="hot-row">
+              <img src="images/item/items/enhancement_items/sealed_items/grade03_sealed_orb.jpg" alt="강화의 돌" />
+              <div><h3>강화의 돌 (최고급/귀속)</h3><p>장비 강화 성공 확률을 높여주는 신비한 돌</p></div>
+              <button class="button-secondary">자세히 보기 &gt;</button>
+            </article>
+            <article class="hot-row">
+              <img src="images/item/items/accessories/necklaces/demon_spirit_necklace.jpg" alt="백호의 부적" />
+              <div><h3>백호의 부적(기간제)</h3><p>경험치 획득량 50% 증가 (7일)</p></div>
+              <button class="button-secondary">자세히 보기 &gt;</button>
+            </article>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section item-section" aria-labelledby="item-title">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">HOT ITEM</p>
-          <h2 id="item-title">전장을 밝히는 장비</h2>
+    <section class="gallery-section" aria-labelledby="gallery-title">
+      <div class="content-wrap">
+        <div class="section-head">
+          <div>
+            <h2 id="gallery-title">요괴 도감</h2>
+            <p>귀혼 세계의 다양한 요괴들을 만나보세요!</p>
+          </div>
+          <div class="social-row">
+            <button>Instagram</button>
+            <button>Discord</button>
+            <button>YouTube</button>
+          </div>
         </div>
-        <button class="button-secondary">전체 아이템 보기</button>
-      </div>
-      <div class="item-grid">
-        <article class="item-card rarity-legendary">
-          <span class="rarity">LEGENDARY</span>
-          <img src="images/item/items/weapons/warrior/sword/80_blue_vat_sword.jpg" alt="청룡의 창" />
-          <div>
-            <h3>청룡의 창</h3>
-            <p>검기를 실어 전방의 적을 관통합니다.</p>
-          </div>
-          <button class="button-secondary">자세히 보기</button>
-        </article>
-        <article class="item-card rarity-epic">
-          <span class="rarity">EPIC</span>
-          <img src="images/item/items/enhancement_items/sealed_items/grade03_sealed_orb.jpg" alt="강화의 돌" />
-          <div>
-            <h3>강화의 돌</h3>
-            <p>장비의 잠재력을 끌어올리는 신비한 돌.</p>
-          </div>
-          <button class="button-secondary">자세히 보기</button>
-        </article>
-        <article class="item-card rarity-rare">
-          <span class="rarity">RARE</span>
-          <img src="images/item/items/accessories/necklaces/demon_spirit_necklace.jpg" alt="봉혼의 목걸이" />
-          <div>
-            <h3>봉혼의 목걸이</h3>
-            <p>체력 회복과 방어 능력을 보조합니다.</p>
-          </div>
-          <button class="button-secondary">자세히 보기</button>
-        </article>
+        <div class="gallery-grid">
+          <article class="gallery-large"><img src="images/redesign_img/yokai-nine-tail.png" alt="구미호" /></article>
+          <article><img src="images/redesign_img/yokai-fire-wolf.png" alt="화염 멧돼지" /></article>
+          <article><img src="images/redesign_img/yokai-maiden-ghost.png" alt="처녀귀신" /></article>
+          <article><img src="images/redesign_img/yokai-fish-ghost.png" alt="독도 설귀" /></article>
+          <article><img src="images/redesign_img/yokai-fish-ghost.png" alt="해귀" /></article>
+          <article><img src="images/redesign_img/yokai-claw-fiend.png" alt="만조각신" /></article>
+          <article><img src="images/illustration/tofu_monk.jpg" alt="두부중" /></article>
+        </div>
+        <div class="gallery-more"><button class="button-paper">도감 전체 보기 &gt;</button></div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <img src="images/redesign_img/guihon-logo.png" alt="귀혼" />
-    <span>© 2026 GuiHon. All Rights Reserved.</span>
-    <a href="#top">TOP</a>
+    <div class="content-wrap footer-wrap">
+      <img src="images/redesign_img/guihon-logo-clean.png" alt="귀혼" />
+      <nav>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">운영정책</a>
+        <a href="#">청소년보호정책</a>
+        <a href="#">고객센터</a>
+      </nav>
+      <span>© 2026 GuiHon. All Rights Reserved.</span>
+      <div class="footer-actions">
+        <button class="button-secondary">게임 다운로드 &gt;</button>
+        <a href="#top">TOP</a>
+      </div>
+    </div>
   </footer>
 
   <script src="main.js"></script>
