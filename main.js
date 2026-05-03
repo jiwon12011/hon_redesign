@@ -1,6 +1,7 @@
 const jobs = {
   warrior: {
     title: "전사",
+    symbol: "검",
     role: "근거리 · 강인 체력",
     tagline: ["강인한 체력과 근접 공격으로", "전장을 돌파하는 전사"],
     intro: "높은 생존력으로 전열을 지키며, 안정적인 근접 전투를 이끄는 선봉형 직업입니다.",
@@ -14,6 +15,7 @@ const jobs = {
   },
   assassin: {
     title: "자객",
+    symbol: "암",
     role: "근거리 · 빠른 공격",
     tagline: ["빠른 움직임과 치명적인 일격으로", "적의 빈틈을 파고드는 자객"],
     intro: "짧은 순간에 거리를 좁혀 폭발적인 피해를 넣는 기습형 직업입니다.",
@@ -27,6 +29,7 @@ const jobs = {
   },
   archer: {
     title: "사수",
+    symbol: "궁",
     role: "원거리 · 정밀 사격",
     tagline: ["활과 원거리 공격으로", "전장을 넓게 장악하는 사수"],
     intro: "먼 거리에서 적의 움직임을 읽고 안정적으로 전장을 통제하는 원거리 직업입니다.",
@@ -40,6 +43,7 @@ const jobs = {
   },
   fighter: {
     title: "역도",
+    symbol: "권",
     role: "근거리 · 강한 일격",
     tagline: ["묵직한 무기와 힘으로", "적진을 흔드는 파괴형 전투가"],
     intro: "강한 한 방과 넓은 타격 범위로 적진을 흔드는 돌파형 직업입니다.",
@@ -53,6 +57,7 @@ const jobs = {
   },
   daoist: {
     title: "도사",
+    symbol: "부",
     role: "도술 · 영력 지원",
     tagline: ["도술과 부적의 힘으로", "전투 흐름을 바꾸는 도사"],
     intro: "도술과 영력으로 아군을 돕고 전투 흐름을 유리하게 바꾸는 지원형 직업입니다.",
@@ -141,6 +146,7 @@ const characterWrap = document.querySelector(".character-wrap");
 const classDetail = document.querySelector(".class-detail");
 const classPathTitle = document.querySelector(".class-path-title");
 const classPathDesc = document.querySelector(".class-path-desc");
+const classEmblem = document.querySelector(".class-emblem");
 const classSceneCurrent = document.querySelector(".class-scene-current");
 const classSceneNext = document.querySelector(".class-scene-next");
 const classCharacterCurrent = document.querySelector(".class-character-current");
@@ -199,6 +205,7 @@ function selectJob(jobKey, direction = "next") {
   classTraits.innerHTML = job.traits.map((trait) => `<span>${trait}</span>`).join("");
   classPathTitle.textContent = job.title;
   classPathDesc.textContent = job.role;
+  if (classEmblem) classEmblem.textContent = job.symbol;
   if (classSceneNext) classSceneNext.setAttribute("src", job.background);
   if (classCharacterNext) {
     classCharacterNext.setAttribute("src", job.character);
