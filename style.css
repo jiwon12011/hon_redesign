@@ -99,13 +99,13 @@ h3 {
 .brand {
   display: flex;
   align-items: center;
-  width: 130px;
+  width: 118px;
   flex: 0 0 auto;
 }
 
 .brand img {
-  width: 108px;
-  height: 50px;
+  width: 96px;
+  height: 48px;
   object-fit: contain;
   filter: none;
 }
@@ -125,7 +125,8 @@ h3 {
   transition: color 0.3s ease;
 }
 
-.main-nav a:hover {
+.main-nav a:hover,
+.main-nav a.active {
   color: var(--gold);
 }
 
@@ -1604,7 +1605,10 @@ h3 {
 
 .featured-item .button-secondary {
   margin-top: 18px;
-  width: 138px;
+  min-width: 160px;
+  width: auto;
+  white-space: nowrap;
+  gap: 8px;
 }
 
 .hot-list {

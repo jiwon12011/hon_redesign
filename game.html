@@ -105,52 +105,28 @@
     .mz-desc { font-size: .74rem; color: var(--text-muted); margin-top: 2px; }
   </style>
 </head>
-<body class="sub-page">
+<body id="top" class="sub-page">
 
-  <!-- ══════════ GNB ══════════ -->
-  <nav class="gnb">
-    <div class="gnb-util">
-      <div class="gnb-util-left">
-        <a href="index.html" class="util-link">전체게임</a>
-        <span class="util-sep">|</span>
-        <a href="#" class="util-link">엠캐쉬 충전</a>
-        <span class="util-sep">|</span>
-        <a href="#" class="util-link">M이벤트</a>
-      </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="귀혼 홈">
+      <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a class="active" href="game.html">게임소개</a>
+      <a href="index.html#guide">가이드</a>
+      <a href="community.html">커뮤니티</a>
+      <a href="index.html#archive">자료실</a>
+      <a href="news.html">고객센터</a>
+    </nav>
+    <div class="header-actions">
+      <button class="button-secondary button-small">로그인</button>
+      <button class="button-primary button-small">회원가입</button>
     </div>
-    <div class="gnb-main">
-      <a href="index.html" class="logo">
-        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
-      </a>
-      <ul class="gnb-menu">
-        <li class="gnb-item"><a href="news.html" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
-        <li class="gnb-item gnb-has-drop is-active">
-          <a href="game.html" class="gnb-link"><span class="fire-spirit"></span>게임 <span class="gnb-arrow">▾</span></a>
-          <ul class="gnb-drop">
-            <li><a href="game.html" class="gnb-drop-link active">게임소개</a></li>
-            <li><a href="game.html#info" class="gnb-drop-link">게임정보</a></li>
-          </ul>
-        </li>
-        <li class="gnb-item gnb-has-drop">
-          <a href="community.html" class="gnb-link"><span class="fire-spirit"></span>커뮤니티 <span class="gnb-arrow">▾</span></a>
-          <ul class="gnb-drop">
-            <li><a href="community.html" class="gnb-drop-link">귀혼객잔</a></li>
-            <li><a href="community.html#ranking" class="gnb-drop-link">랭킹</a></li>
-            <li><a href="community.html#playground" class="gnb-drop-link">놀이터</a></li>
-          </ul>
-        </li>
-        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
-        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
-      </ul>
-      <button class="btn-talisman gnb-login">
-        <span class="talisman-inner">로그인</span>
-      </button>
-    </div>
-  </nav>
+  </header>
 
   <!-- ══════════ 서브 히어로 ══════════ -->
   <section class="sub-hero">
-    <div class="sub-hero-bg" style="background-image:url('https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg')"></div>
+    <div class="sub-hero-bg" style="background-image:url('images/redesign_img/hero-party-banner.png')"></div>
     <div class="sub-hero-overlay"></div>
     <div class="sub-hero-line"></div>
     <div class="sub-hero-content">
@@ -184,7 +160,7 @@
       </p>
       <p>
         귀혼은 동양 신화와 요괴 전설을 배경으로 한 2D 무협 MMORPG입니다.
-        전사, 자객, 선인, 평민의 4가지 직업을 선택해 요괴가 들끓는 세계에서
+        전사, 자객, 사수, 역도, 도사의 5가지 직업을 선택해 요괴가 들끓는 세계에서
         자신만의 영웅 서사를 써 내려가세요.
       </p>
     </div>
@@ -198,18 +174,18 @@
       <div class="sub-section-head">
         <p class="sub-eyebrow">CLASSES</p>
         <h2 class="sub-section-title">직업 소개</h2>
-        <p class="sub-section-desc">총 4가지 직업 중 당신에게 맞는 플레이스타일을 선택하세요.</p>
+        <p class="sub-section-desc">5가지 직업 중 당신에게 맞는 플레이스타일을 선택하세요.</p>
       </div>
       <div class="job-grid">
 
         <!-- 전사 -->
         <div class="job-card">
           <img class="job-card-img"
-            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="전사">
+            src="images/redesign_img/character-warrior-sword.png" alt="전사">
           <div class="job-card-body">
             <p class="job-card-tag">WARRIOR</p>
             <h3 class="job-card-name">전사</h3>
-            <p class="job-card-role">근거리 딜러 · 탱커</p>
+            <p class="job-card-role">근거리 · 강인 체력</p>
             <p class="job-card-desc">강인한 체력과 압도적인 근접 전투력을 겸비한 직업. 전장의 최전선에서 아군을 이끄는 결전의 무사.</p>
             <p class="job-card-footer">자세히 보기 →</p>
           </div>
@@ -218,38 +194,51 @@
         <!-- 자객 -->
         <div class="job-card">
           <img class="job-card-img"
-            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="자객">
+            src="images/redesign_img/character-assassin-purple.png" alt="자객">
           <div class="job-card-body">
             <p class="job-card-tag">ASSASSIN</p>
             <h3 class="job-card-name">자객</h3>
-            <p class="job-card-role">고속 딜러 · 암습</p>
+            <p class="job-card-role">근거리 · 빠른 공격</p>
             <p class="job-card-desc">그림자처럼 움직이는 암살자. 빛보다 빠른 이동 속도와 치명적인 단검 연계로 순식간에 적을 제압한다.</p>
             <p class="job-card-footer">자세히 보기 →</p>
           </div>
         </div>
 
-        <!-- 선인 -->
+        <!-- 사수 -->
         <div class="job-card">
           <img class="job-card-img"
-            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="선인">
+            src="images/redesign_img/character-ranger-bow.png" alt="사수">
           <div class="job-card-body">
-            <p class="job-card-tag">ASCETIC</p>
-            <h3 class="job-card-name">선인</h3>
-            <p class="job-card-role">원거리 딜러 · 서포터</p>
-            <p class="job-card-desc">도교의 비술을 익힌 선계의 수행자. 강력한 주술로 적을 제압하고, 아군의 기운을 회복시키는 버팀목.</p>
+            <p class="job-card-tag">RANGER</p>
+            <h3 class="job-card-name">사수</h3>
+            <p class="job-card-role">원거리 · 정밀 사격</p>
+            <p class="job-card-desc">활과 원거리 공격으로 전장을 넓게 장악하는 직업. 적의 움직임을 읽고 안정적으로 흐름을 통제한다.</p>
             <p class="job-card-footer">자세히 보기 →</p>
           </div>
         </div>
 
-        <!-- 평민 -->
+        <!-- 역도 -->
         <div class="job-card">
           <img class="job-card-img"
-            src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="평민">
+            src="images/redesign_img/character-fighter-axe.png" alt="역도">
           <div class="job-card-body">
-            <p class="job-card-tag">COMMONER</p>
-            <h3 class="job-card-name">평민</h3>
-            <p class="job-card-role">만능형 · 생활계</p>
-            <p class="job-card-desc">요리, 제조, 채집 등 생활 콘텐츠에 특화된 직업. 독특한 개인기와 함정 전술로 누구도 예상 못 한 전투를 펼친다.</p>
+            <p class="job-card-tag">FIGHTER</p>
+            <h3 class="job-card-name">역도</h3>
+            <p class="job-card-role">근거리 · 강한 일격</p>
+            <p class="job-card-desc">묵직한 무기와 힘으로 적진을 흔드는 직업. 강한 한 방과 넓은 타격 범위로 전투를 뒤집는다.</p>
+            <p class="job-card-footer">자세히 보기 →</p>
+          </div>
+        </div>
+
+        <!-- 도사 -->
+        <div class="job-card">
+          <img class="job-card-img"
+            src="images/redesign_img/character-ascetic-white.png" alt="도사">
+          <div class="job-card-body">
+            <p class="job-card-tag">DAOIST</p>
+            <h3 class="job-card-name">도사</h3>
+            <p class="job-card-role">도술 · 영력 지원</p>
+            <p class="job-card-desc">도술과 부적의 힘으로 전투 흐름을 바꾸는 직업. 아군을 보조하고 위기 구간을 안정적으로 넘긴다.</p>
             <p class="job-card-footer">자세히 보기 →</p>
           </div>
         </div>
@@ -271,7 +260,7 @@
 
       <div class="story-block">
         <div class="story-img-wrap">
-          <img class="story-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg" alt="귀혼의 세계">
+          <img class="story-img" src="images/illustration/guihon_01.jpg" alt="귀혼의 세계">
           <div class="story-img-frame"></div>
         </div>
         <div class="story-text">
@@ -289,7 +278,7 @@
 
       <div class="story-block rev">
         <div class="story-img-wrap">
-          <img class="story-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="구미호">
+          <img class="story-img" src="images/illustration/nine_tailed_fox.jpg" alt="구미호">
           <div class="story-img-frame"></div>
         </div>
         <div class="story-text">
@@ -306,7 +295,7 @@
 
       <div class="story-block">
         <div class="story-img-wrap">
-          <img class="story-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="영웅">
+          <img class="story-img" src="images/illustration/evil_warrior.jpg" alt="영웅">
           <div class="story-img-frame"></div>
         </div>
         <div class="story-text">
@@ -379,7 +368,7 @@
           <h3 class="feat-title">생활 콘텐츠</h3>
           <p class="feat-desc">
             요리, 제조, 낚시, 채집 등 전투 외 다양한 생활 콘텐츠.
-            평민 직업은 생활 스킬에 강력한 보너스를 받습니다.
+            직업별 생활 보너스와 제작 루트를 통해 성장 방향을 넓힐 수 있습니다.
           </p>
         </div>
         <div class="feat-card">
@@ -404,7 +393,7 @@
       </div>
       <div class="map-section">
         <div class="map-img-wrap">
-          <img class="map-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg" alt="귀혼 세계 지도">
+          <img class="map-img" src="images/illustration/guihon_01.jpg" alt="귀혼 세계 지도">
           <div class="map-img-frame"></div>
         </div>
         <div class="map-zone-list">
@@ -448,18 +437,22 @@
     </div>
   </section>
 
-  <!-- ══════════ FOOTER ══════════ -->
-  <footer class="sub-footer">
-    <p class="sf-copy">
-      ⓒ 2026 Nexon Korea. 귀혼은 (주)넥슨코리아의 등록상표입니다.<br>
-      본 사이트의 모든 컨텐츠는 무단 사용을 금합니다.
-    </p>
-    <nav class="sf-links">
-      <a href="#" class="sf-link">이용약관</a>
-      <a href="#" class="sf-link">개인정보처리방침</a>
-      <a href="#" class="sf-link">청소년보호정책</a>
-      <a href="#" class="sf-link">고객센터</a>
-    </nav>
+  <footer class="site-footer">
+    <div class="content-wrap footer-wrap">
+      <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
+      <nav>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">운영정책</a>
+        <a href="#">청소년보호정책</a>
+        <a href="news.html">고객센터</a>
+      </nav>
+      <span>© 2026 GuiHon. All Rights Reserved.</span>
+      <div class="footer-actions">
+        <button class="button-secondary">게임 다운로드 &gt;</button>
+        <a href="#top">TOP</a>
+      </div>
+    </div>
   </footer>
 
   <script>

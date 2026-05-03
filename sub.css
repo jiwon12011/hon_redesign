@@ -524,6 +524,9 @@
 }
 .rank-class.전사  { background: rgba(255,140,0,.12); border: 1px solid rgba(255,140,0,.3); color: #ffa848; }
 .rank-class.자객  { background: rgba(100,150,255,.12); border: 1px solid rgba(100,150,255,.3); color: #8898f8; }
+.rank-class.사수  { background: rgba(80,180,130,.12); border: 1px solid rgba(80,180,130,.3); color: #69d89d; }
+.rank-class.역도  { background: rgba(224,90,40,.12); border: 1px solid rgba(224,90,40,.3); color: #f0824d; }
+.rank-class.도사  { background: rgba(91,168,216,.12); border: 1px solid rgba(91,168,216,.3); color: #7cc7f2; }
 .rank-class.선인  { background: rgba(120,200,160,.12); border: 1px solid rgba(120,200,160,.3); color: #80c898; }
 .rank-class.평민  { background: rgba(200,200,100,.12); border: 1px solid rgba(200,200,100,.3); color: #c8c868; }
 .rank-score {
@@ -606,3 +609,356 @@
   font-size: .72rem; color: var(--text-muted); transition: color .2s;
 }
 .sf-link:hover { color: var(--mint); }
+
+/* ══════════════════════════════════════════════
+   MAIN PAGE TONE REFRESH
+══════════════════════════════════════════════ */
+:root {
+  --mint: var(--gold);
+  --text-muted: var(--muted);
+}
+
+.sub-page {
+  padding-top: 0;
+  color: var(--body);
+  background: linear-gradient(180deg, #1A1C22 0%, #20232B 100%);
+}
+
+.sub-page .site-header {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
+}
+
+.sub-page .main-nav a.active {
+  color: var(--gold);
+}
+
+.sub-hero {
+  height: 340px;
+  background: #111319;
+}
+
+.sub-hero-bg {
+  background-position: center 34%;
+  filter: brightness(0.62) saturate(1.05) contrast(1.05);
+}
+
+.sub-hero-overlay {
+  background:
+    linear-gradient(90deg, rgba(17, 19, 25, 0.95) 0%, rgba(17, 19, 25, 0.74) 36%, rgba(17, 19, 25, 0.28) 66%, rgba(17, 19, 25, 0.7) 100%),
+    linear-gradient(180deg, rgba(17, 19, 25, 0.46) 0%, rgba(17, 19, 25, 0.04) 40%, rgba(17, 19, 25, 0.78) 100%);
+}
+
+.sub-hero-line {
+  width: 0;
+}
+
+.sub-hero-content,
+.sub-nav-inner,
+.sub-wrap,
+.story-wrap,
+.info-banner-inner,
+.intro-hero-text {
+  max-width: 1200px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.sub-hero-eyebrow,
+.sub-eyebrow,
+.nfc-cat,
+.job-card-tag,
+.play-tag,
+.peb-label,
+.rhs-label {
+  font-family: var(--font);
+  color: var(--gold);
+  letter-spacing: 0.08em;
+}
+
+.sub-hero-eyebrow::before,
+.sub-eyebrow::before {
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(255, 214, 107, 0.34);
+}
+
+.sub-hero-title {
+  color: #FFFFFF;
+  background: none;
+  -webkit-text-fill-color: currentColor;
+}
+
+.sub-hero-breadcrumb,
+.sub-hero-breadcrumb a {
+  color: var(--body);
+}
+
+.sub-hero-breadcrumb a:hover,
+.sub-hero-breadcrumb .bc-cur {
+  color: var(--gold);
+}
+
+.sub-nav {
+  top: 72px;
+  background: rgba(17, 19, 25, 0.96);
+  border-bottom: 1px solid rgba(255, 214, 107, 0.18);
+  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18);
+}
+
+.sub-nav-tab {
+  min-height: 56px;
+  padding: 0 24px;
+  color: #AEB3BF;
+  border-bottom-color: transparent;
+}
+
+.sub-nav-tab:hover,
+.sub-nav-tab.active {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+.sub-wrap {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+.sub-section-title,
+.story-quote,
+.feat-title,
+.play-title,
+.guild-name,
+.rank-char-name,
+.nt-title,
+.board-title-cell {
+  color: #FFFFFF;
+}
+
+.sub-section-desc,
+.story-body,
+.feat-desc,
+.play-desc,
+.guild-members,
+.rank-char-sub,
+.rank-server,
+.board-table td,
+.news-table td,
+.nfc-desc {
+  color: #CFCFCF;
+}
+
+.bg-alt,
+.info-banner {
+  background:
+    radial-gradient(circle at 80% 28%, rgba(255, 214, 107, 0.08), transparent 30%),
+    linear-gradient(180deg, #20232B 0%, #1A1C22 100%);
+}
+
+.info-banner {
+  padding: 72px 0;
+  border-top: 1px solid rgba(255, 214, 107, 0.16);
+  border-bottom: 1px solid rgba(255, 214, 107, 0.12);
+}
+
+.intro-hero-text {
+  text-align: left;
+}
+
+.intro-hero-text .big-quote {
+  color: #FFFFFF;
+}
+
+.intro-hero-text .big-quote em {
+  color: var(--gold);
+}
+
+.intro-hero-text p {
+  margin-inline: 0;
+  color: #CFCFCF;
+}
+
+.news-filter,
+.rank-tabs,
+.info-tabs {
+  border-bottom-color: rgba(255, 214, 107, 0.18);
+}
+
+.nf-tab,
+.rank-tab,
+.info-tab,
+.board-search button,
+.peb-btn,
+.board-write-btn {
+  border-radius: 12px;
+}
+
+.nf-tab,
+.rank-tab,
+.info-tab {
+  color: #AEB3BF;
+  border-color: rgba(255, 214, 107, 0.18);
+  background: rgba(36, 40, 51, 0.54);
+}
+
+.nf-tab:hover,
+.rank-tab:hover,
+.info-tab:hover,
+.nf-tab.active,
+.rank-tab.active,
+.info-tab.active {
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(255, 214, 107, 0.08);
+}
+
+.nfc,
+.job-card,
+.feat-card,
+.play-card,
+.guild-card,
+.rank-hero-stat,
+.map-zone,
+.story-img-wrap,
+.map-img-wrap,
+.play-event-banner {
+  border: 1px solid rgba(255, 214, 107, 0.18);
+  border-radius: 8px;
+  background: rgba(36, 40, 51, 0.62);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.18);
+}
+
+.nfc:hover,
+.job-card:hover,
+.feat-card:hover,
+.play-card:hover,
+.guild-card:hover,
+.map-zone:hover {
+  border-color: rgba(255, 214, 107, 0.44);
+  box-shadow: 0 0 20px rgba(255, 214, 107, 0.16), 0 20px 36px rgba(0, 0, 0, 0.24);
+}
+
+.nfc-body,
+.job-card-body,
+.play-card-body {
+  background: rgba(36, 40, 51, 0.92);
+}
+
+.nfc-cat,
+.nt-cat.패치,
+.board-badge.notice {
+  color: var(--gold);
+  border-color: rgba(255, 214, 107, 0.4);
+  background: rgba(255, 214, 107, 0.12);
+}
+
+.nfc:hover .nfc-title,
+.job-card:hover .job-card-name,
+.job-card:hover .job-card-footer,
+.play-card:hover .play-title,
+.board-table tr:hover .board-title-cell,
+.news-table tr:hover .nt-title {
+  color: var(--gold);
+}
+
+.news-table,
+.board-table,
+.rank-table {
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255, 214, 107, 0.14);
+  border-radius: 8px;
+  background: rgba(36, 40, 51, 0.42);
+}
+
+.news-table thead th,
+.board-table thead th,
+.rank-table thead th {
+  color: #9AA0A6;
+  border-bottom-color: rgba(255, 214, 107, 0.18);
+}
+
+.news-table tbody tr,
+.board-table tbody tr,
+.rank-table tbody tr {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.news-table tbody tr:hover,
+.board-table tbody tr:hover,
+.rank-table tbody tr:hover,
+.rank-table tr.top3 {
+  background: rgba(255, 214, 107, 0.06);
+}
+
+.job-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.job-card {
+  display: block;
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  padding: 0;
+  text-align: left;
+  color: #FFFFFF;
+  min-height: 390px;
+  filter: none;
+}
+
+.job-card-img {
+  display: block;
+  width: 100%;
+  height: 214px;
+  padding: 20px 18px 0;
+  object-fit: contain;
+  object-position: center bottom;
+  background:
+    radial-gradient(circle at 50% 70%, rgba(255, 214, 107, 0.16), transparent 42%),
+    linear-gradient(180deg, rgba(17, 19, 25, 0.2), rgba(17, 19, 25, 0.72));
+  filter: drop-shadow(0 0 22px rgba(255, 214, 107, 0.22));
+}
+
+.job-card:hover .job-card-img {
+  filter: drop-shadow(0 0 26px rgba(255, 214, 107, 0.32));
+}
+
+.pg {
+  color: #CFCFCF;
+  border-color: rgba(255, 214, 107, 0.18);
+  background: rgba(36, 40, 51, 0.68);
+}
+
+.pg.active,
+.pg:hover {
+  color: #1A1C22;
+  border-color: var(--gold);
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+}
+
+.story-quote {
+  border-left-color: var(--gold);
+}
+
+.feat-icon,
+.guild-icon,
+.peb-icon {
+  color: var(--gold);
+}
+
+.board-search input {
+  color: #FFFFFF;
+  border-color: rgba(255, 214, 107, 0.18);
+  background: rgba(36, 40, 51, 0.58);
+}
+
+.board-write-btn {
+  color: #1A1C22;
+  background: linear-gradient(90deg, var(--gold), var(--gold-2));
+}
+
+.peb-btn {
+  color: var(--gold);
+  border-color: rgba(255, 214, 107, 0.46);
+  background: rgba(26, 28, 34, 0.2);
+}

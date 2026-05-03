@@ -144,52 +144,28 @@
     .peb-btn:hover { background: rgba(200,160,96,.1); border-color: rgba(200,160,96,.7); }
   </style>
 </head>
-<body class="sub-page">
+<body id="top" class="sub-page">
 
-  <!-- ══════════ GNB ══════════ -->
-  <nav class="gnb">
-    <div class="gnb-util">
-      <div class="gnb-util-left">
-        <a href="index.html" class="util-link">전체게임</a>
-        <span class="util-sep">|</span>
-        <a href="#" class="util-link">엠캐쉬 충전</a>
-        <span class="util-sep">|</span>
-        <a href="#" class="util-link">M이벤트</a>
-      </div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="귀혼 홈">
+      <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="game.html">게임소개</a>
+      <a href="index.html#guide">가이드</a>
+      <a class="active" href="community.html">커뮤니티</a>
+      <a href="index.html#archive">자료실</a>
+      <a href="news.html">고객센터</a>
+    </nav>
+    <div class="header-actions">
+      <button class="button-secondary button-small">로그인</button>
+      <button class="button-primary button-small">회원가입</button>
     </div>
-    <div class="gnb-main">
-      <a href="index.html" class="logo">
-        <img src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/logo/logo_transparent_bg.webp" alt="귀혼" class="logo-img" />
-      </a>
-      <ul class="gnb-menu">
-        <li class="gnb-item"><a href="news.html" class="gnb-link"><span class="fire-spirit"></span>게임소식</a></li>
-        <li class="gnb-item gnb-has-drop">
-          <a href="game.html" class="gnb-link"><span class="fire-spirit"></span>게임 <span class="gnb-arrow">▾</span></a>
-          <ul class="gnb-drop">
-            <li><a href="game.html" class="gnb-drop-link">게임소개</a></li>
-            <li><a href="game.html#info" class="gnb-drop-link">게임정보</a></li>
-          </ul>
-        </li>
-        <li class="gnb-item gnb-has-drop is-active">
-          <a href="community.html" class="gnb-link"><span class="fire-spirit"></span>커뮤니티 <span class="gnb-arrow">▾</span></a>
-          <ul class="gnb-drop">
-            <li><a href="community.html" class="gnb-drop-link active">귀혼객잔</a></li>
-            <li><a href="community.html#ranking" class="gnb-drop-link">랭킹</a></li>
-            <li><a href="community.html#playground" class="gnb-drop-link">놀이터</a></li>
-          </ul>
-        </li>
-        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>자료실</a></li>
-        <li class="gnb-item"><a href="#" class="gnb-link"><span class="fire-spirit"></span>운영센터</a></li>
-      </ul>
-      <button class="btn-talisman gnb-login">
-        <span class="talisman-inner">로그인</span>
-      </button>
-    </div>
-  </nav>
+  </header>
 
   <!-- ══════════ 서브 히어로 ══════════ -->
   <section class="sub-hero">
-    <div class="sub-hero-bg" style="background-image:url('https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg')"></div>
+    <div class="sub-hero-bg" style="background-image:url('images/illustration/blood_wolf.jpg')"></div>
     <div class="sub-hero-overlay"></div>
     <div class="sub-hero-line"></div>
     <div class="sub-hero-content">
@@ -302,7 +278,7 @@
             <td>1085</td>
             <td class="board-title-cell">
               <span class="board-badge hot">HOT</span>
-              선인 직업 Q&A 모음 — 최신 패치 반영
+              도사 직업 Q&A 모음 — 최신 패치 반영
             </td>
             <td>태극선사</td>
             <td>5,109</td>
@@ -397,8 +373,9 @@
         <button class="rank-tab active">전체</button>
         <button class="rank-tab">전사</button>
         <button class="rank-tab">자객</button>
-        <button class="rank-tab">선인</button>
-        <button class="rank-tab">평민</button>
+        <button class="rank-tab">사수</button>
+        <button class="rank-tab">역도</button>
+        <button class="rank-tab">도사</button>
       </div>
 
       <table class="rank-table">
@@ -417,14 +394,14 @@
             <td><span class="rank-num gold">1</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/warrior_female.jpg" alt="">
                 <div>
                   <p class="rank-char-name">태극선인</p>
                   <p class="rank-char-sub">Lv. 50</p>
                 </div>
               </div>
             </td>
-            <td><span class="rank-class 선인">선인</span></td>
+            <td><span class="rank-class 사수">사수</span></td>
             <td class="rank-server">태화서버</td>
             <td class="rank-score">9,842,156</td>
             <td><span class="rank-diff same">—</span></td>
@@ -433,7 +410,7 @@
             <td><span class="rank-num silver">2</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/evil_warrior.jpg" alt="">
                 <div>
                   <p class="rank-char-name">귀검무사</p>
                   <p class="rank-char-sub">Lv. 50</p>
@@ -449,7 +426,7 @@
             <td><span class="rank-num bronze">3</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/blood_wolf.jpg" alt="">
                 <div>
                   <p class="rank-char-name">흑룡자객</p>
                   <p class="rank-char-sub">Lv. 49</p>
@@ -465,14 +442,14 @@
             <td><span class="rank-num">4</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/nine_tailed_fox.jpg" alt="">
                 <div>
                   <p class="rank-char-name">청풍선인</p>
                   <p class="rank-char-sub">Lv. 48</p>
                 </div>
               </div>
             </td>
-            <td><span class="rank-class 선인">선인</span></td>
+            <td><span class="rank-class 사수">사수</span></td>
             <td class="rank-server">태화서버</td>
             <td class="rank-score">7,982,450</td>
             <td><span class="rank-diff up">▲ 2</span></td>
@@ -481,7 +458,7 @@
             <td><span class="rank-num">5</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/maiden_ghost.jpg" alt="">
                 <div>
                   <p class="rank-char-name">혈화무사</p>
                   <p class="rank-char-sub">Lv. 50</p>
@@ -497,7 +474,7 @@
             <td><span class="rank-num">6</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/warrior_female.jpg" alt="">
                 <div>
                   <p class="rank-char-name">천야자객</p>
                   <p class="rank-char-sub">Lv. 50</p>
@@ -513,14 +490,14 @@
             <td><span class="rank-num">7</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/blood_wolf.jpg" alt="">
                 <div>
                   <p class="rank-char-name">풍운평민</p>
                   <p class="rank-char-sub">Lv. 47</p>
                 </div>
               </div>
             </td>
-            <td><span class="rank-class 평민">평민</span></td>
+            <td><span class="rank-class 도사">도사</span></td>
             <td class="rank-server">설원서버</td>
             <td class="rank-score">6,894,110</td>
             <td><span class="rank-diff down">▼ 2</span></td>
@@ -529,7 +506,7 @@
             <td><span class="rank-num">8</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/evil_warrior.jpg" alt="">
                 <div>
                   <p class="rank-char-name">백호신검</p>
                   <p class="rank-char-sub">Lv. 50</p>
@@ -545,14 +522,14 @@
             <td><span class="rank-num">9</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/nine_tailed_fox.jpg" alt="">
                 <div>
                   <p class="rank-char-name">도화선녀</p>
                   <p class="rank-char-sub">Lv. 49</p>
                 </div>
               </div>
             </td>
-            <td><span class="rank-class 선인">선인</span></td>
+            <td><span class="rank-class 도사">도사</span></td>
             <td class="rank-server">태화서버</td>
             <td class="rank-score">6,112,340</td>
             <td><span class="rank-diff same">—</span></td>
@@ -561,7 +538,7 @@
             <td><span class="rank-num">10</span></td>
             <td>
               <div class="rank-char">
-                <img class="rank-char-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="">
+                <img class="rank-char-img" src="images/illustration/maiden_ghost.jpg" alt="">
                 <div>
                   <p class="rank-char-name">암야귀검</p>
                   <p class="rank-char-sub">Lv. 48</p>
@@ -677,7 +654,7 @@
 
         <div class="play-card">
           <span class="play-card-badge new">NEW</span>
-          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/warrior_female.jpg" alt="MBTI 테스트">
+          <img class="play-card-img" src="images/illustration/warrior_female.jpg" alt="MBTI 테스트">
           <div class="play-card-body">
             <p class="play-tag">MBTI TEST</p>
             <h3 class="play-title">귀혼 직업 MBTI 테스트</h3>
@@ -687,7 +664,7 @@
 
         <div class="play-card">
           <span class="play-card-badge live">LIVE</span>
-          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/nine_tailed_fox.jpg" alt="이벤트">
+          <img class="play-card-img" src="images/illustration/nine_tailed_fox.jpg" alt="이벤트">
           <div class="play-card-body">
             <p class="play-tag">EVENT</p>
             <h3 class="play-title">소환사의 부엌 미니게임</h3>
@@ -696,7 +673,7 @@
         </div>
 
         <div class="play-card">
-          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/evil_warrior.jpg" alt="팬아트">
+          <img class="play-card-img" src="images/illustration/evil_warrior.jpg" alt="팬아트">
           <div class="play-card-body">
             <p class="play-tag">FAN ART</p>
             <h3 class="play-title">유저 팬아트 갤러리</h3>
@@ -705,7 +682,7 @@
         </div>
 
         <div class="play-card">
-          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/blood_wolf.jpg" alt="귀혼 퀴즈">
+          <img class="play-card-img" src="images/illustration/blood_wolf.jpg" alt="귀혼 퀴즈">
           <div class="play-card-body">
             <p class="play-tag">QUIZ</p>
             <h3 class="play-title">귀혼 박사 퀴즈왕</h3>
@@ -714,7 +691,7 @@
         </div>
 
         <div class="play-card">
-          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/maiden_ghost.jpg" alt="코스프레">
+          <img class="play-card-img" src="images/illustration/maiden_ghost.jpg" alt="코스프레">
           <div class="play-card-body">
             <p class="play-tag">COSPLAY</p>
             <h3 class="play-title">코스프레 대회 시즌 3</h3>
@@ -723,7 +700,7 @@
         </div>
 
         <div class="play-card">
-          <img class="play-card-img" src="https://raw.githubusercontent.com/jiwon12011/hon_redesign/main/images/illustration/guihon_01.jpg" alt="배경화면">
+          <img class="play-card-img" src="images/illustration/guihon_01.jpg" alt="배경화면">
           <div class="play-card-body">
             <p class="play-tag">WALLPAPER</p>
             <h3 class="play-title">HD 배경화면 자료실</h3>
@@ -735,18 +712,22 @@
     </div>
   </section>
 
-  <!-- ══════════ FOOTER ══════════ -->
-  <footer class="sub-footer">
-    <p class="sf-copy">
-      ⓒ 2026 Nexon Korea. 귀혼은 (주)넥슨코리아의 등록상표입니다.<br>
-      본 사이트의 모든 컨텐츠는 무단 사용을 금합니다.
-    </p>
-    <nav class="sf-links">
-      <a href="#" class="sf-link">이용약관</a>
-      <a href="#" class="sf-link">개인정보처리방침</a>
-      <a href="#" class="sf-link">청소년보호정책</a>
-      <a href="#" class="sf-link">고객센터</a>
-    </nav>
+  <footer class="site-footer">
+    <div class="content-wrap footer-wrap">
+      <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
+      <nav>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">운영정책</a>
+        <a href="#">청소년보호정책</a>
+        <a href="news.html">고객센터</a>
+      </nav>
+      <span>© 2026 GuiHon. All Rights Reserved.</span>
+      <div class="footer-actions">
+        <button class="button-secondary">게임 다운로드 &gt;</button>
+        <a href="#top">TOP</a>
+      </div>
+    </div>
   </footer>
 
   <script>
