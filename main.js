@@ -3,40 +3,55 @@ const jobs = {
     title: "전사",
     role: "근거리 · 강인 체력",
     tagline: ["강인한 체력과 근접 공격으로", "전장을 돌파하는 전사"],
+    intro: "높은 생존력으로 전열을 지키며, 안정적인 근접 전투를 이끄는 선봉형 직업입니다.",
+    traits: ["선봉", "난이도 낮음", "솔로 안정"],
     character: "images/redesign_img/character-warrior-sword.png",
     background: "images/redesign_img/class-warrior-bg.png",
+    scale: 1,
     stats: [85, 90, 60, 30]
   },
   assassin: {
     title: "자객",
     role: "근거리 · 빠른 공격",
     tagline: ["빠른 움직임과 치명적인 일격으로", "적의 빈틈을 파고드는 자객"],
+    intro: "짧은 순간에 거리를 좁혀 폭발적인 피해를 넣는 기습형 직업입니다.",
+    traits: ["기습", "고속 전투", "손맛 강함"],
     character: "images/redesign_img/character-assassin-purple.png",
     background: "images/redesign_img/class-assassin-bg.png",
+    scale: 0.98,
     stats: [94, 42, 55, 96]
   },
   archer: {
     title: "사수",
     role: "원거리 · 정밀 사격",
     tagline: ["활과 원거리 공격으로", "전장을 넓게 장악하는 사수"],
+    intro: "먼 거리에서 적의 움직임을 읽고 안정적으로 전장을 통제하는 원거리 직업입니다.",
+    traits: ["원거리", "견제", "정밀 타격"],
     character: "images/redesign_img/character-ranger-bow.png",
     background: "images/redesign_img/class-ranger-bg.png",
+    scale: 1.05,
     stats: [78, 52, 58, 88]
   },
   fighter: {
     title: "역도",
     role: "근거리 · 강한 일격",
     tagline: ["묵직한 무기와 힘으로", "적진을 흔드는 파괴형 전투가"],
+    intro: "강한 한 방과 넓은 타격 범위로 적진을 흔드는 돌파형 직업입니다.",
+    traits: ["파괴력", "범위 공격", "묵직한 조작"],
     character: "images/redesign_img/character-fighter-axe.png",
     background: "images/redesign_img/class-fighter-bg.png",
+    scale: 1.04,
     stats: [92, 78, 82, 38]
   },
   daoist: {
     title: "도사",
     role: "도술 · 영력 지원",
     tagline: ["도술과 부적의 힘으로", "전투 흐름을 바꾸는 도사"],
+    intro: "도술과 영력으로 아군을 돕고 전투 흐름을 유리하게 바꾸는 지원형 직업입니다.",
+    traits: ["지원", "도술", "파티 추천"],
     character: "images/redesign_img/character-ascetic-white.png",
     background: "images/redesign_img/class-ascetic-bg.png",
+    scale: 0.98,
     stats: [64, 62, 76, 70]
   }
 };
@@ -108,6 +123,8 @@ const statLabels = ["공격력", "방어력", "체력", "민첩성"];
 const jobOrder = Object.keys(jobs);
 const title = document.getElementById("class-title");
 const tagline = document.querySelector(".class-tagline");
+const classIntro = document.querySelector(".class-intro");
+const classTraits = document.querySelector(".class-traits");
 const statList = document.querySelector(".stat-list");
 const characterSection = document.querySelector(".character-section");
 const characterWrap = document.querySelector(".character-wrap");
@@ -116,6 +133,8 @@ const classPathTitle = document.querySelector(".class-path-title");
 const classPathDesc = document.querySelector(".class-path-desc");
 const classSceneCurrent = document.querySelector(".class-scene-current");
 const classSceneNext = document.querySelector(".class-scene-next");
+const classCharacterCurrent = document.querySelector(".class-character-current");
+const classCharacterNext = document.querySelector(".class-character-next");
 const jobCards = [...document.querySelectorAll(".job-card")];
 let currentJobIndex = 0;
 
@@ -159,19 +178,31 @@ function selectJob(jobKey, direction = "next") {
 
   title.textContent = job.title;
   tagline.innerHTML = job.tagline.map((line) => `<span>${line}</span>`).join("");
+  classIntro.textContent = job.intro;
+  classTraits.innerHTML = job.traits.map((trait) => `<span>${trait}</span>`).join("");
   classPathTitle.textContent = job.title;
   classPathDesc.textContent = job.role;
   if (classSceneNext) classSceneNext.setAttribute("src", job.background);
+  if (classCharacterNext) {
+    classCharacterNext.setAttribute("src", job.character);
+    classCharacterNext.style.setProperty("--character-scale", job.scale);
+  }
   renderStats(job.stats);
   runClassMotion(direction);
 }
 
-classSceneNext?.addEventListener("animationend", (event) => {
-  if (!event.animationName.startsWith("class-scene-enter")) return;
+classCharacterNext?.addEventListener("animationend", (event) => {
+  if (!event.animationName.startsWith("class-character-enter")) return;
 
   const nextScene = classSceneNext.getAttribute("src");
   if (nextScene) classSceneCurrent?.setAttribute("src", nextScene);
   classSceneNext.removeAttribute("src");
+  const nextCharacter = classCharacterNext.getAttribute("src");
+  if (nextCharacter) {
+    classCharacterCurrent?.setAttribute("src", nextCharacter);
+    classCharacterCurrent?.style.setProperty("--character-scale", classCharacterNext.style.getPropertyValue("--character-scale") || 1);
+  }
+  classCharacterNext.removeAttribute("src");
   characterSection.classList.remove("is-sliding", "slide-next", "slide-prev");
 });
 
