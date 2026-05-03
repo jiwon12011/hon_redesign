@@ -7,8 +7,10 @@ const jobs = {
     traits: ["선봉", "난이도 낮음", "솔로 안정"],
     character: "images/redesign_img/character-warrior-sword.png",
     background: "images/redesign_img/class-warrior-bg.png",
-    scale: 0.93,
-    stats: [85, 90, 60, 30]
+    scale: 0.88,
+    stats: [85, 90, 60, 30],
+    color: "#C8861A",
+    colorRgb: "200, 134, 26"
   },
   assassin: {
     title: "자객",
@@ -18,8 +20,10 @@ const jobs = {
     traits: ["기습", "고속 전투", "손맛 강함"],
     character: "images/redesign_img/character-assassin-purple.png",
     background: "images/redesign_img/class-assassin-bg.png",
-    scale: 0.98,
-    stats: [94, 42, 55, 96]
+    scale: 0.88,
+    stats: [94, 42, 55, 96],
+    color: "#9B6FD4",
+    colorRgb: "155, 111, 212"
   },
   archer: {
     title: "사수",
@@ -29,8 +33,10 @@ const jobs = {
     traits: ["원거리", "견제", "정밀 타격"],
     character: "images/redesign_img/character-ranger-bow.png",
     background: "images/redesign_img/class-ranger-bg.png",
-    scale: 0.93,
-    stats: [78, 52, 58, 88]
+    scale: 0.9,
+    stats: [78, 52, 58, 88],
+    color: "#4CAF82",
+    colorRgb: "76, 175, 130"
   },
   fighter: {
     title: "역도",
@@ -41,7 +47,9 @@ const jobs = {
     character: "images/redesign_img/character-fighter-axe.png",
     background: "images/redesign_img/class-fighter-bg.png",
     scale: 1.04,
-    stats: [92, 78, 82, 38]
+    stats: [92, 78, 82, 38],
+    color: "#E05A28",
+    colorRgb: "224, 90, 40"
   },
   daoist: {
     title: "도사",
@@ -51,8 +59,10 @@ const jobs = {
     traits: ["지원", "도술", "파티 추천"],
     character: "images/redesign_img/character-ascetic-white.png",
     background: "images/redesign_img/class-ascetic-bg.png",
-    scale: 0.98,
-    stats: [64, 62, 76, 70]
+    scale: 0.92,
+    stats: [64, 62, 76, 70],
+    color: "#5BA8D8",
+    colorRgb: "91, 168, 216"
   }
 };
 
@@ -135,8 +145,15 @@ const classSceneCurrent = document.querySelector(".class-scene-current");
 const classSceneNext = document.querySelector(".class-scene-next");
 const classCharacterCurrent = document.querySelector(".class-character-current");
 const classCharacterNext = document.querySelector(".class-character-next");
+const classRing = document.querySelector(".class-ring");
+const groundGlow = document.querySelector(".class-ground-glow");
 const jobCards = [...document.querySelectorAll(".job-card")];
 let currentJobIndex = 0;
+
+// Set initial warrior theme color and scale
+characterSection.style.setProperty("--job-color", jobs.warrior.color);
+characterSection.style.setProperty("--job-color-rgb", jobs.warrior.colorRgb);
+classCharacterCurrent?.style.setProperty("--character-scale", jobs.warrior.scale);
 
 function renderStats(stats) {
   if (!statList) return;
@@ -187,6 +204,8 @@ function selectJob(jobKey, direction = "next") {
     classCharacterNext.setAttribute("src", job.character);
     classCharacterNext.style.setProperty("--character-scale", job.scale);
   }
+  characterSection.style.setProperty("--job-color", job.color);
+  characterSection.style.setProperty("--job-color-rgb", job.colorRgb);
   renderStats(job.stats);
   runClassMotion(direction);
 }
@@ -204,6 +223,18 @@ classCharacterNext?.addEventListener("animationend", (event) => {
   }
   classCharacterNext.removeAttribute("src");
   characterSection.classList.remove("is-sliding", "slide-next", "slide-prev");
+
+  // Landing impact
+  groundGlow.classList.remove("is-landing");
+  classRing?.classList.remove("is-landing");
+  characterSection.classList.remove("is-landing");
+  void groundGlow.offsetWidth;
+  groundGlow.classList.add("is-landing");
+  classRing?.classList.add("is-landing");
+  setTimeout(() => {
+    groundGlow.classList.remove("is-landing");
+    classRing?.classList.remove("is-landing");
+  }, 600);
 });
 
 jobCards.forEach((card, index) => {
