@@ -7,7 +7,7 @@ const jobs = {
     traits: ["선봉", "난이도 낮음", "솔로 안정"],
     character: "images/redesign_img/character-warrior-sword.png",
     background: "images/redesign_img/class-warrior-bg.png",
-    scale: 1,
+    scale: 0.93,
     stats: [85, 90, 60, 30]
   },
   assassin: {
@@ -29,7 +29,7 @@ const jobs = {
     traits: ["원거리", "견제", "정밀 타격"],
     character: "images/redesign_img/character-ranger-bow.png",
     background: "images/redesign_img/class-ranger-bg.png",
-    scale: 1.05,
+    scale: 0.93,
     stats: [78, 52, 58, 88]
   },
   fighter: {
