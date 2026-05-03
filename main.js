@@ -5,8 +5,6 @@ const jobs = {
     tagline: ["강인한 체력과 근접 공격으로", "전장을 돌파하는 전사"],
     character: "images/redesign_img/character-warrior-sword.png",
     background: "images/redesign_img/class-warrior-bg.png",
-    bgPosition: "53% center",
-    bgSize: "auto 560px",
     stats: [85, 90, 60, 30]
   },
   assassin: {
@@ -15,8 +13,6 @@ const jobs = {
     tagline: ["빠른 움직임과 치명적인 일격으로", "적의 빈틈을 파고드는 자객"],
     character: "images/redesign_img/character-assassin-purple.png",
     background: "images/redesign_img/class-assassin-bg.png",
-    bgPosition: "53% center",
-    bgSize: "auto 560px",
     stats: [94, 42, 55, 96]
   },
   archer: {
@@ -25,8 +21,6 @@ const jobs = {
     tagline: ["활과 원거리 공격으로", "전장을 넓게 장악하는 사수"],
     character: "images/redesign_img/character-ranger-bow.png",
     background: "images/redesign_img/class-ranger-bg.png",
-    bgPosition: "53% center",
-    bgSize: "auto 560px",
     stats: [78, 52, 58, 88]
   },
   fighter: {
@@ -35,8 +29,6 @@ const jobs = {
     tagline: ["묵직한 무기와 힘으로", "적진을 흔드는 파괴형 전투가"],
     character: "images/redesign_img/character-fighter-axe.png",
     background: "images/redesign_img/class-fighter-bg.png",
-    bgPosition: "53% center",
-    bgSize: "auto 560px",
     stats: [92, 78, 82, 38]
   },
   daoist: {
@@ -45,8 +37,6 @@ const jobs = {
     tagline: ["도술과 부적의 힘으로", "전투 흐름을 바꾸는 도사"],
     character: "images/redesign_img/character-ascetic-white.png",
     background: "images/redesign_img/class-ascetic-bg.png",
-    bgPosition: "53% center",
-    bgSize: "auto 560px",
     stats: [64, 62, 76, 70]
   }
 };
@@ -124,6 +114,8 @@ const characterWrap = document.querySelector(".character-wrap");
 const classDetail = document.querySelector(".class-detail");
 const classPathTitle = document.querySelector(".class-path-title");
 const classPathDesc = document.querySelector(".class-path-desc");
+const classSceneCurrent = document.querySelector(".class-scene-current");
+const classSceneNext = document.querySelector(".class-scene-next");
 const jobCards = [...document.querySelectorAll(".job-card")];
 let currentJobIndex = 0;
 
@@ -142,12 +134,12 @@ function renderStats(stats) {
 function runClassMotion(direction) {
   characterWrap.classList.remove("slide-next", "slide-prev");
   classDetail.classList.remove("is-swapping");
-  characterSection.classList.remove("is-sliding");
+  characterSection.classList.remove("is-sliding", "slide-next", "slide-prev");
 
   window.requestAnimationFrame(() => {
     characterWrap.classList.add(direction === "prev" ? "slide-prev" : "slide-next");
     classDetail.classList.add("is-swapping");
-    characterSection.classList.add("is-sliding");
+    characterSection.classList.add("is-sliding", direction === "prev" ? "slide-prev" : "slide-next");
   });
 }
 
@@ -155,6 +147,7 @@ function selectJob(jobKey, direction = "next") {
   const nextIndex = jobOrder.indexOf(jobKey);
   const job = jobs[jobKey];
   if (!job || nextIndex < 0) return;
+  if (nextIndex === currentJobIndex && classPathTitle.textContent === job.title) return;
 
   currentJobIndex = nextIndex;
 
@@ -168,12 +161,19 @@ function selectJob(jobKey, direction = "next") {
   tagline.innerHTML = job.tagline.map((line) => `<span>${line}</span>`).join("");
   classPathTitle.textContent = job.title;
   classPathDesc.textContent = job.role;
-  characterSection.style.setProperty("--class-bg", `url("${job.background}")`);
-  characterSection.style.setProperty("--class-bg-position", job.bgPosition);
-  characterSection.style.setProperty("--class-bg-size", job.bgSize);
+  if (classSceneNext) classSceneNext.setAttribute("src", job.background);
   renderStats(job.stats);
   runClassMotion(direction);
 }
+
+classSceneNext?.addEventListener("animationend", (event) => {
+  if (!event.animationName.startsWith("class-scene-enter")) return;
+
+  const nextScene = classSceneNext.getAttribute("src");
+  if (nextScene) classSceneCurrent?.setAttribute("src", nextScene);
+  classSceneNext.removeAttribute("src");
+  characterSection.classList.remove("is-sliding", "slide-next", "slide-prev");
+});
 
 jobCards.forEach((card, index) => {
   card.addEventListener("click", () => {
