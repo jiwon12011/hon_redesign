@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>나와 닮은 직업 찾기 | 귀혼</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="test.css" />
+</head>
+<body id="top" class="test-page">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="귀혼 홈">
+      <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="game.html">게임소개</a>
+      <a class="active" href="test.html">가이드</a>
+      <a href="community.html">커뮤니티</a>
+      <a href="index.html#archive">자료실</a>
+      <a href="news.html">고객센터</a>
+    </nav>
+    <div class="header-actions">
+      <button class="button-secondary button-small">로그인</button>
+      <button class="button-primary button-small">회원가입</button>
+    </div>
+  </header>
+
+  <main class="test-shell">
+    <section class="test-hero" aria-labelledby="test-title">
+      <div class="test-hero-bg" aria-hidden="true"></div>
+      <div class="content-wrap test-hero-inner">
+        <div class="test-hero-copy">
+          <p class="test-eyebrow">PERSONALITY × CLASS</p>
+          <h1 id="test-title">나와 닮은<br>직업 찾기</h1>
+          <p>전투 선택지로 당신의 혼 성향을 분석하고, 귀혼 세계에서 가장 잘 맞는 직업을 찾아보세요.</p>
+          <div class="test-hero-actions">
+            <button class="button-primary button-large" type="button" data-start-test>테스트 시작</button>
+            <a class="button-secondary button-large" href="index.html">메인으로</a>
+          </div>
+        </div>
+
+        <div class="test-party-card" aria-label="테스트 참여 직업">
+          <span class="party-orbit" aria-hidden="true"></span>
+          <img class="party-character party-assassin" src="images/redesign_img/character-assassin-purple.png" alt="자객" />
+          <img class="party-character party-archer" src="images/redesign_img/character-ranger-bow.png" alt="사수" />
+          <img class="party-character party-warrior" src="images/redesign_img/character-warrior-sword.png" alt="전사" />
+          <img class="party-character party-fighter" src="images/redesign_img/character-fighter-axe.png" alt="역도" />
+          <img class="party-character party-daoist" src="images/redesign_img/character-ascetic-white.png" alt="도사" />
+          <div class="party-core">
+            <strong>?</strong>
+            <span>혼 분석</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="quiz-section" aria-labelledby="quiz-title">
+      <div class="content-wrap quiz-wrap">
+        <aside class="quiz-status" aria-label="테스트 진행 상태">
+          <div>
+            <p class="test-eyebrow">SOUL SYNC</p>
+            <h2>혼 게이지</h2>
+          </div>
+          <div class="soul-meter" aria-hidden="true">
+            <span class="soul-meter-fill"></span>
+          </div>
+          <p class="quiz-step-text">대기 중</p>
+          <div class="job-score-list" aria-label="직업 적합도">
+            <div><span>전사</span><i style="--score: 20%"></i></div>
+            <div><span>자객</span><i style="--score: 20%"></i></div>
+            <div><span>사수</span><i style="--score: 20%"></i></div>
+            <div><span>역도</span><i style="--score: 20%"></i></div>
+            <div><span>도사</span><i style="--score: 20%"></i></div>
+          </div>
+        </aside>
+
+        <article class="quiz-panel">
+          <div class="quiz-start is-active" data-screen="start">
+            <p class="test-eyebrow">READY</p>
+            <h2>6개의 상황을 선택하면<br>당신의 직업 성향이 드러납니다</h2>
+            <p>정답은 없어요. 실제 게임에서 내가 누를 것 같은 선택지를 빠르게 골라보세요.</p>
+            <button class="button-primary button-large" type="button" data-start-test>입장하기</button>
+          </div>
+
+          <div class="quiz-question" data-screen="question" aria-live="polite">
+            <div class="question-topline">
+              <span class="question-count">Q1 / 6</span>
+              <span class="question-type">전투 성향</span>
+            </div>
+            <h2 id="quiz-title" class="question-title">질문이 표시됩니다</h2>
+            <p class="question-desc">선택지를 골라주세요.</p>
+            <div class="choice-grid" role="list"></div>
+            <div class="quiz-controls">
+              <button class="button-secondary" type="button" data-prev-question>이전</button>
+            </div>
+          </div>
+
+          <div class="quiz-result" data-screen="result" aria-live="polite">
+            <div class="result-kicker">RESULT</div>
+            <div class="result-layout">
+              <div class="result-copy">
+                <span class="result-type">SOUL TYPE</span>
+                <h2 class="result-title">전사형 플레이어</h2>
+                <p class="result-summary">결과 설명이 표시됩니다.</p>
+                <div class="result-tags"></div>
+                <dl class="result-meta">
+                  <div>
+                    <dt>혼 적합도</dt>
+                    <dd class="result-match">92%</dd>
+                  </div>
+                  <div>
+                    <dt>추천 포지션</dt>
+                    <dd class="result-position">선봉</dd>
+                  </div>
+                </dl>
+                <div class="result-actions">
+                  <button class="button-primary" type="button" data-restart-test>다시 하기</button>
+                  <a class="button-secondary" href="index.html#guide">직업 보기</a>
+                </div>
+              </div>
+              <figure class="result-visual">
+                <span class="result-glow" aria-hidden="true"></span>
+                <img class="result-character" src="images/redesign_img/character-warrior-sword.png" alt="" />
+              </figure>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="content-wrap footer-wrap">
+      <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
+      <nav>
+        <a href="#">이용약관</a>
+        <a href="#">개인정보처리방침</a>
+        <a href="#">운영정책</a>
+        <a href="#">청소년보호정책</a>
+        <a href="news.html">고객센터</a>
+      </nav>
+      <span>© 2026 GuiHon. All Rights Reserved.</span>
+      <div class="footer-actions">
+        <button class="button-secondary">게임 다운로드 &gt;</button>
+        <a href="#top">TOP</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="test.js"></script>
+</body>
+</html>
