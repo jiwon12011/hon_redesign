@@ -2,41 +2,51 @@ const jobs = {
   warrior: {
     title: "전사",
     role: "근거리 · 강인 체력",
-    tagline: "강인한 체력과 근접 공격으로 전장을 돌파하는 전사",
+    tagline: ["강인한 체력과 근접 공격으로", "전장을 돌파하는 전사"],
     character: "images/redesign_img/character-warrior-sword.png",
     background: "images/redesign_img/class-warrior-bg.png",
+    bgPosition: "53% center",
+    bgSize: "auto 560px",
     stats: [85, 90, 60, 30]
   },
   assassin: {
     title: "자객",
     role: "근거리 · 빠른 공격",
-    tagline: "빠른 움직임과 치명적인 일격으로 적의 빈틈을 파고드는 자객",
+    tagline: ["빠른 움직임과 치명적인 일격으로", "적의 빈틈을 파고드는 자객"],
     character: "images/redesign_img/character-assassin-purple.png",
     background: "images/redesign_img/class-assassin-bg.png",
+    bgPosition: "53% center",
+    bgSize: "auto 560px",
     stats: [94, 42, 55, 96]
   },
   archer: {
     title: "사수",
     role: "원거리 · 정밀 사격",
-    tagline: "활과 원거리 공격으로 전장을 넓게 장악하는 사수",
+    tagline: ["활과 원거리 공격으로", "전장을 넓게 장악하는 사수"],
     character: "images/redesign_img/character-ranger-bow.png",
     background: "images/redesign_img/class-ranger-bg.png",
+    bgPosition: "53% center",
+    bgSize: "auto 560px",
     stats: [78, 52, 58, 88]
   },
   fighter: {
     title: "역도",
     role: "근거리 · 강한 일격",
-    tagline: "묵직한 무기와 힘으로 적진을 흔드는 파괴형 전투가",
+    tagline: ["묵직한 무기와 힘으로", "적진을 흔드는 파괴형 전투가"],
     character: "images/redesign_img/character-fighter-axe.png",
     background: "images/redesign_img/class-fighter-bg.png",
+    bgPosition: "53% center",
+    bgSize: "auto 560px",
     stats: [92, 78, 82, 38]
   },
   daoist: {
     title: "도사",
     role: "도술 · 영력 지원",
-    tagline: "도술과 부적의 힘으로 전투 흐름을 바꾸는 도사",
+    tagline: ["도술과 부적의 힘으로", "전투 흐름을 바꾸는 도사"],
     character: "images/redesign_img/character-ascetic-white.png",
     background: "images/redesign_img/class-ascetic-bg.png",
+    bgPosition: "53% center",
+    bgSize: "auto 560px",
     stats: [64, 62, 76, 70]
   }
 };
@@ -114,8 +124,6 @@ const characterWrap = document.querySelector(".character-wrap");
 const classDetail = document.querySelector(".class-detail");
 const classPathTitle = document.querySelector(".class-path-title");
 const classPathDesc = document.querySelector(".class-path-desc");
-const classPreview = document.querySelector(".class-preview-img");
-const classGhost = document.querySelector(".class-ghost-img");
 const jobCards = [...document.querySelectorAll(".job-card")];
 let currentJobIndex = 0;
 
@@ -157,12 +165,12 @@ function selectJob(jobKey, direction = "next") {
   });
 
   title.textContent = job.title;
-  tagline.textContent = job.tagline;
+  tagline.innerHTML = job.tagline.map((line) => `<span>${line}</span>`).join("");
   classPathTitle.textContent = job.title;
   classPathDesc.textContent = job.role;
-  classPreview.src = job.character;
-  classGhost.src = job.character;
   characterSection.style.setProperty("--class-bg", `url("${job.background}")`);
+  characterSection.style.setProperty("--class-bg-position", job.bgPosition);
+  characterSection.style.setProperty("--class-bg-size", job.bgSize);
   renderStats(job.stats);
   runClassMotion(direction);
 }
