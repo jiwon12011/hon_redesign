@@ -137,11 +137,26 @@
 
     <section class="character-section" id="guide" aria-labelledby="class-title">
       <div class="content-wrap character-wrap">
-        <button class="class-nav class-nav-prev" type="button" aria-label="이전 직업">‹</button>
+        <article class="class-detail">
+          <div class="class-path">
+            <span class="class-emblem" aria-hidden="true"></span>
+            <strong class="class-path-title">전사</strong>
+            <span aria-hidden="true">&gt;</span>
+            <span class="class-path-desc">근거리 · 강인 체력</span>
+          </div>
+          <h2 id="class-title">전사</h2>
+          <p class="class-tagline">강인한 체력과 근접 공격으로 전장을 돌파하는 전사</p>
+          <p class="class-weapon">사용무기 · 두손검 (전용무기)</p>
+          <button class="class-video-button" type="button">직업 플레이 영상 <span aria-hidden="true">▶</span></button>
+        </article>
+
+        <div class="class-visual" aria-hidden="true">
+          <img class="class-ghost-img" src="images/redesign_img/character-warrior-sword.png" alt="" />
+          <img class="class-preview-img" src="images/redesign_img/character-warrior-sword.png" alt="" />
+        </div>
+
         <div class="character-picker">
-          <p class="eyebrow">CHARACTER SELECT</p>
-          <h2>캐릭터 선택</h2>
-          <p>당신의 운명을 선택하세요</p>
+          <button class="class-nav class-nav-prev" type="button" aria-label="이전 직업">‹</button>
           <div class="job-card-grid" role="tablist" aria-label="직업 선택">
             <button class="job-card character-selected" data-job="warrior" role="tab" aria-selected="true">
               <span class="job-thumb"><img src="images/redesign_img/character-warrior-sword.png" alt="" /></span>
@@ -169,22 +184,8 @@
               <small>도술 · 지원</small>
             </button>
           </div>
+          <button class="class-nav class-nav-next" type="button" aria-label="다음 직업">›</button>
         </div>
-        <article class="class-detail">
-          <div>
-            <p class="eyebrow">SELECTED CLASS</p>
-            <h2 id="class-title">전사</h2>
-            <p class="class-tagline">강력한 힘과 체력으로 전장을 지배하는 근접 전투의 달인</p>
-          </div>
-          <div class="stat-list">
-            <div class="stat-row"><span>공격력</span><div><i style="width:85%"></i></div><strong>85</strong></div>
-            <div class="stat-row"><span>방어력</span><div><i style="width:90%"></i></div><strong>90</strong></div>
-            <div class="stat-row"><span>체력</span><div><i style="width:60%"></i></div><strong>60</strong></div>
-            <div class="stat-row"><span>민첩성</span><div><i style="width:30%"></i></div><strong>30</strong></div>
-          </div>
-          <button class="button-primary">캐릭터 생성</button>
-        </article>
-        <button class="class-nav class-nav-next" type="button" aria-label="다음 직업">›</button>
       </div>
     </section>
 
@@ -203,10 +204,10 @@
         </div>
         <figure class="recommend-art" aria-label="직업 테스트 캐릭터 모음">
           <div class="recommend-stage">
-            <span class="speech-bubble bubble-speed">빠른 기습</span>
-            <span class="speech-bubble bubble-force">정면 돌파</span>
-            <span class="speech-bubble bubble-support">부적 지원</span>
-            <span class="speech-bubble bubble-safe">안전 회복</span>
+            <span class="speech-bubble bubble-speed">전투 성향은?</span>
+            <span class="speech-bubble bubble-force">선호 무기는?</span>
+            <span class="speech-bubble bubble-support">파티 역할은?</span>
+            <span class="speech-bubble bubble-safe">플레이 스타일은?</span>
             <span class="magic-core">?</span>
             <img class="test-character test-assassin" src="images/redesign_img/character-assassin-purple.png" alt="자객" />
             <img class="test-character test-archer" src="images/redesign_img/character-ranger-bow.png" alt="사수" />
