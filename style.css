@@ -84,6 +84,11 @@ h3 {
   padding: 0 24px;
 }
 
+.home-page .content-wrap,
+.home-page .hero-inner {
+  max-width: 1600px;
+}
+
 .site-header {
   position: sticky;
   top: 0;
