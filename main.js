@@ -3,8 +3,8 @@ const jobs = {
     title: "전사",
     symbol: "검",
     role: "근거리 · 강인 체력",
-    tagline: ["강인한 체력과 근접 공격으로", "전장을 돌파하는 전사"],
-    intro: "높은 생존력으로 전열을 지키며, 안정적인 근접 전투를 이끄는 선봉형 직업입니다.",
+    tagline: ["전열을 지키는 선봉형 전사"],
+    intro: "높은 생존력으로 전장을 안정적으로 여는 직업입니다.",
     traits: ["선봉", "난이도 낮음", "솔로 안정"],
     character: "images/redesign_img/character-warrior-sword.png",
     background: "images/redesign_img/class-warrior-bg.png",
@@ -17,8 +17,8 @@ const jobs = {
     title: "자객",
     symbol: "암",
     role: "근거리 · 빠른 공격",
-    tagline: ["빠른 움직임과 치명적인 일격으로", "적의 빈틈을 파고드는 자객"],
-    intro: "짧은 순간에 거리를 좁혀 폭발적인 피해를 넣는 기습형 직업입니다.",
+    tagline: ["빈틈을 찌르는 기습형 자객"],
+    intro: "빠른 접근과 폭발적인 일격으로 흐름을 뒤집습니다.",
     traits: ["기습", "고속 전투", "손맛 강함"],
     character: "images/redesign_img/character-assassin-purple.png",
     background: "images/redesign_img/class-assassin-bg.png",
@@ -31,8 +31,8 @@ const jobs = {
     title: "사수",
     symbol: "궁",
     role: "원거리 · 정밀 사격",
-    tagline: ["활과 원거리 공격으로", "전장을 넓게 장악하는 사수"],
-    intro: "먼 거리에서 적의 움직임을 읽고 안정적으로 전장을 통제하는 원거리 직업입니다.",
+    tagline: ["거리를 지배하는 정밀형 사수"],
+    intro: "전장을 넓게 보고 안정적으로 적을 압박합니다.",
     traits: ["원거리", "견제", "정밀 타격"],
     character: "images/redesign_img/character-ranger-bow.png",
     background: "images/redesign_img/class-ranger-bg.png",
@@ -45,8 +45,8 @@ const jobs = {
     title: "역도",
     symbol: "권",
     role: "근거리 · 강한 일격",
-    tagline: ["묵직한 무기와 힘으로", "적진을 흔드는 파괴형 전투가"],
-    intro: "강한 한 방과 넓은 타격 범위로 적진을 흔드는 돌파형 직업입니다.",
+    tagline: ["적진을 흔드는 파괴형 역도"],
+    intro: "묵직한 한 방과 넓은 범위로 길을 엽니다.",
     traits: ["파괴력", "범위 공격", "묵직한 조작"],
     character: "images/redesign_img/character-fighter-axe.png",
     background: "images/redesign_img/class-fighter-bg.png",
@@ -59,8 +59,8 @@ const jobs = {
     title: "도사",
     symbol: "부",
     role: "도술 · 영력 지원",
-    tagline: ["도술과 부적의 힘으로", "전투 흐름을 바꾸는 도사"],
-    intro: "도술과 영력으로 아군을 돕고 전투 흐름을 유리하게 바꾸는 지원형 직업입니다.",
+    tagline: ["전투 흐름을 바꾸는 지원형 도사"],
+    intro: "도술과 영력으로 파티의 전투 지속력을 높입니다.",
     traits: ["지원", "도술", "파티 추천"],
     character: "images/redesign_img/character-ascetic-white.png",
     background: "images/redesign_img/class-ascetic-bg.png",
@@ -141,6 +141,11 @@ const tagline = document.querySelector(".class-tagline");
 const classIntro = document.querySelector(".class-intro");
 const classTraits = document.querySelector(".class-traits");
 const statList = document.querySelector(".stat-list");
+const radarChart = document.querySelector(".radar-chart");
+const radarFill = document.querySelector(".radar-fill");
+const radarStroke = document.querySelector(".radar-stroke");
+const radarPoints = document.querySelector(".radar-points");
+const chartStatList = document.querySelector(".chart-stat-list");
 const characterSection = document.querySelector(".character-section");
 const characterWrap = document.querySelector(".character-wrap");
 const classDetail = document.querySelector(".class-detail");
@@ -162,16 +167,52 @@ characterSection.style.setProperty("--job-color-rgb", jobs.warrior.colorRgb);
 classCharacterCurrent?.style.setProperty("--character-scale", jobs.warrior.scale);
 
 function renderStats(stats) {
-  if (!statList) return;
+  const maxRadius = 62;
+  const center = 80;
+  const angles = [-90, 0, 90, 180];
+  const points = stats.map((value, index) => {
+    const radius = (Math.max(0, Math.min(value, 100)) / 100) * maxRadius;
+    const angle = (angles[index] * Math.PI) / 180;
+    const x = center + Math.cos(angle) * radius;
+    const y = center + Math.sin(angle) * radius;
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  });
 
-  statList.innerHTML = stats.map((value, index) => `
-    <div class="stat-row">
-      <span>${statLabels[index]}</span>
-      <div><i style="width:${value}%"></i></div>
-      <strong>${value}</strong>
+  if (radarFill) radarFill.setAttribute("points", points.join(" "));
+  if (radarStroke) radarStroke.setAttribute("points", `${points.join(" ")} ${points[0]}`);
+  if (radarPoints) {
+    radarPoints.innerHTML = points.map((point) => {
+      const [x, y] = point.split(",");
+      return `<circle cx="${x}" cy="${y}" r="3.4" />`;
+    }).join("");
+  }
+  if (radarChart) {
+    radarChart.setAttribute(
+      "aria-label",
+      stats.map((value, index) => `${statLabels[index]} ${value}`).join(", ")
+    );
+  }
+
+  const statMarkup = stats.map((value, index) => `
+    <div>
+      <dt>${statLabels[index]}</dt>
+      <dd>${value}</dd>
     </div>
   `).join("");
+
+  if (chartStatList) chartStatList.innerHTML = statMarkup;
+  if (statList) {
+    statList.innerHTML = stats.map((value, index) => `
+      <div class="stat-row">
+        <span>${statLabels[index]}</span>
+        <div><i style="width:${value}%"></i></div>
+        <strong>${value}</strong>
+      </div>
+    `).join("");
+  }
 }
+
+renderStats(jobs.warrior.stats);
 
 function runClassMotion(direction) {
   characterWrap.classList.remove("slide-next", "slide-prev");

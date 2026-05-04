@@ -149,19 +149,42 @@
           </div>
           <h2 id="class-title">전사</h2>
           <p class="class-tagline">
-            <span>강인한 체력과 근접 공격으로</span>
-            <span>전장을 돌파하는 전사</span>
+            <span>전열을 지키는 선봉형 전사</span>
           </p>
-          <p class="class-intro">높은 생존력으로 전열을 지키며, 안정적인 근접 전투를 이끄는 선봉형 직업입니다.</p>
+          <p class="class-intro">높은 생존력으로 전장을 안정적으로 여는 직업입니다.</p>
           <div class="class-traits" aria-label="직업 특징">
             <span>선봉</span>
             <span>난이도 낮음</span>
             <span>솔로 안정</span>
           </div>
+          <div class="class-chart" aria-label="직업 능력치">
+            <div class="radar-wrap">
+              <svg class="radar-chart" viewBox="0 0 160 160" role="img" aria-label="공격력 85, 방어력 90, 체력 60, 민첩성 30">
+                <polygon class="radar-grid radar-grid-outer" points="80,18 142,80 80,142 18,80" />
+                <polygon class="radar-grid" points="80,38 122,80 80,122 38,80" />
+                <polygon class="radar-grid radar-grid-inner" points="80,58 102,80 80,102 58,80" />
+                <line class="radar-axis" x1="80" y1="18" x2="80" y2="142" />
+                <line class="radar-axis" x1="18" y1="80" x2="142" y2="80" />
+                <polygon class="radar-fill" points="" />
+                <polyline class="radar-stroke" points="" />
+                <g class="radar-points"></g>
+              </svg>
+              <span class="radar-label radar-label-top">공격</span>
+              <span class="radar-label radar-label-right">방어</span>
+              <span class="radar-label radar-label-bottom">체력</span>
+              <span class="radar-label radar-label-left">민첩</span>
+            </div>
+            <dl class="chart-stat-list"></dl>
+          </div>
         </article>
 
         <div class="class-character-stage" aria-hidden="true">
           <span class="class-ground-glow"></span>
+          <span class="class-flame-bed">
+            <i></i>
+            <i></i>
+            <i></i>
+          </span>
           <span class="class-ring" aria-hidden="true"></span>
           <img class="class-character-img class-character-current" src="images/redesign_img/character-warrior-sword.png" alt="" />
           <img class="class-character-img class-character-next" alt="" />
