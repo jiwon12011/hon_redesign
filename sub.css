@@ -1005,7 +1005,8 @@ html { background: #1A1C22; }
 .route-step,
 .quick-class-grid a,
 .archive-yokai-card,
-.archive-item-card {
+.archive-item-card,
+.account-gate-card {
   border: 1px solid rgba(255, 214, 107, 0.18);
   border-radius: 8px;
   background:
@@ -1230,4 +1231,103 @@ html { background: #1A1C22; }
   object-fit: contain;
   image-rendering: auto;
   filter: drop-shadow(0 0 18px rgba(255, 214, 107, 0.16));
+}
+
+.account-gate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.account-gate-card {
+  padding: 32px;
+}
+
+.account-field-list,
+.account-perk-list {
+  display: grid;
+  gap: 10px;
+  margin: 26px 0;
+}
+
+.account-field-list span,
+.account-perk-list span {
+  min-height: 44px;
+  padding: 12px 16px;
+  color: #CFCFCF;
+  border: 1px solid rgba(255, 214, 107, 0.16);
+  border-radius: 8px;
+  background: rgba(17, 19, 25, 0.46);
+  font-weight: 800;
+}
+
+@media (max-width: 1180px) {
+  .sub-hero-content,
+  .sub-nav-inner,
+  .sub-wrap {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .guide-portal-grid,
+  .archive-category-grid,
+  .archive-yokai-grid,
+  .archive-item-grid,
+  .account-gate-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .guide-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .quick-class-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .sub-page {
+    padding-top: 76px;
+  }
+
+  .sub-hero {
+    height: 300px;
+  }
+
+  .sub-wrap {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .guide-portal-grid,
+  .guide-route-grid,
+  .archive-category-grid,
+  .archive-yokai-grid,
+  .archive-item-grid,
+  .quick-class-grid,
+  .account-gate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .guide-portal-main {
+    grid-template-rows: auto 220px;
+  }
+
+  .guide-portal-main img {
+    height: 220px;
+  }
+
+  .archive-yokai-card {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-yokai-card img {
+    width: 100%;
+  }
+
+  .archive-download-band {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 }
