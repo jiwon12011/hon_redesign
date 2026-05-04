@@ -25,6 +25,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: #1A1C22;
 }
 
 body {
@@ -1605,10 +1606,42 @@ h3 {
 
 .featured-item .button-secondary {
   margin-top: 18px;
-  min-width: 160px;
+  min-width: 116px;
   width: auto;
   white-space: nowrap;
-  gap: 8px;
+}
+
+.item-detail-link {
+  gap: 7px;
+  min-height: 34px;
+  padding: 0 14px;
+  color: rgba(255, 214, 107, 0.92);
+  border-color: rgba(255, 214, 107, 0.44);
+  background: rgba(15, 16, 20, 0.22);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: none;
+}
+
+.item-detail-link::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentColor;
+  border-right: 1.5px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.item-detail-link:hover {
+  color: #FFD66B;
+  border-color: rgba(255, 214, 107, 0.62);
+  background: rgba(255, 214, 107, 0.08);
+}
+
+.item-detail-link:hover::after {
+  transform: translateX(2px) rotate(45deg);
 }
 
 .hot-list {
@@ -1620,7 +1653,7 @@ h3 {
   position: relative;
   overflow: hidden;
   display: grid;
-  grid-template-columns: 62px minmax(0, 1fr) 128px;
+  grid-template-columns: 62px minmax(0, 1fr) 112px;
   gap: 16px;
   align-items: center;
   min-height: 84px;
@@ -1633,8 +1666,8 @@ h3 {
 
 .hot-row .button-secondary {
   justify-self: end;
-  width: 128px;
-  min-height: 42px;
+  width: 112px;
+  min-height: 34px;
   padding: 0 12px;
   white-space: nowrap;
 }
