@@ -1136,7 +1136,7 @@ h3 {
   align-items: flex-start;
   min-height: 0;
   width: 372px;
-  padding: 62px 0 0;
+  padding: 42px 0 0;
   border: 0;
   border-radius: 0;
   background: transparent;
@@ -1145,7 +1145,7 @@ h3 {
 }
 
 .class-detail h2 {
-  margin: 18px 0 10px;
+  margin: 0 0 12px;
   color: #FFFFFF;
   font-size: 58px;
   line-height: 1.02;
@@ -1154,7 +1154,7 @@ h3 {
 
 .class-tagline {
   width: 330px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   color: var(--job-color);
   font-size: 18px;
   font-weight: 900;
@@ -1167,7 +1167,7 @@ h3 {
 
 .class-intro {
   width: 352px;
-  margin: 0 0 18px;
+  margin: 0 0 20px;
   color: #D8DADF;
   font-size: 15px;
   font-weight: 700;
@@ -1196,13 +1196,16 @@ h3 {
 }
 
 .class-chart {
+  position: relative;
   display: grid;
   grid-template-columns: 152px minmax(0, 1fr);
-  gap: 16px;
+  gap: 18px;
   align-items: center;
   width: 372px;
-  margin-top: 20px;
-  padding: 14px;
+  margin-top: 30px;
+  margin-bottom: 24px;
+  padding: 22px 18px;
+  overflow: hidden;
   border: 1px solid rgba(var(--job-color-rgb), 0.24);
   border-radius: 14px;
   background:
@@ -1211,8 +1214,35 @@ h3 {
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
+.class-chart::before {
+  content: "";
+  position: absolute;
+  inset: -58% -42%;
+  opacity: 0.14;
+  background:
+    conic-gradient(from 90deg, transparent, rgba(var(--job-color-rgb), 0.46), transparent 38%, transparent 100%),
+    radial-gradient(circle, rgba(var(--job-color-rgb), 0.18), transparent 62%);
+  animation: radar-aura-spin 10s linear infinite;
+  pointer-events: none;
+}
+
+.class-chart::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(110deg, transparent 22%, rgba(255, 255, 255, 0.14) 46%, rgba(var(--job-color-rgb), 0.2) 54%, transparent 76%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.class-chart.is-charting::after {
+  animation: radar-panel-sweep 0.78s ease both;
+}
+
 .radar-wrap {
   position: relative;
+  z-index: 1;
   width: 152px;
   height: 152px;
 }
@@ -1221,6 +1251,7 @@ h3 {
   width: 100%;
   height: 100%;
   overflow: visible;
+  animation: radar-breathe 3.4s ease-in-out infinite;
 }
 
 .radar-grid {
@@ -1244,6 +1275,8 @@ h3 {
 
 .radar-fill {
   fill: rgba(var(--job-color-rgb), 0.32);
+  transform-box: view-box;
+  transform-origin: 80px 80px;
 }
 
 .radar-stroke {
@@ -1251,7 +1284,11 @@ h3 {
   stroke: var(--job-color);
   stroke-width: 2.4;
   stroke-linejoin: round;
+  stroke-dasharray: 280;
+  stroke-dashoffset: 0;
   filter: drop-shadow(0 0 8px rgba(var(--job-color-rgb), 0.42));
+  transform-box: view-box;
+  transform-origin: 80px 80px;
 }
 
 .radar-points circle {
@@ -1259,6 +1296,30 @@ h3 {
   stroke: var(--job-color);
   stroke-width: 1.8;
   filter: drop-shadow(0 0 6px rgba(var(--job-color-rgb), 0.5));
+}
+
+.class-chart.is-charting .radar-fill {
+  animation: radar-fill-pop 0.64s cubic-bezier(0.18, 0.9, 0.16, 1) both;
+}
+
+.class-chart.is-charting .radar-stroke {
+  animation: radar-line-draw 0.88s ease-out both;
+}
+
+.class-chart.is-charting .radar-points circle {
+  animation: radar-point-pop 0.52s ease-out both;
+}
+
+.class-chart.is-charting .radar-points circle:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.class-chart.is-charting .radar-points circle:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.class-chart.is-charting .radar-points circle:nth-child(4) {
+  animation-delay: 0.24s;
 }
 
 .radar-label {
@@ -1293,6 +1354,8 @@ h3 {
 }
 
 .chart-stat-list {
+  position: relative;
+  z-index: 1;
   display: grid;
   gap: 8px;
   margin: 0;
@@ -1316,42 +1379,6 @@ h3 {
   margin: 0;
   color: var(--job-color);
   font-size: 17px;
-  font-weight: 900;
-}
-
-.class-path {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  min-height: 36px;
-  padding: 0 14px 0 7px;
-  color: var(--job-color);
-  border: 1px solid rgba(var(--job-color-rgb), 0.32);
-  border-radius: 999px;
-  background: rgba(20, 21, 27, 0.58);
-  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.2);
-}
-
-.class-emblem {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 24px;
-  height: 24px;
-  color: #17191F;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 7px;
-  background: linear-gradient(180deg, #FFE49A, var(--job-color));
-  box-shadow: 0 0 14px rgba(var(--job-color-rgb), 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.42);
-  font-size: 11px;
-  font-weight: 900;
-  line-height: 1;
-}
-
-.class-path-title,
-.class-path-desc {
-  font-size: 12px;
   font-weight: 900;
 }
 
@@ -1413,6 +1440,85 @@ h3 {
   100% {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes radar-aura-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes radar-breathe {
+  0%, 100% {
+    filter: drop-shadow(0 0 4px rgba(var(--job-color-rgb), 0.16));
+    transform: scale(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 14px rgba(var(--job-color-rgb), 0.36));
+    transform: scale(1.025);
+  }
+}
+
+@keyframes radar-panel-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-130%);
+  }
+  24% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(130%);
+  }
+}
+
+@keyframes radar-fill-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.48) rotate(-5deg);
+  }
+  62% {
+    opacity: 0.92;
+    transform: scale(1.08) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes radar-line-draw {
+  0% {
+    opacity: 0.15;
+    stroke-dashoffset: 280;
+  }
+  72% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+  100% {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes radar-point-pop {
+  0% {
+    opacity: 0;
+    r: 1;
+  }
+  58% {
+    opacity: 1;
+    r: 5;
+  }
+  100% {
+    opacity: 1;
+    r: 3.4;
   }
 }
 

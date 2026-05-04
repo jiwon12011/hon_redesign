@@ -146,12 +146,10 @@ const radarFill = document.querySelector(".radar-fill");
 const radarStroke = document.querySelector(".radar-stroke");
 const radarPoints = document.querySelector(".radar-points");
 const chartStatList = document.querySelector(".chart-stat-list");
+const classChart = document.querySelector(".class-chart");
 const characterSection = document.querySelector(".character-section");
 const characterWrap = document.querySelector(".character-wrap");
 const classDetail = document.querySelector(".class-detail");
-const classPathTitle = document.querySelector(".class-path-title");
-const classPathDesc = document.querySelector(".class-path-desc");
-const classEmblem = document.querySelector(".class-emblem");
 const classSceneCurrent = document.querySelector(".class-scene-current");
 const classSceneNext = document.querySelector(".class-scene-next");
 const classCharacterCurrent = document.querySelector(".class-character-current");
@@ -165,6 +163,13 @@ let currentJobIndex = 0;
 characterSection.style.setProperty("--job-color", jobs.warrior.color);
 characterSection.style.setProperty("--job-color-rgb", jobs.warrior.colorRgb);
 classCharacterCurrent?.style.setProperty("--character-scale", jobs.warrior.scale);
+
+function restartChartMotion() {
+  if (!classChart) return;
+  classChart.classList.remove("is-charting");
+  void classChart.offsetWidth;
+  classChart.classList.add("is-charting");
+}
 
 function renderStats(stats) {
   const maxRadius = 62;
@@ -210,6 +215,8 @@ function renderStats(stats) {
       </div>
     `).join("");
   }
+
+  restartChartMotion();
 }
 
 renderStats(jobs.warrior.stats);
@@ -230,7 +237,7 @@ function selectJob(jobKey, direction = "next") {
   const nextIndex = jobOrder.indexOf(jobKey);
   const job = jobs[jobKey];
   if (!job || nextIndex < 0) return;
-  if (nextIndex === currentJobIndex && classPathTitle.textContent === job.title) return;
+  if (nextIndex === currentJobIndex && title.textContent === job.title) return;
 
   currentJobIndex = nextIndex;
 
@@ -244,9 +251,6 @@ function selectJob(jobKey, direction = "next") {
   tagline.innerHTML = job.tagline.map((line) => `<span>${line}</span>`).join("");
   classIntro.textContent = job.intro;
   classTraits.innerHTML = job.traits.map((trait) => `<span>${trait}</span>`).join("");
-  classPathTitle.textContent = job.title;
-  classPathDesc.textContent = job.role;
-  if (classEmblem) classEmblem.textContent = job.symbol;
   if (classSceneNext) classSceneNext.setAttribute("src", job.background);
   if (classCharacterNext) {
     classCharacterNext.setAttribute("src", job.character);
