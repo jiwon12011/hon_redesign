@@ -335,8 +335,8 @@
   </section>
 
   <!-- ══════════ 랭킹 ══════════ -->
-  <hr class="sub-divider" id="ranking" />
-  <section class="bg-alt">
+  <hr class="sub-divider" />
+  <section id="ranking" class="bg-alt">
     <div class="sub-wrap">
       <div class="sub-section-head">
         <p class="sub-eyebrow">RANKING</p>
@@ -556,8 +556,8 @@
   </section>
 
   <!-- ══════════ 길드 랭킹 ══════════ -->
-  <hr class="sub-divider" id="guild" />
-  <section>
+  <hr class="sub-divider" />
+  <section id="guild">
     <div class="sub-wrap">
       <div class="sub-section-head">
         <p class="sub-eyebrow">GUILD RANKING</p>
@@ -630,8 +630,8 @@
   </section>
 
   <!-- ══════════ 놀이터 ══════════ -->
-  <hr class="sub-divider" id="playground" />
-  <section class="bg-alt">
+  <hr class="sub-divider" />
+  <section id="playground" class="bg-alt">
     <div class="sub-wrap">
       <div class="sub-section-head">
         <p class="sub-eyebrow">PLAYGROUND</p>
@@ -731,13 +731,28 @@
   </footer>
 
   <script>
-    // 서브 네비 active
-    document.querySelectorAll('.sub-nav-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.sub-nav-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+    // 서브 탭 패널 전환
+    (() => {
+      const tabs = [...document.querySelectorAll('.sub-nav-tab')];
+      if (!tabs.length) return;
+      const panels = tabs.map(t => document.getElementById(t.getAttribute('href').slice(1)));
+      document.querySelectorAll('.sub-divider').forEach(hr => hr.classList.add('sub-tab-hidden'));
+      const activeIdx = tabs.findIndex(t => t.classList.contains('active'));
+      panels.forEach((p, i) => { if (p && i !== activeIdx) p.classList.add('sub-tab-hidden'); });
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', e => {
+          e.preventDefault();
+          if (tab.classList.contains('active')) return;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panels.forEach((p, j) => {
+            if (!p) return;
+            if (j === i) { p.classList.remove('sub-tab-hidden'); p.classList.remove('sub-tab-in'); void p.offsetWidth; p.classList.add('sub-tab-in'); }
+            else p.classList.add('sub-tab-hidden');
+          });
+        });
       });
-    });
+    })();
     // 랭킹 탭
     document.querySelectorAll('.rank-tab').forEach(tab => {
       tab.addEventListener('click', () => {

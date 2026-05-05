@@ -212,8 +212,8 @@
   </section>
 
   <!-- ══════════ 패치노트 ══════════ -->
-  <hr class="sub-divider" id="patch" />
-  <section class="bg-alt">
+  <hr class="sub-divider" />
+  <section id="patch" class="bg-alt">
     <div class="sub-wrap">
       <div class="sub-section-head">
         <p class="sub-eyebrow">PATCH NOTES</p>
@@ -272,8 +272,8 @@
   </section>
 
   <!-- ══════════ 이벤트 ══════════ -->
-  <hr class="sub-divider" id="event" />
-  <section>
+  <hr class="sub-divider" />
+  <section id="event">
     <div class="sub-wrap">
       <div class="sub-section-head">
         <p class="sub-eyebrow">EVENTS</p>
@@ -357,13 +357,28 @@
         btn.classList.add('active');
       });
     });
-    // 서브 네비 active
-    document.querySelectorAll('.sub-nav-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.sub-nav-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+    // 서브 탭 패널 전환
+    (() => {
+      const tabs = [...document.querySelectorAll('.sub-nav-tab')];
+      if (!tabs.length) return;
+      const panels = tabs.map(t => document.getElementById(t.getAttribute('href').slice(1)));
+      document.querySelectorAll('.sub-divider').forEach(hr => hr.classList.add('sub-tab-hidden'));
+      const activeIdx = tabs.findIndex(t => t.classList.contains('active'));
+      panels.forEach((p, i) => { if (p && i !== activeIdx) p.classList.add('sub-tab-hidden'); });
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', e => {
+          e.preventDefault();
+          if (tab.classList.contains('active')) return;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panels.forEach((p, j) => {
+            if (!p) return;
+            if (j === i) { p.classList.remove('sub-tab-hidden'); p.classList.remove('sub-tab-in'); void p.offsetWidth; p.classList.add('sub-tab-in'); }
+            else p.classList.add('sub-tab-hidden');
+          });
+        });
       });
-    });
+    })();
   </script>
 </body>
 </html>

@@ -464,7 +464,7 @@ html { background: #1A1C22; }
 
 /* ══ RANKING — 테이블 ══ */
 .rank-tabs {
-  display: flex; gap: 0; margin-bottom: 36px;
+  display: flex; gap: 10px; margin-bottom: 36px;
   border-bottom: 1px solid rgba(255,255,255,.07);
 }
 .rank-tab {
@@ -1330,4 +1330,18 @@ html { background: #1A1C22; }
     align-items: flex-start;
     flex-direction: column;
   }
+}
+
+/* ── Sub-nav 탭 전환 ──────────────────────────────────── */
+.sub-tab-hidden {
+  display: none !important;
+}
+
+@keyframes sub-tab-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.sub-tab-in {
+  animation: sub-tab-in 0.28s ease both;
 }

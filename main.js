@@ -362,3 +362,10 @@ yokaiCards.forEach((card) => {
 });
 
 detailClose.addEventListener("click", closeYokaiDetail);
+
+const heroVideo = document.querySelector(".hero-video");
+if (heroVideo) {
+  heroVideo.play().catch(() => {
+    document.addEventListener("click", () => heroVideo.play(), { once: true });
+  });
+}

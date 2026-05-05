@@ -54,7 +54,7 @@
 
     /* 시스템 정보 탭 */
     .info-tabs {
-      display: flex; gap: 0; margin-bottom: 40px;
+      display: flex; gap: 10px; margin-bottom: 40px;
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
     .info-tab {
@@ -248,8 +248,8 @@
   </section>
 
   <!-- ══════════ 세계관·스토리 ══════════ -->
-  <hr class="sub-divider" id="story" />
-  <section>
+  <hr class="sub-divider" />
+  <section id="story">
     <div class="sub-wrap">
       <div class="sub-section-head">
         <p class="sub-eyebrow">WORLDVIEW · STORY</p>
@@ -314,8 +314,8 @@
   </section>
 
   <!-- ══════════ 게임정보 ══════════ -->
-  <hr class="sub-divider" id="info" />
-  <section class="info-banner">
+  <hr class="sub-divider" />
+  <section id="info" class="info-banner">
     <div class="info-banner-inner">
       <div class="sub-section-head" style="margin-bottom:32px">
         <p class="sub-eyebrow">GAME FEATURES</p>
@@ -456,13 +456,28 @@
   </footer>
 
   <script>
-    // 서브 네비 active 동기화
-    document.querySelectorAll('.sub-nav-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.sub-nav-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
+    // 서브 탭 패널 전환
+    (() => {
+      const tabs = [...document.querySelectorAll('.sub-nav-tab')];
+      if (!tabs.length) return;
+      const panels = tabs.map(t => document.getElementById(t.getAttribute('href').slice(1)));
+      document.querySelectorAll('.sub-divider').forEach(hr => hr.classList.add('sub-tab-hidden'));
+      const activeIdx = tabs.findIndex(t => t.classList.contains('active'));
+      panels.forEach((p, i) => { if (p && i !== activeIdx) p.classList.add('sub-tab-hidden'); });
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', e => {
+          e.preventDefault();
+          if (tab.classList.contains('active')) return;
+          tabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          panels.forEach((p, j) => {
+            if (!p) return;
+            if (j === i) { p.classList.remove('sub-tab-hidden'); p.classList.remove('sub-tab-in'); void p.offsetWidth; p.classList.add('sub-tab-in'); }
+            else p.classList.add('sub-tab-hidden');
+          });
+        });
       });
-    });
+    })();
     // 게임정보 탭
     document.querySelectorAll('.info-tab').forEach(tab => {
       tab.addEventListener('click', () => {
