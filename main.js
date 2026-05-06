@@ -369,3 +369,47 @@ if (heroVideo) {
     document.addEventListener("click", () => heroVideo.play(), { once: true });
   });
 }
+
+// 요괴 도감 모바일 슬라이더
+(() => {
+  const grid = document.querySelector(".bestiary-grid");
+  const prevBtn = document.querySelector(".bestiary-prev");
+  const nextBtn = document.querySelector(".bestiary-next");
+  const dotsWrap = document.querySelector(".bestiary-dots");
+  if (!grid || !prevBtn || !dotsWrap) return;
+
+  const cards = [...grid.querySelectorAll(".yokai-card")];
+
+  // 점 생성
+  const dots = cards.map((_, i) => {
+    const d = document.createElement("span");
+    d.className = "bestiary-dot" + (i === 0 ? " is-active" : "");
+    d.addEventListener("click", () => {
+      grid.scrollTo({ left: cards[i].offsetLeft - 20, behavior: "smooth" });
+    });
+    dotsWrap.appendChild(d);
+    return d;
+  });
+
+  function getActiveIdx() {
+    const cardW = cards[0].offsetWidth + 12;
+    return Math.min(Math.round(grid.scrollLeft / cardW), cards.length - 1);
+  }
+
+  function updateDots() {
+    const idx = getActiveIdx();
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+  }
+
+  grid.addEventListener("scroll", updateDots, { passive: true });
+
+  prevBtn.addEventListener("click", () => {
+    const idx = Math.max(getActiveIdx() - 1, 0);
+    grid.scrollTo({ left: cards[idx].offsetLeft - 20, behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    const idx = Math.min(getActiveIdx() + 1, cards.length - 1);
+    grid.scrollTo({ left: cards[idx].offsetLeft - 20, behavior: "smooth" });
+  });
+})();

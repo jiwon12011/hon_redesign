@@ -216,7 +216,8 @@ h3 {
 .hero-section {
   position: relative;
   isolation: isolate;
-  min-height: 582px;
+  /* 16:9 영상에 맞춰 너비 기준으로 높이 확보, 최소 620px ~ 최대 900px */
+  min-height: clamp(620px, 56.25vw, 900px);
   overflow: hidden;
   color: var(--text);
   background: #10131A;
@@ -252,7 +253,7 @@ h3 {
   grid-template-columns: 1fr 300px;
   gap: 42px;
   max-width: 1200px;
-  min-height: 582px;
+  min-height: clamp(620px, 56.25vw, 900px);
   margin: 0 auto;
   padding: 78px 24px 60px;
   align-items: center;
@@ -435,6 +436,11 @@ h3 {
   display: grid;
   gap: 22px;
   transition: all 0.3s ease;
+}
+
+.bestiary-nav,
+.bestiary-dots {
+  display: none;
 }
 
 .bestiary-grid {
@@ -2410,7 +2416,6 @@ h3 {
 }
 
 @media (max-width: 640px) {
-  .hero-buttons,
   .section-head,
   .heading-row,
   .footer-actions {
@@ -2424,36 +2429,156 @@ h3 {
     width: 100%;
   }
 
+  /* ── GNB ── */
   .site-header {
-    gap: 12px;
+    gap: 0;
+    padding: 0 16px;
+    min-height: 58px;
   }
 
   .main-nav {
-    gap: 18px;
+    display: none;
   }
 
   .header-actions {
     flex-direction: row;
     gap: 8px;
+    margin-left: auto;
   }
 
   .header-actions .button-small {
     width: auto;
-    min-width: 70px;
+    min-width: 64px;
+    min-height: 36px;
     padding: 0 12px;
     font-size: 12px;
   }
 
+  /* ── 히어로 ── */
+  .hero-inner {
+    min-height: auto;
+    padding: 80px 20px 32px;
+  }
+
+  .hero-video {
+    object-position: 58% top;
+  }
+
   .hero-logo-title img {
-    width: 220px;
+    width: 200px;
   }
 
   .hero-copy {
     width: auto;
   }
 
+  .hero-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+
+  .hero-buttons {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-buttons .button-primary,
+  .hero-buttons .button-secondary {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .button-large {
+    min-height: 48px;
+    font-size: 15px;
+    min-width: 0;
+  }
+
+  .hero-status {
+    display: none;
+  }
+
+  /* ── 요괴 도감 화살표 · 점 ── */
+  .compact-head {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .bestiary-nav {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  .bestiary-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(174, 139, 91, 0.45);
+    border-radius: 50%;
+    background: rgba(255, 251, 244, 0.85);
+    color: #8C6A3B;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.18s;
+  }
+
+  .bestiary-btn:active {
+    background: rgba(200, 134, 26, 0.15);
+  }
+
+  .bestiary-dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 0 4px;
+  }
+
+  .bestiary-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(174, 139, 91, 0.3);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .bestiary-dot.is-active {
+    background: #C8861A;
+    transform: scale(1.35);
+  }
+
+  /* ── 요괴 도감 (가로 슬라이드) ── */
   .bestiary-grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 12px;
+    padding: 4px 20px 16px;
+    margin: 0 -20px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .bestiary-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .yokai-card {
+    flex: 0 0 160px;
+    width: 160px;
+    scroll-snap-align: start;
+  }
+
+  .yokai-art-frame {
+    height: 130px;
   }
 
   .featured-item,
@@ -2535,14 +2660,16 @@ h3 {
     height: 42px;
   }
 
+  /* ── 캐릭터 선택 섹션 ── */
   .class-character-stage {
-    opacity: 0.46;
+    opacity: 0.2;
   }
 
   .class-character-img {
-    left: 72%;
-    width: 340px;
-    height: 390px;
+    left: 84%;
+    width: 260px;
+    height: 300px;
+    bottom: 30px;
   }
 
   .job-card {
@@ -2555,36 +2682,103 @@ h3 {
     height: 42px;
   }
 
+  /* ── 테스트 섹션 ── */
+  .recommend-copy h2 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  /* 텍스트 영역은 1열, 캐릭터는 absolute로 우측 배치 */
+  .recommend-layout {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+
+  .recommend-copy {
+    padding-right: 110px;
+  }
+
+  .recommend-copy .eyebrow {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+  }
+
+  .recommend-art {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 110px;
+  }
+
+  /* 배경/테두리/효과 전부 제거 */
   .recommend-stage {
-    min-height: 520px;
+    width: 110px;
+    min-height: 240px;
+    height: 100%;
+    background: none;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
   }
 
-  .test-assassin {
-    left: 50%;
+  .recommend-stage::before,
+  .recommend-stage::after {
+    display: none;
   }
 
-  .test-archer {
-    left: 10%;
-    top: 154px;
+  /* 말풍선 · 마법진 전부 숨김 */
+  .speech-bubble,
+  .magic-core {
+    display: none !important;
+  }
+
+  /* 캐릭터 전부 숨기고 전사만 표시 */
+  .test-assassin,
+  .test-archer,
+  .test-fighter,
+  .test-daoist {
+    display: none;
   }
 
   .test-warrior {
+    position: absolute;
     left: 50%;
-    bottom: 42px;
+    top: 0;
+    bottom: auto;
+    width: 110px;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 8px 16px rgba(74, 48, 18, 0.28));
   }
 
-  .test-fighter {
-    right: 8%;
-    top: 150px;
+  /* ── 푸터 ── */
+  .site-footer nav {
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    font-size: 12px;
   }
 
-  .test-daoist {
-    right: 8%;
-    bottom: 34px;
+  .site-footer nav a {
+    white-space: nowrap;
   }
 
-  .speech-bubble {
+  .footer-wrap {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .footer-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .footer-actions a {
+    flex: 1;
     min-width: 120px;
-    padding: 0 14px;
+    justify-content: center;
+    font-size: 13px;
+    padding: 0 16px;
   }
 }
