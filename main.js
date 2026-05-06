@@ -231,6 +231,8 @@ function runClassMotion(direction) {
     classDetail.classList.add("is-swapping");
     characterSection.classList.add("is-sliding", direction === "prev" ? "slide-prev" : "slide-next");
   });
+
+  runGsapClassAccent(direction);
 }
 
 function selectJob(jobKey, direction = "next") {
@@ -413,3 +415,251 @@ if (heroVideo) {
     grid.scrollTo({ left: cards[idx].offsetLeft - 20, behavior: "smooth" });
   });
 })();
+
+initHomeGsapMotions();
+
+function hasGsap() {
+  return Boolean(window.gsap);
+}
+
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function runGsapClassAccent(direction = "next") {
+  if (!hasGsap() || prefersReducedMotion() || !document.body.classList.contains("home-page")) return;
+
+  const x = direction === "prev" ? -18 : 18;
+  gsap.fromTo(
+    ".class-detail > *",
+    { autoAlpha: 0.72, x: -x * 0.45 },
+    { autoAlpha: 1, x: 0, duration: 0.46, stagger: 0.045, ease: "power2.out", overwrite: true }
+  );
+  gsap.fromTo(
+    ".class-chart",
+    { rotate: direction === "prev" ? -1.6 : 1.6, scale: 0.985 },
+    { rotate: 0, scale: 1, duration: 0.72, ease: "elastic.out(1, 0.65)", overwrite: true }
+  );
+  gsap.fromTo(
+    ".class-ground-glow",
+    { opacity: 0.52, filter: "blur(8px)" },
+    { opacity: 0.9, filter: "blur(5px)", duration: 0.68, ease: "power3.out", overwrite: true }
+  );
+}
+
+function initHomeGsapMotions() {
+  if (!hasGsap() || prefersReducedMotion() || !document.body.classList.contains("home-page")) return;
+
+  const { gsap } = window;
+  const ScrollTrigger = window.ScrollTrigger;
+  if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+  gsap.set([".hero-eyebrow", ".hero-logo-title", ".hero-desc", ".hero-buttons", ".download-link"], {
+    autoAlpha: 0,
+    y: 18
+  });
+  gsap.set(".hero-status > article", { autoAlpha: 0, x: 28, y: 10 });
+
+  const heroIntro = gsap.timeline({ defaults: { ease: "power3.out" } });
+  heroIntro
+    .fromTo(".hero-video", { scale: 1.035, filter: "brightness(0.82)" }, { scale: 1, filter: "brightness(1)", duration: 1.35 }, 0)
+    .to(".hero-eyebrow", { autoAlpha: 1, y: 0, duration: 0.42 }, 0.18)
+    .to(".hero-logo-title", { autoAlpha: 1, y: 0, duration: 0.58 }, 0.28)
+    .to(".hero-desc", { autoAlpha: 1, y: 0, duration: 0.48 }, 0.46)
+    .to(".hero-buttons", { autoAlpha: 1, y: 0, duration: 0.46 }, 0.62)
+    .to(".download-link", { autoAlpha: 1, y: 0, duration: 0.38 }, 0.76)
+    .to(".hero-status > article", { autoAlpha: 1, x: 0, y: 0, duration: 0.56, stagger: 0.12 }, 0.48);
+
+  gsap.to(".live-dot", {
+    scale: 1.28,
+    boxShadow: "0 0 22px rgba(108, 231, 168, 0.95)",
+    duration: 0.9,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+
+  if (ScrollTrigger) {
+    gsap.from(".bestiary-strip .section-head", {
+      scrollTrigger: { trigger: ".bestiary-strip", start: "top 78%" },
+      autoAlpha: 0,
+      y: 18,
+      duration: 0.55,
+      ease: "power2.out"
+    });
+    gsap.from(".yokai-card", {
+      scrollTrigger: { trigger: ".bestiary-grid", start: "top 80%" },
+      autoAlpha: 0,
+      y: 28,
+      rotateX: -7,
+      transformOrigin: "center bottom",
+      duration: 0.62,
+      stagger: 0.08,
+      ease: "back.out(1.45)"
+    });
+    gsap.from(".character-section .class-detail", {
+      scrollTrigger: { trigger: ".character-section", start: "top 70%" },
+      autoAlpha: 0,
+      x: -34,
+      duration: 0.72,
+      ease: "power3.out"
+    });
+    gsap.from(".class-character-stage", {
+      scrollTrigger: { trigger: ".character-section", start: "top 70%" },
+      autoAlpha: 0,
+      scale: 0.92,
+      y: 26,
+      duration: 0.86,
+      ease: "back.out(1.25)"
+    });
+    gsap.from(".job-card", {
+      scrollTrigger: { trigger: ".character-picker", start: "top 88%" },
+      autoAlpha: 0,
+      y: 18,
+      scale: 0.86,
+      duration: 0.42,
+      stagger: 0.045,
+      ease: "back.out(1.7)"
+    });
+    gsap.from(".recommend-copy > *", {
+      scrollTrigger: { trigger: ".recommend-section", start: "top 76%" },
+      autoAlpha: 0,
+      x: -24,
+      duration: 0.54,
+      stagger: 0.075,
+      ease: "power2.out"
+    });
+    gsap.from(".recommend-stage", {
+      scrollTrigger: { trigger: ".recommend-stage", start: "top 82%" },
+      autoAlpha: 0,
+      y: 34,
+      scale: 0.96,
+      duration: 0.72,
+      ease: "power3.out"
+    });
+    gsap.from(".speech-bubble", {
+      scrollTrigger: { trigger: ".recommend-stage", start: "top 76%" },
+      autoAlpha: 0,
+      scale: 0.78,
+      y: 10,
+      duration: 0.42,
+      stagger: 0.08,
+      ease: "back.out(2)"
+    });
+    gsap.from(".hot-section .section-head", {
+      scrollTrigger: { trigger: ".hot-section", start: "top 80%" },
+      autoAlpha: 0,
+      y: 20,
+      duration: 0.5,
+      ease: "power2.out"
+    });
+    gsap.from(".featured-item", {
+      scrollTrigger: { trigger: ".hot-grid", start: "top 82%" },
+      autoAlpha: 0,
+      x: -30,
+      duration: 0.68,
+      ease: "power3.out"
+    });
+    gsap.from(".hot-row", {
+      scrollTrigger: { trigger: ".hot-list", start: "top 84%" },
+      autoAlpha: 0,
+      x: 32,
+      duration: 0.5,
+      stagger: 0.09,
+      ease: "power2.out"
+    });
+  }
+
+  if (ScrollTrigger) {
+    gsap.to(".hero-video", {
+      yPercent: 4,
+      ease: "none",
+      scrollTrigger: { trigger: ".hero-section", start: "top top", end: "bottom top", scrub: 0.7 }
+    });
+  }
+
+  gsap.to(".class-ground-glow", {
+    opacity: 0.74,
+    filter: "blur(7px)",
+    duration: 1.6,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+
+  gsap.to(".class-ring", {
+    rotate: 360,
+    duration: 18,
+    repeat: -1,
+    ease: "none"
+  });
+
+  gsap.to(".magic-core", {
+    rotate: 360,
+    duration: 16,
+    repeat: -1,
+    ease: "none"
+  });
+
+  gsap.to(".test-character", {
+    y: (index) => [-8, 6, -5, 7, -6][index] || -6,
+    x: (index) => [5, -4, 3, -5, 4][index] || 3,
+    duration: (index) => 2.6 + index * 0.18,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+    stagger: 0.12
+  });
+
+  gsap.to(".speech-bubble", {
+    y: (index) => [-5, 4, -4, 5][index] || 4,
+    duration: 2.2,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut",
+    stagger: 0.18
+  });
+
+  const featuredItem = document.querySelector(".featured-item");
+  if (featuredItem && !featuredItem.querySelector(".motion-scan-line")) {
+    const scanLine = document.createElement("span");
+    scanLine.className = "motion-scan-line";
+    scanLine.setAttribute("aria-hidden", "true");
+    featuredItem.appendChild(scanLine);
+  }
+
+  gsap.to(".item-aura", {
+    scale: 1.24,
+    opacity: 0.58,
+    duration: 1.25,
+    repeat: -1,
+    yoyo: true,
+    ease: "sine.inOut"
+  });
+  gsap.to(".featured-item .motion-scan-line", {
+    xPercent: 520,
+    opacity: 0.9,
+    duration: 1.35,
+    repeat: -1,
+    repeatDelay: 2.1,
+    ease: "power2.inOut"
+  });
+
+  document.querySelectorAll(".yokai-card, .hot-row, .featured-item").forEach((card) => {
+    card.addEventListener("mouseenter", () => {
+      gsap.to(card, { y: -6, scale: 1.015, duration: 0.24, ease: "power2.out", overwrite: "auto" });
+    });
+    card.addEventListener("mouseleave", () => {
+      gsap.to(card, { y: 0, scale: 1, duration: 0.28, ease: "power2.out", overwrite: "auto" });
+    });
+  });
+
+  document.querySelectorAll(".button-primary, .item-detail-link, .hero-status a").forEach((button) => {
+    button.addEventListener("mouseenter", () => {
+      gsap.to(button, { scale: 1.035, duration: 0.2, ease: "power2.out", overwrite: "auto" });
+    });
+    button.addEventListener("mouseleave", () => {
+      gsap.to(button, { scale: 1, duration: 0.24, ease: "power2.out", overwrite: "auto" });
+    });
+  });
+}

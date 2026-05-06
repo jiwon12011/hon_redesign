@@ -2106,6 +2106,18 @@ h3 {
   pointer-events: none;
 }
 
+.featured-item .motion-scan-line {
+  position: absolute;
+  inset: 0 auto 0 -34%;
+  z-index: 1;
+  width: 28%;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(143, 211, 255, 0.2), rgba(255, 214, 107, 0.18), transparent);
+  filter: blur(1px);
+  opacity: 0;
+  transform: skewX(-18deg);
+}
+
 .item-art {
   position: relative;
   display: flex;
