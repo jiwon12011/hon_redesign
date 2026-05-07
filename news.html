@@ -28,7 +28,21 @@
       <a class="button-secondary button-small" href="account.html#login">로그인</a>
       <a class="button-primary button-small" href="account.html#signup">회원가입</a>
     </div>
+    <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+  <nav class="mobile-drawer" aria-label="모바일 메뉴" aria-hidden="true">
+    <a href="game.html">게임소개</a>
+    <a href="guide.html">가이드</a>
+    <a href="community.html">커뮤니티</a>
+    <a href="archive.html">자료실</a>
+    <a class="active" href="news.html">고객센터</a>
+    <div class="drawer-actions">
+      <a class="button-secondary button-small" href="account.html#login">로그인</a>
+      <a class="button-primary button-small" href="account.html#signup">회원가입</a>
+    </div>
+  </nav>
 
   <!-- ══════════ 서브 히어로 ══════════ -->
   <section class="sub-hero">
@@ -331,6 +345,82 @@
     </div>
   </section>
 
+  <!-- ══════════ 업데이트 ══════════ -->
+  <hr class="sub-divider" />
+  <section id="update" class="bg-alt">
+    <div class="sub-wrap">
+      <div class="sub-section-head">
+        <p class="sub-eyebrow">UPDATES</p>
+        <h2 class="sub-section-title">업데이트 내역</h2>
+        <p class="sub-section-desc">최신 업데이트 소식과 변경 사항을 확인하세요.</p>
+      </div>
+      <table class="news-table">
+        <thead>
+          <tr>
+            <th>번호</th>
+            <th>분류</th>
+            <th>제목</th>
+            <th>버전</th>
+            <th>날짜</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">태화산 신규 지역 오픈 — 16.8 대규모 업데이트<span class="nt-badge-new">NEW</span></td>
+            <td>v16.8</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">공지</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">26.8 프로젝트 — 여·지·휘 시스템 전면 개편 예고<span class="nt-badge-hot">HOT</span></td>
+            <td>v16.8</td>
+            <td>2026.04.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">8</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">16.6 대규모 업데이트 — 귀혼객잔 시스템 추가</td>
+            <td>v16.6</td>
+            <td>2026.03.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">7</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">길드전 시스템 전면 개편 — 상세 내용 공개</td>
+            <td>v16.5</td>
+            <td>2026.03.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">6</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">16.4 신규 콘텐츠 — 구미호 굴 던전 오픈</td>
+            <td>v16.4</td>
+            <td>2026.02.01</td>
+          </tr>
+          <tr>
+            <td class="nt-num">5</td>
+            <td><span class="nt-cat 업데이트">업데이트</span></td>
+            <td class="nt-title">16.3 캐릭터 외형 커스터마이징 시스템 도입</td>
+            <td>v16.3</td>
+            <td>2026.01.15</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 페이지네이션 -->
+      <div class="sub-pager">
+        <button class="pg pg-arrow">‹‹</button>
+        <button class="pg pg-arrow">‹</button>
+        <button class="pg active">1</button>
+        <button class="pg">2</button>
+        <button class="pg pg-arrow">›</button>
+        <button class="pg pg-arrow">››</button>
+      </div>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="content-wrap footer-wrap">
       <img src="images/redesign_img/hero-title-logo.png" alt="귀혼" />
@@ -377,6 +467,29 @@
             else p.classList.add('sub-tab-hidden');
           });
         });
+      });
+    })();
+    // 모바일 햄버거 메뉴
+    (() => {
+      const toggle = document.querySelector('.menu-toggle');
+      const drawer = document.querySelector('.mobile-drawer');
+      if (!toggle || !drawer) return;
+      function openMenu() {
+        toggle.setAttribute('aria-expanded', 'true');
+        drawer.classList.add('is-open');
+        drawer.setAttribute('aria-hidden', 'false');
+      }
+      function closeMenu() {
+        toggle.setAttribute('aria-expanded', 'false');
+        drawer.classList.remove('is-open');
+        drawer.setAttribute('aria-hidden', 'true');
+      }
+      toggle.addEventListener('click', () => {
+        toggle.getAttribute('aria-expanded') === 'true' ? closeMenu() : openMenu();
+      });
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      document.addEventListener('click', e => {
+        if (!drawer.contains(e.target) && !toggle.contains(e.target)) closeMenu();
       });
     })();
   </script>

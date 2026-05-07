@@ -178,7 +178,7 @@ html { background: #1A1C22; }
 /* ══ NEWS — 피처드 카드 ══ */
 .news-featured {
   display: grid;
-  grid-template-columns: 1.65fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px; margin-bottom: 52px;
 }
 .nfc {
@@ -189,23 +189,23 @@ html { background: #1A1C22; }
 }
 .nfc:hover { border-color: rgba(255, 214, 107, 0.55); transform: translateY(-4px); }
 .nfc-img {
-  width: 100%; height: 220px;
+  width: 100%; height: 170px;
   object-fit: cover; object-position: center 25%;
   filter: brightness(.82);
   transition: transform .55s cubic-bezier(.25,.46,.45,.94), filter .4s;
   display: block;
 }
-.nfc.nfc-main .nfc-img { height: 100%; min-height: 340px; }
+.nfc.nfc-main .nfc-img { height: 170px; }
 .nfc:hover .nfc-img { transform: scale(1.05); filter: brightness(.6); }
 
 .nfc-body {
-  padding: 18px 22px 24px;
+  padding: 16px 20px 20px;
   background: linear-gradient(180deg, rgba(24, 20, 14, 0.96), rgba(18, 15, 10, 0.99));
 }
 .nfc.nfc-main .nfc-body {
-  position: absolute; bottom: 0; left: 0; right: 0;
-  background: linear-gradient(to top, rgba(9,8,18,.97) 0%, rgba(9,8,18,.6) 55%, transparent 100%);
-  padding: 36px 28px;
+  position: static;
+  background: linear-gradient(180deg, rgba(28, 22, 14, 0.98), rgba(18, 14, 8, 0.99));
+  padding: 16px 20px 20px;
 }
 .nfc-cat {
   display: inline-block;
@@ -233,7 +233,7 @@ html { background: #1A1C22; }
   font-size: .98rem; font-weight: 700;
   color: var(--text); line-height: 1.5;
 }
-.nfc.nfc-main .nfc-title { font-size: 1.25rem; }
+.nfc.nfc-main .nfc-title { font-size: 1rem; }
 .nfc:hover .nfc-title { color: var(--mint); }
 .nfc-desc {
   font-size: .78rem; color: var(--text-muted);
