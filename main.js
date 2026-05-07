@@ -455,20 +455,19 @@ function initHomeGsapMotions() {
   if (ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
   gsap.set([".hero-eyebrow", ".hero-logo-title", ".hero-desc", ".hero-buttons", ".download-link"], {
-    autoAlpha: 0,
     y: 18
   });
-  gsap.set(".hero-status > article", { autoAlpha: 0, x: 28, y: 10 });
+  gsap.set(".hero-status > article", { x: 28, y: 10 });
 
   const heroIntro = gsap.timeline({ defaults: { ease: "power3.out" } });
   heroIntro
     .fromTo(".hero-video", { scale: 1.035, filter: "brightness(0.82)" }, { scale: 1, filter: "brightness(1)", duration: 1.35 }, 0)
-    .to(".hero-eyebrow", { autoAlpha: 1, y: 0, duration: 0.42 }, 0.18)
-    .to(".hero-logo-title", { autoAlpha: 1, y: 0, duration: 0.58 }, 0.28)
-    .to(".hero-desc", { autoAlpha: 1, y: 0, duration: 0.48 }, 0.46)
-    .to(".hero-buttons", { autoAlpha: 1, y: 0, duration: 0.46 }, 0.62)
-    .to(".download-link", { autoAlpha: 1, y: 0, duration: 0.38 }, 0.76)
-    .to(".hero-status > article", { autoAlpha: 1, x: 0, y: 0, duration: 0.56, stagger: 0.12 }, 0.48);
+    .to(".hero-eyebrow", { y: 0, duration: 0.42 }, 0.18)
+    .to(".hero-logo-title", { y: 0, duration: 0.58 }, 0.28)
+    .to(".hero-desc", { y: 0, duration: 0.48 }, 0.46)
+    .to(".hero-buttons", { y: 0, duration: 0.46 }, 0.62)
+    .to(".download-link", { y: 0, duration: 0.38 }, 0.76)
+    .to(".hero-status > article", { x: 0, y: 0, duration: 0.56, stagger: 0.12 }, 0.48);
 
   gsap.to(".live-dot", {
     scale: 1.28,
@@ -482,91 +481,90 @@ function initHomeGsapMotions() {
   if (ScrollTrigger) {
     gsap.from(".bestiary-strip .section-head", {
       scrollTrigger: { trigger: ".bestiary-strip", start: "top 78%" },
-      autoAlpha: 0,
       y: 18,
       duration: 0.55,
       ease: "power2.out"
     });
     gsap.from(".yokai-card", {
       scrollTrigger: { trigger: ".bestiary-grid", start: "top 80%" },
-      autoAlpha: 0,
-      y: 28,
+      y: 18,
       rotateX: -7,
       transformOrigin: "center bottom",
-      duration: 0.62,
-      stagger: 0.08,
-      ease: "back.out(1.45)"
+      duration: 0.48,
+      stagger: 0.05,
+      ease: "power2.out",
+      clearProps: "transform"
     });
     gsap.from(".character-section .class-detail", {
       scrollTrigger: { trigger: ".character-section", start: "top 70%" },
-      autoAlpha: 0,
       x: -34,
       duration: 0.72,
-      ease: "power3.out"
+      ease: "power3.out",
+      clearProps: "transform"
     });
     gsap.from(".class-character-stage", {
       scrollTrigger: { trigger: ".character-section", start: "top 70%" },
-      autoAlpha: 0,
       scale: 0.92,
       y: 26,
       duration: 0.86,
-      ease: "back.out(1.25)"
+      ease: "back.out(1.25)",
+      clearProps: "transform"
     });
     gsap.from(".job-card", {
       scrollTrigger: { trigger: ".character-picker", start: "top 88%" },
-      autoAlpha: 0,
       y: 18,
       scale: 0.86,
       duration: 0.42,
       stagger: 0.045,
-      ease: "back.out(1.7)"
+      ease: "back.out(1.7)",
+      clearProps: "transform"
     });
     gsap.from(".recommend-copy > *", {
       scrollTrigger: { trigger: ".recommend-section", start: "top 76%" },
-      autoAlpha: 0,
       x: -24,
       duration: 0.54,
       stagger: 0.075,
-      ease: "power2.out"
+      ease: "power2.out",
+      clearProps: "transform"
     });
     gsap.from(".recommend-stage", {
       scrollTrigger: { trigger: ".recommend-stage", start: "top 82%" },
-      autoAlpha: 0,
       y: 34,
       scale: 0.96,
       duration: 0.72,
-      ease: "power3.out"
+      ease: "power3.out",
+      clearProps: "transform"
     });
     gsap.from(".speech-bubble", {
       scrollTrigger: { trigger: ".recommend-stage", start: "top 76%" },
-      autoAlpha: 0,
       scale: 0.78,
       y: 10,
       duration: 0.42,
       stagger: 0.08,
-      ease: "back.out(2)"
+      ease: "back.out(2)",
+      clearProps: "transform"
     });
     gsap.from(".hot-section .section-head", {
       scrollTrigger: { trigger: ".hot-section", start: "top 80%" },
-      autoAlpha: 0,
       y: 20,
       duration: 0.5,
-      ease: "power2.out"
+      ease: "power2.out",
+      clearProps: "transform"
     });
     gsap.from(".featured-item", {
       scrollTrigger: { trigger: ".hot-grid", start: "top 82%" },
-      autoAlpha: 0,
       x: -30,
       duration: 0.68,
-      ease: "power3.out"
+      ease: "power3.out",
+      clearProps: "transform"
     });
     gsap.from(".hot-row", {
       scrollTrigger: { trigger: ".hot-list", start: "top 84%" },
-      autoAlpha: 0,
       x: 32,
       duration: 0.5,
       stagger: 0.09,
-      ease: "power2.out"
+      ease: "power2.out",
+      clearProps: "transform"
     });
   }
 

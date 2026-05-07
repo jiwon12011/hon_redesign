@@ -305,9 +305,9 @@ h3 {
 
 .hero-status {
   display: grid;
-  gap: 120px;
-  align-self: stretch;
-  padding: 58px 0 44px;
+  gap: 24px;
+  align-self: center;
+  padding: 0;
 }
 
 .notice-card,
@@ -324,7 +324,7 @@ h3 {
 }
 
 .server-card {
-  padding: 22px;
+  padding: 18px 22px 20px;
 }
 
 .panel-head {
