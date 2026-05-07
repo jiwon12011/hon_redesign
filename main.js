@@ -661,3 +661,111 @@ function initHomeGsapMotions() {
     });
   });
 }
+
+// ── 모바일 HOT 아이템 셀렉터 ──
+(() => {
+  const featured   = document.querySelector('.featured-item');
+  if (!featured) return;
+
+  const featImg    = featured.querySelector('.item-art img');
+  const featGrade  = featured.querySelector('.item-grade');
+  const featRarity = featured.querySelector('.featured-copy .rarity');
+  const featH3     = featured.querySelector('.featured-copy h3');
+  const featP      = featured.querySelector('.featured-copy p');
+  if (!featImg) return;
+
+  const original = {
+    src:    featImg.getAttribute('src'),
+    alt:    featImg.getAttribute('alt') ?? '',
+    grade:  featGrade  ? featGrade.textContent  : 'LEGENDARY',
+    rarity: featRarity ? featRarity.textContent : '추천',
+    h3:     featH3     ? featH3.textContent     : '',
+    p:      featP      ? featP.textContent      : '',
+  };
+
+  const rows = [...document.querySelectorAll('.hot-row')];
+
+  function applyData(data) {
+    featImg.setAttribute('src', data.src);
+    featImg.setAttribute('alt', data.alt);
+    if (featGrade)  featGrade.textContent  = data.grade;
+    if (featRarity) featRarity.textContent = data.rarity;
+    if (featH3)     featH3.textContent     = data.h3;
+    if (featP)      featP.textContent      = data.p;
+  }
+
+  function swapFeatured(data) {
+    featured.classList.add('is-swapping');
+    setTimeout(() => {
+      applyData(data);
+      featured.classList.remove('is-swapping');
+    }, 180);
+  }
+
+  rows.forEach(row => {
+    row.addEventListener('click', () => {
+      if (window.innerWidth > 640) return;
+
+      const img = row.querySelector('.hot-row-icon img');
+      const h3  = row.querySelector('h3');
+      const p   = row.querySelector('p');
+
+      if (row.classList.contains('is-active')) {
+        rows.forEach(r => r.classList.remove('is-active'));
+        swapFeatured(original);
+        return;
+      }
+
+      rows.forEach(r => r.classList.remove('is-active'));
+      row.classList.add('is-active');
+
+      swapFeatured({
+        src:    img ? img.getAttribute('src') : original.src,
+        alt:    img ? (img.getAttribute('alt') ?? '') : '',
+        grade:  'HOT',
+        rarity: 'HOT',
+        h3:     h3 ? h3.textContent : '',
+        p:      p  ? p.textContent  : '',
+      });
+
+      featured.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+})();
+
+// ── 모바일 햄버거 메뉴 ──
+(() => {
+  const toggle = document.querySelector('.menu-toggle');
+  const drawer = document.querySelector('.mobile-drawer');
+  if (!toggle || !drawer) return;
+
+  function openMenu() {
+    drawer.classList.add('is-open');
+    drawer.setAttribute('aria-hidden', 'false');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', '메뉴 닫기');
+  }
+
+  function closeMenu() {
+    drawer.classList.remove('is-open');
+    drawer.setAttribute('aria-hidden', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', '메뉴 열기');
+  }
+
+  toggle.addEventListener('click', () => {
+    drawer.classList.contains('is-open') ? closeMenu() : openMenu();
+  });
+
+  drawer.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('click', e => {
+    if (drawer.classList.contains('is-open') &&
+        !drawer.contains(e.target) &&
+        !toggle.contains(e.target)) {
+      closeMenu();
+    }
+  });
+})();

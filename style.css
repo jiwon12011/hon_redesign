@@ -143,6 +143,15 @@ h3 {
   gap: 14px;
 }
 
+/* 햄버거 + 드로어 — 데스크탑에서 숨김 */
+.menu-toggle {
+  display: none;
+}
+
+.mobile-drawer {
+  display: none;
+}
+
 .button-primary,
 .button-secondary,
 .button-paper {
@@ -2466,6 +2475,99 @@ h3 {
     font-size: 12px;
   }
 
+  /* 모바일에서 로그인/회원가입은 드로어 안에 있으므로 헤더에서 숨김 */
+  .header-actions {
+    display: none;
+  }
+
+  /* ── 햄버거 버튼 ── */
+  .menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    margin-left: auto;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  .menu-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* ── 모바일 드로어 ── */
+  .mobile-drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 58px;
+    left: 0;
+    right: 0;
+    z-index: 49;
+    background: rgba(12, 13, 18, 0.98);
+    border-bottom: 1px solid rgba(255, 214, 107, 0.2);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+    transform: translateY(-110%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .mobile-drawer.is-open {
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .mobile-drawer a {
+    padding: 16px 24px;
+    color: #e8dcc8;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid rgba(255, 214, 107, 0.08);
+    transition: color 0.2s, background 0.2s;
+  }
+
+  .mobile-drawer a:hover,
+  .mobile-drawer a:active {
+    color: var(--gold);
+    background: rgba(255, 214, 107, 0.05);
+  }
+
+  .drawer-actions {
+    display: flex;
+    gap: 10px;
+    padding: 16px 24px 20px;
+  }
+
+  .drawer-actions .button-small {
+    flex: 1;
+    width: auto;
+    min-height: 40px;
+    font-size: 13px;
+  }
+
   /* ── 히어로 ── */
   .hero-inner {
     min-height: auto;
@@ -2593,9 +2695,79 @@ h3 {
     height: 130px;
   }
 
-  .featured-item,
-  .hot-row {
+  /* ── HOT 아이템 ── */
+  .featured-item {
     grid-template-columns: 1fr;
+    text-align: center;
+    padding: 20px 20px 24px;
+    gap: 14px;
+    transition: opacity 0.2s ease;
+  }
+
+  .featured-item.is-swapping {
+    opacity: 0;
+  }
+
+  .item-art {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+  }
+
+  .featured-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .featured-item .button-secondary {
+    margin-top: 14px;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .hot-list {
+    display: flex;
+    gap: 10px;
+  }
+
+  .hot-row {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 12px 8px;
+    gap: 8px;
+    min-height: auto;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .hot-row.is-active {
+    border-color: rgba(255, 214, 107, 0.7);
+    background: linear-gradient(180deg, rgba(50, 44, 28, 0.7), rgba(22, 20, 14, 0.8));
+  }
+
+  .hot-row-icon {
+    width: 54px;
+    height: 54px;
+  }
+
+  .hot-row-icon img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .hot-row h3 {
+    font-size: 11px;
+    line-height: 1.35;
+  }
+
+  .hot-row p,
+  .hot-row .button-secondary {
+    display: none;
   }
 
   .class-nav {
@@ -2692,6 +2864,25 @@ h3 {
   .job-thumb {
     width: 42px;
     height: 42px;
+  }
+
+  .character-picker {
+    overflow-x: auto;
+    padding: 10px 24px 20px;
+    scrollbar-width: none;
+  }
+
+  .character-picker::-webkit-scrollbar {
+    display: none;
+  }
+
+  .job-card-grid {
+    flex-shrink: 0;
+    padding-right: 24px;
+  }
+
+  .job-label {
+    display: none;
   }
 
   /* ── 테스트 섹션 ── */
