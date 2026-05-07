@@ -1295,6 +1295,28 @@ html { background: #1A1C22; }
   .quick-class-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  /* 서브 탭 — 모바일 가로 스크롤 */
+  .sub-nav-inner {
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .sub-nav-inner::-webkit-scrollbar { display: none; }
+  .sub-nav-tab {
+    flex-shrink: 0;
+    padding: 14px 16px;
+    font-size: .82rem;
+  }
+
+  /* 서브 wrap 패딩 축소 */
+  .sub-wrap {
+    padding: 40px 20px;
+  }
+  .sub-hero-content {
+    padding: 0 20px;
+  }
 }
 
 @media (max-width: 640px) {
