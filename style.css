@@ -2984,4 +2984,19 @@ h3 {
     font-size: 13px;
     padding: 0 16px;
   }
+
+  /* ── game.html 핵심 특징 카드 ── */
+  .feat-grid {
+    grid-template-columns: 1fr;
+  }
+  .feat-card + .feat-card {
+    border-left: none;
+    border-top: 1px solid rgba(200,160,96,.1);
+  }
+  .feat-img-wrap {
+    height: 200px;
+  }
+  .feat-body {
+    padding: 20px 24px 28px;
+  }
 }

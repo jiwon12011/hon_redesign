@@ -27,7 +27,21 @@
       <a class="button-secondary button-small" href="account.html#login">로그인</a>
       <a class="button-primary button-small" href="account.html#signup">회원가입</a>
     </div>
+    <button class="menu-toggle" aria-label="메뉴 열기" aria-expanded="false" type="button">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+  <nav class="mobile-drawer" aria-label="모바일 메뉴" aria-hidden="true">
+    <a href="game.html">게임소개</a>
+    <a class="active" href="guide.html">가이드</a>
+    <a href="community.html">커뮤니티</a>
+    <a href="archive.html">자료실</a>
+    <a href="news.html">고객센터</a>
+    <div class="drawer-actions">
+      <a class="button-secondary button-small" href="account.html#login">로그인</a>
+      <a class="button-primary button-small" href="account.html#signup">회원가입</a>
+    </div>
+  </nav>
 
   <main>
     <section class="sub-hero">
@@ -148,5 +162,17 @@
       </div>
     </div>
   </footer>
+  <script>
+    (() => {
+      const toggle = document.querySelector('.menu-toggle');
+      const drawer = document.querySelector('.mobile-drawer');
+      if (!toggle || !drawer) return;
+      const open  = () => { toggle.setAttribute('aria-expanded','true');  drawer.classList.add('is-open');    drawer.setAttribute('aria-hidden','false'); };
+      const close = () => { toggle.setAttribute('aria-expanded','false'); drawer.classList.remove('is-open'); drawer.setAttribute('aria-hidden','true'); };
+      toggle.addEventListener('click', () => toggle.getAttribute('aria-expanded') === 'true' ? close() : open());
+      drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+      document.addEventListener('click', e => { if (!drawer.contains(e.target) && !toggle.contains(e.target)) close(); });
+    })();
+  </script>
 </body>
 </html>
