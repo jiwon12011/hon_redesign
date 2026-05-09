@@ -1,18 +1,18 @@
 :root {
-  --bg: #1A1C22;
-  --bg-2: #20232B;
-  --panel: #242833;
+  --bg: #17130D;
+  --bg-2: #1E1912;
+  --panel: #262018;
   --gold: #FFD66B;
   --gold-2: #FFB800;
   --blue: #8FA3FF;
   --text: #FFFFFF;
-  --body: #CFCFCF;
-  --muted: #9AA0A6;
+  --body: #D8CEBC;
+  --muted: #9A9080;
   --paper: #F6F1E8;
   --paper-2: #EAE1D3;
   --ink: #17191F;
-  --line: rgba(255, 214, 107, 0.24);
-  --shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  --line: rgba(255, 214, 107, 0.28);
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.42);
   --glow: 0 0 20px rgba(255, 214, 107, 0.4);
   --font: "Noto Sans KR", "Pretendard", "SUIT", sans-serif;
 }
@@ -25,7 +25,7 @@
 
 html {
   scroll-behavior: smooth;
-  background: #1A1C22;
+  background: #17130D;
 }
 
 body {
@@ -33,7 +33,9 @@ body {
   margin: 0;
   color: var(--body);
   font-family: var(--font);
-  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(180, 120, 34, 0.06), transparent 50%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
 }
 
 img {
@@ -95,11 +97,13 @@ h3 {
   z-index: 50;
   display: flex;
   align-items: center;
-  min-height: 72px;
+  min-height: 84px;
   padding: 0 48px;
-  background: rgba(14, 15, 20, 0.96);
-  border-bottom: 1px solid rgba(255, 214, 107, 0.18);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  background:
+    linear-gradient(180deg, rgba(6, 4, 2, 0.60) 0%, rgba(10, 8, 4, 0.94) 72%),
+    url('images/redesign_img/deco-rooftile-lantern.png') center top / cover no-repeat;
+  border-bottom: 1px solid rgba(255, 214, 107, 0.32);
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.56), 0 1px 0 rgba(255, 214, 107, 0.18) inset;
 }
 
 .brand {
@@ -229,7 +233,7 @@ h3 {
   min-height: clamp(620px, 56.25vw, 900px);
   overflow: hidden;
   color: var(--text);
-  background: #10131A;
+  background: #0E0B05;
 }
 
 .hero-section::before {
@@ -238,8 +242,8 @@ h3 {
   inset: 0;
   z-index: 2;
   background:
-    linear-gradient(90deg, rgba(10, 12, 18, 0.68) 0%, rgba(10, 12, 18, 0.18) 48%, rgba(10, 12, 18, 0.58) 100%),
-    linear-gradient(180deg, rgba(26, 28, 34, 0) 78%, rgba(26, 28, 34, 0.72) 100%);
+    linear-gradient(90deg, rgba(8, 6, 2, 0.72) 0%, rgba(8, 6, 2, 0.14) 48%, rgba(8, 6, 2, 0.52) 100%),
+    linear-gradient(180deg, rgba(20, 16, 8, 0) 78%, rgba(20, 16, 8, 0.78) 100%);
   pointer-events: none;
 }
 
@@ -404,16 +408,13 @@ h3 {
   box-shadow: 0 0 14px rgba(108, 231, 168, 0.75);
 }
 
-.bestiary-strip,
-.recommend-section {
-  color: var(--ink);
-  background:
-    radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.72), transparent 28%),
-    linear-gradient(180deg, #FFF9EF 0%, #EEE4D6 100%);
-}
-
 .bestiary-strip {
   padding: 44px 0 48px;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse at 12% 10%, rgba(255, 214, 107, 0.08), transparent 32%),
+    radial-gradient(ellipse at 88% 90%, rgba(180, 120, 34, 0.06), transparent 28%),
+    linear-gradient(180deg, #F5EDD8 0%, #E8DABD 100%);
 }
 
 .section-head {
@@ -715,9 +716,10 @@ h3 {
   color: #FFFFFF;
   overflow: hidden;
   background:
-    radial-gradient(circle at 68% 55%, rgba(var(--job-color-rgb), 0.18), transparent 34%),
-    linear-gradient(180deg, #111319 0%, #1A1C22 100%);
-  box-shadow: inset 0 46px 54px rgba(0, 0, 0, 0.36), inset 0 -54px 60px rgba(0, 0, 0, 0.46);
+    radial-gradient(circle at 68% 55%, rgba(var(--job-color-rgb), 0.22), transparent 34%),
+    linear-gradient(180deg, rgba(10,8,4,0.88) 0%, rgba(14,11,6,0.76) 100%),
+    url('images/redesign_img/bg-palace-hall.png') center center / cover no-repeat;
+  box-shadow: inset 0 46px 54px rgba(0, 0, 0, 0.46), inset 0 -54px 60px rgba(0, 0, 0, 0.52);
 }
 
 .character-section::before {
@@ -726,8 +728,8 @@ h3 {
   inset: 0;
   z-index: 1;
   background:
-    linear-gradient(90deg, rgba(17, 19, 25, 0.96) 0%, rgba(17, 19, 25, 0.78) 27%, rgba(17, 19, 25, 0.36) 48%, rgba(17, 19, 25, 0.2) 72%, rgba(17, 19, 25, 0.88) 100%),
-    linear-gradient(180deg, rgba(17, 19, 25, 0.66) 0%, transparent 20%, transparent 78%, rgba(17, 19, 25, 0.78) 100%);
+    linear-gradient(90deg, rgba(10, 7, 3, 0.96) 0%, rgba(10, 7, 3, 0.78) 27%, rgba(10, 7, 3, 0.28) 48%, rgba(10, 7, 3, 0.14) 72%, rgba(10, 7, 3, 0.88) 100%),
+    linear-gradient(180deg, rgba(10, 7, 3, 0.72) 0%, transparent 22%, transparent 76%, rgba(10, 7, 3, 0.82) 100%);
   pointer-events: none;
 }
 
@@ -765,8 +767,8 @@ h3 {
 
 .class-scene::before {
   background:
-    linear-gradient(90deg, #111319 0%, rgba(17, 19, 25, 0.82) 14%, transparent 34%, transparent 72%, rgba(17, 19, 25, 0.72) 88%, #111319 100%),
-    linear-gradient(180deg, #111319 0%, transparent 16%, transparent 82%, #111319 100%);
+    linear-gradient(90deg, #0D0A05 0%, rgba(13,10,5,0.82) 14%, transparent 34%, transparent 72%, rgba(13,10,5,0.72) 88%, #0D0A05 100%),
+    linear-gradient(180deg, #0D0A05 0%, transparent 16%, transparent 82%, #0D0A05 100%);
 }
 
 .class-scene::after {
@@ -1796,10 +1798,9 @@ h3 {
   padding: 78px 0 82px;
   color: var(--ink);
   background:
-    radial-gradient(ellipse at 14% 16%, rgba(255, 255, 255, 0.82), transparent 30%),
-    radial-gradient(ellipse at 80% 26%, rgba(255, 214, 107, 0.18), transparent 28%),
-    radial-gradient(ellipse at 76% 82%, rgba(143, 163, 255, 0.1), transparent 34%),
-    linear-gradient(180deg, #FFF9EF 0%, #EEE4D6 100%);
+    radial-gradient(ellipse at 14% 16%, rgba(255, 214, 107, 0.06), transparent 30%),
+    radial-gradient(ellipse at 80% 26%, rgba(180, 120, 34, 0.08), transparent 28%),
+    linear-gradient(180deg, #F0E4C8 0%, #E2D3B0 100%);
 }
 
 .recommend-section::before {
@@ -1808,10 +1809,9 @@ h3 {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(116deg, transparent 0 24%, rgba(255, 214, 107, 0.12) 35%, transparent 48%),
-    linear-gradient(64deg, transparent 0 58%, rgba(255, 255, 255, 0.34) 68%, transparent 78%),
-    radial-gradient(ellipse at 50% 58%, rgba(145, 102, 45, 0.08), transparent 52%);
-  opacity: 0.72;
+    linear-gradient(116deg, transparent 0 24%, rgba(255, 214, 107, 0.1) 35%, transparent 48%),
+    radial-gradient(ellipse at 50% 58%, rgba(145, 102, 45, 0.06), transparent 52%);
+  opacity: 0.8;
 }
 
 .recommend-layout {
@@ -1884,12 +1884,11 @@ h3 {
   min-height: 430px;
   overflow: hidden;
   border-radius: 18px;
-  border: 1px solid rgba(174, 139, 91, 0.34);
+  border: 1px solid rgba(174, 139, 91, 0.38);
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 214, 107, 0.24), transparent 20%),
-    radial-gradient(circle at 72% 34%, rgba(143, 163, 255, 0.12), transparent 24%),
-    linear-gradient(145deg, rgba(255, 251, 244, 0.88), rgba(232, 218, 196, 0.9));
-  box-shadow: 0 24px 46px rgba(74, 48, 18, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.74);
+    radial-gradient(circle at 50% 50%, rgba(255, 214, 107, 0.18), transparent 24%),
+    url('images/redesign_img/deco-scroll-parchment.png') center center / cover no-repeat;
+  box-shadow: 0 24px 46px rgba(74, 48, 18, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.5);
 }
 
 .recommend-stage::before,
@@ -2078,9 +2077,9 @@ h3 {
   padding: 58px 0 64px;
   color: #FFFFFF;
   background:
-    radial-gradient(circle at 11% 30%, rgba(255, 214, 107, 0.12), transparent 26%),
-    radial-gradient(circle at 82% 38%, rgba(143, 163, 255, 0.12), transparent 30%),
-    linear-gradient(180deg, #18191F 0%, #0F1014 100%);
+    radial-gradient(circle at 11% 30%, rgba(255, 214, 107, 0.10), transparent 26%),
+    radial-gradient(circle at 82% 38%, rgba(180, 120, 34, 0.08), transparent 30%),
+    linear-gradient(180deg, #1A1409 0%, #130F07 100%);
 }
 
 .hot-grid {
@@ -2270,9 +2269,9 @@ h3 {
 }
 
 .site-footer {
-  color: #9FA4AF;
-  background: #121318;
-  border-top: 1px solid rgba(255, 214, 107, 0.14);
+  color: #9A9080;
+  background: #100D07;
+  border-top: 1px solid rgba(255, 214, 107, 0.18);
 }
 
 .footer-wrap {
