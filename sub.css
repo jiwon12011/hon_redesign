@@ -78,7 +78,7 @@ html { background: #17130D; }
 
 /* ══ 서브 네비 탭 (페이지 내 섹션 이동) ══ */
 .sub-nav {
-  position: sticky; top: 250px; z-index: 50;
+  position: sticky; top: 190px; z-index: 50;
   background: rgba(9,8,14,.97);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(200,160,96,.12);

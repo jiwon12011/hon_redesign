@@ -91,57 +91,82 @@ h3 {
   max-width: 1600px;
 }
 
-/* ═══ HEADER — 레퍼런스 레이아웃: 기와 배경 + 로고 중앙 + 네비 하단 ═══ */
+/* ═══ HEADER — 기와 프레임 + 로고 중앙 + 네비 하단 ═══ */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  min-height: 250px;
-  padding: 120px 0 14px;
+  display: block;
+  min-height: 190px;
+  padding: 0;
   background:
-    url('images/redesign_img/deco-rooftile-lantern.png') center 34% / 100% auto no-repeat,
+    radial-gradient(ellipse at 50% 18%, rgba(255, 196, 91, 0.1), transparent 32%),
+    url('images/redesign_img/deco-rooftile-lantern.png') center 34% / min(1600px, 100vw) auto no-repeat,
     #0A0705;
   border-bottom: 1px solid rgba(255, 214, 107, 0.32);
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.56);
 }
 
+.site-header::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: min(1600px, 100%);
+  height: 76px;
+  transform: translateX(-50%);
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(8, 5, 2, 0.2) 24%, rgba(8, 5, 2, 0.72) 100%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.48), rgba(38, 22, 9, 0.24) 25%, rgba(38, 22, 9, 0.22) 75%, rgba(0, 0, 0, 0.48));
+  pointer-events: none;
+}
+
 /* 로고 — 상단 중앙, 금색 프레임 */
 .brand {
+  position: absolute;
+  left: 50%;
+  top: 78px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: auto;
-  flex: 0 0 auto;
-  padding: 8px 28px 6px;
-  border: 1px solid rgba(255, 214, 107, 0.52);
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  background: rgba(6, 4, 2, 0.72);
-  backdrop-filter: blur(4px);
+  min-width: 154px;
+  min-height: 60px;
+  padding: 9px 28px 10px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(255, 214, 107, 0.5);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(52, 32, 14, 0.82), rgba(9, 5, 2, 0.94)),
+    rgba(8, 5, 2, 0.88);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 236, 178, 0.18),
+    0 10px 28px rgba(0, 0, 0, 0.46);
+  backdrop-filter: blur(2px);
 }
 
 .brand img {
-  width: 80px;
-  height: 40px;
+  width: 86px;
+  height: 42px;
   object-fit: contain;
   filter: none;
 }
 
 /* 네비 + 버튼 — 하단 행, 전체 너비 */
 .main-nav {
+  position: absolute;
+  left: 50%;
+  bottom: 25px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 48px;
-  flex: 0 0 auto;
-  width: 100%;
+  gap: clamp(32px, 4vw, 70px);
+  width: min(860px, calc(100% - 440px));
   margin: 0;
-  padding: 10px 220px 12px;
-  border-top: 1px solid rgba(255, 214, 107, 0.12);
+  padding: 0;
+  transform: translateX(-50%);
+  border-top: 0;
 }
 
 .main-nav a {
@@ -159,11 +184,12 @@ h3 {
 
 .header-actions {
   position: absolute;
-  right: 48px;
-  bottom: 12px;
+  right: max(42px, calc((100vw - 1540px) / 2 + 42px));
+  bottom: 18px;
+  z-index: 3;
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 /* 햄버거 + 드로어 — 데스크탑에서 숨김 */
@@ -2343,28 +2369,36 @@ h3 {
   }
 
   .site-header {
-    flex-wrap: wrap;
-    gap: 18px;
     min-height: 100px;
-    padding: 8px 24px 12px;
-    align-items: flex-end;
-    background-size: 100% auto;
+    background-size: 1320px auto;
+    background-position: center 34%;
   }
 
   .brand {
-    width: auto;
+    left: 24px;
+    top: 22px;
+    min-width: 118px;
+    min-height: 48px;
+    padding: 6px 20px;
+    transform: none;
+  }
+
+  .brand img {
+    width: 72px;
+    height: 34px;
   }
 
   .main-nav {
-    order: 3;
-    width: 100%;
-    margin-left: 0;
+    left: 50%;
+    bottom: 18px;
+    width: min(620px, calc(100% - 310px));
     gap: 24px;
     overflow-x: auto;
   }
 
   .header-actions {
-    margin-left: auto;
+    right: 24px;
+    bottom: 14px;
   }
 
   .hero-section {
@@ -2477,7 +2511,22 @@ h3 {
     padding: 0 16px 10px;
     min-height: 72px;
     align-items: flex-end;
-    background-size: 120% auto;
+    background-size: 760px auto;
+    background-position: center 34%;
+  }
+
+  .brand {
+    left: 16px;
+    top: 11px;
+    min-width: 92px;
+    min-height: 40px;
+    padding: 4px 14px;
+    border-radius: 9px;
+  }
+
+  .brand img {
+    width: 58px;
+    height: 28px;
   }
 
   .main-nav {
@@ -2505,6 +2554,10 @@ h3 {
 
   /* ── 햄버거 버튼 ── */
   .menu-toggle {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    z-index: 4;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -2513,8 +2566,9 @@ h3 {
     height: 40px;
     padding: 8px;
     margin-left: auto;
-    background: none;
-    border: none;
+    background: rgba(9, 6, 2, 0.58);
+    border: 1px solid rgba(255, 214, 107, 0.32);
+    border-radius: 10px;
     cursor: pointer;
   }
 
