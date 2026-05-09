@@ -109,8 +109,8 @@ h3 {
   --roof-width: 100%;
   --roof-top: 4px;
   --roof-height: 232px;
-  --brand-x: clamp(220px, 13.6vw, 260px);
-  --nav-x: calc(var(--brand-x) + 126px);
+  --brand-x: clamp(118px, 7.3vw, 150px);
+  --nav-x: calc(var(--brand-x) + 124px);
   --action-x: clamp(92px, 6.2vw, 120px);
 }
 
@@ -136,7 +136,7 @@ h3 {
 .brand {
   position: absolute;
   left: var(--brand-x);
-  top: 112px;
+  top: 87px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@ h3 {
   position: absolute;
   left: var(--nav-x);
   right: calc(var(--action-x) + 300px);
-  top: 126px;
+  top: 100px;
   bottom: auto;
   z-index: 2;
   display: flex;
@@ -194,7 +194,7 @@ h3 {
 .header-actions {
   position: absolute;
   right: var(--action-x);
-  top: 118px;
+  top: 93px;
   bottom: auto;
   z-index: 3;
   display: flex;
@@ -2385,8 +2385,8 @@ h3 {
     --roof-width: 100%;
     --roof-top: 0;
     --roof-height: 178px;
-    --brand-x: clamp(136px, 14.6vw, 160px);
-    --nav-x: calc(var(--brand-x) + 96px);
+    --brand-x: clamp(72px, 8.4vw, 90px);
+    --nav-x: calc(var(--brand-x) + 86px);
     --action-x: clamp(34px, 5.4vw, 56px);
   }
 
@@ -2399,7 +2399,7 @@ h3 {
 
   .brand {
     left: var(--brand-x);
-    top: 84px;
+    top: 64px;
     min-width: 76px;
     min-height: 34px;
     padding: 0;
@@ -2417,7 +2417,7 @@ h3 {
   .main-nav {
     left: var(--nav-x);
     right: calc(var(--action-x) + 210px);
-    top: 94px;
+    top: 74px;
     bottom: auto;
     width: auto;
     gap: clamp(18px, 2.7vw, 30px);
@@ -2430,7 +2430,7 @@ h3 {
 
   .header-actions {
     right: var(--action-x);
-    top: 86px;
+    top: 66px;
     bottom: auto;
     gap: 8px;
   }
