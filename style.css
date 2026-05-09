@@ -96,14 +96,14 @@ h3 {
   top: 0;
   z-index: 50;
   display: flex;
-  align-items: center;
-  min-height: 84px;
-  padding: 0 48px;
+  align-items: flex-end;
+  min-height: 130px;
+  padding: 0 48px 14px;
   background:
-    linear-gradient(180deg, rgba(6, 4, 2, 0.60) 0%, rgba(10, 8, 4, 0.94) 72%),
-    url('images/redesign_img/deco-rooftile-lantern.png') center top / cover no-repeat;
+    url('images/redesign_img/deco-rooftile-lantern.png') center center / 100% auto no-repeat,
+    #0A0705;
   border-bottom: 1px solid rgba(255, 214, 107, 0.32);
-  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.56), 0 1px 0 rgba(255, 214, 107, 0.18) inset;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.56);
 }
 
 .brand {
@@ -2326,7 +2326,10 @@ h3 {
   .site-header {
     flex-wrap: wrap;
     gap: 18px;
-    padding: 14px 24px;
+    min-height: 100px;
+    padding: 8px 24px 12px;
+    align-items: flex-end;
+    background-size: 100% auto;
   }
 
   .brand {
@@ -2452,8 +2455,10 @@ h3 {
   /* ── GNB ── */
   .site-header {
     gap: 0;
-    padding: 0 16px;
-    min-height: 58px;
+    padding: 0 16px 10px;
+    min-height: 72px;
+    align-items: flex-end;
+    background-size: 120% auto;
   }
 
   .main-nav {
