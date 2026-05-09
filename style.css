@@ -109,9 +109,9 @@ h3 {
   --roof-width: 100%;
   --roof-top: 4px;
   --roof-height: 232px;
-  --brand-x: clamp(118px, 7.3vw, 150px);
-  --nav-x: calc(var(--brand-x) + 124px);
-  --action-x: clamp(92px, 6.2vw, 120px);
+  --brand-x: clamp(58px, 3.8vw, 78px);
+  --nav-x: calc(var(--brand-x) + 136px);
+  --action-x: clamp(70px, 4.8vw, 92px);
 }
 
 .site-header::before {
@@ -128,7 +128,7 @@ h3 {
   width: var(--roof-width);
   height: var(--roof-height);
   transform: none;
-  background: url('images/redesign_img/deco-rooftile-lantern.png') center 47% / 106% auto no-repeat;
+  background: url('images/redesign_img/deco-rooftile-lantern.png') center 47% / 112% auto no-repeat;
   pointer-events: none;
 }
 
@@ -136,7 +136,7 @@ h3 {
 .brand {
   position: absolute;
   left: var(--brand-x);
-  top: 87px;
+  top: 74px;
   z-index: 2;
   display: flex;
   align-items: center;
@@ -164,7 +164,7 @@ h3 {
   position: absolute;
   left: var(--nav-x);
   right: calc(var(--action-x) + 300px);
-  top: 100px;
+  top: 87px;
   bottom: auto;
   z-index: 2;
   display: flex;
@@ -194,7 +194,7 @@ h3 {
 .header-actions {
   position: absolute;
   right: var(--action-x);
-  top: 93px;
+  top: 80px;
   bottom: auto;
   z-index: 3;
   display: flex;
@@ -2385,8 +2385,8 @@ h3 {
     --roof-width: 100%;
     --roof-top: 0;
     --roof-height: 178px;
-    --brand-x: clamp(72px, 8.4vw, 90px);
-    --nav-x: calc(var(--brand-x) + 86px);
+    --brand-x: clamp(34px, 4.4vw, 48px);
+    --nav-x: calc(var(--brand-x) + 88px);
     --action-x: clamp(34px, 5.4vw, 56px);
   }
 
@@ -2394,12 +2394,12 @@ h3 {
     width: var(--roof-width);
     height: var(--roof-height);
     background-position: center 47%;
-    background-size: 110% auto;
+    background-size: 116% auto;
   }
 
   .brand {
     left: var(--brand-x);
-    top: 64px;
+    top: 54px;
     min-width: 76px;
     min-height: 34px;
     padding: 0;
@@ -2417,7 +2417,7 @@ h3 {
   .main-nav {
     left: var(--nav-x);
     right: calc(var(--action-x) + 210px);
-    top: 74px;
+    top: 64px;
     bottom: auto;
     width: auto;
     gap: clamp(18px, 2.7vw, 30px);
@@ -2430,7 +2430,7 @@ h3 {
 
   .header-actions {
     right: var(--action-x);
-    top: 66px;
+    top: 56px;
     bottom: auto;
     gap: 8px;
   }
