@@ -91,41 +91,56 @@ h3 {
   max-width: 1600px;
 }
 
+/* ═══ HEADER — 레퍼런스 레이아웃: 기와 배경 + 로고 상단 중앙 + 네비 하단 ═══ */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
   min-height: 130px;
-  padding: 0 48px 14px;
+  padding: 0;
   background:
-    url('images/redesign_img/deco-rooftile-lantern.png') center center / 100% auto no-repeat,
+    url('images/redesign_img/deco-rooftile-lantern.png') center top / 100% auto no-repeat,
     #0A0705;
   border-bottom: 1px solid rgba(255, 214, 107, 0.32);
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.56);
 }
 
+/* 로고 — 상단 중앙, 금색 프레임 */
 .brand {
   display: flex;
   align-items: center;
-  width: 118px;
+  justify-content: center;
+  width: auto;
   flex: 0 0 auto;
+  padding: 8px 28px 6px;
+  border: 1px solid rgba(255, 214, 107, 0.52);
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  background: rgba(6, 4, 2, 0.72);
+  backdrop-filter: blur(4px);
 }
 
 .brand img {
-  width: 96px;
-  height: 48px;
+  width: 80px;
+  height: 40px;
   object-fit: contain;
   filter: none;
 }
 
+/* 네비 + 버튼 — 하단 행, 전체 너비 */
 .main-nav {
   display: flex;
   align-items: center;
-  gap: 54px;
-  flex: 1;
-  margin-left: 28px;
+  justify-content: center;
+  gap: 48px;
+  flex: 0 0 auto;
+  width: 100%;
+  margin: 0;
+  padding: 10px 220px 12px;
+  border-top: 1px solid rgba(255, 214, 107, 0.12);
 }
 
 .main-nav a {
@@ -142,6 +157,9 @@ h3 {
 }
 
 .header-actions {
+  position: absolute;
+  right: 48px;
+  bottom: 12px;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -410,11 +428,11 @@ h3 {
 
 .bestiary-strip {
   padding: 44px 0 48px;
-  color: var(--ink);
+  color: #E8D4A8;
   background:
-    radial-gradient(ellipse at 12% 10%, rgba(255, 214, 107, 0.08), transparent 32%),
-    radial-gradient(ellipse at 88% 90%, rgba(180, 120, 34, 0.06), transparent 28%),
-    linear-gradient(180deg, #F5EDD8 0%, #E8DABD 100%);
+    radial-gradient(ellipse at 12% 10%, rgba(255, 214, 107, 0.10), transparent 32%),
+    radial-gradient(ellipse at 88% 90%, rgba(180, 120, 34, 0.08), transparent 28%),
+    linear-gradient(180deg, #201608 0%, #2A1C09 100%);
 }
 
 .section-head {
@@ -434,12 +452,12 @@ h3 {
 .heading-row p,
 .section-head p {
   margin-bottom: 0;
-  color: #756B5E;
+  color: #A89468;
   font-size: 14px;
 }
 
 .heading-row strong {
-  color: var(--ink);
+  color: #E8D4A8;
 }
 
 .bestiary-stage {
@@ -466,10 +484,12 @@ h3 {
   min-height: 238px;
   padding: 12px;
   text-align: left;
-  background: rgba(255, 250, 241, 0.84);
-  border: 1px solid rgba(145, 102, 45, 0.28);
+  background:
+    radial-gradient(circle at 50% 10%, rgba(255, 214, 107, 0.08), transparent 50%),
+    rgba(38, 28, 10, 0.88);
+  border: 1px solid rgba(200, 155, 50, 0.30);
   border-radius: 8px;
-  box-shadow: 0 10px 26px rgba(74, 48, 18, 0.08);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 214, 107, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -477,13 +497,13 @@ h3 {
 .yokai-card:focus-visible {
   transform: translateY(-6px);
   outline: 0;
-  border-color: rgba(255, 184, 0, 0.72);
-  box-shadow: 0 18px 32px rgba(74, 48, 18, 0.16);
+  border-color: rgba(255, 184, 0, 0.60);
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.36), 0 0 18px rgba(255, 184, 0, 0.18);
 }
 
 .yokai-card.yokai-selected {
   border-color: var(--gold-2);
-  box-shadow: 0 0 20px rgba(255, 214, 107, 0.34), 0 18px 36px rgba(74, 48, 18, 0.15);
+  box-shadow: 0 0 22px rgba(255, 214, 107, 0.36), 0 18px 36px rgba(0, 0, 0, 0.32);
 }
 
 .rarity {
@@ -550,13 +570,13 @@ h3 {
   display: none;
   min-height: 238px;
   padding: 20px 24px;
-  color: var(--ink);
-  border: 1px solid rgba(145, 102, 45, 0.28);
+  color: #E8D4A8;
+  border: 1px solid rgba(200, 155, 50, 0.32);
   border-radius: 14px;
   background:
-    linear-gradient(135deg, rgba(255, 251, 244, 0.92), rgba(240, 225, 199, 0.86)),
-    radial-gradient(circle at 85% 10%, rgba(255, 214, 107, 0.2), transparent 34%);
-  box-shadow: 0 18px 38px rgba(74, 48, 18, 0.14);
+    radial-gradient(circle at 85% 10%, rgba(255, 214, 107, 0.12), transparent 34%),
+    linear-gradient(135deg, rgba(46, 34, 12, 0.95), rgba(36, 26, 8, 0.92));
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.38);
 }
 
 .bestiary-strip.is-expanded .yokai-detail-panel {
@@ -603,14 +623,14 @@ h3 {
 
 .detail-name {
   margin-bottom: 8px;
-  color: #17191F;
+  color: #FFFFFF;
   font-size: 24px;
 }
 
 .detail-desc {
   max-width: 720px;
   margin-bottom: 14px;
-  color: #5D5346;
+  color: #C8B888;
   font-size: 14px;
   font-weight: 700;
   line-height: 1.75;
@@ -626,21 +646,21 @@ h3 {
 .yokai-info-grid div {
   min-height: 78px;
   padding: 12px;
-  border: 1px solid rgba(145, 102, 45, 0.2);
+  border: 1px solid rgba(200, 155, 50, 0.20);
   border-radius: 10px;
-  background: rgba(255, 250, 241, 0.68);
+  background: rgba(50, 38, 14, 0.72);
 }
 
 .yokai-info-grid dt {
   margin-bottom: 6px;
-  color: #8C5E16;
+  color: var(--gold);
   font-size: 13px;
   font-weight: 900;
 }
 
 .yokai-info-grid dd {
   margin: 0;
-  color: #302A22;
+  color: #D4BC88;
   font-size: 12px;
   font-weight: 800;
   line-height: 1.55;
@@ -698,13 +718,13 @@ h3 {
   gap: 10px;
   min-height: 32px;
   padding: 0 4px;
-  color: var(--ink);
+  color: #E8D4A8;
   font-size: 14px;
   font-weight: 900;
 }
 
 .card-row span {
-  color: #B47C22;
+  color: var(--gold);
   font-size: 13px;
 }
 
@@ -1796,11 +1816,10 @@ h3 {
   position: relative;
   overflow: hidden;
   padding: 78px 0 82px;
-  color: var(--ink);
+  color: #E8D4A8;
   background:
-    radial-gradient(ellipse at 14% 16%, rgba(255, 214, 107, 0.06), transparent 30%),
-    radial-gradient(ellipse at 80% 26%, rgba(180, 120, 34, 0.08), transparent 28%),
-    linear-gradient(180deg, #F0E4C8 0%, #E2D3B0 100%);
+    radial-gradient(ellipse at 14% 16%, rgba(255, 214, 107, 0.07), transparent 30%),
+    linear-gradient(180deg, #1C1408 0%, #221A0A 100%);
 }
 
 .recommend-section::before {
@@ -1809,8 +1828,7 @@ h3 {
   inset: 0;
   pointer-events: none;
   background:
-    linear-gradient(116deg, transparent 0 24%, rgba(255, 214, 107, 0.1) 35%, transparent 48%),
-    radial-gradient(ellipse at 50% 58%, rgba(145, 102, 45, 0.06), transparent 52%);
+    linear-gradient(116deg, transparent 0 24%, rgba(255, 214, 107, 0.06) 35%, transparent 48%);
   opacity: 0.8;
 }
 
@@ -1824,20 +1842,20 @@ h3 {
 }
 
 .recommend-copy .eyebrow {
-  color: #8C6A3B;
+  color: var(--gold);
   letter-spacing: 2.4px;
 }
 
 .recommend-copy h2 {
   margin-bottom: 16px;
-  color: #17191F;
+  color: #FFFFFF;
   font-size: 44px;
   line-height: 1.14;
 }
 
 .recommend-copy p {
   max-width: 430px;
-  color: #625848;
+  color: #C8B07C;
   line-height: 1.8;
 }
 
@@ -1853,12 +1871,12 @@ h3 {
   position: relative;
   min-height: 42px;
   padding: 10px 14px 10px 42px;
-  color: #3C352B;
-  border: 1px solid rgba(180, 120, 34, 0.22);
+  color: #E8D4A8;
+  border: 1px solid rgba(200, 155, 50, 0.22);
   border-radius: 8px;
-  background: linear-gradient(90deg, rgba(255, 251, 244, 0.82), rgba(246, 241, 232, 0.56));
+  background: linear-gradient(90deg, rgba(44, 32, 10, 0.82), rgba(36, 26, 8, 0.60));
   font-weight: 800;
-  box-shadow: 0 10px 22px rgba(74, 48, 18, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.58);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.18), inset 0 1px 0 rgba(255, 214, 107, 0.08);
 }
 
 .test-benefits li::before {
