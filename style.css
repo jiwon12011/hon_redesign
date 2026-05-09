@@ -99,10 +99,10 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 130px;
+  min-height: 200px;
   padding: 0;
   background:
-    url('images/redesign_img/deco-rooftile-lantern.png') center top / 100% auto no-repeat,
+    url('images/redesign_img/deco-rooftile-lantern.png') center 31% / 100% auto no-repeat,
     #0A0705;
   border-bottom: 1px solid rgba(255, 214, 107, 0.32);
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.56);
