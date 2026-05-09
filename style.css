@@ -26,11 +26,13 @@
 html {
   scroll-behavior: smooth;
   background: #17130D;
+  overflow-x: clip;
 }
 
 body {
   min-width: 1180px;
   margin: 0;
+  overflow-x: clip;
   color: var(--body);
   font-family: var(--font);
   background:
@@ -97,13 +99,19 @@ h3 {
   top: 0;
   z-index: 50;
   display: block;
-  min-height: 246px;
-  margin-bottom: -32px;
+  min-height: 214px;
+  margin-bottom: -42px;
   padding: 0;
   background: transparent;
   border-bottom: 0;
   box-shadow: none;
   overflow: visible;
+  --roof-width: 100%;
+  --roof-top: 4px;
+  --roof-height: 232px;
+  --brand-x: clamp(220px, 13.6vw, 260px);
+  --nav-x: calc(var(--brand-x) + 126px);
+  --action-x: clamp(92px, 6.2vw, 120px);
 }
 
 .site-header::before {
@@ -113,43 +121,40 @@ h3 {
 .site-header::after {
   content: "";
   position: absolute;
-  left: 50%;
-  top: 20px;
+  left: 0;
+  right: 0;
+  top: var(--roof-top);
   z-index: 0;
-  width: min(1400px, calc(100vw - 64px));
-  height: 226px;
-  transform: translateX(-50%);
-  background: url('images/redesign_img/deco-rooftile-lantern.png') center 47% / 100% auto no-repeat;
+  width: var(--roof-width);
+  height: var(--roof-height);
+  transform: none;
+  background: url('images/redesign_img/deco-rooftile-lantern.png') center 47% / 106% auto no-repeat;
   pointer-events: none;
 }
 
 /* 로고 — 상단 중앙, 금색 프레임 */
 .brand {
   position: absolute;
-  left: 50%;
-  top: 62px;
+  left: var(--brand-x);
+  top: 112px;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 164px;
-  min-height: 62px;
-  padding: 8px 30px 10px;
-  transform: translateX(-50%);
-  border: 1px solid rgba(255, 214, 107, 0.42);
-  border-radius: 12px;
-  background:
-    linear-gradient(180deg, rgba(64, 39, 17, 0.88), rgba(13, 7, 3, 0.94)),
-    rgba(12, 7, 3, 0.9);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 234, 177, 0.16),
-    0 10px 24px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+  min-width: 92px;
+  min-height: 42px;
+  padding: 0;
+  transform: none;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
 }
 
 .brand img {
-  width: 94px;
-  height: 44px;
+  width: 92px;
+  height: 42px;
   object-fit: contain;
   filter: drop-shadow(0 3px 6px rgba(0, 0, 0, 0.75));
 }
@@ -157,15 +162,15 @@ h3 {
 /* 네비 + 버튼 — 하단 행, 전체 너비 */
 .main-nav {
   position: absolute;
-  left: max(110px, calc((100vw - 1400px) / 2 + 110px));
-  right: max(420px, calc((100vw - 1400px) / 2 + 430px));
-  top: 142px;
+  left: var(--nav-x);
+  right: calc(var(--action-x) + 300px);
+  top: 126px;
   bottom: auto;
   z-index: 2;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: clamp(34px, 4.2vw, 72px);
+  gap: clamp(34px, 4vw, 68px);
   width: auto;
   margin: 0;
   padding: 0;
@@ -188,8 +193,8 @@ h3 {
 
 .header-actions {
   position: absolute;
-  right: max(112px, calc((100vw - 1400px) / 2 + 120px));
-  top: 132px;
+  right: var(--action-x);
+  top: 118px;
   bottom: auto;
   z-index: 3;
   display: flex;
@@ -2375,44 +2380,66 @@ h3 {
   }
 
   .site-header {
-    min-height: 138px;
-    margin-bottom: -72px;
+    min-height: 174px;
+    margin-bottom: -34px;
+    --roof-width: 100%;
+    --roof-top: 0;
+    --roof-height: 178px;
+    --brand-x: clamp(136px, 14.6vw, 160px);
+    --nav-x: calc(var(--brand-x) + 96px);
+    --action-x: clamp(34px, 5.4vw, 56px);
   }
 
   .site-header::after {
-    width: min(1160px, calc(100vw - 24px));
-    height: 178px;
-    background-position: center 58%;
+    width: var(--roof-width);
+    height: var(--roof-height);
+    background-position: center 47%;
+    background-size: 110% auto;
   }
 
   .brand {
-    left: 38px;
-    top: 46px;
-    min-width: 86px;
-    min-height: 36px;
+    left: var(--brand-x);
+    top: 84px;
+    min-width: 76px;
+    min-height: 34px;
     padding: 0;
     transform: none;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
   }
 
   .brand img {
-    width: 76px;
+    width: 74px;
     height: 34px;
   }
 
   .main-nav {
-    left: 136px;
-    right: 192px;
-    top: 58px;
+    left: var(--nav-x);
+    right: calc(var(--action-x) + 210px);
+    top: 94px;
     bottom: auto;
     width: auto;
-    gap: 22px;
+    gap: clamp(18px, 2.7vw, 30px);
     overflow-x: auto;
   }
 
+  .main-nav a {
+    font-size: 14px;
+  }
+
   .header-actions {
-    right: 36px;
-    top: 50px;
+    right: var(--action-x);
+    top: 86px;
     bottom: auto;
+    gap: 8px;
+  }
+
+  .header-actions .button-small {
+    min-width: 76px;
+    min-height: 36px;
+    padding: 0 14px;
+    font-size: 12px;
   }
 
   .hero-section {
@@ -2505,7 +2532,7 @@ h3 {
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 767px) {
   .section-head,
   .heading-row,
   .footer-actions {
@@ -2521,31 +2548,35 @@ h3 {
 
   /* ── GNB ── */
   .site-header {
-    gap: 0;
-    padding: 0 16px 10px;
-    min-height: 78px;
+    min-height: 68px;
     margin-bottom: 0;
-    align-items: flex-end;
+    padding: 0 16px;
+    background: rgba(8, 9, 13, 0.96);
+    border-bottom: 1px solid rgba(255, 214, 107, 0.18);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.34);
+    overflow: hidden;
   }
 
   .site-header::after {
-    width: 760px;
-    height: 96px;
-    background-position: center 52%;
+    content: none;
   }
 
   .brand {
     left: 16px;
-    top: 22px;
+    top: 50%;
     min-width: 70px;
     min-height: 32px;
     padding: 0;
+    transform: translateY(-50%);
+    border: 0;
     border-radius: 0;
+    background: transparent;
+    box-shadow: none;
   }
 
   .brand img {
-    width: 66px;
-    height: 30px;
+    width: 72px;
+    height: 34px;
   }
 
   .main-nav {
