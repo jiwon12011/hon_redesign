@@ -4,8 +4,8 @@
 ══════════════════════════════════════════════ */
 
 /* ── 페이지 최상위 래퍼 ── */
-html { background: #17130D; }
-.sub-page { padding-top: 0; min-height: 100vh; }
+html { background: #1A1C22; }
+.sub-page { padding-top: 92px; min-height: 100vh; }
 
 /* ══ 서브 히어로 배너 ══ */
 .sub-hero {
@@ -78,7 +78,7 @@ html { background: #17130D; }
 
 /* ══ 서브 네비 탭 (페이지 내 섹션 이동) ══ */
 .sub-nav {
-  position: sticky; top: 0; z-index: 50;
+  position: sticky; top: 92px; z-index: 50;
   background: rgba(9,8,14,.97);
   backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(200,160,96,.12);
@@ -631,13 +631,11 @@ html { background: #17130D; }
 .sub-page {
   padding-top: 0;
   color: var(--body);
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(180, 120, 34, 0.05), transparent 40%),
-    linear-gradient(180deg, #17130D 0%, #1E1912 100%);
+  background: linear-gradient(180deg, #1A1C22 0%, #20232B 100%);
 }
 
 .sub-page .site-header {
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.24);
 }
 
 .sub-page .main-nav a.active {
@@ -646,7 +644,7 @@ html { background: #17130D; }
 
 .sub-hero {
   height: 340px;
-  background: #0D0A05;
+  background: #111319;
 }
 
 .sub-hero-bg {
@@ -656,8 +654,8 @@ html { background: #17130D; }
 
 .sub-hero-overlay {
   background:
-    linear-gradient(90deg, rgba(10, 8, 3, 0.95) 0%, rgba(10, 8, 3, 0.74) 36%, rgba(10, 8, 3, 0.28) 66%, rgba(10, 8, 3, 0.7) 100%),
-    linear-gradient(180deg, rgba(10, 8, 3, 0.46) 0%, rgba(10, 8, 3, 0.04) 40%, rgba(10, 8, 3, 0.82) 100%);
+    linear-gradient(90deg, rgba(17, 19, 25, 0.95) 0%, rgba(17, 19, 25, 0.74) 36%, rgba(17, 19, 25, 0.28) 66%, rgba(17, 19, 25, 0.7) 100%),
+    linear-gradient(180deg, rgba(17, 19, 25, 0.46) 0%, rgba(17, 19, 25, 0.04) 40%, rgba(17, 19, 25, 0.78) 100%);
 }
 
 .sub-hero-line {
@@ -710,10 +708,10 @@ html { background: #17130D; }
 }
 
 .sub-nav {
-  top: 130px;
-  background: rgba(12, 9, 4, 0.97);
-  border-bottom: 1px solid rgba(255, 214, 107, 0.22);
-  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.28);
+  top: 72px;
+  background: rgba(17, 19, 25, 0.96);
+  border-bottom: 1px solid rgba(255, 214, 107, 0.18);
+  box-shadow: 0 16px 26px rgba(0, 0, 0, 0.18);
 }
 
 .sub-nav-tab {
@@ -762,7 +760,7 @@ html { background: #17130D; }
 .info-banner {
   background:
     radial-gradient(circle at 80% 28%, rgba(255, 214, 107, 0.08), transparent 30%),
-    linear-gradient(180deg, #1E1912 0%, #17130D 100%);
+    linear-gradient(180deg, #20232B 0%, #1A1C22 100%);
 }
 
 .info-banner {
@@ -985,8 +983,8 @@ html { background: #17130D; }
 .hub-section {
   position: relative;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 214, 107, 0.06), transparent 55%),
-    linear-gradient(180deg, #17130D 0%, #1E1912 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 214, 107, 0.05), transparent 55%),
+    linear-gradient(180deg, #1A1C22 0%, #20232B 100%);
 }
 
 .hub-head {
